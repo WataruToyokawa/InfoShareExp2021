@@ -701,7 +701,9 @@ io.on('connection', function (client) {
 
 		if(typeof client.subjectNumber != 'undefined') {
 
-			roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, cost_paid: data.cost_paid};
+			if (typeof roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] != 'undefined') {
+				roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, cost_paid: data.cost_paid};
+			}
 
 			// summing up all the payoff earned by the members of this room
 			if(typeof roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] != 'undefined') {

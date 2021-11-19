@@ -355,81 +355,99 @@ window.onload = function() {
     });
 
     socket.on('Proceed to next round', function(data) {
-        mySocialInfo = data.socialInfo[data.pointer-2]; //[data.round-2];
-        myPublicInfo = data.publicInfo[data.pointer-2];
-        choiceOrder = data.choiceOrder[data.pointer-2];
-        share_or_not = data.share_or_not[data.pointer-2];
-        groupTotalScore = sum( data.groupTotalPayoff );
-        totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
-        totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
-        // payoff_info = data.share_or_not[data.round-2]['payoff'];
-        // shared_position = data.share_or_not[data.round-2]['position'];
-        // console.log('mySocialInfo: ' + mySocialInfo);
-        // console.log('myPublicInfo: ' + myPublicInfo);
-        // console.log('choiceOrder: ' + choiceOrder);
-        // console.log('totalPayoff_perIndiv_perGame: ' + totalPayoff_perIndiv_perGame[gameRound] + ' with group total = ' + groupTotalScore);
-        for (let i = 0; i < maxGroupSize; i++) {
-        	if(share_or_not[i] != null) {
-        		// console.log('subjectNumber' + i + ': share:' + share_or_not[i].share + ', payoff:' +share_or_not[i].payoff+', position:'+share_or_not[i].position);
-        	}
-        }
-        // console.log('share_or_not: ' + share_or_not);
-        if (indivOrGroup == 1) {
-        	for (let i = 1; i < numOptions+1; i++) {
-        		mySocialInfoList['option'+i] = data.socialFreq[data.round-1][optionOrder[i-1] - 1];
-        	}
-        	// console.log('data.socialFreq[data.round-1] = ' + data.socialFreq[data.round-1]);
-        } else {
-        	for (let i = 1; i < numOptions+1; i++) {
-        		if (myLastChoiceFlag == i) { // myLastChoice
-        			mySocialInfoList['option'+i] = 1;
-        		} else {
-        			mySocialInfoList['option'+i] = 0;
-        		}
-        	}
-        }
-
-        currentTrial++;
-        totalEarning += payoff - (info_share_cost * didShare);
-
-        if (currentTrial == environment_change) {
-            switch (taskOrder[data.gameRound]) {
-                case 1:
-                    settingRiskDistribution(2);
-                    break;
-                case 2:
-                    settingRiskDistribution(1);
-                    break;
-                case 3:
-                    settingRiskDistribution(4);
-                    break;
-                case 4:
-                    settingRiskDistribution(3);
-                    break;
-                default:
-                    settingRiskDistribution(2);
-                    break;
+        if(currentTrial < horizon) {
+            mySocialInfo = data.socialInfo[data.pointer-2]; //[data.round-2];
+            myPublicInfo = data.publicInfo[data.pointer-2];
+            choiceOrder = data.choiceOrder[data.pointer-2];
+            share_or_not = data.share_or_not[data.pointer-2];
+            groupTotalScore = sum( data.groupTotalPayoff );
+            totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
+            totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
+            // payoff_info = data.share_or_not[data.round-2]['payoff'];
+            // shared_position = data.share_or_not[data.round-2]['position'];
+            // console.log('mySocialInfo: ' + mySocialInfo);
+            // console.log('myPublicInfo: ' + myPublicInfo);
+            // console.log('choiceOrder: ' + choiceOrder);
+            // console.log('totalPayoff_perIndiv_perGame: ' + totalPayoff_perIndiv_perGame[gameRound] + ' with group total = ' + groupTotalScore);
+            for (let i = 0; i < maxGroupSize; i++) {
+            	if(share_or_not[i] != null) {
+            		// console.log('subjectNumber' + i + ': share:' + share_or_not[i].share + ', payoff:' +share_or_not[i].payoff+', position:'+share_or_not[i].position);
+            	}
             }
-        }
+            // console.log('share_or_not: ' + share_or_not);
+            if (indivOrGroup == 1) {
+            	for (let i = 1; i < numOptions+1; i++) {
+            		mySocialInfoList['option'+i] = data.socialFreq[data.round-1][optionOrder[i-1] - 1];
+            	}
+            	// console.log('data.socialFreq[data.round-1] = ' + data.socialFreq[data.round-1]);
+            } else {
+            	for (let i = 1; i < numOptions+1; i++) {
+            		if (myLastChoiceFlag == i) { // myLastChoice
+            			mySocialInfoList['option'+i] = 1;
+            		} else {
+            			mySocialInfoList['option'+i] = 0;
+            		}
+            	}
+            }
 
-        //$("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-        //$("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-        $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-        $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-        $("#currentTrial").val(currentTrial);
-        $("#gameRound").val(gameRound);
-        // $("#exp_condition").val(exp_condition);
-        //$("#confirmationID").val(confirmationID);
-        $("#bonus_for_waiting").val(Math.round(waitingBonus));
-        // payoffText.destroy();
-        // waitOthersText.destroy();
-        for (let i =1; i<numOptions+1; i++) {
-        	objects_feedbackStage['box'+i].destroy();
+            currentTrial++;
+            totalEarning += payoff - (info_share_cost * didShare);
+
+            if (currentTrial == environment_change) {
+                switch (taskOrder[data.gameRound]) {
+                    case 1:
+                        settingRiskDistribution(2);
+                        break;
+                    case 2:
+                        settingRiskDistribution(1);
+                        break;
+                    case 3:
+                        settingRiskDistribution(4);
+                        break;
+                    case 4:
+                        settingRiskDistribution(3);
+                        break;
+                    default:
+                        settingRiskDistribution(2);
+                        break;
+                }
+            }
+
+            //$("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            //$("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            // $("#exp_condition").val(exp_condition);
+            //$("#confirmationID").val(confirmationID);
+            $("#bonus_for_waiting").val(Math.round(waitingBonus));
+            // payoffText.destroy();
+            // waitOthersText.destroy();
+            for (let i =1; i<numOptions+1; i++) {
+            	objects_feedbackStage['box'+i].destroy();
+            }
+        	game.scene.stop('ScenePayoffFeedback');
+        	isWaiting = false
+        	game.scene.start('SceneMain', {gameRound:gameRound, round:currentTrial});
+        	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.round-1]);
         }
-    	game.scene.stop('ScenePayoffFeedback');
-    	isWaiting = false
-    	game.scene.start('SceneMain', {gameRound:gameRound, round:currentTrial});
-    	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.round-1]);
+        else {
+            // End this session if the server wrongly sent the "proceed round message"
+            currentTrial++;
+            totalEarning += payoff;
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            $("#completed").val(1);
+            for (let i =1; i<numOptions+1; i++) {
+                objects_feedbackStage['box'+i].destroy();
+            }
+            game.scene.stop('ScenePayoffFeedback');
+            isWaiting = false
+            game.scene.start('SceneGoToQuestionnaire');
+        }
     });
 
     socket.on('End this session', function(data) {
