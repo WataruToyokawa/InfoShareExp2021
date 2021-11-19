@@ -74,7 +74,7 @@ class SceneUnderstandingTest extends Phaser.Scene {
 		,	optionButtonsA0Image = []
 		,	optionButtonsA0Text = []
 		,	optionButtonsA0Image_active = []
-		,	question0_options = [3,5,10,20,30]
+		,	question0_options = [10,20,40,60,99]
 		;
 		for (let i=0; i<5; i++) {
 			optionButtonsA0[i] = this.add.container(80 + 60*i, 180+80*0); //position

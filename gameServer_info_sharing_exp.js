@@ -40,19 +40,20 @@ const expFunctions = require('./models/expFunctions');
 const consoleLogInterceptor = require('./models/console-log-interceptor');
 
 // Experimental variables
-const horizon = 30 // 20
+const horizon = 60//60 // 20
 , environment_change = 26
-, sessionNo = 0 // 0 ~ 99 = debug; 100 ~ 199 = pilot July 2021;
-, maxGroupSize = 3 //
-, minGroupSize = 1 //3
-, maxWaitingTime = 5 * 1000 //2.5* 60 * 1000
+, sessionNo = 111900 // 0 ~ 99 = debug; 111900 ~ 19 Nov 2021;
+, maxGroupSize = 6 //
+, minGroupSize = 2 //3
+, maxWaitingTime = 2 * 60 * 1000
 , numOptions = 2 // 2 or 4
 , maxChoiceStageTime = 15*1000 //20*1000 // ms
 , maxTimeTestScene = 4* 60*1000 // 4*60*1000
 
-// , info_share_cost = 30
+, info_share_cost_list = [0, 20, 200]
 , task_order = [1, 2, 3, 4]
-, totalGameRound = task_order.length
+// , totalGameRound = task_order.length
+, totalGameRound = 1
 
 //, sigmaGlobal = 6 //0.9105
 //, sigmaIndividual = 6 //0.9105 // this gives 50% overlap between two normal distributions whose mean diff. is 1.1666..
@@ -118,6 +119,7 @@ roomStatus['finishedRoom'] = {
     exp_condition: 'finishedRoom',
     riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
     isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+    info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
     optionOrder: shuffle(options),
     taskOrder: shuffle(task_order),
     indivOrGroup: -1,
@@ -156,6 +158,7 @@ roomStatus[firstRoomName] = {
     exp_condition: exp_condition_list[weightedRand2({0:prob_binary, 1:(1-prob_binary)})],
     riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
     isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+    info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
     optionOrder: shuffle(options),
     taskOrder: shuffle(task_order),
     indivOrGroup: -1,
@@ -253,6 +256,7 @@ io.on('connection', function (client) {
 				exp_condition: exp_condition_list[weightedRand2({0:prob_binary, 1:(1-prob_binary)})],
 				riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
 				isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+				info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
 				optionOrder: shuffle(options),
 				taskOrder: shuffle(task_order),
 				indivOrGroup: -1,
@@ -352,6 +356,7 @@ io.on('connection', function (client) {
 				          exp_condition: exp_condition_list[weightedRand2({0:prob_binary, 1:(1-prob_binary)})],
 				          riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
 				          isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+				          info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
 				          optionOrder: shuffle(options),
 				          taskOrder: shuffle(task_order),
 				          indivOrGroup: -1,
@@ -423,6 +428,7 @@ io.on('connection', function (client) {
 					exp_condition: exp_condition_list[weightedRand2({0:prob_binary, 1:(1-prob_binary)})],
 					riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
 					isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+					info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
 					optionOrder: shuffle(options),
 					taskOrder: shuffle(task_order),
 					indivOrGroup: 0,
@@ -477,7 +483,7 @@ io.on('connection', function (client) {
 					startWaitingStageClock(client.room);
 				}
 				// inform rest time to the room
-				io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+				io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon, n:roomStatus[client.room]['n']});
 			}
 		}
 	});
@@ -490,12 +496,12 @@ io.on('connection', function (client) {
 			roomStatus[client.room]['stage'] = 'firstWaiting';
 		}
 		// inform rest time to the room
-		io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+		io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon, n:roomStatus[client.room]['n']});
 	});
 
 	// client.on('loading completed', function () {
 	// 	console.log('loading completed received');
-	// 	io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+	// 	io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon, n:roomStatus[client.room]['n']});
 	// });
 
 	client.on('ok individual condition sounds good', function () {
@@ -510,6 +516,7 @@ io.on('connection', function (client) {
 				exp_condition: exp_condition_list[weightedRand2({0:prob_binary, 1:(1-prob_binary)})],
 				riskDistributionId: getRandomIntInclusive(max = 13, min = 13), // max = 2, min = 0
 				isLeftRisky: isLeftRisky_list[getRandomIntInclusive(max = 1, min = 0)],
+				info_share_cost: info_share_cost_list[Math.floor(Math.random() * info_share_cost_list.length)],
 				optionOrder: shuffle(options),
 				taskOrder: shuffle(task_order),
 				indivOrGroup: 0,
@@ -575,8 +582,8 @@ io.on('connection', function (client) {
 		  	firstTrialStartingTime = now675;
 		  	roomStatus[client.room]['stage'] = 'mainTask';
 		} else {
-		  	io.to(client.session).emit('wait for others finishing test', {n_test_passed: roomStatus[client.room]['testPassed']});
-		  	io.to(client.room).emit('n_test_passed updated', {n_test_passed: roomStatus[client.room]['testPassed']});
+		  	io.to(client.session).emit('wait for others finishing test', {n_test_passed: roomStatus[client.room]['testPassed'], n:roomStatus[client.room]['n']});
+		  	io.to(client.room).emit('n_test_passed updated', {n_test_passed: roomStatus[client.room]['testPassed'], n:roomStatus[client.room]['n']});
 		}
 	});
 
@@ -660,6 +667,7 @@ io.on('connection', function (client) {
 				,	maxGroupSize: maxGroupSize
 				,	riskDistributionId: data.riskDistributionId
 				,	optionOrder: roomStatus[client.room]['optionOrder']
+				,	info_share_cost: roomStatus[client.room]['info_share_cost']
 				}
 			);
 			// =========  save data to mongodb
@@ -693,13 +701,13 @@ io.on('connection', function (client) {
 
 		if(typeof client.subjectNumber != 'undefined') {
 
-			roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, sharing_cost: data.sharing_cost};
+			roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, cost_paid: data.cost_paid};
 
 			// summing up all the payoff earned by the members of this room
 			if(typeof roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] != 'undefined') {
-				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.payoff - data.sharing_cost;
+				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.payoff - data.cost_paid;
 			} else {
-				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] = data.payoff - data.sharing_cost;
+				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] = data.payoff - data.cost_paid;
 			}
 
 			// console.log('groupTotalPayoff = ' + roomStatus[client.room]['groupTotalPayoff']);
@@ -723,7 +731,7 @@ io.on('connection', function (client) {
 				// ,	chosenOptionFlag: data.chosenOptionFlag
 				// ,	choice: data.choice
 				// ,	payoff: data.payoff
-				,	totalEarning: data.payoff - data.sharing_cost
+				,	totalEarning: data.payoff - data.cost_paid
 				,	behaviouralType: 'info-sharing'
 				,	timeElapsed: timeElapsed
 				,	latency: client.latency
@@ -1044,7 +1052,7 @@ function parameterEmitting (client) {
 		, maxChoiceStageTime: maxChoiceStageTime
 		, maxTimeTestScene: maxTimeTestScene
 		, exp_condition:roomStatus[client.room]['exp_condition']
-		// , riskDistributionId:roomStatus[client.room]['riskDistributionId']
+		, info_share_cost:roomStatus[client.room]['info_share_cost']
 		, isLeftRisky:roomStatus[client.room]['isLeftRisky']
 		, subjectNumber: client.subjectNumber
 		, indivOrGroup: roomStatus[client.room]['indivOrGroup']
@@ -1052,6 +1060,7 @@ function parameterEmitting (client) {
 		, optionOrder: roomStatus[client.room]['optionOrder']
 		, taskOrder: roomStatus[client.room]['taskOrder']
 		, gameRound: roomStatus[client.room]['gameRound']
+		, environment_change: environment_change
 		});
 	let nowEmitting = new Date(),
 	  	logdateEmitting = '['+nowEmitting.getUTCFullYear()+'/'+(nowEmitting.getUTCMonth()+1)+'/';

@@ -17,6 +17,7 @@ const portnumQuestionnaire = 8000
 let numOptions
 ,	info_share_cost = 0
 ,	info_share_cost_total = 0
+,	environment_change
 ;
 
 // Gaussian distribution (E[risky] = 1.61)
@@ -69,7 +70,7 @@ let isEnvironmentReady = false
 ,	didShare = 0
 ,	payoffTransformed
 ,   totalEarning = 0
-,	cent_per_point = 10/500 // 1 cent per 100 points (1 penny per 100 points)
+,	cent_per_point = 15/500 // 1 cent per 100 points (1 penny per 100 points)
 ,	browserHiddenPermittedTime = 10 * 1000
 ,   sessionName
 ,   roomName

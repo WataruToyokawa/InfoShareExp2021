@@ -35,7 +35,7 @@ if(myHour<10){myHour = '0'+myHour;}
 if(myMin<10){myMin = '0'+myMin;}
 
 var csvStream
-, dataName = "Helge_exp"+'_pilot_'+myYear+myMonth+myDate+myHour+myMin
+, dataName = "Helge_exp"+'_'+myYear+myMonth+myDate+'_'+myHour+myMin
 ;
 
 csvStream = csv.format({headers: true, quoteColumns: true});
@@ -89,9 +89,10 @@ app.post('/endPage', function(req, res) {
     completionFee = flatFeeValue + completionFeeValue;
   }
   let save_data = new Object();
-  save_data.date = myYear+myMonth+myDate+myHour+myMin;
+  save_data.date = ''+myYear+myMonth+myDate+'_'+myHour+myMin;
   save_data.exp_condition = req.body.exp_condition;
   save_data.indivOrGroup = req.body.indivOrGroup;
+  save_data.info_share_cost = req.body.info_share_cost;
   save_data.confirmationID = req.body.confirmationID;
   save_data.amazonID = req.body.amazonID;
   save_data.latency = req.body.latency;
@@ -100,11 +101,14 @@ app.post('/endPage', function(req, res) {
   save_data.totalEarning = parseFloat(req.body.totalEarning).toFixed(2);//Math.round(parseInt(req.body.totalEarning))/100;
   save_data.bonus_for_waiting = Math.round(parseInt(req.body.bonus_for_waiting))/100;
   save_data.completionFee = completionFee;
-  if (req.body.completed == 1) {
-    save_data.totalPayment = Math.round(10*(parseInt(req.body.bonus_for_waiting)/100 + parseFloat(req.body.totalEarning) + completionFee))/10;
-  } else {
-    save_data.totalPayment = Math.round(10*(parseInt(req.body.bonus_for_waiting)/100 + parseFloat(req.body.totalEarning) + completionFee))/10;
-  }
+  save_data.totalPayment = Math.round(10*(parseInt(req.body.bonus_for_waiting)/100 + parseFloat(req.body.totalEarning) + completionFee))/10;
+
+  // if (req.body.completed == 1) {
+  //   save_data.totalPayment = Math.round(10*(parseInt(req.body.bonus_for_waiting)/100 + parseFloat(req.body.totalEarning) + completionFee))/10;
+  // } else {
+  //   save_data.totalPayment = Math.round(10*(parseInt(req.body.bonus_for_waiting)/100 + parseFloat(req.body.totalEarning) + completionFee))/10;
+  // }
+
   save_data.age = req.body.age;
   save_data.sex = req.body.sex;
   save_data.country = req.body.country;
@@ -129,6 +133,7 @@ app.post('/endPage', function(req, res) {
     confirmationID: req.body.confirmationID,
     exp_condition: req.body.exp_condition,
     indivOrGroup: req.body.indivOrGroup,
+    info_share_cost: req.body.info_share_cost,
     latency: req.body.latency,
     age: req.body.age,
     sex: req.body.sex,

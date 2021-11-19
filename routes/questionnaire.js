@@ -35,6 +35,7 @@ router.post('/', function(req, res, next) {
 		confirmationID: req.body.confirmationID,
 		exp_condition: req.body.exp_condition,
 		indivOrGroup: req.body.indivOrGroup,
+		info_share_cost: req.body.info_share_cost,
 		latency: req.body.latency
 	}); 
 

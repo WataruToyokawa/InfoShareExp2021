@@ -66,7 +66,7 @@ window.onload = function() {
             // Redirecting to the questionnaire
             socket.io.opts.query = 'sessionName=already_finished';
             socket.disconnect();
-            window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
+            window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
         }
     }
     //======== end: monitoring reload activity =====
@@ -105,18 +105,13 @@ window.onload = function() {
                     socket.io.opts.query = 'sessionName=already_finished';
                     socket.disconnect();
                     completed = 'browserHidden';
-                    window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+                    window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
                 }, 200); // wait until waitingBonus is fully calculated
             }
             hidden_elapsedTime = 0;
         }
     });
     //======== end: monitoring tab activity =====
-
-
-	// the info sharing cost for the first trial
-	// info_share_cost = rand(100, 0); // rnorm()
-	info_share_cost = Math.floor( BoxMuller_positive(1, 2, 6) * 100 );
 
 	let config = {
 	    type: Phaser.AUTO, // Phaser.CANVAS, Phaser.WEBGL, or Phaser.AUTO
@@ -194,11 +189,11 @@ window.onload = function() {
         maxChoiceStageTime = data.maxChoiceStageTime;
         indivOrGroup = data.indivOrGroup;
         exp_condition = data.exp_condition; //binary_4ab
-        // riskDistributionId = data.riskDistributionId;
+        environment_change = data.environment_change;
         subjectNumber = data.subjectNumber;
         isLeftRisky = data.isLeftRisky;
         numOptions = data.numOptions;
-        // info_share_cost = data.info_share_cost;
+        info_share_cost = data.info_share_cost;
         optionOrder = data.optionOrder;
         taskOrder = data.taskOrder;
         instructionText_indiv[1] = instructionText_indiv[1] + numOptions + ' slot machines.';
@@ -208,6 +203,7 @@ window.onload = function() {
         if (data.numOptions == 2) {
         	// settingRiskDistribution(data.riskDistributionId);
         	settingRiskDistribution(taskOrder[data.gameRound]); // data.taskOrder might be better?
+            // console.log('task id is ' + taskOrder[data.gameRound]);
         } else {
         	settingRiskDistribution_4ab(data.riskDistributionId);
         }
@@ -226,8 +222,8 @@ window.onload = function() {
         //console.log('and client subjectNumber is ' + subjectNumber);
         //console.log('and maxChoiceStageTime = ' + maxChoiceStageTime);
         //console.log('and confirmationID is = ' + confirmationID);
-        $("#exp_condition").val(exp_condition);
-        //$("#confirmationID").val(data.id);
+        $("#exp_condition").val(taskOrder[data.gameRound]);
+        $("#info_share_cost").val(data.info_share_cost);
         settingConfirmationID(confirmationID);
     });
 
@@ -237,6 +233,7 @@ window.onload = function() {
         maxGroupSize = data.maxGroupSize;
         horizon = data.horizon;
         restTime = data.restTime;
+        currentGroupSize = data.n;
         // console.log('socket.on: "this is the remaining waiting time" : '+restTime+' msec.');
         if (isPreloadDone & !isWaitingRoomStarted) {
         	// game.scene.start('ScenePerfect'); // debug
@@ -264,6 +261,7 @@ window.onload = function() {
 
     socket.on('n_test_passed updated', function (data) {
     	n_in_waitingRoom2 = data.n_test_passed;
+        currentGroupSize = data.n;
     });
 
     socket.on('wait for others get ready to move on', function () {
@@ -391,9 +389,28 @@ window.onload = function() {
         	}
         }
 
-
         currentTrial++;
         totalEarning += payoff - (info_share_cost * didShare);
+
+        if (currentTrial == environment_change) {
+            switch (taskOrder[data.gameRound]) {
+                case 1:
+                    settingRiskDistribution(2);
+                    break;
+                case 2:
+                    settingRiskDistribution(1);
+                    break;
+                case 3:
+                    settingRiskDistribution(4);
+                    break;
+                case 4:
+                    settingRiskDistribution(3);
+                    break;
+                default:
+                    settingRiskDistribution(2);
+                    break;
+            }
+        }
 
         //$("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
         //$("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
@@ -401,7 +418,7 @@ window.onload = function() {
         $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
         $("#currentTrial").val(currentTrial);
         $("#gameRound").val(gameRound);
-        $("#exp_condition").val(exp_condition);
+        // $("#exp_condition").val(exp_condition);
         //$("#confirmationID").val(confirmationID);
         $("#bonus_for_waiting").val(Math.round(waitingBonus));
         // payoffText.destroy();
@@ -430,7 +447,7 @@ window.onload = function() {
         $("#currentTrial").val(currentTrial);
         $("#gameRound").val(gameRound);
         $("#completed").val(1);
-        $("#exp_condition").val(exp_condition);
+        // $("#exp_condition").val(exp_condition);
         //$("#confirmationID").val(confirmationID);
         // payoffText.destroy();
         // waitOthersText.destroy();
@@ -479,7 +496,7 @@ window.onload = function() {
 	    	// However, for now I just redirect them to the questionnaire
 	        socket.io.opts.query = 'sessionName=already_finished';
 	        socket.disconnect();
-	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
+	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
 	        // console.log('Received: "S_to_C_welcomeback": client = '+data.sessionName +'; room = '+data.roomName);
 	    } else if (waitingRoomFinishedFlag != 1) {
 	    	// console.log('Received: "S_to_C_welcomeback" but the waiting room is not finished yet: client = '+data.sessionName +'; room = '+data.roomName);

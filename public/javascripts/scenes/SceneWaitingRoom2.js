@@ -1,4 +1,10 @@
 // SceneWaitingRoom2
+
+import {rand
+	, createCircle
+	, waitingBarCompleted
+} from '../functions.js';
+
 class SceneWaitingRoom2 extends Phaser.Scene {
 
 	constructor (){
@@ -10,6 +16,7 @@ class SceneWaitingRoom2 extends Phaser.Scene {
 
 	init (data) {
 		n_in_waitingRoom2 = data.n_test_passed;
+		currentGroupSize = data.n;
 	}
 
 	create(){
@@ -54,7 +61,7 @@ class SceneWaitingRoom2 extends Phaser.Scene {
 		bonusText.setOrigin(0.5, 0.5);
 
 		// showing the current group size
-		this.groupSizeText = this.add.text(configWidth/2, 350, 'Number of people ready: '+ n_in_waitingRoom2.toString()+' / 3' , textStyle);
+		this.groupSizeText = this.add.text(configWidth/2, 350, 'Number of people ready: '+ n_in_waitingRoom2.toString()+' / '+currentGroupSize.toString() , textStyle);
 		this.groupSizeText.setOrigin(0.5, 0.5);
 	}
 
@@ -68,7 +75,7 @@ class SceneWaitingRoom2 extends Phaser.Scene {
 			bonusBar.fillRect(250, 390, 300, 30);
 		}
 		bonusText.setText('Your waiting bonus: '+waitingBonus.toString().substr(0, 2)+' pence.');
-		this.groupSizeText.setText('Number of people ready: '+ n_in_waitingRoom2.toString()+' / 3');
+		this.groupSizeText.setText('Number of people ready: '+ n_in_waitingRoom2.toString()+' / '+currentGroupSize.toString());
 	}
 };
 

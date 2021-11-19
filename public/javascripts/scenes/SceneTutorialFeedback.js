@@ -71,7 +71,7 @@ class SceneTutorialFeedback extends Phaser.Scene {
 		let buttonImage_yes = this.add.sprite(0, 0, 'button').setDisplaySize(300, 100).setInteractive({ cursor: 'pointer' });
 		let buttonText_yes = this.add.text(0, 0, 'YES\n(cost: ' + 20 + ' points)', button_style);
 		if(tutorialTrial > 1) {
-			buttonText_yes.setText('YES\n(cost: 100 points)');
+			buttonText_yes.setText('YES\n(cost: '+20+' points)');
 		}
 		buttonText_yes.setOrigin(0.5, 0.5);
 		buttonContainer_yes.add(buttonImage_yes);

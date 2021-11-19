@@ -65,7 +65,6 @@ class SceneTutorialSharingCostExplained extends Phaser.Scene {
 	    	let updatedTutorialPosition = tutorialPosition + 1;
 	    	this.scene.stop('SceneTutorialSharingCostExplained');
 	    	this.scene.start('SceneTutorial', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
-	    	console.log('buttonImage_ok clicked!! updatedTutorialPosition = ' + updatedTutorialPosition)
 	    }, this);
 
 	}

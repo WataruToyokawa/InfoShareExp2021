@@ -50,11 +50,6 @@ class SceneMain extends Phaser.Scene {
 	    ,	energyBar_Y = 16 + 50 * 2 // 16 + 50 * 4
 	    ;
 
-	    // let trialText_Y = 16
-	    // ,	scoreText_Y = 66
-	    // ,	energyBar_Y = 116
-	    // ;
-
 		// Creating options
 	    for (let i=1; i<numOptions+1; i++) {
 	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*gameRound)+'_normal');
@@ -73,15 +68,15 @@ class SceneMain extends Phaser.Scene {
 		confirmationContainer.visible = false; // it's hidden in default
 
 		// =============== A looking-good timer =================================
-		// the energy container. A simple sprite
+			// the energy container. A simple sprite
 		let energyContainer = this.add.sprite(400, energyBar_Y+18, 'energycontainer');
-		// the energy bar. Another simple sprite
+			// the energy bar. Another simple sprite
     	let energyBar = this.add.sprite(energyContainer.x + 46, energyContainer.y, 'energybar');
-    	// a copy of the energy bar to be used as a mask. Another simple sprite but...
+    		// a copy of the energy bar to be used as a mask. Another simple sprite but...
     	let energyMask = this.add.sprite(energyBar.x, energyBar.y, 'energybar');
-    	// ...it's not visible...
+    		// ...it's not visible...
     	energyMask.visible = false;
-    	// resize them
+    		// resize them
     	let energyContainer_originalWidth = energyContainer.displayWidth
     	,	energyContainer_newWidth = 200
     	,	container_bar_ratio = energyBar.displayWidth / energyContainer.displayWidth

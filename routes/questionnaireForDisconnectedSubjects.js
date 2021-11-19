@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
 			confirmationID: req.query.confirmationID,
 			indivOrGroup: req.query.indivOrGroup,
 			exp_condition: req.query.exp_condition,
+			info_share_cost: req.query.info_share_cost,
 			latency: req.query.latency
 		});  
 	} else {

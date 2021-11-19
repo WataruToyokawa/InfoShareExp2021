@@ -8,6 +8,7 @@ window.onload = function() {
     $("#totalEarning").val(totalEarning);
     $('#exp_condition').val(exp_condition);
     $('#indivOrGroup').val(indivOrGroup);
+    $('#info_share_cost').val(info_share_cost);
     $('#completed').val(completed);
     $('#latency').val(latency);
 

@@ -142,12 +142,12 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	    			, info_share_cost: info_share_cost
 	    			// , totalEarning: (payoff - didShare * info_share_cost)
 	    			// , what_produced: payoff
-	    			, sharing_cost: 1 * info_share_cost
+	    			, cost_paid: 1 * info_share_cost
 	    			, thisTrial: currentTrial
 	    		});
 	    	buttonContainer_yes.visible = false;
 	    	buttonContainer_no.visible = false;
-	    	CircleSpinContainer.visible = true;
+	    	if (indivOrGroup == 1) CircleSpinContainer.visible = true;
 	    }, this);
 
 	    buttonImage_no.on('pointerdown', function (pointer) {
@@ -161,12 +161,12 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	    			, info_share_cost: info_share_cost
 	    			// , totalEarning: (payoff - didShare * info_share_cost)
 	    			// , what_produced: payoff
-	    			, sharing_cost: 0 * info_share_cost
+	    			, cost_paid: 0
 	    			, thisTrial: currentTrial
 	    		});
 	    	buttonContainer_yes.visible = false;
 	    	buttonContainer_no.visible = false;
-	    	CircleSpinContainer.visible = true;
+	    	if (indivOrGroup == 1) CircleSpinContainer.visible = true;
 	    }, this);
 
 	    buttonImage_confirm.on('pointerdown', function (pointer) {
@@ -180,11 +180,11 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	    			, info_share_cost: info_share_cost
 	    			// , totalEarning: (payoff - didShare * info_share_cost)
 	    			// , what_produced: payoff
-	    			, sharing_cost: 0 * info_share_cost
+	    			, cost_paid: 0
 	    			, thisTrial: currentTrial
 	    		});
 	    	buttonContainer_confirm.visible = false;
-	    	CircleSpinContainer.visible = true;
+	    	if (indivOrGroup == 1) CircleSpinContainer.visible = true;
 	    	confirmationTimer.destroy();
 
 	    }, this);
@@ -235,7 +235,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 		    			, info_share_cost: info_share_cost
 		    			// , totalEarning: (payoff - didShare * info_share_cost)
 		    			// , what_produced: payoff
-	    				, sharing_cost: 0 * info_share_cost
+	    				, cost_paid: 0
 		    			, thisTrial: currentTrial
 		    		});
 			    }.bind(this), feedbackTime * 1000); //2.5 * 1000 ms was the original
@@ -270,7 +270,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 								// However, for now I just redirect them to the questionnaire
 								socket.io.opts.query = 'sessionName=already_finished';
 								socket.disconnect();
-								window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
+								window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
 								confirmationTimer.destroy();
 								buttonContainer_confirm.visible = false;
 								waitOthersText.setText('Time was up! \nYou are redirected to the questionnaire...');
@@ -318,7 +318,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 							// However, for now I just redirect them to the questionnaire
 							socket.io.opts.query = 'sessionName=already_finished';
 							socket.disconnect();
-							window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
+							window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
 							confirmationTimer.destroy();
 							buttonContainer_confirm.visible = false;
 							waitOthersText.setText('Time was up! \nYou are redirected to the questionnaire...');
@@ -348,9 +348,9 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	    			, payoff: payoff
 	    			, num_choice: this.flag
 	    			, info_share_cost: info_share_cost
-	    			// , totalEarning: (payoff - 0 * info_share_cost)
+	    			// , totalEarning: (payoff - 0)
 	    			// , what_produced: payoff
-	    			, sharing_cost: 0 * info_share_cost
+	    			, cost_paid: 0
 	    			, thisTrial: currentTrial
 	    		});
 		    }.bind(this), feedbackTime * 1000); //2.5 * 1000 ms was the original

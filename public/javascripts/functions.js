@@ -383,7 +383,8 @@ export function showPublicInfo (shared_payoff, shared_option_position, socialInf
 export function madeChoice (flag, distribution, optionOrder) {
     // A new cost is set
     // info_share_cost = rand(100, 0);
-    info_share_cost = Math.floor( BoxMuller_positive(1, 2, 6) * 100 );
+    // info_share_cost = Math.floor( BoxMuller_positive(1, 2, 6) * 100 );
+    // info_share_cost = 20;
 
     let thisChoice;
     if (flag == -1) {
@@ -427,12 +428,12 @@ export function randomChoiceFromBinary(chosenOptionFlag, num_choice, choice, pay
     let noise = BoxMuller(0, smallNoise)
     let thisPayoff
     if (p_rare < roulette) { // common event
-        thisPayoff = Math.floor((payoffList[0] + noise)*100);
+        thisPayoff = Math.floor((payoffList[0] + noise)*10);
         if (thisPayoff<0) thisPayoff = 0;
         myEarnings.push(thisPayoff);
         myChoices.push(choice);
     } else { // rare event
-        thisPayoff = Math.floor((payoffList[1] + noise)*100);
+        thisPayoff = Math.floor((payoffList[1] + noise)*10);
         if (thisPayoff<0) thisPayoff = 0;
         myEarnings.push(thisPayoff);
         myChoices.push(choice);
@@ -547,133 +548,50 @@ export function choose(arr) {
     return arr[index];
 }
 
-// export function waitingBarCompleted ()
-// {
-//     //console.log('waitingBarCompleted is fired');
-// }
-
-// export function goToQuestionnaire () {
-//  ////console.log('goToQuestionnaire()');
-//  $("#form").submit();
-// }
-
-// export function settingConfirmationID (id) {
-//  $("#confirmationID").val(id);
-// }
-
 export function settingRiskDistribution (id) {
     switch (id) {
-        // 1, 2, 3, 5
-        case 1: // Optimal-risky, positively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 6.00; // E[R] = 1.6
-            // Gaussian
-            mean_sure = 1.5;
-            mean_risky = 1.6;
+        // 1, 2, 3, 4
+        case 1: // Suboptimal-risky, positively-skewed
+            pRiskyRare = 0.3;
+            pSure = 0.9;
+            payoff_sureL = 1.0;
+            payoff_sureH = 1.56;
+            payoff_riskyCommon = -2;
+            payoff_riskyRare = 8; // E[R] = 1
             break;
-        case 2: // Suboptimal-risky positively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 5.00; // E[R] = 1.4
-            // Gaussian
-            mean_sure = 1.5;
-            mean_risky = 1.4;
-            break;
-        case 3: // Optimal-risky, negatively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 2.00; // E[R] = 1.6
-            payoff_riskyRare = 0;
-            break;
-        case 4: // Suboptimal-risky, negatively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 1.75; // E[R] = 1.4
-            payoff_riskyRare = 0;
-            break;
-
-        // ==== Pilot condition =
-        default:
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 6.00;
-            break;
-    }
-    optionsKeyList = ['sure','risky'];
-    probabilityList = {
-        sure:pSure
-        , risky:pRiskyRare
-    };
-    payoffList = {
-            sure:[payoff_sureL, payoff_sureH]
-            , risky:[payoff_riskyCommon, payoff_riskyRare]
-        };
-}
-
-export function settingRiskDistribution_old (id) {
-    switch (id) {
-        // 0, 1, 2, 3
-        case 0: // Optimal-risky, positively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 6.00; // E[R] = 1.6
-            // Gaussian
-            mean_sure = 1.5;
-            mean_risky = 1.6;
-            break;
-        case 1: // Suboptimal-risky positively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 5.00; // E[R] = 1.4
-            // Gaussian
-            mean_sure = 1.5;
-            mean_risky = 1.4;
-            break;
-        case 2: // Optimal-risky, negatively-skewed
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 1.00;
-            payoff_riskyRare = 4.00;
+        case 2: // Optimal-risky positively-skewed
+            pRiskyRare = 0.3;
+            pSure = 0.9;
+            payoff_sureL = 1.0;
+            payoff_sureH = 1.0;
+            payoff_riskyCommon = -2;
+            payoff_riskyRare = 14.67; // E[R] = 3
             break;
         case 3: // Suboptimal-risky, negatively-skewed
-            pRiskyRare = 0.1;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 1.25;
-            payoff_riskyRare = 4.75;
+            pRiskyRare = 0.3;
+            pSure = 0.9;
+            payoff_sureL = 1.0;
+            payoff_sureH = 1.56;
+            payoff_riskyCommon = 6.00; // E[R] = 1
+            payoff_riskyRare = -10.7;
+            break;
+        case 4: // Optimal-risky, negatively-skewed
+            pRiskyRare = 0.3;
+            pSure = 0.9;
+            payoff_sureL = 1.0;
+            payoff_sureH = 1.0;
+            payoff_riskyCommon = 6; // E[R] = 3
+            payoff_riskyRare = -4;
             break;
 
         // ==== Pilot condition =
         default:
-            pRiskyRare = 0.2;
-            pSure = 1;
-            payoff_sureL = 1.5;
-            payoff_sureH = 1.5;
-            payoff_riskyCommon = 0.5;
-            payoff_riskyRare = 6.00;
+            pRiskyRare = 0.3;
+            pSure = 0.9;
+            payoff_sureL = 1.0;
+            payoff_sureH = 1.56;
+            payoff_riskyCommon = -2;
+            payoff_riskyRare = 8; // E[R] = 2
             break;
     }
     optionsKeyList = ['sure','risky'];
@@ -682,10 +600,11 @@ export function settingRiskDistribution_old (id) {
         , risky:pRiskyRare
     };
     payoffList = {
-            sure:[payoff_sureL, payoff_sureH]
-            , risky:[payoff_riskyCommon, payoff_riskyRare]
+            sure:[payoff_sureL+10.7, payoff_sureH+10.7]
+            , risky:[payoff_riskyCommon+10.7, payoff_riskyRare+10.7]
         };
 }
+
 
 export function settingRiskDistribution_4ab (id) {
     // console.log('settingRiskDistribution_4ab');

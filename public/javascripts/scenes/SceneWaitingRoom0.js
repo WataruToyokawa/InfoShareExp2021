@@ -55,9 +55,7 @@ class SceneWaitingRoom0 extends Phaser.Scene {
 		percentText.setOrigin(0.5, 0.5);
 		// loading stuff
 		this.load.image('star', 'assets/star.png');
-		//this.load.image('trap', 'assets/wana_hakowana.png');
-	    //this.load.image('lancer', 'assets/war_trident.png');
-	    this.load.image('button', 'assets/button.001.png');
+		this.load.image('button', 'assets/button.001.png');
 	    this.load.image('button_active', 'assets/button.active.png');
 		this.load.image('bonusBarFrame', 'assets/bar.png');
 		this.load.image('bonusBar', 'assets/scaleOrange.png');
@@ -65,14 +63,6 @@ class SceneWaitingRoom0 extends Phaser.Scene {
 		this.load.image('startImg', 'assets/start.png');
 		this.load.image('energycontainer', 'assets/energycontainer.png');
 		this.load.image('energybar', 'assets/energybar.png');
-		// this.load.image('machine1_normal', 'assets/machine_normal_1.png');
-		// this.load.image('machine2_normal', 'assets/machine_normal_2.png');
-		// this.load.image('machine3_normal', 'assets/machine_normal_3.png');
-		// this.load.image('machine4_normal', 'assets/machine_normal_4.png');
-		// this.load.image('machine1_active', 'assets/machine_active_1.png');
-		// this.load.image('machine2_active', 'assets/machine_active_2.png');
-		// this.load.image('machine3_active', 'assets/machine_active_3.png');
-		// this.load.image('machine4_active', 'assets/machine_active_4.png');
 		this.load.image('machine1_normal', 'assets/slot1_normal.png');
 		this.load.image('machine2_normal', 'assets/slot2_normal.png');
 		this.load.image('machine3_normal', 'assets/slot3_normal.png');
@@ -89,12 +79,11 @@ class SceneWaitingRoom0 extends Phaser.Scene {
 		this.load.image('machine6_active', 'assets/slot6_active.png');
 		this.load.image('machine7_active', 'assets/slot7_active.png');
 		this.load.image('machine8_active', 'assets/slot8_active.png');
-		this.load.image('instructionPictures_indiv_1', 'assets/instructionPictures_indiv.001.png');
-		this.load.image('instructionPictures_indiv_2', 'assets/instructionPictures_indiv.002.png');
-		this.load.image('instructionPictures_indiv_3', 'assets/instructionPictures_indiv.003.png');
-		this.load.image('instructionPictures_indiv_4', 'assets/instructionPictures_indiv.004.png');
-		this.load.image('instructionPictures_indiv_5', 'assets/instructionPictures_indiv.005.png');
-		this.load.image('instructionPictures_indiv_6', 'assets/instructionPictures_indiv.006.png');
+		this.load.image('instructionPictures_indiv_1', 'assets/instructionPictures_individual.001.png');
+		this.load.image('instructionPictures_indiv_2', 'assets/instructionPictures_individual.002.png');
+		this.load.image('instructionPictures_indiv_3', 'assets/instructionPictures_individual.003.png');
+		this.load.image('instructionPictures_indiv_4', 'assets/instructionPictures_individual.004.png');
+		this.load.image('instructionPictures_indiv_5', 'assets/instructionPictures_individual.005.png');
 
 		this.load.image('instructionPictures_group_1', 'assets/instructionPictures_group.001.png');
 		this.load.image('instructionPictures_group_2', 'assets/instructionPictures_group.002.png');
@@ -108,19 +97,9 @@ class SceneWaitingRoom0 extends Phaser.Scene {
 		this.load.image('instructionPictures_group_10', 'assets/instructionPictures_group.010.png');
 		this.load.image('instructionPictures_group_11', 'assets/instructionPictures_group.011.png');
 		this.load.image('instructionPictures_group_12', 'assets/instructionPictures_group.012.png');
-		this.load.image('instructionPictures_group_13', 'assets/instructionPictures_group.013.png');
 		this.load.image('net_contribution', 'assets/net_contribution.png');
 		this.load.image('pointing_finger', 'assets/pointing_finger.png');
 
-		// this.load.image('instructionPictures_4ab_1', 'assets/instructionPictures_4ab.001.png');
-		// this.load.image('instructionPictures_4ab_2', 'assets/instructionPictures_4ab.002.png');
-		// this.load.image('instructionPictures_4ab_3', 'assets/instructionPictures_4ab.003.png');
-		// this.load.image('instructionPictures_4ab_4', 'assets/instructionPictures_4ab.004.png');
-		// this.load.image('instructionPictures_4ab_5', 'assets/instructionPictures_4ab.005.png');
-		// this.load.image('instructionPictures_4ab_6', 'assets/instructionPictures_4ab.006.png');
-		// this.load.image('instructionPictures_4ab_7', 'assets/instructionPictures_4ab.007.png');
-		// this.load.image('instructionPictures_4ab_8', 'assets/instructionPictures_4ab.008.png');
-		// this.load.image('instructionPictures_4ab_9', 'assets/instructionPictures_4ab.009.png');
 		this.load.image('blackbox', 'assets/blackbox.png');
 		// progress bar functions
 		this.load.on('progress', function (value) {

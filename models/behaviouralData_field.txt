@@ -1,8 +1,6 @@
 date
 time
 amazonID
-exp_condition
-isLeftRisky
 indivOrGroup
 groupSize
 room
