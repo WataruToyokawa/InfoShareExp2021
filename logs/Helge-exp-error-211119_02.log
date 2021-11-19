@@ -1,0 +1,8 @@
+2021-11-19T08:43:08: (node:554827) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+2021-11-19T09:18:47: (node:555008) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+2021-11-19T09:36:36: TypeError: Cannot set property '1' of undefined
+2021-11-19T09:36:36:     at Socket.<anonymous> (/home/wataru/Helge_exp/info_share_exp_2021/gameServer_info_sharing_exp.js:704:106)
+2021-11-19T09:36:36:     at Socket.emit (events.js:315:20)
+2021-11-19T09:36:36:     at /home/wataru/Helge_exp/info_share_exp_2021/node_modules/socket.io/lib/socket.js:528:12
+2021-11-19T09:36:36:     at processTicksAndRejections (internal/process/task_queues.js:79:11)
+2021-11-19T09:36:37: (node:555425) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.

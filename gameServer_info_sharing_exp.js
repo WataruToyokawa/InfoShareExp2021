@@ -42,7 +42,7 @@ const consoleLogInterceptor = require('./models/console-log-interceptor');
 // Experimental variables
 const horizon = 60//60 // 20
 , environment_change = 26
-, sessionNo = 111900 // 0 ~ 99 = debug; 111900 ~ 19 Nov 2021;
+, sessionNo = 112000 // 0 ~ 99 = debug; 111900 ~ 19 Nov 2021;
 , maxGroupSize = 6 //
 , minGroupSize = 2 //3
 , maxWaitingTime = 2 * 60 * 1000

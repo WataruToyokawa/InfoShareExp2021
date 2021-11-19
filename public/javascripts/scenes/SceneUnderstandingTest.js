@@ -423,7 +423,7 @@ class SceneUnderstandingTest extends Phaser.Scene {
 		    			this.scene.start('SceneInstruction', {indivOrGroup:indivOrGroup, exp_condition:exp_condition});
 		    		} else {
 		    			// completed = 'droppedTestScene';
-		    			window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+'droppedTestScene'+'&latency='+submittedLatency;
+		    			window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+'droppedTestScene'+'&latency='+submittedLatency;
 		    		}
 	    		}
 	    	} else { // group condition
@@ -442,7 +442,7 @@ class SceneUnderstandingTest extends Phaser.Scene {
 		    			this.scene.start('SceneInstruction', {indivOrGroup:indivOrGroup, exp_condition:exp_condition});
 		    		} else {
 		    			// completed = 'droppedTestScene';
-		    			window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+'droppedTestScene'+'&latency='+submittedLatency;
+		    			window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+'droppedTestScene'+'&latency='+submittedLatency;
 		    		}
 	    		}
 	    	}

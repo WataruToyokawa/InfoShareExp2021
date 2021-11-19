@@ -1,0 +1,1265 @@
+2021-11-19T05:03:34: [0mGET /?amazonID=58983ffa06b31a00018ebc9d&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197767414a6619dedd1d23d [32m200 [0m10.098 ms - 13665[0m
+2021-11-19T05:03:35: [0mGET /stylesheets/import.css [32m200 [0m2.655 ms - 129[0m
+2021-11-19T05:03:35: [0mGET /stylesheets/confirmation.css [32m200 [0m0.775 ms - 2661[0m
+2021-11-19T05:03:35: [0mGET /stylesheets/reset.css [32m200 [0m0.786 ms - 1093[0m
+2021-11-19T05:03:35: [0mGET /stylesheets/style.css [32m200 [0m0.636 ms - 4060[0m
+2021-11-19T05:03:35: [0mGET /javascripts/goToExp.js [32m200 [0m0.646 ms - 7551[0m
+2021-11-19T05:03:35: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.732 ms - 35046[0m
+2021-11-19T05:03:35: [0mGET /assets/favicon.ico [32m200 [0m0.765 ms - 1150[0m
+2021-11-19T05:03:47: [0mGET /?amazonID=615c100bc96ed7f86c2ee521&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197767927f43f9571763d75 [32m200 [0m2.458 ms - 13665[0m
+2021-11-19T05:03:48: [0mGET /stylesheets/import.css [32m200 [0m0.571 ms - 129[0m
+2021-11-19T05:03:48: [0mGET /stylesheets/confirmation.css [32m200 [0m0.578 ms - 2661[0m
+2021-11-19T05:03:48: [0mGET /stylesheets/reset.css [32m200 [0m0.694 ms - 1093[0m
+2021-11-19T05:03:48: [0mGET /stylesheets/style.css [32m200 [0m0.477 ms - 4060[0m
+2021-11-19T05:03:49: [0mGET /javascripts/goToExp.js [32m200 [0m0.752 ms - 7551[0m
+2021-11-19T05:03:49: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.507 ms - 35046[0m
+2021-11-19T05:03:50: [0mGET /assets/favicon.ico [32m200 [0m0.514 ms - 1150[0m
+2021-11-19T05:04:56: [0mGET /?amazonID=61707ac3698c2fbbb5aaad52&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619776bab6a8c601642a00ec [32m200 [0m1.166 ms - 13665[0m
+2021-11-19T05:04:58: [0mGET /stylesheets/import.css [32m200 [0m0.591 ms - 129[0m
+2021-11-19T05:04:58: [0mGET /stylesheets/confirmation.css [32m200 [0m0.482 ms - 2661[0m
+2021-11-19T05:04:59: [0mGET /javascripts/goToExp.js [32m200 [0m0.698 ms - 7551[0m
+2021-11-19T05:04:59: [0mGET /stylesheets/reset.css [32m200 [0m0.545 ms - 1093[0m
+2021-11-19T05:04:59: [0mGET /stylesheets/style.css [32m200 [0m0.559 ms - 4060[0m
+2021-11-19T05:05:00: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.283 ms - 35046[0m
+2021-11-19T05:05:05: [0mGET /assets/favicon.ico [32m200 [0m0.729 ms - 1150[0m
+2021-11-19T05:05:11: [0mGET /?amazonID=5ea043f2618bcf041cb4c245&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619776cf5cda10803ffad053 [32m200 [0m1.585 ms - 13665[0m
+2021-11-19T05:05:11: [0mGET /stylesheets/import.css [32m200 [0m0.555 ms - 129[0m
+2021-11-19T05:05:11: [0mGET /stylesheets/confirmation.css [32m200 [0m0.507 ms - 2661[0m
+2021-11-19T05:05:11: [0mGET /javascripts/goToExp.js [32m200 [0m1.177 ms - 7551[0m
+2021-11-19T05:05:11: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.321 ms - 35046[0m
+2021-11-19T05:05:11: [0mGET /stylesheets/reset.css [32m200 [0m1.465 ms - 1093[0m
+2021-11-19T05:05:11: [0mGET /stylesheets/style.css [32m200 [0m1.109 ms - 4060[0m
+2021-11-19T05:05:11: [0mGET /assets/favicon.ico [32m200 [0m0.609 ms - 1150[0m
+2021-11-19T05:06:55: [0mGET /?amazonID=5987186acda44b00015db200&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977734437ee8e19f13901c [32m200 [0m1.699 ms - 13665[0m
+2021-11-19T05:06:56: [0mGET /stylesheets/import.css [32m200 [0m0.834 ms - 129[0m
+2021-11-19T05:06:56: [0mGET /stylesheets/confirmation.css [32m200 [0m0.590 ms - 2661[0m
+2021-11-19T05:06:56: [0mGET /stylesheets/reset.css [32m200 [0m0.754 ms - 1093[0m
+2021-11-19T05:06:56: [0mGET /stylesheets/style.css [32m200 [0m0.569 ms - 4060[0m
+2021-11-19T05:06:56: [0mGET /javascripts/goToExp.js [32m200 [0m1.027 ms - 7551[0m
+2021-11-19T05:06:56: [0mGET /assets/favicon.ico [32m200 [0m1.187 ms - 1150[0m
+2021-11-19T05:07:09: [0mGET /?amazonID=5d250700f54f9f001c18778d&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977740ef093ede9ccbe80b [32m200 [0m2.395 ms - 13665[0m
+2021-11-19T05:07:09: [0mGET /stylesheets/import.css [32m200 [0m1.300 ms - 129[0m
+2021-11-19T05:07:09: [0mGET /stylesheets/confirmation.css [32m200 [0m1.358 ms - 2661[0m
+2021-11-19T05:07:09: [0mGET /stylesheets/reset.css [32m200 [0m2.159 ms - 1093[0m
+2021-11-19T05:07:09: [0mGET /stylesheets/style.css [32m200 [0m2.042 ms - 4060[0m
+2021-11-19T05:07:14: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.054 ms - 35046[0m
+2021-11-19T05:07:15: Accessed by an already-existing amazonID: 5d250700f54f9f001c18778d
+2021-11-19T05:07:15: [0mGET /?amazonID=5d250700f54f9f001c18778d&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977740ef093ede9ccbe80b [36m302 [0m4.623 ms - 92[0m
+2021-11-19T05:07:25: Accessed by an already-existing amazonID: 5d250700f54f9f001c18778d
+2021-11-19T05:07:25: [0mGET /?amazonID=5d250700f54f9f001c18778d&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977740ef093ede9ccbe80b [36m302 [0m1.533 ms - 92[0m
+2021-11-19T05:07:27: [0mGET /?amazonID=603cf2a6686c57b11af39499&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197773e23bdf97980459520 [32m200 [0m2.218 ms - 13665[0m
+2021-11-19T05:07:28: [0mGET /stylesheets/import.css [32m200 [0m0.844 ms - 129[0m
+2021-11-19T05:07:28: [0mGET /stylesheets/confirmation.css [32m200 [0m0.881 ms - 2661[0m
+2021-11-19T05:07:28: [0mGET /javascripts/goToExp.js [32m200 [0m0.972 ms - 7551[0m
+2021-11-19T05:07:28: [0mGET /stylesheets/reset.css [32m200 [0m1.011 ms - 1093[0m
+2021-11-19T05:07:28: [0mGET /stylesheets/style.css [32m200 [0m1.035 ms - 4060[0m
+2021-11-19T05:07:28: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.202 ms - 35046[0m
+2021-11-19T05:07:29: [0mGET /assets/favicon.ico [32m200 [0m1.108 ms - 1150[0m
+2021-11-19T05:08:13: [0mGET /?amazonID=5c48456991d23d0001b898f5&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977787ed21998d7f8f4608 [32m200 [0m1.544 ms - 13665[0m
+2021-11-19T05:08:13: [0mGET /stylesheets/import.css [32m200 [0m1.891 ms - 129[0m
+2021-11-19T05:08:13: [0mGET /stylesheets/confirmation.css [32m200 [0m1.596 ms - 2661[0m
+2021-11-19T05:08:13: [0mGET /stylesheets/reset.css [32m200 [0m1.262 ms - 1093[0m
+2021-11-19T05:08:13: [0mGET /stylesheets/style.css [32m200 [0m1.216 ms - 4060[0m
+2021-11-19T05:08:13: [0mGET /javascripts/goToExp.js [32m200 [0m0.679 ms - 7551[0m
+2021-11-19T05:08:13: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.656 ms - 35046[0m
+2021-11-19T05:08:13: [0mGET /assets/favicon.ico [32m200 [0m0.743 ms - 1150[0m
+2021-11-19T05:08:20: [0mGET /?amazonID=60e73f4ac4a95098d14e7872&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197772a7317c60bf443f5d7 [32m200 [0m2.096 ms - 13665[0m
+2021-11-19T05:08:20: [0mGET /stylesheets/import.css [32m200 [0m2.260 ms - 129[0m
+2021-11-19T05:08:20: [0mGET /stylesheets/confirmation.css [32m200 [0m2.379 ms - 2661[0m
+2021-11-19T05:08:20: [0mGET /stylesheets/reset.css [32m200 [0m2.483 ms - 1093[0m
+2021-11-19T05:08:20: [0mGET /stylesheets/style.css [32m200 [0m2.412 ms - 4060[0m
+2021-11-19T05:08:20: [0mGET /javascripts/goToExp.js [32m200 [0m0.849 ms - 7551[0m
+2021-11-19T05:08:20: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.941 ms - 35046[0m
+2021-11-19T05:08:21: [0mGET /assets/favicon.ico [32m200 [0m1.110 ms - 1150[0m
+2021-11-19T05:08:53: [0mGET /?amazonID=59e7362fe75b450001a69349&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777a927f43f9571763d95 [32m200 [0m1.995 ms - 13665[0m
+2021-11-19T05:08:53: [0mGET /stylesheets/import.css [32m200 [0m1.558 ms - 129[0m
+2021-11-19T05:08:53: [0mGET /stylesheets/confirmation.css [32m200 [0m1.541 ms - 2661[0m
+2021-11-19T05:08:53: [0mGET /stylesheets/reset.css [32m200 [0m0.650 ms - 1093[0m
+2021-11-19T05:08:53: [0mGET /stylesheets/style.css [32m200 [0m2.147 ms - 4060[0m
+2021-11-19T05:08:53: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.262 ms - 35046[0m
+2021-11-19T05:08:53: [0mGET /javascripts/goToExp.js [32m200 [0m0.670 ms - 7551[0m
+2021-11-19T05:08:54: [0mGET /assets/favicon.ico [32m200 [0m0.711 ms - 1150[0m
+2021-11-19T05:09:30: [0mGET /?amazonID=5a44fe8866e7880001de52cd&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777cefdc558c46e258b56 [32m200 [0m2.012 ms - 13665[0m
+2021-11-19T05:09:30: [0mGET /stylesheets/import.css [32m200 [0m1.733 ms - 129[0m
+2021-11-19T05:09:30: [0mGET /stylesheets/confirmation.css [32m200 [0m1.770 ms - 2661[0m
+2021-11-19T05:09:30: [0mGET /stylesheets/style.css [32m200 [0m1.028 ms - 4060[0m
+2021-11-19T05:09:30: [0mGET /stylesheets/reset.css [32m200 [0m1.040 ms - 1093[0m
+2021-11-19T05:09:30: [0mGET /javascripts/goToExp.js [32m200 [0m0.850 ms - 7551[0m
+2021-11-19T05:09:30: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.800 ms - 35046[0m
+2021-11-19T05:09:30: [0mGET /assets/favicon.ico [32m200 [0m1.149 ms - 1150[0m
+2021-11-19T05:09:57: [0mGET /?amazonID=610aa4c3e092aec113962948&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777f35ea34e6cb6b0bd3a [32m200 [0m1.949 ms - 13665[0m
+2021-11-19T05:09:57: [0mGET /stylesheets/import.css [32m200 [0m1.142 ms - 129[0m
+2021-11-19T05:09:57: [0mGET /stylesheets/confirmation.css [32m200 [0m0.761 ms - 2661[0m
+2021-11-19T05:09:58: [0mGET /stylesheets/reset.css [32m200 [0m1.023 ms - 1093[0m
+2021-11-19T05:09:58: [0mGET /stylesheets/style.css [32m200 [0m0.613 ms - 4060[0m
+2021-11-19T05:09:58: [0mGET /javascripts/goToExp.js [32m200 [0m0.910 ms - 7551[0m
+2021-11-19T05:09:58: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.914 ms - 35046[0m
+2021-11-19T05:09:59: [0mGET /assets/favicon.ico [32m200 [0m0.730 ms - 1150[0m
+2021-11-19T05:10:16: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5a44fe8866e7880001de52cd&info_share_cost=0&bonus_for_waiting=0&totalEarningInCent=0&confirmationID=browser-reloaded&exp_condition=undefined&indivOrGroup=undefined&completed=browserHidden&latency=-1 [32m200 [0m3.675 ms - 4527[0m
+2021-11-19T05:10:16: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.610 ms - 995[0m
+2021-11-19T05:10:16: [0mGET /stylesheets/import.css [36m304 [0m1.327 ms - -[0m
+2021-11-19T05:10:16: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.897 ms - 8219[0m
+2021-11-19T05:10:16: [0mGET /stylesheets/reset.css [36m304 [0m1.436 ms - -[0m
+2021-11-19T05:10:16: [0mGET /stylesheets/style.css [36m304 [0m1.298 ms - -[0m
+2021-11-19T05:10:20: [0mGET /?amazonID=6082aa29c655ceb5b313bc03&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778034e930253f6e4fa41 [32m200 [0m1.965 ms - 13665[0m
+2021-11-19T05:10:20: [0mGET /stylesheets/import.css [32m200 [0m0.675 ms - 129[0m
+2021-11-19T05:10:20: [0mGET /stylesheets/confirmation.css [32m200 [0m0.675 ms - 2661[0m
+2021-11-19T05:10:20: [0mGET /stylesheets/reset.css [32m200 [0m0.874 ms - 1093[0m
+2021-11-19T05:10:20: [0mGET /stylesheets/style.css [32m200 [0m0.882 ms - 4060[0m
+2021-11-19T05:10:20: [0mGET /javascripts/goToExp.js [32m200 [0m0.760 ms - 7551[0m
+2021-11-19T05:10:20: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.722 ms - 35046[0m
+2021-11-19T05:10:20: [0mGET /assets/favicon.ico [32m200 [0m1.176 ms - 1150[0m
+2021-11-19T05:10:32: Accessed by an already-existing amazonID: 5a44fe8866e7880001de52cd
+2021-11-19T05:10:32: [0mGET /?amazonID=5a44fe8866e7880001de52cd&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777cefdc558c46e258b56 [36m302 [0m0.683 ms - 92[0m
+2021-11-19T05:10:42: Accessed by an already-existing amazonID: 5a44fe8866e7880001de52cd
+2021-11-19T05:10:42: [0mGET /?amazonID=5a44fe8866e7880001de52cd&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777cefdc558c46e258b56 [36m302 [0m0.755 ms - 92[0m
+2021-11-19T05:10:45: [0mGET /?amazonID=5d31c6bac88f0e00164c3ccb&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778245cda10803ffad073 [32m200 [0m1.692 ms - 13665[0m
+2021-11-19T05:10:46: [0mGET /stylesheets/import.css [32m200 [0m1.857 ms - 129[0m
+2021-11-19T05:10:46: [0mGET /stylesheets/confirmation.css [32m200 [0m0.778 ms - 2661[0m
+2021-11-19T05:10:46: [0mGET /stylesheets/reset.css [32m200 [0m0.898 ms - 1093[0m
+2021-11-19T05:10:46: [0mGET /stylesheets/style.css [32m200 [0m0.707 ms - 4060[0m
+2021-11-19T05:10:46: [0mGET /javascripts/goToExp.js [32m200 [0m0.766 ms - 7551[0m
+2021-11-19T05:10:46: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.683 ms - 35046[0m
+2021-11-19T05:10:46: [0mGET /assets/favicon.ico [32m200 [0m0.756 ms - 1150[0m
+2021-11-19T05:11:05: [0mGET /?amazonID=5a4937631950a80001e7d0e4&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778373ea1caca30b3d360 [32m200 [0m2.027 ms - 13665[0m
+2021-11-19T05:11:06: [0mGET /stylesheets/import.css [32m200 [0m1.453 ms - 129[0m
+2021-11-19T05:11:06: [0mGET /stylesheets/confirmation.css [32m200 [0m1.606 ms - 2661[0m
+2021-11-19T05:11:06: [0mGET /stylesheets/reset.css [32m200 [0m0.905 ms - 1093[0m
+2021-11-19T05:11:06: [0mGET /stylesheets/style.css [32m200 [0m0.716 ms - 4060[0m
+2021-11-19T05:11:06: [0mGET /javascripts/goToExp.js [32m200 [0m1.144 ms - 7551[0m
+2021-11-19T05:11:06: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.820 ms - 35046[0m
+2021-11-19T05:11:06: [0mGET /assets/favicon.ico [32m200 [0m1.085 ms - 1150[0m
+2021-11-19T05:11:22: [0mGET /?amazonID=5627279fddff3c000fbcd625&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197783ea73aa979d189a82e [32m200 [0m1.814 ms - 13665[0m
+2021-11-19T05:11:22: [0mGET /stylesheets/confirmation.css [32m200 [0m2.460 ms - 2661[0m
+2021-11-19T05:11:22: [0mGET /stylesheets/import.css [32m200 [0m2.419 ms - 129[0m
+2021-11-19T05:11:22: [0mGET /stylesheets/reset.css [32m200 [0m1.724 ms - 1093[0m
+2021-11-19T05:11:22: [0mGET /javascripts/goToExp.js [32m200 [0m1.657 ms - 7551[0m
+2021-11-19T05:11:22: [0mGET /stylesheets/style.css [32m200 [0m0.702 ms - 4060[0m
+2021-11-19T05:11:22: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.841 ms - 35046[0m
+2021-11-19T05:11:23: [0mGET /assets/favicon.ico [32m200 [0m0.671 ms - 1150[0m
+2021-11-19T05:11:23: [0mGET /?amazonID=5f6c61f8d9012d1e8c0c8d11&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977848ced391feb49900e4 [32m200 [0m1.554 ms - 13665[0m
+2021-11-19T05:11:23: [0mGET /stylesheets/import.css [32m200 [0m1.649 ms - 129[0m
+2021-11-19T05:11:24: [0mGET /stylesheets/confirmation.css [32m200 [0m1.388 ms - 2661[0m
+2021-11-19T05:11:24: [0mGET /stylesheets/style.css [32m200 [0m1.014 ms - 4060[0m
+2021-11-19T05:11:24: [0mGET /stylesheets/reset.css [32m200 [0m0.537 ms - 1093[0m
+2021-11-19T05:11:24: [0mGET /javascripts/goToExp.js [32m200 [0m0.782 ms - 7551[0m
+2021-11-19T05:11:24: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.847 ms - 35046[0m
+2021-11-19T05:11:25: [0mGET /assets/favicon.ico [32m200 [0m2.386 ms - 1150[0m
+2021-11-19T05:11:28: [0mGET /?amazonID=60a52bc9508aa2f378ed5a48&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197784ad9549ed20996999f [32m200 [0m1.990 ms - 13665[0m
+2021-11-19T05:11:28: [0mGET /stylesheets/confirmation.css [32m200 [0m0.819 ms - 2661[0m
+2021-11-19T05:11:28: [0mGET /javascripts/goToExp.js [32m200 [0m0.647 ms - 7551[0m
+2021-11-19T05:11:28: [0mGET /stylesheets/import.css [32m200 [0m0.956 ms - 129[0m
+2021-11-19T05:11:28: [0mGET /stylesheets/reset.css [32m200 [0m1.661 ms - 1093[0m
+2021-11-19T05:11:28: [0mGET /stylesheets/style.css [32m200 [0m1.488 ms - 4060[0m
+2021-11-19T05:11:29: [0mGET /assets/favicon.ico [32m200 [0m0.894 ms - 1150[0m
+2021-11-19T05:11:30: [0mGET /?amazonID=5d3f3b6684e7500019d28684&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197784ba1b2b95f54b136fc [32m200 [0m1.678 ms - 13665[0m
+2021-11-19T05:11:30: [0mGET /stylesheets/import.css [32m200 [0m0.714 ms - 129[0m
+2021-11-19T05:11:30: [0mGET /stylesheets/confirmation.css [32m200 [0m0.675 ms - 2661[0m
+2021-11-19T05:11:30: [0mGET /stylesheets/style.css [32m200 [0m2.796 ms - 4060[0m
+2021-11-19T05:11:30: [0mGET /stylesheets/reset.css [32m200 [0m1.569 ms - 1093[0m
+2021-11-19T05:11:31: [0mGET /javascripts/goToExp.js [32m200 [0m0.719 ms - 7551[0m
+2021-11-19T05:11:31: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.737 ms - 35046[0m
+2021-11-19T05:11:31: [0mGET /assets/favicon.ico [32m200 [0m0.811 ms - 1150[0m
+2021-11-19T05:11:32: [0mGET /?amazonID=5eb331bc1f70081249e6fb7a&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778513f53f5e1c076bcd7 [32m200 [0m1.756 ms - 13665[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/import.css [32m200 [0m0.676 ms - 129[0m
+2021-11-19T05:11:32: [0mGET /javascripts/goToExp.js [32m200 [0m0.702 ms - 7551[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/confirmation.css [32m200 [0m0.460 ms - 2661[0m
+2021-11-19T05:11:32: [0mGET /?amazonID=6110a3b40a78b1ac0d964366&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197784faaa38b148bdeed5d [32m200 [0m2.584 ms - 13665[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/reset.css [32m200 [0m0.572 ms - 1093[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/style.css [32m200 [0m0.581 ms - 4060[0m
+2021-11-19T05:11:32: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.807 ms - 35046[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/import.css [32m200 [0m1.321 ms - 129[0m
+2021-11-19T05:11:32: [0mGET /stylesheets/confirmation.css [32m200 [0m1.305 ms - 2661[0m
+2021-11-19T05:11:32: [0mGET /assets/favicon.ico [32m200 [0m0.759 ms - 1150[0m
+2021-11-19T05:11:33: [0mGET /stylesheets/reset.css [32m200 [0m0.940 ms - 1093[0m
+2021-11-19T05:11:33: [0mGET /javascripts/goToExp.js [32m200 [0m1.423 ms - 7551[0m
+2021-11-19T05:11:33: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.120 ms - 35046[0m
+2021-11-19T05:11:33: [0mGET /stylesheets/style.css [32m200 [0m0.737 ms - 4060[0m
+2021-11-19T05:11:33: [0mGET /assets/favicon.ico [32m200 [0m0.715 ms - 1150[0m
+2021-11-19T05:12:02: [0mGET /?amazonID=6101ab943961ab6022c9d969&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197786c18d1b749869295b4 [32m200 [0m1.821 ms - 13665[0m
+2021-11-19T05:12:02: [0mGET /stylesheets/import.css [32m200 [0m1.064 ms - 129[0m
+2021-11-19T05:12:02: [0mGET /stylesheets/confirmation.css [32m200 [0m1.633 ms - 2661[0m
+2021-11-19T05:12:02: [0mGET /stylesheets/reset.css [32m200 [0m2.961 ms - 1093[0m
+2021-11-19T05:12:02: [0mGET /stylesheets/style.css [32m200 [0m1.453 ms - 4060[0m
+2021-11-19T05:12:02: [0mGET /javascripts/goToExp.js [32m200 [0m1.372 ms - 7551[0m
+2021-11-19T05:12:02: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.067 ms - 35046[0m
+2021-11-19T05:12:02: [0mGET /assets/favicon.ico [32m200 [0m1.311 ms - 1150[0m
+2021-11-19T05:12:04: [0mGET /?amazonID=606b037db1378e1ce6c0f13f&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619777ffe2e1dab1b36c79b4 [32m200 [0m2.225 ms - 13665[0m
+2021-11-19T05:12:04: [0mGET /stylesheets/import.css [32m200 [0m1.693 ms - 129[0m
+2021-11-19T05:12:04: [0mGET /stylesheets/confirmation.css [32m200 [0m1.601 ms - 2661[0m
+2021-11-19T05:12:04: [0mGET /stylesheets/reset.css [32m200 [0m2.192 ms - 1093[0m
+2021-11-19T05:12:04: [0mGET /stylesheets/style.css [32m200 [0m2.042 ms - 4060[0m
+2021-11-19T05:12:05: [0mGET /javascripts/goToExp.js [32m200 [0m0.780 ms - 7551[0m
+2021-11-19T05:12:05: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.987 ms - 35046[0m
+2021-11-19T05:12:05: [0mGET /assets/favicon.ico [32m200 [0m0.757 ms - 1150[0m
+2021-11-19T05:12:06: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5a4937631950a80001e7d0e4&info_share_cost=200&bonus_for_waiting=3.4286532512353007&totalEarningInCent=0&confirmationID=rFiYtPadk5cBc-mPAAAL&exp_condition=binary&indivOrGroup=1&completed=browserHidden&latency=-1 [32m200 [0m2.875 ms - 4539[0m
+2021-11-19T05:12:06: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.246 ms - 995[0m
+2021-11-19T05:12:06: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.145 ms - 8219[0m
+2021-11-19T05:12:06: [0mGET /stylesheets/import.css [36m304 [0m0.701 ms - -[0m
+2021-11-19T05:12:07: [0mGET /stylesheets/style.css [36m304 [0m1.759 ms - -[0m
+2021-11-19T05:12:07: [0mGET /stylesheets/reset.css [36m304 [0m1.527 ms - -[0m
+2021-11-19T05:12:08: [0mGET /?amazonID=5f89debc12abd1044a5e5c4a&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977875f11ac15ae240ad3b [32m200 [0m1.901 ms - 13665[0m
+2021-11-19T05:12:08: [0mGET /stylesheets/import.css [32m200 [0m1.892 ms - 129[0m
+2021-11-19T05:12:08: [0mGET /stylesheets/confirmation.css [32m200 [0m1.392 ms - 2661[0m
+2021-11-19T05:12:08: [0mGET /stylesheets/style.css [32m200 [0m1.449 ms - 4060[0m
+2021-11-19T05:12:08: [0mGET /stylesheets/reset.css [32m200 [0m1.249 ms - 1093[0m
+2021-11-19T05:12:09: [0mGET /javascripts/goToExp.js [32m200 [0m1.002 ms - 7551[0m
+2021-11-19T05:12:09: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.890 ms - 35046[0m
+2021-11-19T05:12:09: [0mGET /assets/favicon.ico [32m200 [0m0.750 ms - 1150[0m
+2021-11-19T05:12:48: [0mGET /?amazonID=607ebda28cf7e38fa0160295&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197789dc0f7743963b67390 [32m200 [0m1.607 ms - 13665[0m
+2021-11-19T05:12:48: [0mGET /stylesheets/import.css [32m200 [0m0.852 ms - 129[0m
+2021-11-19T05:12:48: [0mGET /stylesheets/confirmation.css [32m200 [0m0.657 ms - 2661[0m
+2021-11-19T05:12:48: [0mGET /javascripts/goToExp.js [32m200 [0m0.607 ms - 7551[0m
+2021-11-19T05:12:48: [0mGET /stylesheets/reset.css [32m200 [0m0.580 ms - 1093[0m
+2021-11-19T05:12:48: [0mGET /stylesheets/style.css [32m200 [0m0.471 ms - 4060[0m
+2021-11-19T05:12:48: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.709 ms - 35046[0m
+2021-11-19T05:12:48: [0mGET /assets/favicon.ico [32m200 [0m0.589 ms - 1150[0m
+2021-11-19T05:12:48: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.302 ms - 35046[0m
+2021-11-19T05:12:50: totalEarning = 0
+2021-11-19T05:12:50: bonus_for_waiting = 0.03
+2021-11-19T05:12:50: totalPayment = 0
+2021-11-19T05:12:50: [0mPOST /endPage [32m200 [0m13.524 ms - 6100[0m
+2021-11-19T05:12:50: [0mGET /stylesheets/import.css [36m304 [0m0.890 ms - -[0m
+2021-11-19T05:12:50: [0mGET /stylesheets/confirmation.css [36m304 [0m0.682 ms - -[0m
+2021-11-19T05:12:50: [0mGET /stylesheets/style.css [36m304 [0m1.010 ms - -[0m
+2021-11-19T05:12:50: [0mGET /stylesheets/reset.css [36m304 [0m0.954 ms - -[0m
+2021-11-19T05:13:00: [0mGET /?amazonID=5f7f07d317a72e01b1c57f27&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778a6ac4b93ed00570ee9 [32m200 [0m1.094 ms - 13665[0m
+2021-11-19T05:13:01: [0mGET /?amazonID=5fe7373a4b3bdc5378e78245&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778a9a4e6069b8b7b1e7f [32m200 [0m1.507 ms - 13665[0m
+2021-11-19T05:13:01: [0mGET /stylesheets/import.css [32m200 [0m0.526 ms - 129[0m
+2021-11-19T05:13:01: [0mGET /stylesheets/confirmation.css [32m200 [0m0.868 ms - 2661[0m
+2021-11-19T05:13:01: [0mGET /stylesheets/reset.css [32m200 [0m0.473 ms - 1093[0m
+2021-11-19T05:13:01: [0mGET /stylesheets/style.css [32m200 [0m0.702 ms - 4060[0m
+2021-11-19T05:13:01: [0mGET /javascripts/goToExp.js [32m200 [0m1.740 ms - 7551[0m
+2021-11-19T05:13:01: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.942 ms - 35046[0m
+2021-11-19T05:13:01: [0mGET /assets/favicon.ico [32m200 [0m0.516 ms - 1150[0m
+2021-11-19T05:13:07: [0mGET /stylesheets/import.css [32m200 [0m0.809 ms - 129[0m
+2021-11-19T05:13:07: [0mGET /stylesheets/confirmation.css [32m200 [0m0.898 ms - 2661[0m
+2021-11-19T05:13:07: [0mGET /stylesheets/reset.css [32m200 [0m0.638 ms - 1093[0m
+2021-11-19T05:13:07: [0mGET /stylesheets/style.css [32m200 [0m0.551 ms - 4060[0m
+2021-11-19T05:13:07: [0mGET /javascripts/goToExp.js [32m200 [0m0.847 ms - 7551[0m
+2021-11-19T05:13:08: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.528 ms - 35046[0m
+2021-11-19T05:13:13: [0mGET /assets/favicon.ico [32m200 [0m0.715 ms - 1150[0m
+2021-11-19T05:13:51: [0mGET /?amazonID=6101e16e46ab830d098f1436&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778dd47548fbf50e0a5cf [32m200 [0m2.583 ms - 13665[0m
+2021-11-19T05:13:51: [0mGET /stylesheets/import.css [32m200 [0m0.565 ms - 129[0m
+2021-11-19T05:13:51: [0mGET /stylesheets/confirmation.css [32m200 [0m0.637 ms - 2661[0m
+2021-11-19T05:13:51: [0mGET /stylesheets/reset.css [32m200 [0m0.563 ms - 1093[0m
+2021-11-19T05:13:51: [0mGET /stylesheets/style.css [32m200 [0m0.917 ms - 4060[0m
+2021-11-19T05:13:58: [0mGET /?amazonID=574188c0a0a4b2000fb03005&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778e2e505245fec5bfbf8 [32m200 [0m2.284 ms - 13665[0m
+2021-11-19T05:13:58: [0mGET /stylesheets/import.css [32m200 [0m1.130 ms - 129[0m
+2021-11-19T05:13:58: [0mGET /stylesheets/confirmation.css [32m200 [0m1.084 ms - 2661[0m
+2021-11-19T05:13:58: [0mGET /stylesheets/reset.css [32m200 [0m1.288 ms - 1093[0m
+2021-11-19T05:13:58: [0mGET /stylesheets/style.css [32m200 [0m1.176 ms - 4060[0m
+2021-11-19T05:13:58: [0mGET /javascripts/goToExp.js [32m200 [0m0.898 ms - 7551[0m
+2021-11-19T05:13:58: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.590 ms - 35046[0m
+2021-11-19T05:13:59: [0mGET /assets/favicon.ico [32m200 [0m0.667 ms - 1150[0m
+2021-11-19T05:14:05: Accessed by an already-existing amazonID: 6101e16e46ab830d098f1436
+2021-11-19T05:14:05: [0mGET /?amazonID=6101e16e46ab830d098f1436&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778dd47548fbf50e0a5cf [36m302 [0m0.732 ms - 92[0m
+2021-11-19T05:14:12: [0mGET /?amazonID=605321be3c11a82a1230c8ee&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778d89763b0ede050e7d8 [32m200 [0m1.894 ms - 13665[0m
+2021-11-19T05:14:13: [0mGET /stylesheets/import.css [32m200 [0m0.799 ms - 129[0m
+2021-11-19T05:14:13: [0mGET /stylesheets/confirmation.css [32m200 [0m0.796 ms - 2661[0m
+2021-11-19T05:14:13: [0mGET /javascripts/goToExp.js [32m200 [0m0.922 ms - 7551[0m
+2021-11-19T05:14:13: [0mGET /stylesheets/style.css [32m200 [0m1.399 ms - 4060[0m
+2021-11-19T05:14:13: [0mGET /stylesheets/reset.css [32m200 [0m1.996 ms - 1093[0m
+2021-11-19T05:14:13: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.699 ms - 35046[0m
+2021-11-19T05:14:14: [0mGET /assets/favicon.ico [32m200 [0m0.933 ms - 1150[0m
+2021-11-19T05:14:16: [0mGET /?amazonID=5d9d94f373de94001216cbab&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778ec7366bc0311b287ca [32m200 [0m1.590 ms - 13665[0m
+2021-11-19T05:14:16: [0mGET /stylesheets/import.css [32m200 [0m1.365 ms - 129[0m
+2021-11-19T05:14:16: [0mGET /stylesheets/confirmation.css [32m200 [0m1.086 ms - 2661[0m
+2021-11-19T05:14:16: [0mGET /stylesheets/reset.css [32m200 [0m1.566 ms - 1093[0m
+2021-11-19T05:14:16: [0mGET /stylesheets/style.css [32m200 [0m1.202 ms - 4060[0m
+2021-11-19T05:14:16: [0mGET /javascripts/goToExp.js [32m200 [0m1.359 ms - 7551[0m
+2021-11-19T05:14:16: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m2.843 ms - 35046[0m
+2021-11-19T05:14:16: [0mGET /assets/favicon.ico [32m200 [0m0.761 ms - 1150[0m
+2021-11-19T05:14:39: [0mGET /?amazonID=5fb92279d753c635c19d0eb6&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197790b1341516fb2a5e127 [32m200 [0m1.542 ms - 13665[0m
+2021-11-19T05:14:40: [0mGET /stylesheets/import.css [32m200 [0m0.853 ms - 129[0m
+2021-11-19T05:14:40: [0mGET /stylesheets/confirmation.css [32m200 [0m1.053 ms - 2661[0m
+2021-11-19T05:14:40: [0mGET /stylesheets/reset.css [32m200 [0m0.933 ms - 1093[0m
+2021-11-19T05:14:40: [0mGET /stylesheets/style.css [32m200 [0m1.132 ms - 4060[0m
+2021-11-19T05:14:40: [0mGET /javascripts/goToExp.js [32m200 [0m1.352 ms - 7551[0m
+2021-11-19T05:14:41: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.111 ms - 35046[0m
+2021-11-19T05:14:41: [0mGET /assets/favicon.ico [32m200 [0m0.847 ms - 1150[0m
+2021-11-19T05:14:42: Accessed by an already-existing amazonID: 6101e16e46ab830d098f1436
+2021-11-19T05:14:42: [0mGET /?amazonID=6101e16e46ab830d098f1436&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778dd47548fbf50e0a5cf [36m302 [0m0.691 ms - 92[0m
+2021-11-19T05:14:52: [0mGET /?amazonID=5e43e3fdb58b932646448d07&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977911e2e1dab1b36c79c4 [32m200 [0m1.128 ms - 13665[0m
+2021-11-19T05:14:52: [0mGET /stylesheets/confirmation.css [32m200 [0m0.556 ms - 2661[0m
+2021-11-19T05:14:52: [0mGET /stylesheets/import.css [32m200 [0m0.615 ms - 129[0m
+2021-11-19T05:14:52: [0mGET /stylesheets/reset.css [32m200 [0m0.958 ms - 1093[0m
+2021-11-19T05:14:52: [0mGET /stylesheets/style.css [32m200 [0m0.881 ms - 4060[0m
+2021-11-19T05:14:52: [0mGET /javascripts/goToExp.js [32m200 [0m1.097 ms - 7551[0m
+2021-11-19T05:14:52: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.117 ms - 35046[0m
+2021-11-19T05:14:53: [0mGET /assets/favicon.ico [32m200 [0m0.562 ms - 1150[0m
+2021-11-19T05:14:55: Accessed by an already-existing amazonID: 6101e16e46ab830d098f1436
+2021-11-19T05:14:55: [0mGET /?amazonID=6101e16e46ab830d098f1436&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778dd47548fbf50e0a5cf [36m302 [0m0.544 ms - 92[0m
+2021-11-19T05:14:55: [0mGET /?amazonID=590a3c659e26f200016e144b&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778dd0ba2a7c17c3e4e2c [32m200 [0m1.014 ms - 13665[0m
+2021-11-19T05:14:55: [0mGET /stylesheets/confirmation.css [32m200 [0m0.702 ms - 2661[0m
+2021-11-19T05:14:55: [0mGET /stylesheets/import.css [32m200 [0m0.395 ms - 129[0m
+2021-11-19T05:14:56: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.875 ms - 35046[0m
+2021-11-19T05:15:00: [0mGET /?amazonID=5c55d677a469aa00016606a4&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977918fdc558c46e258b6d [32m200 [0m1.467 ms - 13665[0m
+2021-11-19T05:15:00: [0mGET /stylesheets/import.css [32m200 [0m0.856 ms - 129[0m
+2021-11-19T05:15:00: [0mGET /stylesheets/confirmation.css [32m200 [0m0.733 ms - 2661[0m
+2021-11-19T05:15:00: [0mGET /stylesheets/reset.css [32m200 [0m2.029 ms - 1093[0m
+2021-11-19T05:15:00: [0mGET /stylesheets/style.css [32m200 [0m1.852 ms - 4060[0m
+2021-11-19T05:15:00: [0mGET /javascripts/goToExp.js [32m200 [0m0.746 ms - 7551[0m
+2021-11-19T05:15:00: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.709 ms - 35046[0m
+2021-11-19T05:15:01: [0mGET /assets/favicon.ico [32m200 [0m2.367 ms - 1150[0m
+2021-11-19T05:15:12: [0mGET /?amazonID=60e778bc34513cf9744eee56&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197792a132644daba75fcfe [32m200 [0m1.441 ms - 13665[0m
+2021-11-19T05:15:12: [0mGET /stylesheets/import.css [32m200 [0m0.844 ms - 129[0m
+2021-11-19T05:15:12: [0mGET /stylesheets/confirmation.css [32m200 [0m0.938 ms - 2661[0m
+2021-11-19T05:15:12: [0mGET /stylesheets/reset.css [32m200 [0m0.907 ms - 1093[0m
+2021-11-19T05:15:12: [0mGET /stylesheets/style.css [32m200 [0m0.591 ms - 4060[0m
+2021-11-19T05:15:12: [0mGET /javascripts/goToExp.js [32m200 [0m0.757 ms - 7551[0m
+2021-11-19T05:15:12: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.848 ms - 35046[0m
+2021-11-19T05:15:13: [0mGET /?amazonID=5bddaf7d712eb800010d29e3&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197790875249aefe4e947ea [32m200 [0m1.408 ms - 13665[0m
+2021-11-19T05:15:13: [0mGET /stylesheets/import.css [32m200 [0m1.610 ms - 129[0m
+2021-11-19T05:15:13: [0mGET /stylesheets/confirmation.css [32m200 [0m1.367 ms - 2661[0m
+2021-11-19T05:15:13: [0mGET /stylesheets/reset.css [32m200 [0m1.772 ms - 1093[0m
+2021-11-19T05:15:13: [0mGET /stylesheets/style.css [32m200 [0m1.443 ms - 4060[0m
+2021-11-19T05:15:13: [0mGET /javascripts/goToExp.js [32m200 [0m2.183 ms - 7551[0m
+2021-11-19T05:15:13: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.755 ms - 35046[0m
+2021-11-19T05:15:13: [0mGET /assets/favicon.ico [32m200 [0m0.835 ms - 1150[0m
+2021-11-19T05:15:13: [0mGET /assets/favicon.ico [32m200 [0m0.819 ms - 1150[0m
+2021-11-19T05:15:15: [0mGET /?amazonID=56cc926a425487000a76dbc6&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197792ba73aa979d189a841 [32m200 [0m1.430 ms - 13665[0m
+2021-11-19T05:15:15: [0mGET /stylesheets/import.css [32m200 [0m1.809 ms - 129[0m
+2021-11-19T05:15:15: [0mGET /stylesheets/confirmation.css [32m200 [0m1.587 ms - 2661[0m
+2021-11-19T05:15:15: [0mGET /stylesheets/reset.css [32m200 [0m1.322 ms - 1093[0m
+2021-11-19T05:15:15: [0mGET /stylesheets/style.css [32m200 [0m1.199 ms - 4060[0m
+2021-11-19T05:15:15: [0mGET /javascripts/goToExp.js [32m200 [0m0.964 ms - 7551[0m
+2021-11-19T05:15:15: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.706 ms - 35046[0m
+2021-11-19T05:15:15: [0mGET /assets/favicon.ico [32m200 [0m1.888 ms - 1150[0m
+2021-11-19T05:15:17: [0mGET /?amazonID=60d4afb076d3ac29f2c78075&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619779297317c60bf443f5ef [32m200 [0m2.333 ms - 13665[0m
+2021-11-19T05:15:17: [0mGET /stylesheets/import.css [32m200 [0m1.980 ms - 129[0m
+2021-11-19T05:15:17: [0mGET /stylesheets/confirmation.css [32m200 [0m1.634 ms - 2661[0m
+2021-11-19T05:15:17: [0mGET /javascripts/goToExp.js [32m200 [0m1.004 ms - 7551[0m
+2021-11-19T05:15:17: [0mGET /stylesheets/reset.css [32m200 [0m1.034 ms - 1093[0m
+2021-11-19T05:15:17: [0mGET /stylesheets/style.css [32m200 [0m0.892 ms - 4060[0m
+2021-11-19T05:15:18: [0mGET /assets/favicon.ico [32m200 [0m0.952 ms - 1150[0m
+2021-11-19T05:15:19: [0mGET /?amazonID=607165c4d9ee4d7b0388c438&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977926d631052429383864 [32m200 [0m2.732 ms - 13665[0m
+2021-11-19T05:15:19: [0mGET /stylesheets/import.css [32m200 [0m1.071 ms - 129[0m
+2021-11-19T05:15:19: [0mGET /stylesheets/confirmation.css [32m200 [0m0.896 ms - 2661[0m
+2021-11-19T05:15:20: [0mGET /stylesheets/reset.css [32m200 [0m0.923 ms - 1093[0m
+2021-11-19T05:15:20: [0mGET /stylesheets/style.css [32m200 [0m1.040 ms - 4060[0m
+2021-11-19T05:15:20: [0mGET /javascripts/goToExp.js [32m200 [0m0.738 ms - 7551[0m
+2021-11-19T05:15:20: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m2.842 ms - 35046[0m
+2021-11-19T05:15:21: [0mGET /assets/favicon.ico [32m200 [0m1.024 ms - 1150[0m
+2021-11-19T05:15:22: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.796 ms - 35046[0m
+2021-11-19T05:15:39: [0mGET /?amazonID=5da638acf0ff1c001419fd91&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977941aefc8e13bd1bbed8 [32m200 [0m2.715 ms - 13665[0m
+2021-11-19T05:15:39: [0mGET /stylesheets/import.css [32m200 [0m4.176 ms - 129[0m
+2021-11-19T05:15:39: [0mGET /stylesheets/confirmation.css [32m200 [0m2.012 ms - 2661[0m
+2021-11-19T05:15:39: [0mGET /stylesheets/reset.css [32m200 [0m3.312 ms - 1093[0m
+2021-11-19T05:15:39: [0mGET /stylesheets/style.css [32m200 [0m1.229 ms - 4060[0m
+2021-11-19T05:15:39: [0mGET /javascripts/goToExp.js [32m200 [0m1.535 ms - 7551[0m
+2021-11-19T05:15:39: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.213 ms - 35046[0m
+2021-11-19T05:15:40: [0mGET /assets/favicon.ico [32m200 [0m1.882 ms - 1150[0m
+2021-11-19T05:15:50: [0mGET /questionnaireForDisconnectedSubjects?amazonID=60e73f4ac4a95098d14e7872&bonus_for_waiting=8.828868738372845&totalEarningInCent=0&confirmationID=ZlFLhGn0sq6iZNkwAAAH&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.882 ms - 4536[0m
+2021-11-19T05:15:50: [0mGET /stylesheets/import.css [36m304 [0m1.020 ms - -[0m
+2021-11-19T05:15:50: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.896 ms - 995[0m
+2021-11-19T05:15:50: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.031 ms - 8219[0m
+2021-11-19T05:15:50: [0mGET /stylesheets/style.css [36m304 [0m3.747 ms - -[0m
+2021-11-19T05:15:50: [0mGET /stylesheets/reset.css [36m304 [0m2.427 ms - -[0m
+2021-11-19T05:16:00: [0mGET /?amazonID=5f0018ce21287311abc2ceea&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977939bd72e35856062bb9 [32m200 [0m2.500 ms - 13665[0m
+2021-11-19T05:16:01: [0mGET /stylesheets/import.css [32m200 [0m0.606 ms - 129[0m
+2021-11-19T05:16:01: [0mGET /stylesheets/confirmation.css [32m200 [0m1.030 ms - 2661[0m
+2021-11-19T05:16:01: [0mGET /stylesheets/reset.css [32m200 [0m0.673 ms - 1093[0m
+2021-11-19T05:16:01: [0mGET /stylesheets/style.css [32m200 [0m0.756 ms - 4060[0m
+2021-11-19T05:16:01: [0mGET /javascripts/goToExp.js [32m200 [0m0.892 ms - 7551[0m
+2021-11-19T05:16:01: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.809 ms - 35046[0m
+2021-11-19T05:16:01: [0mGET /assets/favicon.ico [32m200 [0m1.103 ms - 1150[0m
+2021-11-19T05:16:02: [0mGET /?amazonID=5d9cf98fdc794d0015243f5f&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197795c411b70ddcff4f488 [32m200 [0m1.544 ms - 13665[0m
+2021-11-19T05:16:02: [0mGET /stylesheets/import.css [32m200 [0m0.855 ms - 129[0m
+2021-11-19T05:16:02: [0mGET /stylesheets/confirmation.css [32m200 [0m0.710 ms - 2661[0m
+2021-11-19T05:16:02: [0mGET /javascripts/goToExp.js [32m200 [0m0.684 ms - 7551[0m
+2021-11-19T05:16:02: [0mGET /stylesheets/reset.css [32m200 [0m1.579 ms - 1093[0m
+2021-11-19T05:16:02: [0mGET /stylesheets/style.css [32m200 [0m1.264 ms - 4060[0m
+2021-11-19T05:16:02: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.756 ms - 35046[0m
+2021-11-19T05:16:02: [0mGET /assets/favicon.ico [32m200 [0m0.701 ms - 1150[0m
+2021-11-19T05:16:03: [0mGET /?amazonID=5affc4edc573030001c32c10&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977944107a7c3d1ed1cc82 [32m200 [0m3.098 ms - 13665[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/import.css [32m200 [0m0.790 ms - 129[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/confirmation.css [32m200 [0m0.435 ms - 2661[0m
+2021-11-19T05:16:03: [0mGET /?amazonID=5f58beea896e94044ac91cf6&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197795f336868bb8bc57420 [32m200 [0m1.429 ms - 13665[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/reset.css [32m200 [0m0.711 ms - 1093[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/style.css [32m200 [0m0.452 ms - 4060[0m
+2021-11-19T05:16:03: [0mGET /javascripts/goToExp.js [32m200 [0m0.620 ms - 7551[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/import.css [32m200 [0m0.693 ms - 129[0m
+2021-11-19T05:16:03: [0mGET /stylesheets/confirmation.css [32m200 [0m0.565 ms - 2661[0m
+2021-11-19T05:16:03: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.640 ms - 35046[0m
+2021-11-19T05:16:04: [0mGET /assets/favicon.ico [32m200 [0m0.523 ms - 1150[0m
+2021-11-19T05:16:04: [0mGET /stylesheets/reset.css [32m200 [0m0.629 ms - 1093[0m
+2021-11-19T05:16:04: [0mGET /stylesheets/style.css [32m200 [0m0.695 ms - 4060[0m
+2021-11-19T05:16:04: [0mGET /javascripts/goToExp.js [32m200 [0m0.548 ms - 7551[0m
+2021-11-19T05:16:04: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.557 ms - 35046[0m
+2021-11-19T05:16:06: [0mGET /assets/favicon.ico [32m200 [0m0.699 ms - 1150[0m
+2021-11-19T05:16:13: [0mGET /?amazonID=5e504cc583c96c0962356a59&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977965ff77b8930e30b873 [32m200 [0m1.846 ms - 13665[0m
+2021-11-19T05:16:13: [0mGET /stylesheets/import.css [32m200 [0m0.573 ms - 129[0m
+2021-11-19T05:16:13: [0mGET /stylesheets/confirmation.css [32m200 [0m0.554 ms - 2661[0m
+2021-11-19T05:16:13: [0mGET /stylesheets/reset.css [32m200 [0m0.942 ms - 1093[0m
+2021-11-19T05:16:13: [0mGET /stylesheets/style.css [32m200 [0m0.927 ms - 4060[0m
+2021-11-19T05:16:13: [0mGET /javascripts/goToExp.js [32m200 [0m0.571 ms - 7551[0m
+2021-11-19T05:16:13: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.583 ms - 35046[0m
+2021-11-19T05:16:14: [0mGET /assets/favicon.ico [32m200 [0m0.902 ms - 1150[0m
+2021-11-19T05:16:18: [0mGET /?amazonID=5f218810dbe587339609aee4&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197796b0d4589c5d7a15885 [32m200 [0m2.009 ms - 13665[0m
+2021-11-19T05:16:18: [0mGET /stylesheets/confirmation.css [32m200 [0m0.880 ms - 2661[0m
+2021-11-19T05:16:18: [0mGET /stylesheets/import.css [32m200 [0m0.925 ms - 129[0m
+2021-11-19T05:16:18: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.775 ms - 35046[0m
+2021-11-19T05:16:18: [0mGET /stylesheets/reset.css [32m200 [0m1.008 ms - 1093[0m
+2021-11-19T05:16:18: [0mGET /javascripts/goToExp.js [32m200 [0m0.831 ms - 7551[0m
+2021-11-19T05:16:19: [0mGET /stylesheets/style.css [32m200 [0m0.677 ms - 4060[0m
+2021-11-19T05:16:19: [0mGET /assets/favicon.ico [32m200 [0m0.976 ms - 1150[0m
+2021-11-19T05:16:21: [0mGET /?amazonID=5dd11ee349f6071aef4519bb&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197796cf10206bd6bc1116b [32m200 [0m3.304 ms - 13665[0m
+2021-11-19T05:16:21: [0mGET /stylesheets/import.css [32m200 [0m0.938 ms - 129[0m
+2021-11-19T05:16:21: [0mGET /stylesheets/confirmation.css [32m200 [0m0.770 ms - 2661[0m
+2021-11-19T05:16:21: [0mGET /stylesheets/reset.css [32m200 [0m0.736 ms - 1093[0m
+2021-11-19T05:16:21: [0mGET /stylesheets/style.css [32m200 [0m0.712 ms - 4060[0m
+2021-11-19T05:16:21: [0mGET /javascripts/goToExp.js [32m200 [0m1.007 ms - 7551[0m
+2021-11-19T05:16:21: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.753 ms - 35046[0m
+2021-11-19T05:16:21: [0mGET /assets/favicon.ico [32m200 [0m2.247 ms - 1150[0m
+2021-11-19T05:16:24: totalEarning = NaN
+2021-11-19T05:16:24: bonus_for_waiting = NaN
+2021-11-19T05:16:24: totalPayment = NaN
+2021-11-19T05:16:24: [0mPOST /endPage [32m200 [0m2.433 ms - 6182[0m
+2021-11-19T05:16:24: [0mGET /stylesheets/import.css [36m304 [0m1.006 ms - -[0m
+2021-11-19T05:16:24: [0mGET /stylesheets/confirmation.css [36m304 [0m0.892 ms - -[0m
+2021-11-19T05:16:24: [0mGET /stylesheets/reset.css [36m304 [0m2.330 ms - -[0m
+2021-11-19T05:16:24: [0mGET /stylesheets/style.css [36m304 [0m0.940 ms - -[0m
+2021-11-19T05:16:30: [0mGET /questionnaireForDisconnectedSubjects?amazonID=610aa4c3e092aec113962948&bonus_for_waiting=11.415446172548522&totalEarningInCent=0&confirmationID=0-DBQzHivtIotxIKAAAK&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.901 ms - 4537[0m
+2021-11-19T05:16:30: [0mGET /?amazonID=6146f8473af59b2f858aa2f2&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977974ef093ede9ccbe814 [32m200 [0m1.659 ms - 13665[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/import.css [36m304 [0m0.658 ms - -[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.991 ms - 995[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/import.css [32m200 [0m1.635 ms - 129[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/confirmation.css [32m200 [0m1.932 ms - 2661[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/reset.css [32m200 [0m0.741 ms - 1093[0m
+2021-11-19T05:16:30: [0mGET /stylesheets/style.css [32m200 [0m0.715 ms - 4060[0m
+2021-11-19T05:16:30: [0mGET /javascripts/goToExp.js [32m200 [0m1.131 ms - 7551[0m
+2021-11-19T05:16:30: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.766 ms - 35046[0m
+2021-11-19T05:16:31: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.669 ms - 8219[0m
+2021-11-19T05:16:31: [0mGET /stylesheets/reset.css [36m304 [0m0.902 ms - -[0m
+2021-11-19T05:16:31: [0mGET /stylesheets/style.css [36m304 [0m0.575 ms - -[0m
+2021-11-19T05:16:32: [0mGET /assets/favicon.ico [32m200 [0m2.645 ms - 1150[0m
+2021-11-19T05:16:34: [0mGET /?amazonID=613e5efa7544cd1bc48c745b&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197797c230bb7887c39e06b [32m200 [0m2.078 ms - 13665[0m
+2021-11-19T05:16:34: [0mGET /stylesheets/import.css [32m200 [0m0.953 ms - 129[0m
+2021-11-19T05:16:34: [0mGET /stylesheets/confirmation.css [32m200 [0m0.691 ms - 2661[0m
+2021-11-19T05:16:34: [0mGET /stylesheets/reset.css [32m200 [0m0.797 ms - 1093[0m
+2021-11-19T05:16:34: [0mGET /stylesheets/style.css [32m200 [0m0.758 ms - 4060[0m
+2021-11-19T05:16:34: [0mGET /javascripts/goToExp.js [32m200 [0m0.985 ms - 7551[0m
+2021-11-19T05:16:34: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.520 ms - 35046[0m
+2021-11-19T05:16:34: [0mGET /assets/favicon.ico [32m200 [0m0.928 ms - 1150[0m
+2021-11-19T05:16:38: [0mGET /?amazonID=5eeeb6de6ee5493752b1cdfd&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197798016d295ae4cce0dcc [32m200 [0m1.608 ms - 13665[0m
+2021-11-19T05:16:39: [0mGET /stylesheets/import.css [32m200 [0m0.592 ms - 129[0m
+2021-11-19T05:16:39: [0mGET /stylesheets/confirmation.css [32m200 [0m0.759 ms - 2661[0m
+2021-11-19T05:16:39: [0mGET /stylesheets/reset.css [32m200 [0m0.786 ms - 1093[0m
+2021-11-19T05:16:39: [0mGET /stylesheets/style.css [32m200 [0m0.980 ms - 4060[0m
+2021-11-19T05:16:39: [0mGET /javascripts/goToExp.js [32m200 [0m0.855 ms - 7551[0m
+2021-11-19T05:16:39: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.222 ms - 35046[0m
+2021-11-19T05:16:39: [0mGET /assets/favicon.ico [32m200 [0m0.807 ms - 1150[0m
+2021-11-19T05:16:50: [0mGET /?amazonID=61598b779eec3af5209760e7&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=6197798a6ccf860d83db0804 [32m200 [0m1.401 ms - 13665[0m
+2021-11-19T05:16:50: [0mGET /stylesheets/import.css [32m200 [0m0.636 ms - 129[0m
+2021-11-19T05:16:50: [0mGET /stylesheets/reset.css [32m200 [0m0.515 ms - 1093[0m
+2021-11-19T05:16:50: [0mGET /stylesheets/style.css [32m200 [0m0.444 ms - 4060[0m
+2021-11-19T05:16:50: [0mGET /stylesheets/confirmation.css [32m200 [0m1.201 ms - 2661[0m
+2021-11-19T05:16:50: [0mGET /javascripts/goToExp.js [32m200 [0m1.019 ms - 7551[0m
+2021-11-19T05:16:50: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.724 ms - 35046[0m
+2021-11-19T05:16:51: [0mGET /assets/favicon.ico [32m200 [0m0.656 ms - 1150[0m
+2021-11-19T05:16:51: [0mGET /?amazonID=60426ee0eea59612c23d9dea&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977987afd5bc4e548fa918 [32m200 [0m2.892 ms - 13665[0m
+2021-11-19T05:16:51: [0mGET /stylesheets/import.css [32m200 [0m0.680 ms - 129[0m
+2021-11-19T05:16:51: [0mGET /stylesheets/confirmation.css [32m200 [0m1.031 ms - 2661[0m
+2021-11-19T05:16:51: [0mGET /javascripts/goToExp.js [32m200 [0m1.063 ms - 7551[0m
+2021-11-19T05:16:51: [0mGET /stylesheets/reset.css [32m200 [0m0.631 ms - 1093[0m
+2021-11-19T05:16:51: [0mGET /stylesheets/style.css [32m200 [0m0.517 ms - 4060[0m
+2021-11-19T05:16:51: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.658 ms - 35046[0m
+2021-11-19T05:16:51: [0mGET /assets/favicon.ico [32m200 [0m0.767 ms - 1150[0m
+2021-11-19T05:16:58: totalEarning = NaN
+2021-11-19T05:16:58: bonus_for_waiting = NaN
+2021-11-19T05:16:58: totalPayment = NaN
+2021-11-19T05:16:58: [0mPOST /endPage [32m200 [0m2.668 ms - 6182[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/import.css [36m304 [0m0.397 ms - -[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/confirmation.css [36m304 [0m0.271 ms - -[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/import.css [32m200 [0m0.786 ms - 129[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/reset.css [32m200 [0m0.565 ms - 1093[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/style.css [32m200 [0m0.740 ms - 4060[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/reset.css [36m304 [0m0.459 ms - -[0m
+2021-11-19T05:16:58: [0mGET /stylesheets/style.css [36m304 [0m0.386 ms - -[0m
+2021-11-19T05:16:59: [0mGET /questionnaireForDisconnectedSubjects?amazonID=60e778bc34513cf9744eee56&info_share_cost=20&bonus_for_waiting=7.322859814880089&totalEarningInCent=0&confirmationID=zfcme76KWODftHVaAAAb&exp_condition=binary&indivOrGroup=-1&completed=browserHidden&latency=-1 [32m200 [0m1.306 ms - 4538[0m
+2021-11-19T05:16:59: [0mGET /stylesheets/import.css [36m304 [0m0.431 ms - -[0m
+2021-11-19T05:16:59: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.069 ms - 995[0m
+2021-11-19T05:16:59: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.810 ms - 8219[0m
+2021-11-19T05:16:59: [0mGET /stylesheets/reset.css [36m304 [0m0.817 ms - -[0m
+2021-11-19T05:16:59: [0mGET /stylesheets/style.css [36m304 [0m0.673 ms - -[0m
+2021-11-19T05:17:00: [0mGET /?amazonID=5b73536203c3340001844cc3&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619779889ddf9922d495f415 [32m200 [0m1.002 ms - 13665[0m
+2021-11-19T05:17:00: [0mGET /stylesheets/confirmation.css [32m200 [0m0.937 ms - 2661[0m
+2021-11-19T05:17:00: [0mGET /stylesheets/import.css [32m200 [0m0.812 ms - 129[0m
+2021-11-19T05:17:00: [0mGET /javascripts/goToExp.js [32m200 [0m1.145 ms - 7551[0m
+2021-11-19T05:17:00: [0mGET /stylesheets/reset.css [32m200 [0m0.499 ms - 1093[0m
+2021-11-19T05:17:00: [0mGET /stylesheets/style.css [32m200 [0m0.722 ms - 4060[0m
+2021-11-19T05:17:00: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.449 ms - 35046[0m
+2021-11-19T05:17:01: [0mGET /assets/favicon.ico [32m200 [0m1.150 ms - 1150[0m
+2021-11-19T05:17:18: totalEarning = 0
+2021-11-19T05:17:18: bonus_for_waiting = 0.07
+2021-11-19T05:17:18: totalPayment = 0.1
+2021-11-19T05:17:18: [0mPOST /endPage [32m200 [0m2.365 ms - 6098[0m
+2021-11-19T05:17:18: [0mGET /stylesheets/import.css [36m304 [0m0.419 ms - -[0m
+2021-11-19T05:17:18: [0mGET /stylesheets/confirmation.css [36m304 [0m0.483 ms - -[0m
+2021-11-19T05:17:18: [0mGET /stylesheets/reset.css [36m304 [0m0.855 ms - -[0m
+2021-11-19T05:17:18: [0mGET /stylesheets/style.css [36m304 [0m0.697 ms - -[0m
+2021-11-19T05:17:31: [0mGET /?amazonID=5e64fc338ebdaf26e332aec0&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977971c6ad7369a563019d [32m200 [0m1.754 ms - 13665[0m
+2021-11-19T05:17:31: [0mGET /stylesheets/import.css [32m200 [0m1.087 ms - 129[0m
+2021-11-19T05:17:31: [0mGET /stylesheets/confirmation.css [32m200 [0m0.553 ms - 2661[0m
+2021-11-19T05:17:31: [0mGET /stylesheets/reset.css [32m200 [0m0.563 ms - 1093[0m
+2021-11-19T05:17:31: [0mGET /stylesheets/style.css [32m200 [0m0.584 ms - 4060[0m
+2021-11-19T05:17:31: [0mGET /javascripts/goToExp.js [32m200 [0m0.643 ms - 7551[0m
+2021-11-19T05:17:31: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.576 ms - 35046[0m
+2021-11-19T05:17:31: [0mGET /assets/favicon.ico [32m200 [0m1.550 ms - 1150[0m
+2021-11-19T05:17:46: questionnaire.js : 615c100bc96ed7f86c2ee52138206oq_NAzM2iUvyWtZuAAAB41
+2021-11-19T05:17:46: [0mPOST /questionnaire [32m200 [0m3.689 ms - 6517[0m
+2021-11-19T05:17:47: questionnaire.js : 5ea043f2618bcf041cb4c2451206tgNX2-PID9MgGx6WAAAC41
+2021-11-19T05:17:47: [0mPOST /questionnaire [32m200 [0m2.735 ms - 6516[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.006 ms - 995[0m
+2021-11-19T05:17:47: [0mGET /javascripts/questionnaireForm.js [32m200 [0m4.161 ms - 8219[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/import.css [36m304 [0m0.623 ms - -[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/reset.css [36m304 [0m1.836 ms - -[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/style.css [36m304 [0m1.262 ms - -[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.013 ms - 995[0m
+2021-11-19T05:17:47: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.964 ms - 8219[0m
+2021-11-19T05:17:47: [0mGET /stylesheets/import.css [36m304 [0m0.726 ms - -[0m
+2021-11-19T05:17:48: [0mGET /stylesheets/reset.css [36m304 [0m0.923 ms - -[0m
+2021-11-19T05:17:48: [0mGET /stylesheets/style.css [36m304 [0m0.859 ms - -[0m
+2021-11-19T05:18:16: [0mGET /questionnaireForDisconnectedSubjects?amazonID=6101ab943961ab6022c9d969&info_share_cost=20&bonus_for_waiting=11.652528825017795&totalEarningInCent=0&confirmationID=HibYL8oAfu6zfb-VAAAQ&exp_condition=binary&indivOrGroup=1&completed=browserHidden&latency=-1 [32m200 [0m1.767 ms - 4538[0m
+2021-11-19T05:18:16: [0mGET /stylesheets/import.css [36m304 [0m0.481 ms - -[0m
+2021-11-19T05:18:16: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.571 ms - 995[0m
+2021-11-19T05:18:16: [0mGET /stylesheets/reset.css [36m304 [0m0.390 ms - -[0m
+2021-11-19T05:18:16: [0mGET /stylesheets/style.css [36m304 [0m0.369 ms - -[0m
+2021-11-19T05:18:16: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.521 ms - 8219[0m
+2021-11-19T05:18:42: totalEarning = 0
+2021-11-19T05:18:42: bonus_for_waiting = 0.11
+2021-11-19T05:18:42: totalPayment = 0.1
+2021-11-19T05:18:42: [0mPOST /endPage [32m200 [0m1.998 ms - 6099[0m
+2021-11-19T05:18:42: [0mGET /stylesheets/import.css [36m304 [0m0.657 ms - -[0m
+2021-11-19T05:18:42: [0mGET /stylesheets/confirmation.css [36m304 [0m0.512 ms - -[0m
+2021-11-19T05:18:42: [0mGET /stylesheets/reset.css [36m304 [0m0.454 ms - -[0m
+2021-11-19T05:18:42: [0mGET /stylesheets/style.css [36m304 [0m0.471 ms - -[0m
+2021-11-19T05:19:05: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5b73536203c3340001844cc3&info_share_cost=200&bonus_for_waiting=3.946510592588738&totalEarningInCent=0&confirmationID=Ra8tc6-Off5Sl_gGAAAw&exp_condition=binary&indivOrGroup=-1&completed=browserHidden&latency=-1 [32m200 [0m1.549 ms - 4539[0m
+2021-11-19T05:19:05: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.950 ms - 995[0m
+2021-11-19T05:19:06: [0mGET /stylesheets/import.css [36m304 [0m0.506 ms - -[0m
+2021-11-19T05:19:06: [0mGET /javascripts/questionnaireForm.js [32m200 [0m2.054 ms - 8219[0m
+2021-11-19T05:19:06: [0mGET /stylesheets/reset.css [36m304 [0m0.678 ms - -[0m
+2021-11-19T05:19:06: [0mGET /stylesheets/style.css [36m304 [0m0.510 ms - -[0m
+2021-11-19T05:19:12: totalEarning = 2
+2021-11-19T05:19:12: bonus_for_waiting = 0.38
+2021-11-19T05:19:12: totalPayment = 3.2
+2021-11-19T05:19:12: [0mPOST /endPage [32m200 [0m2.518 ms - 6087[0m
+2021-11-19T05:19:12: [0mGET /stylesheets/import.css [36m304 [0m0.523 ms - -[0m
+2021-11-19T05:19:12: [0mGET /stylesheets/confirmation.css [36m304 [0m0.749 ms - -[0m
+2021-11-19T05:19:12: [0mGET /stylesheets/reset.css [36m304 [0m1.167 ms - -[0m
+2021-11-19T05:19:12: [0mGET /stylesheets/style.css [36m304 [0m1.028 ms - -[0m
+2021-11-19T05:19:27: totalEarning = 2
+2021-11-19T05:19:27: bonus_for_waiting = 0.01
+2021-11-19T05:19:27: totalPayment = 2.9
+2021-11-19T05:19:27: [0mPOST /endPage [32m200 [0m2.348 ms - 6086[0m
+2021-11-19T05:19:27: [0mGET /stylesheets/confirmation.css [36m304 [0m1.945 ms - -[0m
+2021-11-19T05:19:27: [0mGET /stylesheets/import.css [36m304 [0m1.021 ms - -[0m
+2021-11-19T05:19:27: [0mGET /stylesheets/style.css [36m304 [0m1.289 ms - -[0m
+2021-11-19T05:19:27: [0mGET /stylesheets/reset.css [36m304 [0m1.005 ms - -[0m
+2021-11-19T05:19:28: [0mGET /?amazonID=60740ef98a46b9cf7ac0fb30&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619778e3f11ac15ae240ad49 [32m200 [0m1.319 ms - 13665[0m
+2021-11-19T05:19:28: [0mGET /stylesheets/import.css [32m200 [0m0.596 ms - 129[0m
+2021-11-19T05:19:28: [0mGET /stylesheets/confirmation.css [32m200 [0m0.483 ms - 2661[0m
+2021-11-19T05:19:29: [0mGET /stylesheets/style.css [32m200 [0m0.781 ms - 4060[0m
+2021-11-19T05:19:29: [0mGET /stylesheets/reset.css [32m200 [0m0.577 ms - 1093[0m
+2021-11-19T05:19:29: [0mGET /javascripts/goToExp.js [32m200 [0m0.546 ms - 7551[0m
+2021-11-19T05:19:29: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.605 ms - 35046[0m
+2021-11-19T05:19:30: [0mGET /assets/favicon.ico [32m200 [0m0.799 ms - 1150[0m
+2021-11-19T05:19:49: Accessed by an already-existing amazonID: 5b73536203c3340001844cc3
+2021-11-19T05:19:49: [0mGET /?amazonID=5b73536203c3340001844cc3&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619779889ddf9922d495f415 [36m302 [0m0.570 ms - 92[0m
+2021-11-19T05:20:18: [0mGET /?amazonID=60f19bc58ba2fcd8cc2a59c5&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977a54107a7c3d1ed1cc8c [32m200 [0m1.317 ms - 13665[0m
+2021-11-19T05:20:18: [0mGET /stylesheets/import.css [32m200 [0m1.112 ms - 129[0m
+2021-11-19T05:20:18: [0mGET /stylesheets/confirmation.css [32m200 [0m0.724 ms - 2661[0m
+2021-11-19T05:20:18: [0mGET /stylesheets/reset.css [32m200 [0m0.967 ms - 1093[0m
+2021-11-19T05:20:18: [0mGET /stylesheets/style.css [32m200 [0m0.797 ms - 4060[0m
+2021-11-19T05:20:18: [0mGET /javascripts/goToExp.js [32m200 [0m0.852 ms - 7551[0m
+2021-11-19T05:20:18: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.746 ms - 35046[0m
+2021-11-19T05:20:18: [0mGET /assets/favicon.ico [32m200 [0m0.930 ms - 1150[0m
+2021-11-19T05:21:14: questionnaire.js : 5c48456991d23d0001b898f5422252ju6sufizjxL3QOTAAAG21
+2021-11-19T05:21:14: [0mPOST /questionnaire [32m200 [0m2.935 ms - 6518[0m
+2021-11-19T05:21:15: [0mGET /stylesheets/import.css [36m304 [0m0.726 ms - -[0m
+2021-11-19T05:21:15: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.002 ms - 995[0m
+2021-11-19T05:21:15: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.955 ms - 8219[0m
+2021-11-19T05:21:15: [0mGET /stylesheets/style.css [36m304 [0m1.202 ms - -[0m
+2021-11-19T05:21:15: [0mGET /stylesheets/reset.css [36m304 [0m1.053 ms - -[0m
+2021-11-19T05:21:19: questionnaire.js : 61707ac3698c2fbbb5aaad5222225K2_pOOHqwOCEHscQAAAD21
+2021-11-19T05:21:19: [0mPOST /questionnaire [32m200 [0m2.582 ms - 6518[0m
+2021-11-19T05:21:25: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.154 ms - 995[0m
+2021-11-19T05:21:25: [0mGET /stylesheets/import.css [36m304 [0m0.669 ms - -[0m
+2021-11-19T05:21:25: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.366 ms - 8219[0m
+2021-11-19T05:21:29: [0mGET /stylesheets/reset.css [36m304 [0m0.532 ms - -[0m
+2021-11-19T05:21:29: [0mGET /stylesheets/style.css [36m304 [0m0.524 ms - -[0m
+2021-11-19T05:21:39: questionnaire.js : 603cf2a6686c57b11af39499362255aw3fmuajcWa06XpAAAF21
+2021-11-19T05:21:39: [0mPOST /questionnaire [32m200 [0m2.417 ms - 6518[0m
+2021-11-19T05:21:39: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.156 ms - 995[0m
+2021-11-19T05:21:39: [0mGET /stylesheets/import.css [36m304 [0m0.757 ms - -[0m
+2021-11-19T05:21:39: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.926 ms - 8219[0m
+2021-11-19T05:21:39: [0mGET /stylesheets/style.css [32m200 [0m0.818 ms - 4060[0m
+2021-11-19T05:21:39: [0mGET /stylesheets/reset.css [32m200 [0m0.796 ms - 1093[0m
+2021-11-19T05:21:39: [0mGET /assets/favicon.ico [32m200 [0m1.121 ms - 1150[0m
+2021-11-19T05:21:51: [0mGET /questionnaireForDisconnectedSubjects?amazonID=574188c0a0a4b2000fb03005&info_share_cost=200&bonus_for_waiting=11.93251848488747&totalEarningInCent=0&confirmationID=o21cjwxpdbQaRyzUAAAW&exp_condition=binary&indivOrGroup=1&completed=browserHidden&latency=-1 [32m200 [0m1.494 ms - 4538[0m
+2021-11-19T05:21:51: [0mGET /stylesheets/import.css [36m304 [0m1.022 ms - -[0m
+2021-11-19T05:21:51: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.382 ms - 995[0m
+2021-11-19T05:21:51: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.704 ms - 8219[0m
+2021-11-19T05:21:51: [0mGET /stylesheets/reset.css [36m304 [0m1.370 ms - -[0m
+2021-11-19T05:21:51: [0mGET /stylesheets/style.css [36m304 [0m0.950 ms - -[0m
+2021-11-19T05:21:53: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5eeeb6de6ee5493752b1cdfd&bonus_for_waiting=18.39747759140057&totalEarningInCent=0&confirmationID=ZVcqUO7kJAgbs37dAAAu&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.882 ms - 4536[0m
+2021-11-19T05:21:54: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.827 ms - 995[0m
+2021-11-19T05:21:54: [0mGET /stylesheets/import.css [36m304 [0m0.751 ms - -[0m
+2021-11-19T05:21:54: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.918 ms - 8219[0m
+2021-11-19T05:21:54: [0mGET /stylesheets/reset.css [36m304 [0m1.032 ms - -[0m
+2021-11-19T05:21:54: [0mGET /stylesheets/style.css [36m304 [0m0.573 ms - -[0m
+2021-11-19T05:22:02: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5c55d677a469aa00016606a4&bonus_for_waiting=14.364745868162514&totalEarningInCent=0&confirmationID=6xeJyEr72rh8JttTAAAd&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m2.321 ms - 4537[0m
+2021-11-19T05:22:02: [0mGET /stylesheets/questionnaire.css [32m200 [0m3.663 ms - 995[0m
+2021-11-19T05:22:02: [0mGET /stylesheets/import.css [36m304 [0m0.649 ms - -[0m
+2021-11-19T05:22:02: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.868 ms - 8219[0m
+2021-11-19T05:22:02: [0mGET /stylesheets/style.css [36m304 [0m1.872 ms - -[0m
+2021-11-19T05:22:02: [0mGET /stylesheets/reset.css [36m304 [0m1.445 ms - -[0m
+2021-11-19T05:22:09: totalEarning = NaN
+2021-11-19T05:22:09: bonus_for_waiting = NaN
+2021-11-19T05:22:09: totalPayment = NaN
+2021-11-19T05:22:09: [0mPOST /endPage [32m200 [0m62.001 ms - 6182[0m
+2021-11-19T05:22:09: [0mGET /stylesheets/import.css [36m304 [0m0.611 ms - -[0m
+2021-11-19T05:22:09: [0mGET /stylesheets/confirmation.css [36m304 [0m0.582 ms - -[0m
+2021-11-19T05:22:09: [0mGET /stylesheets/reset.css [36m304 [0m0.570 ms - -[0m
+2021-11-19T05:22:09: [0mGET /stylesheets/style.css [36m304 [0m0.772 ms - -[0m
+2021-11-19T05:22:30: totalEarning = NaN
+2021-11-19T05:22:30: bonus_for_waiting = NaN
+2021-11-19T05:22:30: totalPayment = NaN
+2021-11-19T05:22:30: [0mPOST /endPage [32m200 [0m3.047 ms - 6182[0m
+2021-11-19T05:22:30: [0mGET /stylesheets/import.css [36m304 [0m0.688 ms - -[0m
+2021-11-19T05:22:30: [0mGET /stylesheets/confirmation.css [36m304 [0m0.850 ms - -[0m
+2021-11-19T05:22:30: [0mGET /stylesheets/reset.css [36m304 [0m0.470 ms - -[0m
+2021-11-19T05:22:30: [0mGET /stylesheets/style.css [36m304 [0m0.529 ms - -[0m
+2021-11-19T05:22:52: totalEarning = 0
+2021-11-19T05:22:52: bonus_for_waiting = 0.11
+2021-11-19T05:22:52: totalPayment = 0.1
+2021-11-19T05:22:52: [0mPOST /endPage [32m200 [0m3.066 ms - 6099[0m
+2021-11-19T05:22:52: [0mGET /stylesheets/import.css [36m304 [0m1.910 ms - -[0m
+2021-11-19T05:22:52: [0mGET /stylesheets/confirmation.css [36m304 [0m1.496 ms - -[0m
+2021-11-19T05:22:52: [0mGET /stylesheets/reset.css [36m304 [0m1.585 ms - -[0m
+2021-11-19T05:22:52: [0mGET /stylesheets/style.css [36m304 [0m1.358 ms - -[0m
+2021-11-19T05:23:00: totalEarning = 2
+2021-11-19T05:23:00: bonus_for_waiting = 0.36
+2021-11-19T05:23:00: totalPayment = 3.4
+2021-11-19T05:23:00: [0mPOST /endPage [32m200 [0m1.897 ms - 6088[0m
+2021-11-19T05:23:01: [0mGET /stylesheets/import.css [36m304 [0m0.558 ms - -[0m
+2021-11-19T05:23:01: [0mGET /stylesheets/confirmation.css [36m304 [0m0.528 ms - -[0m
+2021-11-19T05:23:01: [0mGET /stylesheets/reset.css [36m304 [0m0.557 ms - -[0m
+2021-11-19T05:23:01: [0mGET /stylesheets/style.css [36m304 [0m0.610 ms - -[0m
+2021-11-19T05:23:03: totalEarning = 2
+2021-11-19T05:23:03: bonus_for_waiting = 0.42
+2021-11-19T05:23:03: totalPayment = 3.5
+2021-11-19T05:23:03: [0mPOST /endPage [32m200 [0m2.438 ms - 6088[0m
+2021-11-19T05:23:03: [0mGET /stylesheets/import.css [36m304 [0m0.673 ms - -[0m
+2021-11-19T05:23:03: [0mGET /stylesheets/confirmation.css [36m304 [0m0.599 ms - -[0m
+2021-11-19T05:23:03: [0mGET /stylesheets/reset.css [36m304 [0m1.131 ms - -[0m
+2021-11-19T05:23:03: [0mGET /stylesheets/style.css [36m304 [0m0.991 ms - -[0m
+2021-11-19T05:23:58: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5e43e3fdb58b932646448d07&info_share_cost=20&bonus_for_waiting=14.202869814015601&totalEarningInCent=0&confirmationID=0opNSz2GpbNtJEZ3AAAe&exp_condition=binary&indivOrGroup=1&completed=browserHidden&latency=-1 [32m200 [0m1.664 ms - 4538[0m
+2021-11-19T05:23:59: [0mGET /stylesheets/import.css [36m304 [0m0.582 ms - -[0m
+2021-11-19T05:23:59: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.664 ms - 995[0m
+2021-11-19T05:23:59: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.741 ms - 8219[0m
+2021-11-19T05:23:59: [0mGET /stylesheets/reset.css [36m304 [0m1.052 ms - -[0m
+2021-11-19T05:23:59: [0mGET /stylesheets/style.css [36m304 [0m0.734 ms - -[0m
+2021-11-19T05:24:13: totalEarning = 2
+2021-11-19T05:24:13: bonus_for_waiting = 0.22
+2021-11-19T05:24:13: totalPayment = 3.3
+2021-11-19T05:24:13: [0mPOST /endPage [32m200 [0m2.705 ms - 6088[0m
+2021-11-19T05:24:14: [0mGET /stylesheets/import.css [36m304 [0m0.669 ms - -[0m
+2021-11-19T05:24:14: [0mGET /stylesheets/confirmation.css [36m304 [0m0.503 ms - -[0m
+2021-11-19T05:24:14: [0mGET /stylesheets/reset.css [36m304 [0m0.417 ms - -[0m
+2021-11-19T05:24:14: [0mGET /stylesheets/style.css [36m304 [0m0.570 ms - -[0m
+2021-11-19T05:24:47: questionnaire.js : 5d31c6bac88f0e00164c3ccb38207d1KiToMjJFZv5MKQAAAM11
+2021-11-19T05:24:47: [0mPOST /questionnaire [32m200 [0m3.021 ms - 6519[0m
+2021-11-19T05:24:47: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.622 ms - 995[0m
+2021-11-19T05:24:47: [0mGET /stylesheets/import.css [36m304 [0m0.374 ms - -[0m
+2021-11-19T05:24:47: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.545 ms - 8219[0m
+2021-11-19T05:24:47: [0mGET /stylesheets/reset.css [36m304 [0m0.469 ms - -[0m
+2021-11-19T05:24:47: [0mGET /stylesheets/style.css [36m304 [0m0.370 ms - -[0m
+2021-11-19T05:24:53: Accessed by an already-existing amazonID: 5e43e3fdb58b932646448d07
+2021-11-19T05:24:53: [0mGET /?amazonID=5e43e3fdb58b932646448d07&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977911e2e1dab1b36c79c4 [36m302 [0m0.821 ms - 92[0m
+2021-11-19T05:25:00: [0mGET /questionnaireForDisconnectedSubjects?amazonID=6146f8473af59b2f858aa2f2&bonus_for_waiting=18.825163412218625&totalEarningInCent=0&confirmationID=pC_cLiNHZtiv9NGlAAAp&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.557 ms - 4537[0m
+2021-11-19T05:25:00: [0mGET /stylesheets/import.css [36m304 [0m0.694 ms - -[0m
+2021-11-19T05:25:00: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.100 ms - 995[0m
+2021-11-19T05:25:00: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.869 ms - 8219[0m
+2021-11-19T05:25:00: [0mGET /stylesheets/reset.css [36m304 [0m0.400 ms - -[0m
+2021-11-19T05:25:00: [0mGET /stylesheets/style.css [36m304 [0m0.291 ms - -[0m
+2021-11-19T05:25:01: Accessed by an already-existing amazonID: 5e43e3fdb58b932646448d07
+2021-11-19T05:25:01: [0mGET /?amazonID=5e43e3fdb58b932646448d07&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977911e2e1dab1b36c79c4 [36m302 [0m0.809 ms - 92[0m
+2021-11-19T05:25:27: totalEarning = NaN
+2021-11-19T05:25:27: bonus_for_waiting = NaN
+2021-11-19T05:25:27: totalPayment = NaN
+2021-11-19T05:25:27: [0mPOST /endPage [32m200 [0m3.490 ms - 6182[0m
+2021-11-19T05:25:27: [0mGET /stylesheets/import.css [36m304 [0m1.513 ms - -[0m
+2021-11-19T05:25:27: [0mGET /stylesheets/confirmation.css [36m304 [0m1.243 ms - -[0m
+2021-11-19T05:25:27: [0mGET /stylesheets/reset.css [36m304 [0m0.705 ms - -[0m
+2021-11-19T05:25:27: [0mGET /stylesheets/style.css [36m304 [0m0.494 ms - -[0m
+2021-11-19T05:25:50: totalEarning = 2
+2021-11-19T05:25:50: bonus_for_waiting = 0.38
+2021-11-19T05:25:50: totalPayment = 3.3
+2021-11-19T05:25:50: [0mPOST /endPage [32m200 [0m2.601 ms - 6089[0m
+2021-11-19T05:25:51: [0mGET /stylesheets/import.css [36m304 [0m0.660 ms - -[0m
+2021-11-19T05:25:51: [0mGET /stylesheets/confirmation.css [36m304 [0m0.789 ms - -[0m
+2021-11-19T05:25:51: [0mGET /stylesheets/reset.css [36m304 [0m0.856 ms - -[0m
+2021-11-19T05:25:51: [0mGET /stylesheets/style.css [36m304 [0m0.902 ms - -[0m
+2021-11-19T05:25:54: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5d9cf98fdc794d0015243f5f&bonus_for_waiting=17.66156945806031&totalEarningInCent=0&confirmationID=4VmIiUBDc_RBo2kDAAAr&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m2.952 ms - 4536[0m
+2021-11-19T05:25:54: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.867 ms - 995[0m
+2021-11-19T05:25:55: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.956 ms - 8219[0m
+2021-11-19T05:25:55: [0mGET /stylesheets/import.css [32m200 [0m0.716 ms - 129[0m
+2021-11-19T05:25:55: [0mGET /stylesheets/reset.css [36m304 [0m1.377 ms - -[0m
+2021-11-19T05:25:55: [0mGET /stylesheets/style.css [36m304 [0m1.135 ms - -[0m
+2021-11-19T05:25:55: [0mGET /assets/favicon.ico [32m200 [0m0.905 ms - 1150[0m
+2021-11-19T05:26:36: totalEarning = NaN
+2021-11-19T05:26:36: bonus_for_waiting = NaN
+2021-11-19T05:26:36: totalPayment = NaN
+2021-11-19T05:26:36: [0mPOST /endPage [32m200 [0m3.538 ms - 6182[0m
+2021-11-19T05:26:36: [0mGET /stylesheets/import.css [32m200 [0m1.227 ms - 129[0m
+2021-11-19T05:26:36: [0mGET /stylesheets/confirmation.css [32m200 [0m1.189 ms - 2661[0m
+2021-11-19T05:26:36: [0mGET /stylesheets/reset.css [32m200 [0m1.039 ms - 1093[0m
+2021-11-19T05:26:36: [0mGET /stylesheets/style.css [32m200 [0m1.519 ms - 4060[0m
+2021-11-19T05:26:37: [0mGET /assets/favicon.ico [0m- [0m- ms - -[0m
+2021-11-19T05:26:46: [0mGET /questionnaireForDisconnectedSubjects?amazonID=606b037db1378e1ce6c0f13f&bonus_for_waiting=5.892865454689588&totalEarningInCent=0&confirmationID=BqNbnfXkdIQrs9P1AAAY&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.840 ms - 4536[0m
+2021-11-19T05:26:46: [0mGET /stylesheets/import.css [36m304 [0m0.632 ms - -[0m
+2021-11-19T05:26:46: [0mGET /stylesheets/questionnaire.css [32m200 [0m4.098 ms - 995[0m
+2021-11-19T05:26:46: [0mGET /javascripts/questionnaireForm.js [32m200 [0m2.233 ms - 8219[0m
+2021-11-19T05:26:46: [0mGET /stylesheets/style.css [36m304 [0m2.788 ms - -[0m
+2021-11-19T05:26:46: [0mGET /stylesheets/reset.css [36m304 [0m2.635 ms - -[0m
+2021-11-19T05:27:24: totalEarning = 0
+2021-11-19T05:27:24: bonus_for_waiting = 0.14
+2021-11-19T05:27:24: totalPayment = 0.1
+2021-11-19T05:27:24: [0mPOST /endPage [32m200 [0m3.568 ms - 6099[0m
+2021-11-19T05:27:25: [0mGET /stylesheets/confirmation.css [36m304 [0m1.972 ms - -[0m
+2021-11-19T05:27:25: [0mGET /stylesheets/import.css [36m304 [0m1.593 ms - -[0m
+2021-11-19T05:27:25: [0mGET /stylesheets/style.css [36m304 [0m2.050 ms - -[0m
+2021-11-19T05:27:25: [0mGET /stylesheets/reset.css [36m304 [0m0.993 ms - -[0m
+2021-11-19T05:27:52: totalEarning = NaN
+2021-11-19T05:27:52: bonus_for_waiting = NaN
+2021-11-19T05:27:52: totalPayment = NaN
+2021-11-19T05:27:52: [0mPOST /endPage [32m200 [0m1.995 ms - 6182[0m
+2021-11-19T05:27:53: [0mGET /stylesheets/import.css [36m304 [0m1.066 ms - -[0m
+2021-11-19T05:27:53: [0mGET /stylesheets/confirmation.css [36m304 [0m0.934 ms - -[0m
+2021-11-19T05:27:53: [0mGET /stylesheets/style.css [36m304 [0m1.390 ms - -[0m
+2021-11-19T05:27:53: [0mGET /stylesheets/reset.css [36m304 [0m1.066 ms - -[0m
+2021-11-19T05:28:15: questionnaire.js : 5eb331bc1f70081249e6fb7a30211w7pNLCBY98O4jqYzAAAS11
+2021-11-19T05:28:15: [0mPOST /questionnaire [32m200 [0m1.960 ms - 6518[0m
+2021-11-19T05:28:15: questionnaire.js : 607ebda28cf7e38fa016029546211b5dANjdQTOueUXn7AAAT11
+2021-11-19T05:28:15: [0mPOST /questionnaire [32m200 [0m2.247 ms - 6518[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.785 ms - 995[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/import.css [36m304 [0m0.636 ms - -[0m
+2021-11-19T05:28:15: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.925 ms - 8219[0m
+2021-11-19T05:28:15: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.786 ms - 8219[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.721 ms - 995[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/import.css [36m304 [0m0.972 ms - -[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/reset.css [36m304 [0m1.004 ms - -[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/style.css [36m304 [0m0.676 ms - -[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/reset.css [36m304 [0m0.559 ms - -[0m
+2021-11-19T05:28:15: [0mGET /stylesheets/style.css [36m304 [0m1.628 ms - -[0m
+2021-11-19T05:28:18: questionnaire.js : 5f6c61f8d9012d1e8c0c8d11272116nzfYlv27fbuZBOZAAAP11
+2021-11-19T05:28:18: [0mPOST /questionnaire [32m200 [0m3.072 ms - 6518[0m
+2021-11-19T05:28:18: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.827 ms - 995[0m
+2021-11-19T05:28:18: [0mGET /stylesheets/import.css [36m304 [0m0.445 ms - -[0m
+2021-11-19T05:28:18: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.007 ms - 8219[0m
+2021-11-19T05:28:18: [0mGET /stylesheets/reset.css [36m304 [0m0.587 ms - -[0m
+2021-11-19T05:28:18: [0mGET /stylesheets/style.css [36m304 [0m1.055 ms - -[0m
+2021-11-19T05:28:22: questionnaire.js : 5d3f3b6684e7500019d2868455211KoQp_Xf0QUaNFkXrAAAO11
+2021-11-19T05:28:22: [0mPOST /questionnaire [32m200 [0m2.341 ms - 6518[0m
+2021-11-19T05:28:22: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.413 ms - 995[0m
+2021-11-19T05:28:22: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.481 ms - 8219[0m
+2021-11-19T05:28:22: [0mGET /stylesheets/import.css [36m304 [0m0.558 ms - -[0m
+2021-11-19T05:28:22: [0mGET /stylesheets/style.css [36m304 [0m1.164 ms - -[0m
+2021-11-19T05:28:22: [0mGET /stylesheets/reset.css [36m304 [0m0.930 ms - -[0m
+2021-11-19T05:28:32: questionnaire.js : 5627279fddff3c000fbcd62520211wnEIQ5pVZ59rgHV3AAAN11
+2021-11-19T05:28:32: [0mPOST /questionnaire [32m200 [0m2.441 ms - 6518[0m
+2021-11-19T05:28:32: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.796 ms - 995[0m
+2021-11-19T05:28:32: [0mGET /stylesheets/import.css [36m304 [0m0.736 ms - -[0m
+2021-11-19T05:28:32: [0mGET /javascripts/questionnaireForm.js [32m200 [0m2.217 ms - 8219[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/reset.css [36m304 [0m2.108 ms - -[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/style.css [36m304 [0m1.742 ms - -[0m
+2021-11-19T05:28:33: questionnaire.js : 5d9d94f373de94001216cbab39197Dnq2rWMDAHn0JcKBAAAa41
+2021-11-19T05:28:33: [0mPOST /questionnaire [32m200 [0m2.261 ms - 6518[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.035 ms - 995[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/import.css [36m304 [0m0.892 ms - -[0m
+2021-11-19T05:28:33: [0mGET /javascripts/questionnaireForm.js [32m200 [0m2.542 ms - 8219[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/reset.css [36m304 [0m2.436 ms - -[0m
+2021-11-19T05:28:33: [0mGET /stylesheets/style.css [36m304 [0m1.621 ms - -[0m
+2021-11-19T05:28:35: questionnaire.js : 5da638acf0ff1c001419fd91471974JVC9U5u9P9dpKIjAAAf41
+2021-11-19T05:28:35: [0mPOST /questionnaire [32m200 [0m3.284 ms - 6518[0m
+2021-11-19T05:28:35: [0mGET /stylesheets/import.css [36m304 [0m1.832 ms - -[0m
+2021-11-19T05:28:35: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.046 ms - 995[0m
+2021-11-19T05:28:35: [0mGET /javascripts/questionnaireForm.js [32m200 [0m3.036 ms - 8219[0m
+2021-11-19T05:28:35: [0mGET /stylesheets/reset.css [36m304 [0m1.892 ms - -[0m
+2021-11-19T05:28:35: [0mGET /stylesheets/style.css [36m304 [0m1.571 ms - -[0m
+2021-11-19T05:28:37: questionnaire.js : 60d4afb076d3ac29f2c780752819745ZyVppXTfj9n5GUAAAc41
+2021-11-19T05:28:37: [0mPOST /questionnaire [32m200 [0m2.577 ms - 6518[0m
+2021-11-19T05:28:43: questionnaire.js : 60d4afb076d3ac29f2c780752819745ZyVppXTfj9n5GUAAAc41
+2021-11-19T05:28:43: [0mPOST /questionnaire [32m200 [0m2.874 ms - 6518[0m
+2021-11-19T05:28:50: totalEarning = 2
+2021-11-19T05:28:50: bonus_for_waiting = 0.46
+2021-11-19T05:28:50: totalPayment = 3.4
+2021-11-19T05:28:50: [0mPOST /endPage [32m200 [0m2.155 ms - 6088[0m
+2021-11-19T05:28:50: [0mGET /stylesheets/import.css [36m304 [0m0.751 ms - -[0m
+2021-11-19T05:28:50: [0mGET /stylesheets/confirmation.css [36m304 [0m1.824 ms - -[0m
+2021-11-19T05:28:51: [0mGET /stylesheets/style.css [36m304 [0m0.808 ms - -[0m
+2021-11-19T05:28:51: [0mGET /stylesheets/reset.css [36m304 [0m0.521 ms - -[0m
+2021-11-19T05:28:54: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.253 ms - 995[0m
+2021-11-19T05:28:54: [0mGET /stylesheets/import.css [36m304 [0m0.730 ms - -[0m
+2021-11-19T05:28:54: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.018 ms - 8219[0m
+2021-11-19T05:28:54: [0mGET /stylesheets/style.css [36m304 [0m1.986 ms - -[0m
+2021-11-19T05:28:54: [0mGET /stylesheets/reset.css [36m304 [0m1.647 ms - -[0m
+2021-11-19T05:29:15: totalEarning = 2
+2021-11-19T05:29:15: bonus_for_waiting = 0.55
+2021-11-19T05:29:15: totalPayment = 3.5
+2021-11-19T05:29:15: [0mPOST /endPage [32m200 [0m2.005 ms - 6088[0m
+2021-11-19T05:29:15: [0mGET /stylesheets/import.css [36m304 [0m1.541 ms - -[0m
+2021-11-19T05:29:15: [0mGET /stylesheets/confirmation.css [36m304 [0m1.419 ms - -[0m
+2021-11-19T05:29:15: [0mGET /stylesheets/reset.css [36m304 [0m1.438 ms - -[0m
+2021-11-19T05:29:15: [0mGET /stylesheets/style.css [36m304 [0m1.243 ms - -[0m
+2021-11-19T05:29:43: totalEarning = 1
+2021-11-19T05:29:43: bonus_for_waiting = 0.47
+2021-11-19T05:29:43: totalPayment = 3.2
+2021-11-19T05:29:43: [0mPOST /endPage [32m200 [0m2.588 ms - 6088[0m
+2021-11-19T05:29:44: [0mGET /stylesheets/import.css [36m304 [0m1.119 ms - -[0m
+2021-11-19T05:29:44: [0mGET /stylesheets/confirmation.css [36m304 [0m1.014 ms - -[0m
+2021-11-19T05:29:44: [0mGET /stylesheets/reset.css [36m304 [0m1.944 ms - -[0m
+2021-11-19T05:29:44: [0mGET /stylesheets/style.css [36m304 [0m1.649 ms - -[0m
+2021-11-19T05:29:49: totalEarning = 1
+2021-11-19T05:29:49: bonus_for_waiting = 0.39
+2021-11-19T05:29:49: totalPayment = 3.2
+2021-11-19T05:29:49: [0mPOST /endPage [32m200 [0m3.366 ms - 6088[0m
+2021-11-19T05:29:49: [0mGET /stylesheets/import.css [36m304 [0m1.440 ms - -[0m
+2021-11-19T05:29:49: [0mGET /stylesheets/confirmation.css [36m304 [0m1.352 ms - -[0m
+2021-11-19T05:29:49: [0mGET /stylesheets/reset.css [36m304 [0m1.702 ms - -[0m
+2021-11-19T05:29:49: [0mGET /stylesheets/style.css [36m304 [0m1.491 ms - -[0m
+2021-11-19T05:29:56: totalEarning = 1
+2021-11-19T05:29:56: bonus_for_waiting = 0.28
+2021-11-19T05:29:56: totalPayment = 3.1
+2021-11-19T05:29:56: [0mPOST /endPage [32m200 [0m3.035 ms - 6088[0m
+2021-11-19T05:29:56: totalEarning = 2
+2021-11-19T05:29:56: bonus_for_waiting = 0.27
+2021-11-19T05:29:56: totalPayment = 3.2
+2021-11-19T05:29:56: [0mPOST /endPage [32m200 [0m2.077 ms - 6088[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/import.css [36m304 [0m1.646 ms - -[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/confirmation.css [36m304 [0m1.394 ms - -[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/reset.css [36m304 [0m1.793 ms - -[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/style.css [36m304 [0m1.038 ms - -[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/import.css [36m304 [0m0.830 ms - -[0m
+2021-11-19T05:29:56: [0mGET /stylesheets/confirmation.css [36m304 [0m0.861 ms - -[0m
+2021-11-19T05:29:57: [0mGET /stylesheets/style.css [36m304 [0m0.884 ms - -[0m
+2021-11-19T05:29:57: [0mGET /stylesheets/reset.css [36m304 [0m1.230 ms - -[0m
+2021-11-19T05:30:15: totalEarning = 2
+2021-11-19T05:30:15: bonus_for_waiting = 0.3
+2021-11-19T05:30:15: totalPayment = 3.2
+2021-11-19T05:30:15: [0mPOST /endPage [32m200 [0m2.693 ms - 6088[0m
+2021-11-19T05:30:15: [0mGET /stylesheets/import.css [32m200 [0m1.121 ms - 129[0m
+2021-11-19T05:30:15: [0mGET /stylesheets/confirmation.css [36m304 [0m0.764 ms - -[0m
+2021-11-19T05:30:15: [0mGET /stylesheets/reset.css [32m200 [0m1.406 ms - 1093[0m
+2021-11-19T05:30:15: [0mGET /stylesheets/style.css [32m200 [0m0.799 ms - 4060[0m
+2021-11-19T05:31:27: questionnaire.js : 5e504cc583c96c0962356a59381960icdhhqBls_7zGESAAAs31
+2021-11-19T05:31:27: [0mPOST /questionnaire [32m200 [0m1.589 ms - 6518[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.226 ms - 995[0m
+2021-11-19T05:31:27: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.143 ms - 8219[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/import.css [36m304 [0m0.368 ms - -[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/reset.css [36m304 [0m1.799 ms - -[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/style.css [36m304 [0m1.439 ms - -[0m
+2021-11-19T05:31:27: questionnaire.js : 5dd11ee349f6071aef4519bb401964Hi8_gbx13dIoUnMAAAq31
+2021-11-19T05:31:27: [0mPOST /questionnaire [32m200 [0m1.216 ms - 6518[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.593 ms - 995[0m
+2021-11-19T05:31:27: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.168 ms - 8219[0m
+2021-11-19T05:31:27: [0mGET /stylesheets/import.css [36m304 [0m0.360 ms - -[0m
+2021-11-19T05:31:28: [0mGET /stylesheets/reset.css [36m304 [0m0.547 ms - -[0m
+2021-11-19T05:31:28: [0mGET /stylesheets/style.css [36m304 [0m0.472 ms - -[0m
+2021-11-19T05:31:28: questionnaire.js : 607165c4d9ee4d7b0388c43858196taNhsyES4uMRsezFAAAm31
+2021-11-19T05:31:28: [0mPOST /questionnaire [32m200 [0m2.107 ms - 6518[0m
+2021-11-19T05:31:29: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.628 ms - 995[0m
+2021-11-19T05:31:29: [0mGET /stylesheets/import.css [36m304 [0m0.395 ms - -[0m
+2021-11-19T05:31:29: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.505 ms - 8219[0m
+2021-11-19T05:31:29: [0mGET /stylesheets/reset.css [36m304 [0m0.401 ms - -[0m
+2021-11-19T05:31:29: [0mGET /stylesheets/style.css [36m304 [0m0.373 ms - -[0m
+2021-11-19T05:31:31: questionnaire.js : 5f0018ce21287311abc2ceea49196BEF8tVKHJA8tZOvPAAAo31
+2021-11-19T05:31:31: [0mPOST /questionnaire [32m200 [0m1.166 ms - 6518[0m
+2021-11-19T05:31:32: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.512 ms - 995[0m
+2021-11-19T05:31:32: [0mGET /stylesheets/import.css [36m304 [0m1.068 ms - -[0m
+2021-11-19T05:31:32: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.981 ms - 8219[0m
+2021-11-19T05:31:32: [0mGET /stylesheets/reset.css [36m304 [0m0.875 ms - -[0m
+2021-11-19T05:31:32: [0mGET /stylesheets/style.css [36m304 [0m0.812 ms - -[0m
+2021-11-19T05:32:02: totalEarning = 1
+2021-11-19T05:32:02: bonus_for_waiting = 0.49
+2021-11-19T05:32:02: totalPayment = 3.3
+2021-11-19T05:32:02: [0mPOST /endPage [32m200 [0m2.274 ms - 6088[0m
+2021-11-19T05:32:02: [0mGET /stylesheets/import.css [36m304 [0m0.798 ms - -[0m
+2021-11-19T05:32:02: [0mGET /stylesheets/confirmation.css [36m304 [0m0.835 ms - -[0m
+2021-11-19T05:32:02: [0mGET /stylesheets/reset.css [36m304 [0m0.700 ms - -[0m
+2021-11-19T05:32:02: [0mGET /stylesheets/style.css [36m304 [0m0.695 ms - -[0m
+2021-11-19T05:32:16: totalEarning = 2
+2021-11-19T05:32:16: bonus_for_waiting = 0.2
+2021-11-19T05:32:16: totalPayment = 3.1
+2021-11-19T05:32:16: [0mPOST /endPage [32m200 [0m2.046 ms - 6088[0m
+2021-11-19T05:32:16: [0mGET /stylesheets/confirmation.css [36m304 [0m1.641 ms - -[0m
+2021-11-19T05:32:16: [0mGET /stylesheets/import.css [36m304 [0m1.427 ms - -[0m
+2021-11-19T05:32:16: [0mGET /stylesheets/reset.css [36m304 [0m1.455 ms - -[0m
+2021-11-19T05:32:16: [0mGET /stylesheets/style.css [36m304 [0m1.390 ms - -[0m
+2021-11-19T05:32:19: totalEarning = 1
+2021-11-19T05:32:19: bonus_for_waiting = 0.58
+2021-11-19T05:32:19: totalPayment = 3.3
+2021-11-19T05:32:19: [0mPOST /endPage [32m200 [0m1.781 ms - 6088[0m
+2021-11-19T05:32:19: [0mGET /stylesheets/import.css [36m304 [0m0.605 ms - -[0m
+2021-11-19T05:32:19: [0mGET /stylesheets/confirmation.css [36m304 [0m0.765 ms - -[0m
+2021-11-19T05:32:19: [0mGET /stylesheets/reset.css [36m304 [0m0.627 ms - -[0m
+2021-11-19T05:32:19: [0mGET /stylesheets/style.css [36m304 [0m0.675 ms - -[0m
+2021-11-19T05:32:25: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5f89debc12abd1044a5e5c4a&info_share_cost=200&bonus_for_waiting=19.41776124379107&totalEarningInCent=0&confirmationID=EFAJRxlPP-2-mmDgAAAt&exp_condition=binary&indivOrGroup=1&completed=browserHidden&latency=-1 [32m200 [0m1.873 ms - 4538[0m
+2021-11-19T05:32:26: [0mGET /stylesheets/import.css [36m304 [0m1.048 ms - -[0m
+2021-11-19T05:32:26: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.679 ms - 995[0m
+2021-11-19T05:32:26: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.685 ms - 8219[0m
+2021-11-19T05:32:26: [0mGET /stylesheets/reset.css [36m304 [0m0.628 ms - -[0m
+2021-11-19T05:32:26: [0mGET /stylesheets/style.css [36m304 [0m0.777 ms - -[0m
+2021-11-19T05:32:45: Accessed by an already-existing amazonID: 5f89debc12abd1044a5e5c4a
+2021-11-19T05:32:45: [0mGET /?amazonID=5f89debc12abd1044a5e5c4a&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977875f11ac15ae240ad3b [36m302 [0m0.875 ms - 92[0m
+2021-11-19T05:32:47: questionnaire.js : 61598b779eec3af5209760e718206zcz-U3yGFalUvW1mAAAk41
+2021-11-19T05:32:47: [0mPOST /questionnaire [32m200 [0m2.300 ms - 6518[0m
+2021-11-19T05:32:47: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.752 ms - 995[0m
+2021-11-19T05:32:47: [0mGET /stylesheets/import.css [36m304 [0m1.419 ms - -[0m
+2021-11-19T05:32:47: [0mGET /javascripts/questionnaireForm.js [32m200 [0m3.293 ms - 8219[0m
+2021-11-19T05:32:47: [0mGET /stylesheets/reset.css [36m304 [0m1.487 ms - -[0m
+2021-11-19T05:32:47: [0mGET /stylesheets/style.css [36m304 [0m1.292 ms - -[0m
+2021-11-19T05:32:49: questionnaire.js : 5fb92279d753c635c19d0eb627206wMM6wNty89NHGrx7AAAh41
+2021-11-19T05:32:49: [0mPOST /questionnaire [32m200 [0m2.202 ms - 6518[0m
+2021-11-19T05:32:49: questionnaire.js : 5bddaf7d712eb800010d29e327206bYNE4GYKA5O7f57QAAAi41
+2021-11-19T05:32:49: [0mPOST /questionnaire [32m200 [0m1.394 ms - 6518[0m
+2021-11-19T05:32:49: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.226 ms - 8219[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.113 ms - 995[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/import.css [36m304 [0m0.674 ms - -[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/style.css [36m304 [0m1.478 ms - -[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/reset.css [36m304 [0m1.258 ms - -[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.873 ms - 995[0m
+2021-11-19T05:32:49: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.861 ms - 8219[0m
+2021-11-19T05:32:49: [0mGET /stylesheets/import.css [36m304 [0m2.416 ms - -[0m
+2021-11-19T05:32:50: [0mGET /stylesheets/reset.css [36m304 [0m2.820 ms - -[0m
+2021-11-19T05:32:50: [0mGET /stylesheets/style.css [36m304 [0m1.470 ms - -[0m
+2021-11-19T05:32:52: Accessed by an already-existing amazonID: 5f89debc12abd1044a5e5c4a
+2021-11-19T05:32:52: [0mGET /?amazonID=5f89debc12abd1044a5e5c4a&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977875f11ac15ae240ad3b [36m302 [0m1.268 ms - 92[0m
+2021-11-19T05:32:52: questionnaire.js : 5f58beea896e94044ac91cf6592063QBqxDLiZNqow4iyAAAg41
+2021-11-19T05:32:52: [0mPOST /questionnaire [32m200 [0m2.132 ms - 6518[0m
+2021-11-19T05:32:52: [0mGET /stylesheets/import.css [36m304 [0m1.000 ms - -[0m
+2021-11-19T05:32:52: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.814 ms - 995[0m
+2021-11-19T05:32:52: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.650 ms - 8219[0m
+2021-11-19T05:32:53: [0mGET /stylesheets/reset.css [36m304 [0m1.295 ms - -[0m
+2021-11-19T05:32:53: [0mGET /stylesheets/style.css [36m304 [0m1.088 ms - -[0m
+2021-11-19T05:32:53: questionnaire.js : 5affc4edc573030001c32c10202111MulvDqT4MPb0fbfAAA140
+2021-11-19T05:32:53: [0mPOST /questionnaire [32m200 [0m2.981 ms - 6519[0m
+2021-11-19T05:32:54: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.859 ms - 995[0m
+2021-11-19T05:32:54: [0mGET /stylesheets/import.css [36m304 [0m0.700 ms - -[0m
+2021-11-19T05:32:54: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.116 ms - 8219[0m
+2021-11-19T05:32:54: [0mGET /stylesheets/reset.css [36m304 [0m1.163 ms - -[0m
+2021-11-19T05:32:54: [0mGET /stylesheets/style.css [36m304 [0m1.026 ms - -[0m
+2021-11-19T05:32:55: questionnaire.js : 605321be3c11a82a1230c8ee142065xLEqvWFCYjVcBB8AAAl41
+2021-11-19T05:32:55: [0mPOST /questionnaire [32m200 [0m2.691 ms - 6518[0m
+2021-11-19T05:32:56: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.889 ms - 995[0m
+2021-11-19T05:32:56: [0mGET /stylesheets/import.css [36m304 [0m1.099 ms - -[0m
+2021-11-19T05:32:56: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.238 ms - 8219[0m
+2021-11-19T05:32:56: [0mGET /stylesheets/reset.css [36m304 [0m0.701 ms - -[0m
+2021-11-19T05:32:56: [0mGET /stylesheets/style.css [36m304 [0m0.489 ms - -[0m
+2021-11-19T05:33:22: [0mGET /?amazonID=595253890f31490001c7ab37&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977d6104d106b2f3ea5686 [32m200 [0m2.137 ms - 13665[0m
+2021-11-19T05:33:22: [0mGET /stylesheets/import.css [32m200 [0m0.934 ms - 129[0m
+2021-11-19T05:33:22: [0mGET /stylesheets/confirmation.css [32m200 [0m0.869 ms - 2661[0m
+2021-11-19T05:33:22: [0mGET /stylesheets/reset.css [32m200 [0m3.422 ms - 1093[0m
+2021-11-19T05:33:22: [0mGET /stylesheets/style.css [32m200 [0m0.820 ms - 4060[0m
+2021-11-19T05:33:22: [0mGET /javascripts/goToExp.js [32m200 [0m1.113 ms - 7551[0m
+2021-11-19T05:33:22: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.135 ms - 35046[0m
+2021-11-19T05:33:22: [0mGET /assets/favicon.ico [32m200 [0m1.545 ms - 1150[0m
+2021-11-19T05:33:23: totalEarning = 2
+2021-11-19T05:33:23: bonus_for_waiting = 0.27
+2021-11-19T05:33:23: totalPayment = 3.1
+2021-11-19T05:33:23: [0mPOST /endPage [32m200 [0m4.629 ms - 6088[0m
+2021-11-19T05:33:23: [0mGET /stylesheets/import.css [36m304 [0m0.892 ms - -[0m
+2021-11-19T05:33:24: [0mGET /stylesheets/confirmation.css [36m304 [0m1.036 ms - -[0m
+2021-11-19T05:33:24: [0mGET /stylesheets/reset.css [36m304 [0m0.994 ms - -[0m
+2021-11-19T05:33:24: [0mGET /stylesheets/style.css [36m304 [0m0.653 ms - -[0m
+2021-11-19T05:33:36: totalEarning = 1
+2021-11-19T05:33:36: bonus_for_waiting = 0.4
+2021-11-19T05:33:36: totalPayment = 3.2
+2021-11-19T05:33:36: [0mPOST /endPage [32m200 [0m2.934 ms - 6088[0m
+2021-11-19T05:33:36: [0mGET /stylesheets/import.css [36m304 [0m0.785 ms - -[0m
+2021-11-19T05:33:36: [0mGET /stylesheets/confirmation.css [36m304 [0m0.571 ms - -[0m
+2021-11-19T05:33:36: [0mGET /stylesheets/reset.css [36m304 [0m0.638 ms - -[0m
+2021-11-19T05:33:36: [0mGET /stylesheets/style.css [36m304 [0m0.542 ms - -[0m
+2021-11-19T05:33:41: totalEarning = 2
+2021-11-19T05:33:41: bonus_for_waiting = 0.18
+2021-11-19T05:33:41: totalPayment = 3
+2021-11-19T05:33:41: [0mPOST /endPage [32m200 [0m1.883 ms - 6088[0m
+2021-11-19T05:33:41: [0mGET /stylesheets/import.css [36m304 [0m0.593 ms - -[0m
+2021-11-19T05:33:41: [0mGET /stylesheets/style.css [36m304 [0m0.674 ms - -[0m
+2021-11-19T05:33:41: [0mGET /stylesheets/confirmation.css [36m304 [0m0.685 ms - -[0m
+2021-11-19T05:33:41: [0mGET /stylesheets/reset.css [36m304 [0m0.510 ms - -[0m
+2021-11-19T05:33:47: [0mGET /questionnaireForDisconnectedSubjects?amazonID=613e5efa7544cd1bc48c745b&info_share_cost=20&bonus_for_waiting=13.333985641191417&totalEarningInCent=0&confirmationID=Ipz-q1pdc72gQZaNAAAn&exp_condition=binary&indivOrGroup=1&completed=0&latency=-1 [32m200 [0m1.921 ms - 4526[0m
+2021-11-19T05:33:47: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.631 ms - 995[0m
+2021-11-19T05:33:47: [0mGET /stylesheets/import.css [36m304 [0m0.632 ms - -[0m
+2021-11-19T05:33:47: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.635 ms - 8219[0m
+2021-11-19T05:33:47: [0mGET /stylesheets/reset.css [36m304 [0m0.573 ms - -[0m
+2021-11-19T05:33:47: [0mGET /stylesheets/style.css [36m304 [0m0.592 ms - -[0m
+2021-11-19T05:34:18: totalEarning = 2
+2021-11-19T05:34:18: bonus_for_waiting = 0.2
+2021-11-19T05:34:18: totalPayment = 3.1
+2021-11-19T05:34:18: [0mPOST /endPage [32m200 [0m2.214 ms - 6089[0m
+2021-11-19T05:34:18: [0mGET /stylesheets/import.css [36m304 [0m0.593 ms - -[0m
+2021-11-19T05:34:18: [0mGET /stylesheets/confirmation.css [36m304 [0m0.565 ms - -[0m
+2021-11-19T05:34:19: [0mGET /stylesheets/style.css [36m304 [0m0.524 ms - -[0m
+2021-11-19T05:34:19: [0mGET /stylesheets/reset.css [36m304 [0m0.393 ms - -[0m
+2021-11-19T05:34:23: totalEarning = 2
+2021-11-19T05:34:23: bonus_for_waiting = 0.27
+2021-11-19T05:34:23: totalPayment = 3.1
+2021-11-19T05:34:23: [0mPOST /endPage [32m200 [0m1.971 ms - 6088[0m
+2021-11-19T05:34:23: [0mGET /stylesheets/import.css [36m304 [0m1.652 ms - -[0m
+2021-11-19T05:34:23: [0mGET /stylesheets/confirmation.css [36m304 [0m1.301 ms - -[0m
+2021-11-19T05:34:23: [0mGET /stylesheets/reset.css [36m304 [0m1.737 ms - -[0m
+2021-11-19T05:34:23: [0mGET /stylesheets/style.css [36m304 [0m1.389 ms - -[0m
+2021-11-19T05:35:05: totalEarning = 2
+2021-11-19T05:35:05: bonus_for_waiting = 0.14
+2021-11-19T05:35:05: totalPayment = 3
+2021-11-19T05:35:05: [0mPOST /endPage [32m200 [0m1.932 ms - 6088[0m
+2021-11-19T05:35:05: [0mGET /stylesheets/import.css [36m304 [0m1.021 ms - -[0m
+2021-11-19T05:35:05: [0mGET /stylesheets/confirmation.css [36m304 [0m0.582 ms - -[0m
+2021-11-19T05:35:06: [0mGET /stylesheets/reset.css [36m304 [0m3.499 ms - -[0m
+2021-11-19T05:35:06: [0mGET /stylesheets/style.css [36m304 [0m2.467 ms - -[0m
+2021-11-19T05:35:19: totalEarning = 1
+2021-11-19T05:35:19: bonus_for_waiting = 0.38
+2021-11-19T05:35:19: totalPayment = 3.1
+2021-11-19T05:35:19: [0mPOST /endPage [32m200 [0m2.540 ms - 6088[0m
+2021-11-19T05:35:19: [0mGET /stylesheets/import.css [36m304 [0m0.590 ms - -[0m
+2021-11-19T05:35:19: [0mGET /stylesheets/confirmation.css [36m304 [0m0.390 ms - -[0m
+2021-11-19T05:35:19: [0mGET /stylesheets/reset.css [36m304 [0m1.022 ms - -[0m
+2021-11-19T05:35:19: [0mGET /stylesheets/style.css [36m304 [0m0.796 ms - -[0m
+2021-11-19T05:35:26: totalEarning = 2
+2021-11-19T05:35:26: bonus_for_waiting = 0.59
+2021-11-19T05:35:26: totalPayment = 3.5
+2021-11-19T05:35:26: [0mPOST /endPage [32m200 [0m1.709 ms - 6088[0m
+2021-11-19T05:35:27: [0mGET /stylesheets/import.css [36m304 [0m0.912 ms - -[0m
+2021-11-19T05:35:27: [0mGET /stylesheets/confirmation.css [36m304 [0m0.789 ms - -[0m
+2021-11-19T05:35:28: [0mGET /stylesheets/reset.css [36m304 [0m1.072 ms - -[0m
+2021-11-19T05:35:28: [0mGET /stylesheets/style.css [36m304 [0m0.846 ms - -[0m
+2021-11-19T05:35:37: [0mGET /questionnaireForDisconnectedSubjects?amazonID=60740ef98a46b9cf7ac0fb30&bonus_for_waiting=16.80936762108133&totalEarningInCent=0&confirmationID=KHZueCRFBpV6iT7VAAA0&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m2.077 ms - 4536[0m
+2021-11-19T05:35:38: [0mGET /stylesheets/import.css [36m304 [0m1.518 ms - -[0m
+2021-11-19T05:35:38: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.790 ms - 8219[0m
+2021-11-19T05:35:38: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.845 ms - 995[0m
+2021-11-19T05:35:38: [0mGET /stylesheets/reset.css [36m304 [0m1.290 ms - -[0m
+2021-11-19T05:35:38: [0mGET /stylesheets/style.css [36m304 [0m1.470 ms - -[0m
+2021-11-19T05:35:39: [0mGET /questionnaireForDisconnectedSubjects?amazonID=60a52bc9508aa2f378ed5a48&bonus_for_waiting=19.780761253241554&totalEarningInCent=0&confirmationID=8d1vdyDeJOl7nuQIAAAU&exp_condition=binary&indivOrGroup=1&completed=droppedTestScene&latency=-1 [32m200 [0m1.467 ms - 4537[0m
+2021-11-19T05:35:40: [0mGET /stylesheets/questionnaire.css [32m200 [0m2.658 ms - 995[0m
+2021-11-19T05:35:40: [0mGET /stylesheets/import.css [36m304 [0m0.641 ms - -[0m
+2021-11-19T05:35:40: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.715 ms - 8219[0m
+2021-11-19T05:35:40: [0mGET /stylesheets/reset.css [36m304 [0m0.548 ms - -[0m
+2021-11-19T05:35:40: [0mGET /stylesheets/style.css [36m304 [0m0.511 ms - -[0m
+2021-11-19T05:36:11: [0mGET /questionnaireForDisconnectedSubjects?amazonID=5fe7373a4b3bdc5378e78245&info_share_cost=200&bonus_for_waiting=197.13089727610884&totalEarningInCent=0&confirmationID=ixHWby69pY96XFdwAAAV&exp_condition=binary&indivOrGroup=1&completed=no_response&latency=-1 [32m200 [0m1.441 ms - 4537[0m
+2021-11-19T05:36:11: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.535 ms - 995[0m
+2021-11-19T05:36:11: [0mGET /stylesheets/import.css [36m304 [0m0.541 ms - -[0m
+2021-11-19T05:36:11: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.717 ms - 8219[0m
+2021-11-19T05:36:11: [0mGET /stylesheets/reset.css [36m304 [0m1.308 ms - -[0m
+2021-11-19T05:36:11: [0mGET /stylesheets/style.css [36m304 [0m1.184 ms - -[0m
+2021-11-19T05:37:15: questionnaire.js : 56cc926a425487000a76dbc6104211vT488AjYHCBM2bGzAAAv41
+2021-11-19T05:37:15: [0mPOST /questionnaire [32m200 [0m1.474 ms - 6520[0m
+2021-11-19T05:37:16: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.172 ms - 995[0m
+2021-11-19T05:37:16: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.265 ms - 8219[0m
+2021-11-19T05:37:16: [0mGET /stylesheets/import.css [36m304 [0m0.536 ms - -[0m
+2021-11-19T05:37:16: [0mGET /stylesheets/reset.css [36m304 [0m2.116 ms - -[0m
+2021-11-19T05:37:16: [0mGET /stylesheets/style.css [36m304 [0m1.014 ms - -[0m
+2021-11-19T05:37:22: questionnaire.js : 60426ee0eea59612c23d9dea100211lt31YFfv93lfsEOUAAAx41
+2021-11-19T05:37:22: [0mPOST /questionnaire [32m200 [0m1.973 ms - 6520[0m
+2021-11-19T05:37:22: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.677 ms - 995[0m
+2021-11-19T05:37:22: [0mGET /stylesheets/import.css [36m304 [0m0.476 ms - -[0m
+2021-11-19T05:37:22: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.283 ms - 8219[0m
+2021-11-19T05:37:22: [0mGET /stylesheets/reset.css [36m304 [0m0.836 ms - -[0m
+2021-11-19T05:37:22: [0mGET /stylesheets/style.css [36m304 [0m0.716 ms - -[0m
+2021-11-19T05:37:24: questionnaire.js : 5e64fc338ebdaf26e332aec089211iyt1HpxXSuFqHJfJAAAy41
+2021-11-19T05:37:24: [0mPOST /questionnaire [32m200 [0m1.464 ms - 6519[0m
+2021-11-19T05:37:24: [0mGET /stylesheets/import.css [36m304 [0m0.398 ms - -[0m
+2021-11-19T05:37:24: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.525 ms - 995[0m
+2021-11-19T05:37:24: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.592 ms - 8219[0m
+2021-11-19T05:37:24: [0mGET /stylesheets/reset.css [36m304 [0m0.343 ms - -[0m
+2021-11-19T05:37:24: [0mGET /stylesheets/style.css [36m304 [0m0.243 ms - -[0m
+2021-11-19T05:39:13: totalEarning = 0
+2021-11-19T05:39:13: bonus_for_waiting = 1.97
+2021-11-19T05:39:13: totalPayment = 2
+2021-11-19T05:39:13: [0mPOST /endPage [32m200 [0m1.795 ms - 6100[0m
+2021-11-19T05:39:13: [0mGET /stylesheets/import.css [36m304 [0m0.509 ms - -[0m
+2021-11-19T05:39:13: [0mGET /stylesheets/confirmation.css [36m304 [0m0.602 ms - -[0m
+2021-11-19T05:39:13: [0mGET /stylesheets/reset.css [36m304 [0m0.518 ms - -[0m
+2021-11-19T05:39:13: [0mGET /stylesheets/style.css [36m304 [0m0.594 ms - -[0m
+2021-11-19T05:39:16: totalEarning = 2
+2021-11-19T05:39:16: bonus_for_waiting = 1
+2021-11-19T05:39:16: totalPayment = 3.9
+2021-11-19T05:39:16: [0mPOST /endPage [32m200 [0m3.390 ms - 6090[0m
+2021-11-19T05:39:16: [0mGET /stylesheets/import.css [36m304 [0m0.656 ms - -[0m
+2021-11-19T05:39:16: [0mGET /stylesheets/confirmation.css [36m304 [0m0.684 ms - -[0m
+2021-11-19T05:39:16: [0mGET /stylesheets/reset.css [36m304 [0m0.627 ms - -[0m
+2021-11-19T05:39:16: [0mGET /stylesheets/style.css [36m304 [0m0.458 ms - -[0m
+2021-11-19T05:39:38: totalEarning = NaN
+2021-11-19T05:39:38: bonus_for_waiting = NaN
+2021-11-19T05:39:38: totalPayment = NaN
+2021-11-19T05:39:38: [0mPOST /endPage [32m200 [0m3.591 ms - 6182[0m
+2021-11-19T05:39:38: [0mGET /stylesheets/import.css [36m304 [0m0.826 ms - -[0m
+2021-11-19T05:39:39: [0mGET /stylesheets/confirmation.css [36m304 [0m0.843 ms - -[0m
+2021-11-19T05:39:39: [0mGET /stylesheets/reset.css [36m304 [0m0.453 ms - -[0m
+2021-11-19T05:39:39: [0mGET /stylesheets/style.css [36m304 [0m0.613 ms - -[0m
+2021-11-19T05:39:41: totalEarning = NaN
+2021-11-19T05:39:41: bonus_for_waiting = NaN
+2021-11-19T05:39:41: totalPayment = NaN
+2021-11-19T05:39:41: [0mPOST /endPage [32m200 [0m8.114 ms - 6182[0m
+2021-11-19T05:39:42: [0mGET /stylesheets/import.css [36m304 [0m1.008 ms - -[0m
+2021-11-19T05:39:42: [0mGET /stylesheets/confirmation.css [36m304 [0m0.845 ms - -[0m
+2021-11-19T05:39:42: [0mGET /stylesheets/reset.css [36m304 [0m0.663 ms - -[0m
+2021-11-19T05:39:42: [0mGET /stylesheets/style.css [36m304 [0m1.778 ms - -[0m
+2021-11-19T05:39:51: questionnaire.js : 60f19bc58ba2fcd8cc2a59c5115202_o5Bwj1Pr_T-xLTSAAAz21
+2021-11-19T05:39:51: [0mPOST /questionnaire [32m200 [0m1.941 ms - 6520[0m
+2021-11-19T05:39:51: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.937 ms - 995[0m
+2021-11-19T05:39:51: [0mGET /stylesheets/import.css [36m304 [0m0.483 ms - -[0m
+2021-11-19T05:39:51: [0mGET /stylesheets/reset.css [36m304 [0m0.998 ms - -[0m
+2021-11-19T05:39:51: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.917 ms - 8219[0m
+2021-11-19T05:39:51: [0mGET /stylesheets/style.css [36m304 [0m0.431 ms - -[0m
+2021-11-19T05:39:54: questionnaire.js : 6082aa29c655ceb5b313bc03145191KgX3LenKn6v14gPGAAAZ21
+2021-11-19T05:39:54: [0mPOST /questionnaire [32m200 [0m2.007 ms - 6520[0m
+2021-11-19T05:39:54: [0mGET /stylesheets/import.css [36m304 [0m0.455 ms - -[0m
+2021-11-19T05:39:54: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.359 ms - 8219[0m
+2021-11-19T05:39:54: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.304 ms - 995[0m
+2021-11-19T05:39:54: [0mGET /stylesheets/reset.css [36m304 [0m0.646 ms - -[0m
+2021-11-19T05:39:54: [0mGET /stylesheets/style.css [36m304 [0m0.476 ms - -[0m
+2021-11-19T05:39:54: [0mGET /assets/favicon.ico [36m304 [0m1.122 ms - -[0m
+2021-11-19T05:40:42: totalEarning = 2
+2021-11-19T05:40:42: bonus_for_waiting = 1.15
+2021-11-19T05:40:42: totalPayment = 4
+2021-11-19T05:40:42: [0mPOST /endPage [32m200 [0m1.729 ms - 6090[0m
+2021-11-19T05:40:42: [0mGET /stylesheets/import.css [36m304 [0m0.526 ms - -[0m
+2021-11-19T05:40:42: [0mGET /stylesheets/confirmation.css [36m304 [0m0.395 ms - -[0m
+2021-11-19T05:40:42: [0mGET /stylesheets/reset.css [36m304 [0m0.541 ms - -[0m
+2021-11-19T05:40:42: [0mGET /stylesheets/style.css [36m304 [0m0.655 ms - -[0m
+2021-11-19T05:41:02: totalEarning = 2
+2021-11-19T05:41:02: bonus_for_waiting = 1.04
+2021-11-19T05:41:02: totalPayment = 4
+2021-11-19T05:41:02: [0mPOST /endPage [32m200 [0m1.904 ms - 6090[0m
+2021-11-19T05:41:02: [0mGET /stylesheets/import.css [36m304 [0m1.708 ms - -[0m
+2021-11-19T05:41:02: [0mGET /stylesheets/confirmation.css [36m304 [0m1.135 ms - -[0m
+2021-11-19T05:41:02: [0mGET /stylesheets/reset.css [36m304 [0m1.194 ms - -[0m
+2021-11-19T05:41:02: [0mGET /stylesheets/style.css [36m304 [0m0.991 ms - -[0m
+2021-11-19T05:41:45: totalEarning = 2
+2021-11-19T05:41:45: bonus_for_waiting = 0.89
+2021-11-19T05:41:45: totalPayment = 3.8
+2021-11-19T05:41:45: [0mPOST /endPage [32m200 [0m1.714 ms - 6089[0m
+2021-11-19T05:41:45: [0mGET /stylesheets/import.css [36m304 [0m0.953 ms - -[0m
+2021-11-19T05:41:45: [0mGET /stylesheets/confirmation.css [36m304 [0m0.777 ms - -[0m
+2021-11-19T05:41:45: [0mGET /stylesheets/reset.css [36m304 [0m0.976 ms - -[0m
+2021-11-19T05:41:45: [0mGET /stylesheets/style.css [36m304 [0m0.890 ms - -[0m
+2021-11-19T05:41:51: questionnaire.js : 595253890f31490001c7ab3720217qKNZpcmvO9GAWJjSAAA340
+2021-11-19T05:41:51: [0mPOST /questionnaire [32m200 [0m1.500 ms - 6519[0m
+2021-11-19T05:41:51: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.886 ms - 995[0m
+2021-11-19T05:41:51: [0mGET /stylesheets/import.css [36m304 [0m0.477 ms - -[0m
+2021-11-19T05:41:51: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.165 ms - 8219[0m
+2021-11-19T05:41:51: [0mGET /stylesheets/reset.css [36m304 [0m0.850 ms - -[0m
+2021-11-19T05:41:51: [0mGET /stylesheets/style.css [36m304 [0m0.702 ms - -[0m
+2021-11-19T05:42:04: [0mGET /?amazonID=5c95017e6357fb0012ef46c4&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61977f746be5b5fd3325a3cf [32m200 [0m2.272 ms - 13665[0m
+2021-11-19T05:42:04: [0mGET /stylesheets/import.css [32m200 [0m0.631 ms - 129[0m
+2021-11-19T05:42:04: [0mGET /stylesheets/confirmation.css [32m200 [0m1.095 ms - 2661[0m
+2021-11-19T05:42:04: [0mGET /stylesheets/reset.css [32m200 [0m0.866 ms - 1093[0m
+2021-11-19T05:42:04: [0mGET /stylesheets/style.css [32m200 [0m0.632 ms - 4060[0m
+2021-11-19T05:42:04: [0mGET /javascripts/goToExp.js [32m200 [0m0.661 ms - 7551[0m
+2021-11-19T05:42:04: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.057 ms - 35046[0m
+2021-11-19T05:42:04: [0mGET /assets/favicon.ico [32m200 [0m0.714 ms - 1150[0m
+2021-11-19T05:42:09: totalEarning = 1
+2021-11-19T05:42:09: bonus_for_waiting = 1.45
+2021-11-19T05:42:09: totalPayment = 4.2
+2021-11-19T05:42:09: [0mPOST /endPage [32m200 [0m1.725 ms - 6090[0m
+2021-11-19T05:42:09: [0mGET /stylesheets/import.css [36m304 [0m1.118 ms - -[0m
+2021-11-19T05:42:09: [0mGET /stylesheets/confirmation.css [36m304 [0m0.701 ms - -[0m
+2021-11-19T05:42:09: [0mGET /stylesheets/reset.css [36m304 [0m0.472 ms - -[0m
+2021-11-19T05:42:09: [0mGET /stylesheets/style.css [36m304 [0m0.527 ms - -[0m
+2021-11-19T05:42:09: [0mGET /assets/favicon.ico [36m304 [0m0.531 ms - -[0m
+2021-11-19T05:45:10: totalEarning = 2
+2021-11-19T05:45:10: bonus_for_waiting = 0.2
+2021-11-19T05:45:10: totalPayment = 3.2
+2021-11-19T05:45:10: [0mPOST /endPage [32m200 [0m1.950 ms - 6089[0m
+2021-11-19T05:45:10: [0mGET /stylesheets/import.css [36m304 [0m1.407 ms - -[0m
+2021-11-19T05:45:10: [0mGET /stylesheets/confirmation.css [36m304 [0m1.028 ms - -[0m
+2021-11-19T05:45:10: [0mGET /stylesheets/reset.css [36m304 [0m1.010 ms - -[0m
+2021-11-19T05:45:10: [0mGET /stylesheets/style.css [36m304 [0m0.578 ms - -[0m
+2021-11-19T05:45:38: [0mGET /?amazonID=6147b8e99465bb0cee7cc3e6&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61978033749e043ce5a19571 [32m200 [0m1.417 ms - 13665[0m
+2021-11-19T05:45:38: [0mGET /stylesheets/import.css [32m200 [0m1.754 ms - 129[0m
+2021-11-19T05:45:38: [0mGET /stylesheets/confirmation.css [32m200 [0m1.677 ms - 2661[0m
+2021-11-19T05:45:38: [0mGET /stylesheets/reset.css [32m200 [0m0.948 ms - 1093[0m
+2021-11-19T05:45:38: [0mGET /stylesheets/style.css [32m200 [0m0.792 ms - 4060[0m
+2021-11-19T05:45:38: [0mGET /javascripts/goToExp.js [32m200 [0m0.686 ms - 7551[0m
+2021-11-19T05:45:38: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.560 ms - 35046[0m
+2021-11-19T05:45:38: [0mGET /assets/favicon.ico [32m200 [0m0.627 ms - 1150[0m
+2021-11-19T05:48:23: questionnaire.js : 5c95017e6357fb0012ef46c4202231pBbYyS4iAgmv1DSAAA420
+2021-11-19T05:48:23: [0mPOST /questionnaire [32m200 [0m3.123 ms - 6519[0m
+2021-11-19T05:48:24: [0mGET /stylesheets/import.css [36m304 [0m0.786 ms - -[0m
+2021-11-19T05:48:24: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.988 ms - 995[0m
+2021-11-19T05:48:24: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.036 ms - 8219[0m
+2021-11-19T05:48:24: [0mGET /stylesheets/reset.css [36m304 [0m0.563 ms - -[0m
+2021-11-19T05:48:24: [0mGET /stylesheets/style.css [36m304 [0m0.615 ms - -[0m
+2021-11-19T05:49:42: totalEarning = 2
+2021-11-19T05:49:42: bonus_for_waiting = 0.2
+2021-11-19T05:49:42: totalPayment = 3.2
+2021-11-19T05:49:42: [0mPOST /endPage [32m200 [0m1.565 ms - 6089[0m
+2021-11-19T05:49:42: [0mGET /stylesheets/import.css [36m304 [0m0.521 ms - -[0m
+2021-11-19T05:49:42: [0mGET /stylesheets/confirmation.css [36m304 [0m0.474 ms - -[0m
+2021-11-19T05:49:42: [0mGET /stylesheets/reset.css [36m304 [0m0.433 ms - -[0m
+2021-11-19T05:49:42: [0mGET /stylesheets/style.css [36m304 [0m0.392 ms - -[0m
+2021-11-19T05:53:10: questionnaire.js : 6147b8e99465bb0cee7cc3e620221nQrLHdlQ7rp1iK3iAAA530
+2021-11-19T05:53:10: [0mPOST /questionnaire [32m200 [0m1.513 ms - 6517[0m
+2021-11-19T05:53:10: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.822 ms - 995[0m
+2021-11-19T05:53:10: [0mGET /stylesheets/import.css [36m304 [0m0.389 ms - -[0m
+2021-11-19T05:53:10: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.823 ms - 8219[0m
+2021-11-19T05:53:10: [0mGET /stylesheets/style.css [36m304 [0m0.839 ms - -[0m
+2021-11-19T05:53:10: [0mGET /stylesheets/reset.css [36m304 [0m0.687 ms - -[0m
+2021-11-19T05:53:51: totalEarning = 2
+2021-11-19T05:53:51: bonus_for_waiting = 0.2
+2021-11-19T05:53:51: totalPayment = 3.2
+2021-11-19T05:53:51: [0mPOST /endPage [32m200 [0m1.697 ms - 6087[0m
+2021-11-19T05:53:51: [0mGET /stylesheets/import.css [36m304 [0m1.182 ms - -[0m
+2021-11-19T05:53:51: [0mGET /stylesheets/confirmation.css [36m304 [0m1.075 ms - -[0m
+2021-11-19T05:53:51: [0mGET /stylesheets/style.css [36m304 [0m1.198 ms - -[0m
+2021-11-19T05:53:51: [0mGET /stylesheets/reset.css [36m304 [0m1.022 ms - -[0m
+2021-11-19T06:00:10: [0mGET /?amazonID=5ccc76bbc7508d0017d35954&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=619783b631ddcce7cec7dcc5 [32m200 [0m1.508 ms - 13665[0m
+2021-11-19T06:00:10: [0mGET /stylesheets/import.css [32m200 [0m1.950 ms - 129[0m
+2021-11-19T06:00:10: [0mGET /stylesheets/confirmation.css [32m200 [0m2.243 ms - 2661[0m
+2021-11-19T06:00:10: [0mGET /stylesheets/reset.css [32m200 [0m1.455 ms - 1093[0m
+2021-11-19T06:00:10: [0mGET /stylesheets/style.css [32m200 [0m1.272 ms - 4060[0m
+2021-11-19T06:00:10: [0mGET /javascripts/goToExp.js [32m200 [0m1.080 ms - 7551[0m
+2021-11-19T06:00:10: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m1.085 ms - 35046[0m
+2021-11-19T06:00:10: [0mGET /assets/favicon.ico [32m200 [0m1.378 ms - 1150[0m
+2021-11-19T06:06:30: [0mGET /?amazonID=5b5652ad0b0ff80001cb5e39&STUDY_ID=61953aba08d9c47125c2dd58&SESSION_ID=61978515bb38fe345c439581 [32m200 [0m2.252 ms - 13665[0m
+2021-11-19T06:06:30: [0mGET /stylesheets/import.css [32m200 [0m0.691 ms - 129[0m
+2021-11-19T06:06:30: [0mGET /stylesheets/confirmation.css [32m200 [0m0.567 ms - 2661[0m
+2021-11-19T06:06:30: [0mGET /stylesheets/reset.css [32m200 [0m1.496 ms - 1093[0m
+2021-11-19T06:06:30: [0mGET /stylesheets/style.css [32m200 [0m1.435 ms - 4060[0m
+2021-11-19T06:06:30: [0mGET /javascripts/goToExp.js [32m200 [0m0.594 ms - 7551[0m
+2021-11-19T06:06:30: [0mGET /assets/UniKonstanz_Logo_Optimum_sRGB.png [32m200 [0m0.774 ms - 35046[0m
+2021-11-19T06:06:32: [0mGET /assets/favicon.ico [32m200 [0m0.584 ms - 1150[0m
+2021-11-19T06:06:40: questionnaire.js : 5ccc76bbc7508d0017d3595420215QqyGGXtuBrobHs1XAAA640
+2021-11-19T06:06:40: [0mPOST /questionnaire [32m200 [0m1.808 ms - 6517[0m
+2021-11-19T06:06:40: [0mGET /stylesheets/questionnaire.css [32m200 [0m1.180 ms - 995[0m
+2021-11-19T06:06:40: [0mGET /javascripts/questionnaireForm.js [32m200 [0m1.010 ms - 8219[0m
+2021-11-19T06:06:40: [0mGET /stylesheets/import.css [36m304 [0m0.561 ms - -[0m
+2021-11-19T06:06:40: [0mGET /stylesheets/reset.css [36m304 [0m0.679 ms - -[0m
+2021-11-19T06:06:40: [0mGET /stylesheets/style.css [36m304 [0m0.431 ms - -[0m
+2021-11-19T06:07:29: totalEarning = 2
+2021-11-19T06:07:29: bonus_for_waiting = 0.2
+2021-11-19T06:07:29: totalPayment = 3.2
+2021-11-19T06:07:29: [0mPOST /endPage [32m200 [0m1.919 ms - 6087[0m
+2021-11-19T06:07:29: [0mGET /stylesheets/import.css [36m304 [0m0.837 ms - -[0m
+2021-11-19T06:07:29: [0mGET /stylesheets/confirmation.css [36m304 [0m0.659 ms - -[0m
+2021-11-19T06:07:29: [0mGET /stylesheets/reset.css [36m304 [0m1.285 ms - -[0m
+2021-11-19T06:07:29: [0mGET /stylesheets/style.css [36m304 [0m1.100 ms - -[0m
+2021-11-19T06:17:30: questionnaire.js : 5b5652ad0b0ff80001cb5e3920226sg74jRwcBqziTcLBAAA740
+2021-11-19T06:17:30: [0mPOST /questionnaire [32m200 [0m1.261 ms - 6519[0m
+2021-11-19T06:17:31: [0mGET /stylesheets/import.css [36m304 [0m0.529 ms - -[0m
+2021-11-19T06:17:31: [0mGET /stylesheets/questionnaire.css [32m200 [0m0.561 ms - 995[0m
+2021-11-19T06:17:31: [0mGET /javascripts/questionnaireForm.js [32m200 [0m0.647 ms - 8219[0m
+2021-11-19T06:17:31: [0mGET /stylesheets/reset.css [36m304 [0m0.289 ms - -[0m
+2021-11-19T06:17:31: [0mGET /stylesheets/style.css [36m304 [0m0.579 ms - -[0m
+2021-11-19T06:18:05: totalEarning = 2
+2021-11-19T06:18:05: bonus_for_waiting = 0.2
+2021-11-19T06:18:05: totalPayment = 3.3
+2021-11-19T06:18:05: [0mPOST /endPage [32m200 [0m2.362 ms - 6089[0m
+2021-11-19T06:18:05: [0mGET /stylesheets/import.css [36m304 [0m1.317 ms - -[0m
+2021-11-19T06:18:05: [0mGET /stylesheets/confirmation.css [36m304 [0m0.808 ms - -[0m
+2021-11-19T06:18:05: [0mGET /stylesheets/reset.css [36m304 [0m0.645 ms - -[0m
+2021-11-19T06:18:05: [0mGET /stylesheets/style.css [36m304 [0m0.889 ms - -[0m
+2021-11-19T07:37:54: [0mGET http://example.com/ [36m302 [0m0.537 ms - 46[0m
