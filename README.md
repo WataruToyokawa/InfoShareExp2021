@@ -1,16 +1,16 @@
 # Selective information sharing in risky bandit task (November/December 2021)
 
-## Sample size
+## Preregistration
 
-A group of 3 * 10 groups = 30 people
+This experiment has been preregistered: https://osf.io/ys8zq
 
 ## Task
 
 A two-armed bandit task (one risky one safe) with the following 2 * 2 different task setups:
 
-Skewness (positively / negatively skewed) * risk premium (positive / negative) 
+Skewness (positively / negatively skewed binary risk) * risk premium (positive / negative) 
 
-The task is a 60-trial 2-armed bandit. Between the 25th and 26th trial an environmental change is introduced so that risk premium is reversed within the same skewness domain. The group size is somewhere between 3 and 5 (i.e., 4 on average).
+The task is a 60-trial 2-armed bandit. Between the 25th and 26th trial an environmental change is introduced so that risk premium is reversed within the same skewness domain. The group size is somewhere between 2 and 6 (i.e., 4 on average).
 
 Each trial starts with the choice stage where subjects have to choose one of the two options to obtain a payoff. This payoff information is private.
 
