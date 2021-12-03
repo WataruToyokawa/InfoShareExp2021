@@ -59,30 +59,17 @@ window.onload = function() {
             firstParagraph.innerHTML = "<p class='lead'>Please answer the following questions on how you perceived this task. </p>";
             freeTextQ.innerHTML = "Q4: Your honest feedback would be a big help to develop our future experimental task.<br> Please put any comments below if you fancy!"
             break;
+        case "reconnected":
+            note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because of a technical issue in our server. Sorry about that!</span> </p><br>";
+            firstParagraph.innerHTML = "<p><span class='note'>Apologise for the inconvenience. Feel free to skip the following questionnaire and go directly to the next page to get your confirmation code.</span> </p>";
+            freeTextQ.innerHTML = "Q4: Hoerver, your honest feedback would be a big help to develop our future experimental task.<br> Please put any comments below if you fancy!"
+            break;
         default:
             note.innerHTML = "";
             firstParagraph.innerHTML = "<p class='lead'>The decision-making task has been completed!<br> Please answer the following questions on how you perceived this task. </p> <p class='lead'>Your answers will be recorded anonymously, being disconnected to your Prolific ID right after the entire experiment is done. </p>";
             freeTextQ.innerHTML = "Q4: While working on the task, how did you decide which slot to choose? Also, how did you decide whether to share information with other members (if applicable)? Please describe freely in the form below: "
     }
-    /*if(completed == 0){
-    	note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because you had a bad internet connection or opened another window/tab during the decision-making task.</span></p><br>";
-        firstParagraph.innerHTML = "<p class='lead'>Please answer the following questions on how you perceived this task. </p>";
-    }else if (completed == "maxChoiceStageTimeOver") {
-        note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because you did not make a choice for 60 seconds.</span></p><br>";
-        firstParagraph.innerHTML = "<p class='lead'>Please answer the following questions on how you perceived this task. </p>";
-    }else if (completed == "browserHidden") {
-        note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because you opened another window/tab during the decision-making task.</span></p><br>";
-        firstParagraph.innerHTML = "<p class='lead'>Please answer the following questions on how you perceived this task. </p>";
-    }else if (completed == "technicalIssueInWaitingRoom") {
-        note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because of a technical issue in our program.</span> </p><br>";
-        firstParagraph.innerHTML = "<p><span class='note'>Apologise for the inconvenience. Feel free to skip the following questionnaire and go directly to the next page to get your confirmation code.</span> </p>";
-    }else if (completed == "droppedTestScene") {
-        note.innerHTML = "<p><span class='note'>You were redirected to this questionnaire because you did not answer the 'Understanding Instruction' questions within 4 minutes.</span></p><br>";
-        firstParagraph.innerHTML = "<p class='lead'>Please answer the following questions on how you perceived this task. </p>";
-    }else{
-    	note.innerHTML = "";
-        firstParagraph.innerHTML = "<p class='lead'>The decision-making task has been completed!<br> Please answer the following questions on how you perceived this task. </p>";
-    }*/
+    
 
 
 

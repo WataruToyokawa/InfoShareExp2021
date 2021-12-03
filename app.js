@@ -85,7 +85,8 @@ app.use('/multipleAccess', multipleAccessRouter);
 
 app.post('/endPage', function(req, res) {
   let completionFee = 0; // no completion fee is paid when not completed
-  if (req.body.completed == 1) {
+  //if (req.body.completed == 1) {
+  if (req.body.totalEarning > 0) {
     completionFee = flatFeeValue + completionFeeValue;
   }
   let save_data = new Object();

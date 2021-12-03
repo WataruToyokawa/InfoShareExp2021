@@ -47,6 +47,7 @@ import {rand
 	, testFunction
     , settingRiskDistribution
     , settingRiskDistribution_4ab
+    , createWindow
 } from './functions.js';
 
 /**===============================================
@@ -341,7 +342,8 @@ window.onload = function() {
         // console.log('client disconnected ' + data.disconnectedClient + ' left the room');
         currentGroupSize = data.n;
         if ( !isThisGameCompleted ) {
-        	createWindow('SceneMessagePopUp', {msg: 'Notification: One member has been disconnected'});
+            // "this" allows function.js to know where the game exists
+        	createWindow(game, 'SceneMessagePopUp', {msg: 'Notification: One member has been disconnected'});
         }
         if (isWaiting) {
         	socket.emit('can I proceed');
@@ -369,11 +371,13 @@ window.onload = function() {
             // console.log('myPublicInfo: ' + myPublicInfo);
             // console.log('choiceOrder: ' + choiceOrder);
             // console.log('totalPayoff_perIndiv_perGame: ' + totalPayoff_perIndiv_perGame[gameRound] + ' with group total = ' + groupTotalScore);
-            for (let i = 0; i < maxGroupSize; i++) {
-            	if(share_or_not[i] != null) {
-            		// console.log('subjectNumber' + i + ': share:' + share_or_not[i].share + ', payoff:' +share_or_not[i].payoff+', position:'+share_or_not[i].position);
-            	}
-            }
+            // for (let i = 0; i < maxGroupSize; i++) {
+            // 	if(typeof share_or_not[i] != 'undefined') {
+            // 		console.log('subjectNumber' + i + ': share:' + JSON.stringify(share_or_not[i]));
+            // 	} else {
+            //         console.log('subjectNumber' + i + ': share_or_not[i] is undefined!!!!!!');
+            //     }
+            // }
             // console.log('share_or_not: ' + share_or_not);
             if (indivOrGroup == 1) {
             	for (let i = 1; i < numOptions+1; i++) {
@@ -434,7 +438,7 @@ window.onload = function() {
         }
         else {
             // End this session if the server wrongly sent the "proceed round message"
-            currentTrial++;
+            // currentTrial++;
             totalEarning += payoff;
             $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
             $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
@@ -510,11 +514,12 @@ window.onload = function() {
     socket.on('S_to_C_welcomeback', function(data) {
     	// if (waitingRoomFinishedFlag == 1) {
     	if (understandingCheckStarted == 1) {
+            completed = 'reconnected';
 	    	// You could give a change to the shortly disconnected client to go back to the session
 	    	// However, for now I just redirect them to the questionnaire
 	        socket.io.opts.query = 'sessionName=already_finished';
 	        socket.disconnect();
-	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
+	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
 	        // console.log('Received: "S_to_C_welcomeback": client = '+data.sessionName +'; room = '+data.roomName);
 	    } else if (waitingRoomFinishedFlag != 1) {
 	    	// console.log('Received: "S_to_C_welcomeback" but the waiting room is not finished yet: client = '+data.sessionName +'; room = '+data.roomName);
@@ -524,6 +529,15 @@ window.onload = function() {
 	    } else {
 	    	// console.log('Received: "S_to_C_welcomeback" but the understanding test is not started yet: client = '+data.sessionName +'; room = '+data.roomName);
 	    }
+    });
+
+    socket.on('reconnected after the game started', function(data) {
+        completed = 'reconnected';
+        // You could give a change to the shortly disconnected client to go back to the session
+        // However, for now I just redirect them to the questionnaire
+        socket.io.opts.query = 'sessionName=already_finished';
+        socket.disconnect();
+        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
     });
 
 } // window.onload -- end

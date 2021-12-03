@@ -61,8 +61,8 @@ const Behaviour = new Schema({
 },
     //{collection:"helge_pilot_debug"}
     // {collection:"helge_pilot_2021_summer"}
-    {collection:"helge_exp_debug"}
-    // {collection:"helge_exp_2021_Nov"}
+    // {collection:"helge_exp_debug"}
+    {collection:"helge_exp_2021_Nov"}
 );
 
 module.exports = mongoose.model('behaviour', Behaviour);

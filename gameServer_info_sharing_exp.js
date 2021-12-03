@@ -42,7 +42,7 @@ const consoleLogInterceptor = require('./models/console-log-interceptor');
 // Experimental variables
 const horizon = 60//60 // 20
 , environment_change = 26
-, sessionNo = 112000 // 0 ~ 99 = debug; 111900 ~ 19 Nov 2021;
+, sessionNo = 120200 // 0 ~ 99 = debug; 111900~ 19 Nov 2021; 112300~ 23 Nov (though I forgot to setting this)
 , maxGroupSize = 6 //
 , minGroupSize = 2 //3
 , maxWaitingTime = 2 * 60 * 1000
@@ -301,23 +301,26 @@ io.on('connection', function (client) {
 				  	client.subNumCounter++;
 				}
 			}
-		} else if (roomStatus[client.room]['starting'] > 0) {
-			io.to(client.session).emit('you guys are individual condition');
 		} else {
-			roomStatus[client.room]['n']++;
-			roomStatus[client.room]['total_n']++;
-			roomStatus[client.room]['membersID'].push(client.session);
-			// Assigning an ID number within the room
-			client.subNumCounter = 1;
-			while (typeof client.subjectNumber == 'undefined') {
-				if (roomStatus[client.room]['subjectNumbers'].indexOf(client.subNumCounter) == -1) {
-					roomStatus[client.room]['subjectNumbers'].push(client.subNumCounter);
-				  	client.subjectNumber = client.subNumCounter;
-				} else {
-				  	client.subNumCounter++;
-				}
-			}
+			io.to(client.session).emit('reconnected after the game started');
 		}
+		// } else if (roomStatus[client.room]['starting'] > 0) {
+		// 	io.to(client.session).emit('you guys are individual condition');
+		// } else {
+		// 	roomStatus[client.room]['n']++;
+		// 	roomStatus[client.room]['total_n']++;
+		// 	roomStatus[client.room]['membersID'].push(client.session);
+		// 	// Assigning an ID number within the room
+		// 	client.subNumCounter = 1;
+		// 	while (typeof client.subjectNumber == 'undefined') {
+		// 		if (roomStatus[client.room]['subjectNumbers'].indexOf(client.subNumCounter) == -1) {
+		// 			roomStatus[client.room]['subjectNumbers'].push(client.subNumCounter);
+		// 		  	client.subjectNumber = client.subNumCounter;
+		// 		} else {
+		// 		  	client.subNumCounter++;
+		// 		}
+		// 	}
+		// }
 	}
 
 	// When client's game window is ready & latency was calculated
@@ -619,7 +622,7 @@ io.on('connection', function (client) {
     	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
     	console.log(logdate + ' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and got ' + data.payoff + ' at trial ' + data.thisTrial + '.');
     	// update roomStatus
-    	if (typeof roomStatus[client.room] != 'undefined' & typeof client.subjectNumber != 'undefined') {
+    	if (data.thisTrial <= horizon && typeof roomStatus[client.room] != 'undefined' && typeof client.subjectNumber != 'undefined' && typeof roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1] != 'undefined') {
 	    	roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1].push(client.subjectNumber);
 			doneNum = roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1].length;
 			roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1][doneNum-1] = data.choice;
@@ -691,112 +694,119 @@ io.on('connection', function (client) {
 
 	client.on('result stage ended', function (data) {
 
-		let now = new Date()
-        ,	logdate = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
-    	, doneNum
-    	, timeElapsed = now - firstTrialStartingTime
-    	;
-    	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
-    	console.log(logdate + ' - Did client ' + client.subjectNumber + ' in ' + client.room + ' share the payoff info ' + data.payoff + ' at trial ' + data.thisTrial + '? -> ' + data.share + ' (0:NO / 1:YES)');
+		if (data.thisTrial <= horizon) {
 
-		if(typeof client.subjectNumber != 'undefined') {
-
-			if (typeof roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] != 'undefined') {
-				roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, cost_paid: data.cost_paid};
-			}
-
-			// summing up all the payoff earned by the members of this room
-			if(typeof roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] != 'undefined') {
-				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.payoff - data.cost_paid;
-			} else {
-				roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] = data.payoff - data.cost_paid;
-			}
-
-			// console.log('groupTotalPayoff = ' + roomStatus[client.room]['groupTotalPayoff']);
-
-			// recording the decision-making on sharing payoff information
-			// =========  save data to mongodb
-			roomStatus[client.room]['saveDataThisRound'].push(
-				{	date: now.getUTCFullYear() + '-' + (now.getUTCMonth() + 1) +'-' + now.getUTCDate()
-				,	time: now.getUTCHours()+':'+now.getUTCMinutes()+':'+now.getUTCSeconds()
-				,	exp_condition: roomStatus[client.room]['exp_condition']
-				,	isLeftRisky: roomStatus[client.room]['isLeftRisky']
-				,	indivOrGroup: roomStatus[client.room]['indivOrGroup']
-				,	groupSize: roomStatus[client.room]['n']
-				,	room: client.room
-				,	confirmationID: client.session
-				,	subjectNumber: client.subjectNumber
-				,	amazonID: client.amazonID
-				,	round: roomStatus[client.room]['round']
-				,	gameRound: roomStatus[client.room]['gameRound']
-				,	gameType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
-				// ,	chosenOptionFlag: data.chosenOptionFlag
-				// ,	choice: data.choice
-				// ,	payoff: data.payoff
-				,	totalEarning: data.payoff - data.cost_paid
-				,	behaviouralType: 'info-sharing'
-				,	timeElapsed: timeElapsed
-				,	latency: client.latency
-				,	socialFreq: roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1]
-				// ,	socialInfo: data.socialInfo
-				// ,	publicInfo: data.publicInfo
-				,	maxGroupSize: maxGroupSize
-				,	riskDistributionId: data.riskDistributionId
-				,	optionOrder: roomStatus[client.room]['optionOrder']
-				,	didShare: data.share
-				,	payoff: data.payoff
-				,	num_choice: data.num_choice
-				,	info_share_cost: data.info_share_cost
-				}
-			);
-			// =========  save data to mongodb
-
-			// Depending on the number of subject who has already done this round,
-			// the response to the client changes
-			// (i.e., the next round only starts after all the subject at the moment have chosen their option)
-			if(typeof roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] != 'undefined') {
-				// roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1]++;
-				roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]++;
-			}else{
-				// roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1] = 1;
-				roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] = 1;
-			}
-			let now_endFeedback = new Date()
-	        ,	logdate_endFeedback = '[' + now_endFeedback.getUTCFullYear() + '/' + (now_endFeedback.getUTCMonth() + 1) + '/'
+			let now = new Date()
+	        ,	logdate = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
+	    	, doneNum
+	    	, timeElapsed = now - firstTrialStartingTime
 	    	;
-	    	logdate_endFeedback += now_endFeedback.getUTCDate() + '/' + now_endFeedback.getUTCHours() + ':' + now_endFeedback.getUTCMinutes() + ':' + now_endFeedback.getUTCSeconds() + ']';
-	    	logdate_endFeedback += ` - doneNo: ${roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]}, current round is ${roomStatus[client.room]['round']} at ${client.room}`;
-			console.log(logdate_endFeedback);
-			if (roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] >= roomStatus[client.room]['n']) {
-				let now_endResultStage = new Date()
-		        ,	logdate_endResultStage = '[' + now_endResultStage.getUTCFullYear() + '/' + (now_endResultStage.getUTCMonth() + 1) + '/'
-		    	;
-	    		logdate_endResultStage += now_endResultStage.getUTCDate() + '/' + now_endResultStage.getUTCHours() + ':' + now_endResultStage.getUTCMinutes() + ':' + now_endResultStage.getUTCSeconds() + ']';
-			  	console.log(logdate_endResultStage + ` - result stage ended at: ${client.room}`);
+	    	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
+	    	console.log(logdate + ' - Did client ' + client.subjectNumber + ' in ' + client.room + ' share the payoff info ' + data.payoff + ' at trial ' + data.thisTrial + '? -> ' + data.share + ' (0:NO / 1:YES)');
 
-			  	// =========  save data to mongodb by loop
-			  	// if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] <= horizon) {
-			  	if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] % 20 == 0) { //if(roomStatus[client.room]['indivOrGroup'] != 0) {
-			  		const worker = createWorker('./worker_threads/savingBehaviouralData_array.js', roomStatus[client.room]['saveDataThisRound']);
-			  		roomStatus[client.room]['saveDataThisRound'] = [];
+			if( typeof client.subjectNumber != 'undefined' ) {
 
-				  	// for(let i=0; i<roomStatus[client.room]['saveDataThisRound'].length; i++) {
-				  	// 	const worker = createWorker('./worker_threads/savingBehaviouralData_array.js',
-							// roomStatus[client.room]['saveDataThisRound'][i], roomStatus[client.room]['membersID'][i]);
-				  	// 	// Delete all the data that has already been saved:
-				  	// 	if (i == roomStatus[client.room]['saveDataThisRound'].length - 1) { // executing after this for loop
-				  	// 		roomStatus[client.room]['saveDataThisRound'] = [];
-				  	// 	}
-				  	// }
+				if( roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] == null) {
+					roomStatus[client.room]['share_or_not'][roomStatus[client.room]['pointer']-1][client.subjectNumber-1] = {share: data.share, payoff: data.payoff, position: data.num_choice, cost_paid: data.cost_paid};
+					// console.log('share_or_not is: '+ JSON.stringify(roomStatus[client.room]['share_or_not'][client.subjectNumber-1]) );
 				}
-			  	// =========  save data to mongodb by loop END
-			  	// =========  save data to mongodb
-			  	/*const worker = createWorker('./worker_threads/savingBehaviouralData.org.js',
-					roomStatus[client.room]['saveDataThisRound'], client.room);
-			  	*/
-			  	// =========  save data to mongodb END
-			  	proceedRound(client.room);
+
+				// summing up all the payoff earned by the members of this room
+				if(typeof roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] != 'undefined') {
+					roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.payoff - data.cost_paid;
+				} else {
+					roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] = data.payoff - data.cost_paid;
+				}
+
+				// console.log('groupTotalPayoff = ' + roomStatus[client.room]['groupTotalPayoff']);
+
+				// recording the decision-making on sharing payoff information
+				// =========  save data to mongodb
+				roomStatus[client.room]['saveDataThisRound'].push(
+					{	date: now.getUTCFullYear() + '-' + (now.getUTCMonth() + 1) +'-' + now.getUTCDate()
+					,	time: now.getUTCHours()+':'+now.getUTCMinutes()+':'+now.getUTCSeconds()
+					,	exp_condition: roomStatus[client.room]['exp_condition']
+					,	isLeftRisky: roomStatus[client.room]['isLeftRisky']
+					,	indivOrGroup: roomStatus[client.room]['indivOrGroup']
+					,	groupSize: roomStatus[client.room]['n']
+					,	room: client.room
+					,	confirmationID: client.session
+					,	subjectNumber: client.subjectNumber
+					,	amazonID: client.amazonID
+					,	round: roomStatus[client.room]['round']
+					,	gameRound: roomStatus[client.room]['gameRound']
+					,	gameType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
+					// ,	chosenOptionFlag: data.chosenOptionFlag
+					// ,	choice: data.choice
+					// ,	payoff: data.payoff
+					,	totalEarning: data.payoff - data.cost_paid
+					,	behaviouralType: 'info-sharing'
+					,	timeElapsed: timeElapsed
+					,	latency: client.latency
+					,	socialFreq: roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1]
+					// ,	socialInfo: data.socialInfo
+					// ,	publicInfo: data.publicInfo
+					,	maxGroupSize: maxGroupSize
+					,	riskDistributionId: data.riskDistributionId
+					,	optionOrder: roomStatus[client.room]['optionOrder']
+					,	didShare: data.share
+					,	payoff: data.payoff
+					,	num_choice: data.num_choice
+					,	info_share_cost: data.info_share_cost
+					}
+				);
+				// =========  save data to mongodb
+
+				// Depending on the number of subject who has already done this round,
+				// the response to the client changes
+				// (i.e., the next round only starts after all the subject at the moment have chosen their option)
+				if(typeof roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] != 'undefined') {
+					// roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1]++;
+					roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]++;
+				}else{
+					// roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1] = 1;
+					roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] = 1;
+				}
+				let now_endFeedback = new Date()
+		        ,	logdate_endFeedback = '[' + now_endFeedback.getUTCFullYear() + '/' + (now_endFeedback.getUTCMonth() + 1) + '/'
+		    	;
+		    	logdate_endFeedback += now_endFeedback.getUTCDate() + '/' + now_endFeedback.getUTCHours() + ':' + now_endFeedback.getUTCMinutes() + ':' + now_endFeedback.getUTCSeconds() + ']';
+		    	logdate_endFeedback += ` - doneNo: ${roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]}, current round is ${roomStatus[client.room]['round']} at ${client.room}`;
+				console.log(logdate_endFeedback);
+				if (roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] >= roomStatus[client.room]['n']) {
+					let now_endResultStage = new Date()
+			        ,	logdate_endResultStage = '[' + now_endResultStage.getUTCFullYear() + '/' + (now_endResultStage.getUTCMonth() + 1) + '/'
+			    	;
+		    		logdate_endResultStage += now_endResultStage.getUTCDate() + '/' + now_endResultStage.getUTCHours() + ':' + now_endResultStage.getUTCMinutes() + ':' + now_endResultStage.getUTCSeconds() + ']';
+				  	console.log(logdate_endResultStage + ` - result stage ended at: ${client.room} at ${roomStatus[client.room]['round']}`);
+
+				  	// =========  save data to mongodb by loop
+				  	// if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] <= horizon) {
+				  	if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] % 20 == 0) { //if(roomStatus[client.room]['indivOrGroup'] != 0) {
+				  		const worker = createWorker('./worker_threads/savingBehaviouralData_array.js', roomStatus[client.room]['saveDataThisRound']);
+				  		roomStatus[client.room]['saveDataThisRound'] = [];
+
+					  	// for(let i=0; i<roomStatus[client.room]['saveDataThisRound'].length; i++) {
+					  	// 	const worker = createWorker('./worker_threads/savingBehaviouralData_array.js',
+								// roomStatus[client.room]['saveDataThisRound'][i], roomStatus[client.room]['membersID'][i]);
+					  	// 	// Delete all the data that has already been saved:
+					  	// 	if (i == roomStatus[client.room]['saveDataThisRound'].length - 1) { // executing after this for loop
+					  	// 		roomStatus[client.room]['saveDataThisRound'] = [];
+					  	// 	}
+					  	// }
+					}
+				  	// =========  save data to mongodb by loop END
+				  	// =========  save data to mongodb
+				  	/*const worker = createWorker('./worker_threads/savingBehaviouralData.org.js',
+						roomStatus[client.room]['saveDataThisRound'], client.room);
+				  	*/
+				  	// =========  save data to mongodb END
+				  	proceedRound(client.room);
+				}
 			}
+		} else {
+			// there is something wrong because data.thisTrial > horizon
+			io.to(client.session).emit('reconnected after the game started');
 		}
 	});
 

@@ -125,13 +125,13 @@ export function createCircle (scene, page, x, y, radius, color) {
 					.play();
 }
 
-export function createWindow (this_game, scene_name, data) {
+export function createWindow (game, scene_name, data) {
 
-	this_game.scene.start(scene_name, data);
-	this_game.scene.bringToTop(scene_name);
+	game.scene.start(scene_name, data);
+	game.scene.bringToTop(scene_name);
 
 	setTimeout(function(){
-		this_game.scene.stop(scene_name);
+		game.scene.stop(scene_name);
 	},3000);
 
 }

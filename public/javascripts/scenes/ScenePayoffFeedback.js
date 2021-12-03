@@ -109,7 +109,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 		buttonContainer_confirm.add(buttonText_confirm);
 		buttonContainer_confirm.visible = false;
 
-		// pointer over & out effects
+		// pointer over && out effects
 	    buttonImage_yes.on('pointerover', function (pointer) {
 	    	buttonImage_yes.setTint(0xa9a9a9);
 	    }, this);
@@ -217,7 +217,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 		}
 
 		if (indivOrGroup == 1) {
-			if(!this.didMiss & currentTrial < horizon) {
+			if(!this.didMiss && currentTrial < horizon) {
 				// When this is a group condition, sharing choice will appear
 				setTimeout(function(){
 					waitOthersText = this.add.text(16, 60, 'Do you want to share this information\nwith other members?', { fontSize: '30px', fill: '#000', align: "center"});
@@ -229,13 +229,11 @@ class ScenePayoffFeedback extends Phaser.Scene {
 				setTimeout(function(){
 			    	currentChoiceFlag = 0;
 			    	socket.emit('result stage ended'
-		    			, {share: 0
+		    			, {share: -1 // <- no "sharing button in the last trial, so it's -1."
 		    			, payoff: payoff
 		    			, num_choice: this.flag
 		    			, info_share_cost: info_share_cost
-		    			// , totalEarning: (payoff - didShare * info_share_cost)
-		    			// , what_produced: payoff
-	    				, cost_paid: 0
+		    			, cost_paid: 0
 		    			, thisTrial: currentTrial
 		    		});
 			    }.bind(this), feedbackTime * 1000); //2.5 * 1000 ms was the original
@@ -287,7 +285,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 				}.bind(this),  1 * 400);
 
 			}
-		} else if (indivOrGroup == 0 & this.didMiss == true) {
+		} else if (indivOrGroup == 0 && this.didMiss == true) {
 			// if missed
 			setTimeout(function(){
 

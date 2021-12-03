@@ -143,7 +143,7 @@ class SceneMain extends Phaser.Scene {
 				confirmationContainer.visible = true;
 				currentChoiceFlag = i;
 				for (let j=1; j<numOptions+1; j++) {
-					if(currentChoiceFlag > 0 & currentChoiceFlag != j) {
+					if(currentChoiceFlag > 0 && currentChoiceFlag != j) {
 						options['box_active'+j].visible = false;
 						options['box'+j].visible = true;
 					}
@@ -256,8 +256,8 @@ class SceneMain extends Phaser.Scene {
 	    let shared_payoff = [];
 	    let shared_option_position = [];
 	    for (let i = 0; i < maxGroupSize; i++) {
-	    	if (typeof subjectNumber != 'undefined' & share_or_not[i] != null) {
-	    		if (i+1 != subjectNumber & share_or_not[i].share == 1) { // <- only info shared by others will be shown
+	    	if (typeof subjectNumber != 'undefined' && share_or_not[i] != null) {
+	    		if (i+1 != subjectNumber && share_or_not[i].share == 1) { // <- only info shared by others will be shown
 	    			shared_payoff.push(share_or_not[i].payoff);
 	    			// shared_option_position.push( optionOrder.indexOf(optionsKeyList.indexOf(mySocialInfo[i])) )
 	    			shared_option_position.push(share_or_not[i].position);
