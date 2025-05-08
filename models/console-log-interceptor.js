@@ -3,14 +3,18 @@
 const mongoose = require( 'mongoose' );
 const Log = require('./log.js');
 const dbName = 'mongodb://127.0.0.1/loggingtutorial';
-mongoose.connect(dbName, {useNewUrlParser: true, useUnifiedTopology: true}, (err, db) => {
-    let now = new Date()
-    , logtxt = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
-    ;
-    logtxt += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
-    logtxt += " - Connected successfully to 'loggingtutorial";
+
+// Connect using modern Promise-based syntax
+mongoose.connect(dbName, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    const now = new Date();
+    const logtxt = `[${now.getUTCFullYear()}/${now.getUTCMonth() + 1}/${now.getUTCDate()}/${now.getUTCHours()}:${now.getUTCMinutes()}:${now.getUTCSeconds()}] - Connected successfully to 'loggingtutorial'`;
     console.log(logtxt);
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
   });
+
 
 // https://gist.github.com/pguillory/729616
 function hook_stdout(callback) {

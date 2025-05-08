@@ -2,7 +2,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-mongoose.set('useCreateIndex', true);
+// mongoose.set('useCreateIndex', true);
 const Schema = mongoose.Schema;
 
 const Behaviour = new Schema({
@@ -59,10 +59,7 @@ const Behaviour = new Schema({
     publicInfo_10: { type: String, require: false },
     publicInfo_11: { type: String, require: false }
 },
-    //{collection:"helge_pilot_debug"}
-    // {collection:"helge_pilot_2021_summer"}
-    // {collection:"helge_exp_debug"}
-    {collection:"helge_exp_2021_Nov"}
+    {collection:"katja_debug"}
 );
 
 module.exports = mongoose.model('behaviour', Behaviour);
