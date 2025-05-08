@@ -15,26 +15,43 @@
 // ============================================================== */
 
 // Loading modules
-const csv = require("fast-csv")
-,	fs = require('fs')
-,	path = require("path")
-,	express = require('express')
+const express = require('express')
 ,	app = express()
+,	cors = require('cors')
 ,	server = require('http').Server(app)
 ,	io = require('socket.io')(server, {
 	// below are engine.IO options
 	pingInterval: 20000, // how many ms before sending a new ping packet
 	pingTimeout: 50000 // how many ms without a pong packet to consider the connection closed
 	})
-,	routes = require('./routes')
 ,	bodyParser = require("body-parser")
-,	portnum = 8080
+,	portnum = 8181
 ;
 
 // multi-threading like thing in Node.js
 const {isMainThread, Worker} = require('worker_threads');
 
-const expFunctions = require('./models/expFunctions');
+// Loading modules
+// const csv = require("fast-csv")
+// ,	fs = require('fs')
+// ,	path = require("path")
+// ,	express = require('express')
+// ,	app = express()
+// ,	cors = require('cors')
+// ,	server = require('http').Server(app)
+// ,	io = require('socket.io')(server, {
+// 	// below are engine.IO options
+// 	pingInterval: 20000, // how many ms before sending a new ping packet
+// 	pingTimeout: 50000 // how many ms without a pong packet to consider the connection closed
+// 	})
+// ,	bodyParser = require("body-parser")
+// ,	portnum = 8080
+// ;
+
+// // multi-threading like thing in Node.js
+// const {isMainThread, Worker} = require('worker_threads');
+
+// const expFunctions = require('./models/expFunctions');
 // const consoleLogInterceptor = require('./models/console-log-interceptor');
 
 // Experimental variables
@@ -93,6 +110,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors({ origin: ['http://63-250-60-135.cloud-xip.io:8080','http://63.250.60.135:8080','http://192.168.33.10:8080'], credentials: true })); // origin: true
 
 // Routings
 const gameRouter = require('./routes/game'); // loading game.ejs from which amazonID is transferred
@@ -913,7 +931,19 @@ function startSession (room) {
 }
 
 function parameterEmitting (client) {
-	io.to(client.session).emit('this_is_your_parameters', { id: client.session, room: client.room, maxChoiceStageTime: maxChoiceStageTime, maxTimeTestScene: maxTimeTestScene, exp_condition:roomStatus[client.room]['exp_condition'], riskDistributionId:roomStatus[client.room]['riskDistributionId'], isLeftRisky:roomStatus[client.room]['isLeftRisky'], subjectNumber: client.subjectNumber, indivOrGroup: roomStatus[client.room]['indivOrGroup'], numOptions: numOptions, optionOrder: roomStatus[client.room]['optionOrder'] });
+	io.to(client.session).emit('this_is_your_parameters', { 
+		id: client.session
+		, room: client.room
+		, maxChoiceStageTime: maxChoiceStageTime
+		, maxTimeTestScene: maxTimeTestScene
+		, exp_condition:roomStatus[client.room]['exp_condition']
+		, riskDistributionId:roomStatus[client.room]['riskDistributionId']
+		, isLeftRisky:roomStatus[client.room]['isLeftRisky']
+		, subjectNumber: client.subjectNumber
+		, indivOrGroup: roomStatus[client.room]['indivOrGroup']
+		, numOptions: numOptions
+		, optionOrder: roomStatus[client.room]['optionOrder'] 
+	});
 	let nowEmitting = new Date(),
 	  	logdateEmitting = '['+nowEmitting.getUTCFullYear()+'/'+(nowEmitting.getUTCMonth()+1)+'/';
 	  	logdateEmitting += nowEmitting.getUTCDate()+'/'+nowEmitting.getUTCHours()+':'+nowEmitting.getUTCMinutes()+':'+nowEmitting.getUTCSeconds()+']';
