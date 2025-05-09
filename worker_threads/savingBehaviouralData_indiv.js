@@ -8,7 +8,7 @@ const Behaviour = require('../models/behaviouralData');
 async function runWorker() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(dbName);
+    await mongoose.connect(dbName, { useNewUrlParser: true, useUnifiedTopology: true});
     const roomInfo = workerData[0]?.room || 'undefined';
     console.log(` - Connected successfully to server (room: ${roomInfo})`);
 

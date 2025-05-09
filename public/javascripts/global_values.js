@@ -106,7 +106,7 @@ let isEnvironmentReady = false
 ,   completed = 0
 ,   waitingRoomFinishedFlag = 0
 ,	understandingCheckStarted = 0
-,   averageLatency = [0,0]
+,   averageLatency = [0,0,0]
 ,   submittedLatency = -1
 ,	mySocialInfoList = {option1:0, option2:0, option3:0, option4:0}
 ,	mySocialInfo

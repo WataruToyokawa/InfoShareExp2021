@@ -505,7 +505,7 @@ export function randomChoiceFromGaussian(choice, socialInfo, publicInfo) {
     } else {
         saveChoiceDataLocally({choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId});
     }
-    //console.log('choice was made: choice = ' + choice + ' and payoff = ' + thisPayoff + '.');
+    console.log('choice was made: choice = ' + choice + ' and payoff = ' + thisPayoff + '.');
     return thisPayoff;
 }
 
@@ -530,7 +530,7 @@ export function saveChoiceDataLocally (data) {
         ,   payoff: data.payoff
         ,   totalEarning: data.totalEarning
         ,   behaviouralType: 'choice'
-        ,   latency: sum(averageLatency)/averageLatency.length
+        ,   latency: NaN //sum(averageLatency)/averageLatency.length
         ,   maxGroupSize: maxGroupSize
         ,   riskDistributionId: data.riskDistributionId
         }

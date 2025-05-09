@@ -39,12 +39,7 @@ import {rand
 	, BoxMuller
 	, BoxMuller_positive
 	, sum
-	, waitingBarCompleted
-	, debug_pointerdown
-	, sending_core_is_ready
-	, goToQuestionnaire
 	, settingConfirmationID
-	, testFunction
     , settingRiskDistribution
     , settingRiskDistribution_4ab
     , createWindow
@@ -72,46 +67,46 @@ window.onload = function() {
     }
     //======== end: monitoring reload activity =====
 
-    //======== monitoring Tab activity ==========
+    //======== monitoring Tab activity (leave the comment out when launcing) ==========
     let hiddenTimer
     ,   hidden_elapsedTime = 0
     ;
-        // Judging the window state at the moment of this window read
-    if(window.document.visibilityState == 'hidden'){
-        hiddenTimer = setInterval(function(){
-            hidden_elapsedTime += 500;
-            if (hidden_elapsedTime > browserHiddenPermittedTime) {
-                socket.io.opts.query = 'sessionName=already_finished';
-                socket.disconnect();
-            }
-        }, 500);
-    }
-        // When visibility status is changed, judge the status again
-    window.document.addEventListener("visibilitychange", function(e){
-        ////console.log('this window got invisible.');
-        if (window.document.visibilityState == 'hidden') {
-            hidden_elapsedTime += 1;
-            hiddenTimer = setInterval(function(){
-                hidden_elapsedTime += 500;
-                if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
-                    socket.io.opts.query = 'sessionName=already_finished';
-                    socket.disconnect();
-                }
-            }, 500);
-        } else {
-            clearTimeout(hiddenTimer);
-            if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
-                setTimeout(function(){
-                    // Force client to move to the questionnaire
-                    socket.io.opts.query = 'sessionName=already_finished';
-                    socket.disconnect();
-                    completed = 'browserHidden';
-                    window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
-                }, 200); // wait until waitingBonus is fully calculated
-            }
-            hidden_elapsedTime = 0;
-        }
-    });
+    //     // Judging the window state at the moment of this window read
+    // if(window.document.visibilityState == 'hidden'){
+    //     hiddenTimer = setInterval(function(){
+    //         hidden_elapsedTime += 500;
+    //         if (hidden_elapsedTime > browserHiddenPermittedTime) {
+    //             socket.io.opts.query = 'sessionName=already_finished';
+    //             socket.disconnect();
+    //         }
+    //     }, 500);
+    // }
+    //     // When visibility status is changed, judge the status again
+    // window.document.addEventListener("visibilitychange", function(e){
+    //     ////console.log('this window got invisible.');
+    //     if (window.document.visibilityState == 'hidden') {
+    //         hidden_elapsedTime += 1;
+    //         hiddenTimer = setInterval(function(){
+    //             hidden_elapsedTime += 500;
+    //             if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
+    //                 socket.io.opts.query = 'sessionName=already_finished';
+    //                 socket.disconnect();
+    //             }
+    //         }, 500);
+    //     } else {
+    //         clearTimeout(hiddenTimer);
+    //         if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
+    //             setTimeout(function(){
+    //                 // Force client to move to the questionnaire
+    //                 socket.io.opts.query = 'sessionName=already_finished';
+    //                 socket.disconnect();
+    //                 completed = 'browserHidden';
+    //                 window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+    //             }, 200); // wait until waitingBonus is fully calculated
+    //         }
+    //         hidden_elapsedTime = 0;
+    //     }
+    // });
     //======== end: monitoring tab activity =====
 
 	let config = {
@@ -194,7 +189,7 @@ window.onload = function() {
         subjectNumber = data.subjectNumber;
         isLeftRisky = data.isLeftRisky;
         numOptions = data.numOptions;
-        info_share_cost = data.info_share_cost;
+        // info_share_cost = data.info_share_cost;
         optionOrder = data.optionOrder;
         taskOrder = data.taskOrder;
         instructionText_indiv[1] = instructionText_indiv[1] + numOptions + ' slot machines.';
@@ -223,8 +218,8 @@ window.onload = function() {
         //console.log('and client subjectNumber is ' + subjectNumber);
         //console.log('and maxChoiceStageTime = ' + maxChoiceStageTime);
         //console.log('and confirmationID is = ' + confirmationID);
-        $("#exp_condition").val(taskOrder[data.gameRound]);
-        $("#info_share_cost").val(data.info_share_cost);
+        // $("#exp_condition").val(taskOrder[data.gameRound]);
+        // $("#info_share_cost").val(data.info_share_cost);
         settingConfirmationID(confirmationID);
     });
 
@@ -361,7 +356,7 @@ window.onload = function() {
             mySocialInfo = data.socialInfo[data.pointer-2]; //[data.round-2];
             myPublicInfo = data.publicInfo[data.pointer-2];
             choiceOrder = data.choiceOrder[data.pointer-2];
-            share_or_not = data.share_or_not[data.pointer-2];
+            // share_or_not = data.share_or_not[data.pointer-2];
             groupTotalScore = sum( data.groupTotalPayoff );
             totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
             totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];

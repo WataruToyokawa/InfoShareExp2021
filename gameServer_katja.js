@@ -300,10 +300,7 @@ io.on('connection', function (client) {
 		if (client.started == 0) {
 			client.started = 1
 			// Time stamp
-			let now_coreReady = new Date();
-		    let logtext_coreReady = '['+now_coreReady.getUTCFullYear()+'/'+(now_coreReady.getUTCMonth()+1)+'/';
-		    logtext_coreReady += now_coreReady.getUTCDate()+'/'+now_coreReady.getUTCHours()+':'+now_coreReady.getUTCMinutes()+':'+now_coreReady.getUTCSeconds()+']';
-		    logtext_coreReady += ' - Client: ' + client.session +'('+client.amazonID+') responds with an average latency = '+ data.latency + ' ms.';
+		    let logtext_coreReady = ' - Client: ' + client.session +'('+client.amazonID+') responds with an average latency = '+ data.latency + ' ms.';
 		    client.latency = data.latency; 
 		    console.log(logtext_coreReady);
 		    if(data.latency < data.maxLatencyForGroupCondition) {
@@ -317,7 +314,7 @@ io.on('connection', function (client) {
 							var now_joined1 = new Date();
 							var logdate_joined1 = '['+now_joined1.getUTCFullYear()+'/'+(now_joined1.getUTCMonth()+1)+'/';
 							logdate_joined1 += now_joined1.getUTCDate()+'/'+now_joined1.getUTCHours()+':'+now_joined1.getUTCMinutes()+':'+now_joined1.getUTCSeconds()+']';
-							console.log(logdate_joined1+' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+							console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 						} else {
 							client.roomFindingCounter++;
 						}
@@ -354,10 +351,7 @@ io.on('connection', function (client) {
 				      };
 				      // Register the client to the new room
 				      client.room = client.newRoomName;
-				      let now_joined2 = new Date();
-				      let logdate_joined2 = '['+now_joined2.getUTCFullYear()+'/'+(now_joined2.getUTCMonth()+1)+'/';
-				      logdate_joined2 += now_joined2.getUTCDate()+'/'+now_joined2.getUTCHours()+':'+now_joined2.getUTCMinutes()+':'+now_joined2.getUTCSeconds()+']';
-				      console.log(logdate_joined2+' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+				      console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 				      // Make a clock object in the new room
 				      countDownMainStage[client.room] = new Object();
 				      countDownWaiting[client.room] = new Object();
@@ -415,10 +409,7 @@ io.on('connection', function (client) {
 		      	};
 				// Register the client to the new room
 				client.room = client.newRoomName;
-				var now_joined3 = new Date();
-				var logdate_joined3 = '['+now_joined3.getUTCFullYear()+'/'+(now_joined3.getUTCMonth()+1)+'/';
-				logdate_joined3 += now_joined3.getUTCDate()+'/'+now_joined3.getUTCHours()+':'+now_joined3.getUTCMinutes()+':'+now_joined3.getUTCSeconds()+']';
-				console.log(logdate_joined3+' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+				console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 				// Let the client join the registered room
 				client.join(client.room);
 				//io.to(client).emit('S_to_C_clientSessionName', {sessionName: client.session, roomName: client.room});
@@ -433,11 +424,7 @@ io.on('connection', function (client) {
 		    	// Let client wait until start flag turns 1
 		      	// the clock for the waiting room starts when the first client pops in.
 				if (roomStatus[client.room]['n']===1) {
-					let now_1stIndiv = new Date(),
-					    logdate_1stIndiv = '[' + now_1stIndiv.getUTCFullYear() + '/' + (now_1stIndiv.getUTCMonth() + 1) + '/';
-					let doneNum;
-					logdate_1stIndiv += now_1stIndiv.getUTCDate() + '/' + now_1stIndiv.getUTCHours() + ':' + now_1stIndiv.getUTCMinutes() + ':' + now_1stIndiv.getUTCSeconds() + ']';
-					console.log(logdate_1stIndiv + ' - The first participant came in to the room ' + client.room + '.');
+					console.log(' - The first participant came in to the room ' + client.room + '.');
 					startWaitingStageClock(client.room);
 				}
 				// inform rest time to the room
@@ -516,15 +503,9 @@ io.on('connection', function (client) {
 		  	roomStatus[client.room]['stage'] = 'secondWaitingRoom';
 		}
 		roomStatus[client.room]['testPassed']++;
-		var now670 = new Date(),
-		    logdate670 = '['+now670.getUTCFullYear()+'/'+(now670.getUTCMonth()+1)+'/';
-		    logdate670 += now670.getUTCDate()+'/'+now670.getUTCHours()+':'+now670.getUTCMinutes()+':'+now670.getUTCSeconds()+'] ';
-		console.log(logdate670 +' - '+ client.session + ' passed the test.');
+		console.log(' - '+ client.session + ' passed the test.');
 		if (roomStatus[client.room]['testPassed'] >= roomStatus[client.room]['n']) {
-		  	var now675 = new Date(),
-		    logdate675 = '['+now675.getUTCFullYear()+'/'+(now675.getUTCMonth()+1)+'/';
-		    logdate675 += now675.getUTCDate()+'/'+now675.getUTCHours()+':'+now675.getUTCMinutes()+':'+now675.getUTCSeconds()+']';
-		  	console.log(logdate675 + ' - ' + client.room + ' is ready to start the game.');
+		  	console.log(' - ' + client.room + ' is ready to start the game.');
 		  	io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
 		  	firstTrialStartingTime = now675;
 		  	roomStatus[client.room]['stage'] = 'mainTask';
@@ -534,13 +515,7 @@ io.on('connection', function (client) {
 	});
 
 	client.on('choice made', function (data) {
-		let now = new Date()
-        ,	logdate = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
-    	, doneNum
-    	, timeElapsed = now - firstTrialStartingTime
-    	;
-    	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
-    	console.log(logdate + ' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and got ' + data.payoff + ' at trial ' + data.thisTrial + '.');
+		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and got ' + data.payoff + ' at trial ' + data.thisTrial + '.');
     	// update roomStatus
     	if (typeof roomStatus[client.room] != 'undefined' & typeof client.subjectNumber != 'undefined') {
 	    	roomStatus[client.room]['doneId'][roomStatus[client.room]['round']-1].push(client.subjectNumber);
@@ -596,13 +571,7 @@ io.on('connection', function (client) {
 	});
 
 	client.on('choice made 4ab', function (data) {
-		let now = new Date()
-        ,	logdate = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
-    	, doneNum
-    	, timeElapsed = now - firstTrialStartingTime
-    	;
-    	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
-    	console.log(logdate + ' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and got ' + data.payoff + ' at trial ' + data.thisTrial + '.');
+		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and got ' + data.payoff + ' at trial ' + data.thisTrial + '.');
     	// update roomStatus
     	// if (typeof roomStatus[client.room] != 'undefined') {
     	if (typeof roomStatus[client.room] != 'undefined' & typeof client.subjectNumber != 'undefined') {
@@ -663,13 +632,7 @@ io.on('connection', function (client) {
 	});
 
 	client.on('Data from Indiv', function (data) {
-		let now = new Date()
-        ,	logdate = '[' + now.getUTCFullYear() + '/' + (now.getUTCMonth() + 1) + '/'
-    	, doneNum
-    	, timeElapsed = now - firstTrialStartingTime
-    	;
-    	logdate += now.getUTCDate() + '/' + now.getUTCHours() + ':' + now.getUTCMinutes() + ':' + now.getUTCSeconds() + ']';
-    	console.log(logdate + ' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') ended the task.');
+		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') ended the task.');
 
     	for(let i=0; i<data.length; i++) {
 	  		const worker = createWorker('./worker_threads/savingBehaviouralData_indiv.js', data[i], client.session);
@@ -686,18 +649,10 @@ io.on('connection', function (client) {
 			}else{
 				roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1] = 1;
 			}
-			let now_endFeedback = new Date()
-	        ,	logdate_endFeedback = '[' + now_endFeedback.getUTCFullYear() + '/' + (now_endFeedback.getUTCMonth() + 1) + '/'
-	    	;
-	    	logdate_endFeedback += now_endFeedback.getUTCDate() + '/' + now_endFeedback.getUTCHours() + ':' + now_endFeedback.getUTCMinutes() + ':' + now_endFeedback.getUTCSeconds() + ']';
-	    	logdate_endFeedback += ` - doneNo: ${roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1]}, current round is ${roomStatus[client.room]['round']} at ${client.room}`;
+			let logdate_endFeedback = ` - doneNo: ${roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1]}, current round is ${roomStatus[client.room]['round']} at ${client.room}`;
 			console.log(logdate_endFeedback);
 			if (roomStatus[client.room]['doneNo'][roomStatus[client.room]['round']-1] >= roomStatus[client.room]['n']) {
-				let now_endResultStage = new Date()
-		        ,	logdate_endResultStage = '[' + now_endResultStage.getUTCFullYear() + '/' + (now_endResultStage.getUTCMonth() + 1) + '/'
-		    	;
-	    		logdate_endResultStage += now_endResultStage.getUTCDate() + '/' + now_endResultStage.getUTCHours() + ':' + now_endResultStage.getUTCMinutes() + ':' + now_endResultStage.getUTCSeconds() + ']';
-			  	console.log(logdate_endResultStage + ` - result stage ended at: ${client.room}`);
+				console.log(` - result stage ended at: ${client.room}`);
 
 			  	// =========  save data to mongodb by loop
 			  	// if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] <= horizon) {
@@ -789,7 +744,7 @@ io.on('connection', function (client) {
 					let now612 = new Date(),
 					logdate675 = '['+now612.getUTCFullYear()+'/'+(now612.getUTCMonth()+1)+'/';
 					logdate675 += now612.getUTCDate()+'/'+now612.getUTCHours()+':'+now612.getUTCMinutes()+':'+now612.getUTCSeconds()+']';
-					console.log(logdate675 + ' - ' + client.room + ' is ready to start the game.');
+					console.log(' - ' + client.room + ' is ready to start the game.');
 					io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
 					firstTrialStartingTime = now612;
 					roomStatus[client.room]['stage'] = 'mainTask';
@@ -823,7 +778,7 @@ io.on('connection', function (client) {
 			var now744 = new Date(),
 			logdate744 = '['+now744.getUTCFullYear()+'/'+(now744.getUTCMonth()+1)+'/';
 			logdate744 += now744.getUTCDate()+'/'+now744.getUTCHours()+':'+now744.getUTCMinutes()+':'+now744.getUTCSeconds()+']';
-			console.log(logdate744+' - client disconnected: '+ client.session+' ('+client.amazonID+')'+' (room N: '+roomStatus[thisRoomName]['n']+', total N: '+total_N_now+') - handshakeID:'+ client.session);
+			console.log(' - client disconnected: '+ client.session+' ('+client.amazonID+')'+' (room N: '+roomStatus[thisRoomName]['n']+', total N: '+total_N_now+')');
 		}
 	});
 });
@@ -927,7 +882,7 @@ function startSession (room) {
 	var now814 = new Date(),
 	  	logdate814 = '['+now814.getUTCFullYear()+'/'+(now814.getUTCMonth()+1)+'/';
 	  	logdate814 += now814.getUTCDate()+'/'+now814.getUTCHours()+':'+now814.getUTCMinutes()+':'+now814.getUTCSeconds()+']';
-	console.log(logdate814+' - session started in '+room);
+	console.log(' - session started in '+room);
 }
 
 function parameterEmitting (client) {
@@ -947,15 +902,15 @@ function parameterEmitting (client) {
 	let nowEmitting = new Date(),
 	  	logdateEmitting = '['+nowEmitting.getUTCFullYear()+'/'+(nowEmitting.getUTCMonth()+1)+'/';
 	  	logdateEmitting += nowEmitting.getUTCDate()+'/'+nowEmitting.getUTCHours()+':'+nowEmitting.getUTCMinutes()+':'+nowEmitting.getUTCSeconds()+']';
-	console.log(logdateEmitting+' - parameters were sent to ' + client.session + ' in room ' + client.room);
+	console.log(' - parameters were sent to ' + client.session + ' in room ' + client.room);
 }
 
 function startWaitingStageClock (room) {
-    var now823 = new Date(),
-        logtxt823 = '['+now823.getUTCFullYear()+'/'+(now823.getUTCMonth()+1)+'/';
-        logtxt823 += now823.getUTCDate()+'/'+now823.getUTCHours()+':'+now823.getUTCMinutes()+':'+now823.getUTCSeconds()+']';
-        logtxt823 += ' - Waiting room opened at '+ room;
-    console.log(logtxt823);
+    // var now823 = new Date(),
+    //     logtxt823 = '['+now823.getUTCFullYear()+'/'+(now823.getUTCMonth()+1)+'/';
+    //     logtxt823 += now823.getUTCDate()+'/'+now823.getUTCHours()+':'+now823.getUTCMinutes()+':'+now823.getUTCSeconds()+']';
+    //     logtxt823 += ' - Waiting room opened at '+ room;
+    console.log(' - Waiting room opened at '+ room);
     countDown(room);
 }
 

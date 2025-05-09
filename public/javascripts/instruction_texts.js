@@ -65,9 +65,9 @@ const tutorialText_group =
 
 	, 'You have <span class="note">up to 15 seconds</span> to make a choice. <br><br>Note: You cannot click any options here in the tutorial for illustrative purposes. Let\'s see what happens if time is up.'
 
-	// , 'Time was up and you missed the trial (which means 0 contribution)! Try not to miss any trial! <br><br>Alright, you completed the tutorial. Well done! Then go to a short quiz.'
+	// , 'Time was up and you missed the trial (which means 0 contribution)! Try not to miss any trial! Alright, you completed the tutorial. Well done! Then go to a short quiz.'
 
-	, 'Time was up and you missed the trial (which means 0 contribution)! Try not to miss any trial! <br><br>If you miss a trial, you are asked to confirm you are still participating in the experiment. If you do not manage to confirm you are still in the experiment in another 8 seconds, we have to assume you ended the study and the study will abort without compensation. Please click the "Yes, I am!" button below.'
+	, '<br>Time was up and you missed the trial (which means 0 contribution)! Try not to miss any trial! If you miss a trial, you are asked to confirm you are still participating in the experiment. If you do not manage to confirm you are still in the experiment in another 8 seconds, we have to assume you ended the study and the study will abort without compensation. Please click the "Yes, I am!" button below.'
 
 	, '<br>The tutorial is done. <br><br>Next, you will proceed to a short comprehension quiz!'
 	];
@@ -121,7 +121,7 @@ const tutorialText_indiv =
 
 	, 'You have <span class="note">up to 15 seconds</span> in making a choice. <br><br>Note: You cannot click any options here for the tutorial purpose. Let\'s see what happens if time is up.'
 
-	, 'Time was up and you missed the trial! Try not to miss any trial! <br><br>If you miss a trial, you are asked to confirm you are still participating in the experiment. If you do not manage to confirm you are still in the experiment in another 8 seconds, we have to assume you ended the study and the study will abort without compensation. Please click the "Yes, I am!" button below.'
+	, '<br>Time was up and you missed the trial! Try not to miss any trial! <br><br>If you miss a trial, you are asked to confirm you are still participating in the experiment. If you do not manage to confirm you are still in the experiment in another 8 seconds, we have to assume you ended the study and the study will abort without compensation. Please click the "Yes, I am!" button below.'
 
 	, '<br>The tutorial is done. <br><br>Next, you will proceed to a short comprehension quiz!'
 	];
