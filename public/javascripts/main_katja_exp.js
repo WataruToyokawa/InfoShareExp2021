@@ -20,7 +20,7 @@ import SceneWaitingRoom0 from './scenes/SceneWaitingRoom0.js';
 import SceneWaitingRoom from './scenes/SceneWaitingRoom.js';
 import SceneWaitingRoom2 from './scenes/SceneWaitingRoom2.js';
 import SceneInstruction from './scenes/SceneInstruction.js';
-import SceneTutorial from './scenes/SceneTutorial.js';
+import SceneTutorial_katja from './scenes/SceneTutorial_katja.js';
 import SceneTutorialFeedback from './scenes/SceneTutorialFeedback.js';
 import SceneTutorialSharingCostExplained from './scenes/SceneTutorialSharingCostExplained.js';
 import SceneBeforeUnderstandingTest from './scenes/SceneBeforeUnderstandingTest.js';
@@ -137,7 +137,7 @@ window.onload = function() {
 	    , SceneWaitingRoom
 	    , SceneWaitingRoom2
 	    , SceneInstruction
-    	, SceneTutorial
+    	, SceneTutorial_katja
     	, SceneTutorialFeedback
     	, SceneTutorialSharingCostExplained
     	, SceneBeforeUnderstandingTest
@@ -157,7 +157,7 @@ window.onload = function() {
 	game.scene.add('SceneWaitingRoom');
 	game.scene.add('SceneWaitingRoom2');
 	game.scene.add('SceneInstruction');
-	game.scene.add('SceneTutorial');
+	game.scene.add('SceneTutorial_katja');
 	game.scene.add('SceneTutorialFeedback');
 	game.scene.add('SceneTutorialSharingCostExplained');
 	game.scene.add('SceneBeforeUnderstandingTest');
@@ -179,7 +179,8 @@ window.onload = function() {
     });
 
     socket.on('this_is_your_parameters', function (data) {
-    	//console.log('received "this_is_your_parameters" from the server');
+    	// console.log('received "this_is_your_parameters" from the server and numOptions == ' + data);
+        console.log(data);
         confirmationID = data.id;
         myRoom = data.room;
         maxChoiceStageTime = data.maxChoiceStageTime;
@@ -199,7 +200,7 @@ window.onload = function() {
         if (data.numOptions == 2) {
         	// settingRiskDistribution(data.riskDistributionId);
         	settingRiskDistribution(taskOrder[data.gameRound]); // data.taskOrder might be better?
-            // console.log('task id is ' + taskOrder[data.gameRound]);
+            console.log('task id is ' + taskOrder[data.gameRound] + ' and payoff_riskyCommon = ' + payoff_riskyCommon);
         } else {
         	settingRiskDistribution_4ab(data.riskDistributionId);
         }
@@ -247,7 +248,7 @@ window.onload = function() {
     	game.scene.stop('SceneWaitingRoom0');
     	game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
-    	game.scene.stop('SceneTutorial');
+    	game.scene.stop('SceneTutorial_katja');
     	game.scene.stop('SceneTutorialFeedback');
     	game.scene.stop('SceneUnderstandingTest');
     	game.scene.stop('ScenePerfect');
@@ -264,7 +265,7 @@ window.onload = function() {
     	game.scene.stop('SceneWaitingRoom0');
     	game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
-    	game.scene.stop('SceneTutorial');
+    	game.scene.stop('SceneTutorial_katja');
     	game.scene.stop('SceneTutorialFeedback');
     	game.scene.stop('SceneUnderstandingTest');
     	game.scene.stop('ScenePerfect');
@@ -308,7 +309,7 @@ window.onload = function() {
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
-    	game.scene.stop('SceneTutorial');
+    	game.scene.stop('SceneTutorial_katja');
     	game.scene.stop('SceneTutorialFeedback');
     	game.scene.stop('SceneUnderstandingTest');
     	game.scene.stop('ScenePerfect');
@@ -324,7 +325,7 @@ window.onload = function() {
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
-    	game.scene.stop('SceneTutorial');
+    	game.scene.stop('SceneTutorial_katja');
     	game.scene.stop('SceneTutorialFeedback');
     	game.scene.stop('SceneUnderstandingTest');
     	game.scene.stop('ScenePerfect');

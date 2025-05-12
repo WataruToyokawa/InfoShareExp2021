@@ -92,7 +92,7 @@ class SceneInstruction extends Phaser.Scene {
 				}
 	    	} else {
 	    		if (!isInstructionRevisit) {
-	    			this.scene.start('SceneTutorial', { indivOrGroup: indivOrGroup, exp_condition: exp_condition, tutorialPosition:0 });
+	    			this.scene.start('SceneTutorial_katja', { indivOrGroup: indivOrGroup, exp_condition: exp_condition, tutorialPosition:0 });
 	    			nextButtonImage.visible = false;
 	    			backButtonImage.visible = false;
 	    			//nextButtonContainer.destroy();

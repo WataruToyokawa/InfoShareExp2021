@@ -133,7 +133,7 @@ class SceneTutorialFeedback extends Phaser.Scene {
 	    		this.scene.start('SceneTutorialSharingCostExplained', { tutorialPosition: updatedTutorialPosition });
 	    		this.scene.sleep('SceneTutorialFeedback');
 	    	} else {
-	    		this.scene.start('SceneTutorial', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
+	    		this.scene.start('SceneTutorial_katja', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
 	    		this.scene.sleep('SceneTutorialFeedback');
 	    	}
 	    }, this);
@@ -152,7 +152,7 @@ class SceneTutorialFeedback extends Phaser.Scene {
 		    	let updatedTutorialPosition = tutorialPosition + 1;
 		    	tutorialTrial++;
 		    	this.scene.sleep('SceneTutorialFeedback');
-		    	this.scene.start('SceneTutorial', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
+		    	this.scene.start('SceneTutorial_katja', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
 		    }, this);
 		}
 
@@ -232,7 +232,7 @@ class SceneTutorialFeedback extends Phaser.Scene {
 					let updatedTutorialPosition = tutorialPosition + 1;
 		    		tutorialTrial++;
 		    		this.scene.stop('SceneTutorialFeedback');
-		    		this.scene.start('SceneTutorial', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
+		    		this.scene.start('SceneTutorial_katja', { indivOrGroup: indivOrGroup, exp_condition: exp_condition,tutorialPosition: updatedTutorialPosition });
 				}.bind(this), feedbackTime * 1000);
 			} else {
 				setTimeout(function(){

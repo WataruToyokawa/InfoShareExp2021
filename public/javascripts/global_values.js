@@ -14,10 +14,16 @@ const portnumQuestionnaire = 8000
 	, socket = io.connect(htmlServer+portnum, { query: 'amazonID='+amazonID }) // portnum is defined in game;ejs
 ;
 
-let numOptions
+// === experimental parameters ===
+let numOptions = 0
 ,	info_share_cost = 0
 ,	info_share_cost_total = 0
-,	environment_change
+,	environment_change = 0
+;
+
+const mean_list = []
+, sd_list = []
+, base_mean = 1
 ;
 
 // Gaussian distribution (E[risky] = 1.61)
