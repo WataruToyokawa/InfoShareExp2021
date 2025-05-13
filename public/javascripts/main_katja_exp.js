@@ -358,7 +358,7 @@ window.onload = function() {
             myPublicInfo = data.publicInfo[data.pointer-2];
             choiceOrder = data.choiceOrder[data.pointer-2];
             // share_or_not = data.share_or_not[data.pointer-2];
-            groupTotalScore = sum( data.groupTotalPayoff );
+            groupTotalScore = data.groupTotalPayoff[data.pointer - 1] //sum( data.groupTotalPayoff );
             totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
             totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
             // payoff_info = data.share_or_not[data.round-2]['payoff'];
@@ -366,7 +366,7 @@ window.onload = function() {
             // console.log('mySocialInfo: ' + mySocialInfo);
             // console.log('myPublicInfo: ' + myPublicInfo);
             // console.log('choiceOrder: ' + choiceOrder);
-            // console.log('totalPayoff_perIndiv_perGame: ' + totalPayoff_perIndiv_perGame[gameRound] + ' with group total = ' + groupTotalScore);
+            console.log(data);
             // for (let i = 0; i < maxGroupSize; i++) {
             // 	if(typeof share_or_not[i] != 'undefined') {
             // 		console.log('subjectNumber' + i + ': share:' + JSON.stringify(share_or_not[i]));
