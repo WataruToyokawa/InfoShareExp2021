@@ -28,7 +28,7 @@ import SceneUnderstandingTest from './scenes/SceneUnderstandingTest.js';
 import ScenePerfect from './scenes/ScenePerfect.js';
 import SceneStartCountdown from './scenes/SceneStartCountdown.js';
 import ScenePayoffFeedback from './scenes/ScenePayoffFeedback.js';
-import SceneMain from './scenes/SceneMain.js';
+import SceneMain_katja from './scenes/SceneMain_katja.js';
 import SceneGoToNewGameRound from './scenes/SceneGoToNewGameRound.js';
 import SceneGoToQuestionnaire from './scenes/SceneGoToQuestionnaire.js';
 import SceneMessagePopUp from './scenes/SceneMessagePopUp.js';
@@ -144,7 +144,7 @@ window.onload = function() {
     	, SceneUnderstandingTest
     	, ScenePerfect
     	, SceneStartCountdown
-    	, SceneMain
+    	, SceneMain_katja
     	, ScenePayoffFeedback
     	, SceneGoToNewGameRound
     	, SceneGoToQuestionnaire
@@ -164,7 +164,7 @@ window.onload = function() {
 	game.scene.add('SceneUnderstandingTest');
 	game.scene.add('ScenePerfect');
 	game.scene.add('SceneStartCountdown');
-	game.scene.add('SceneMain');
+	game.scene.add('SceneMain_katja');
 	game.scene.add('ScenePayoffFeedback');
 	game.scene.add('SceneGoToQuestionnaire');
 	game.scene.add('SceneGoToNewGameRound');
@@ -292,9 +292,9 @@ window.onload = function() {
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
 
-        // game.scene.start('ScenePerfect', data); // debug
+        game.scene.start('ScenePerfect', data); // debug
 
-       	game.scene.start('SceneInstruction', data);
+       	// game.scene.start('SceneInstruction', data);
 
     });
 
@@ -429,7 +429,7 @@ window.onload = function() {
             }
         	game.scene.stop('ScenePayoffFeedback');
         	isWaiting = false
-        	game.scene.start('SceneMain', {gameRound:gameRound, round:currentTrial});
+        	game.scene.start('SceneMain_katja', {gameRound:gameRound, round:currentTrial});
         	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.round-1]);
         }
         else {

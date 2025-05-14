@@ -380,6 +380,46 @@ export function showPublicInfo (shared_payoff, shared_option_position, socialInf
 }
 
 // madeChoice
+export function madeChoice_katja (optionLocation, isMissed, optionOrder) {
+    
+    let thisChoice;
+    if (optionLocation == -1) {
+        thisChoice = 0;//'miss';
+        payoffText.x = 400;
+    } else {
+        // "optionLocation" just indicates a position of the chosen option in the subject's monitor,
+        // e.g., optionLocation == 1 when she chose the left option.
+        // Therefore, I need to translate this position into the actual option
+        // thisChoice is an indicator of the actual option chosen
+        thisChoice = optionOrder[optionLocation -1];
+        payoffText.x = option1_positionX + space_between_boxes*(optionLocation-1);
+    }
+
+    // calculating the payoff from this choice
+    if (isMissed) {
+        payoff = 0;
+        didShare = 0;
+        if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
+            socket.emit('choice made katja', 
+                {chosenOptionFlag:-1
+                    , choice: 'miss'
+                    , payoff: 0
+                    , socialInfo: mySocialInfo
+                    , subjectNumber: subjectNumber
+                    , riskDistributionId: riskDistributionId
+                    , thisTrial: currentTrial
+                });
+        } 
+    } else {
+        let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, optionsKeyList[thisChoice-1], payoffList[optionsKeyList[thisChoice-1]], probabilityList[optionsKeyList[thisChoice-1]], mySocialInfo);
+    }
+    // score += individual_payoff;
+    // scoreText.setText('Total score: ' + score);
+    // payoffText.setText(payoff);
+    // payoffText.visible = true;
+    trialText.setText(' - Current trial: ' + currentTrial + ' / ' + horizon);
+}
+
 export function madeChoice (flag, distribution, optionOrder) {
     // A new cost is set
     // info_share_cost = rand(100, 0);
@@ -421,6 +461,34 @@ export function madeChoice (flag, distribution, optionOrder) {
     payoffText.setText(payoff);
     payoffText.visible = true;
     trialText.setText('Current trial: ' + currentTrial + ' / ' + horizon);
+}
+
+export function payoffGenerator(chosenOptionFlag, num_choice, choice, payoffProbList, socialInfo) {
+    let roulette = Math.random()
+    let noise = BoxMuller(0, smallNoise)
+    let this_individual_payoff
+    let this_arm_prob = payoffProbList[chosenOptionFlag-1]
+    if (this_arm_prob >= roulette) { // reward event
+        this_individual_payoff = 1;
+        // myEarnings.push(this_individual_payoff);
+        myChoices.push(choice);
+    } else { // no reward event
+        this_individual_payoff = 0;
+        // myEarnings.push(this_individual_payoff);
+        myChoices.push(choice);
+    }
+    myLastChoiceFlag = chosenOptionFlag;
+    socket.emit('choice made katja', 
+        {chosenOptionFlag:chosenOptionFlag // chosen option's id
+            , num_choice: num_choice // location of the chosen option
+            , choice: choice // another chosen option's id ???
+            , individual_payoff: this_individual_payoff
+            , socialInfo: socialInfo
+            , subjectNumber: subjectNumber
+            , thisTrial: currentTrial
+        });
+    //console.log('choice was made: choice = ' + choice + ' and payoff = ' + this_individual_payoff + '.');
+    return this_individual_payoff;
 }
 
 export function randomChoiceFromBinary(chosenOptionFlag, num_choice, choice, payoffList, p_rare, socialInfo, publicInfo) {
