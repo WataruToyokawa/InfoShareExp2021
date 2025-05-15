@@ -32,8 +32,7 @@ const express = require('express')
 const {isMainThread, Worker} = require('worker_threads');
 
 // Experimental variables
-const horizon = 60 // 100?
-, environment_change = 26
+const horizon = [30, 60]
 , sessionNo = 0 // 0 = debug; 100~ = 30&31 July; 200~ = August; 300~ afternoon August;
 , maxGroupSize = 5//8 // maximum size per group 
 , minGroupSize = 2 // minimal group size below which the session becomes individual tasks
@@ -42,10 +41,14 @@ const horizon = 60 // 100?
 , maxChoiceStageTime = 15*1000 //20*1000 // time limit for decision making
 , maxTimeTestScene = 4* 60*1000 // 4*60*1000
 , task_order = ['static', 'dynamic'] // ramdomized environmental order (2 rounds)
+, changes = [17, 29, 45] // trials from which a new env setting starts
 , totalGameRound = 2 // number of rounds
 , exp_condition_list = ['groupPayoff'] //['binary', 'gaussian'] // noise profiles
 , prob_conditions = 1.0// probability of assigning each exp condition 
-// , isLeftRisky_list = [true, false]
+, prob_0 = [0.3, 0.5, 0.7] // environment 0
+, prob_1 = [0.9, 0.5, 0.7] // environment 1
+, prob_2 = [0.5, 0.7, 0.3] // environment 2
+, prob_3 = [0.7, 0.3, 0.5] // environment 3
 , options = [];
 ;
 for (let i = 1; i <= numOptions; i++) {
@@ -90,7 +93,7 @@ app.use(bodyParser.json());
 app.use(cors({ origin: ['http://63-250-60-135.cloud-xip.io:8080','http://63.250.60.135:8080','http://192.168.33.10:8080'], credentials: true })); // origin: true
 
 // Routings
-const gameRouter = require('./routes/game_katja'); // loading game.ejs from which amazonID is transferred
+const gameRouter = require('./routes/game_katja'); // loading game.ejs from which subjectID is transferred
 // Assigning routers to Routing
 app.use('/', gameRouter);
 
@@ -122,13 +125,13 @@ roomStatus['decoyRoom'] = {
 	gameRound: 0,
     trial: 1,
 	pointer: 1,
-    doneId: createArray(horizon * totalGameRound, 0),
-    doneNo: createArray(horizon * totalGameRound),
-    socialFreq: createArray(horizon * totalGameRound, numOptions),
-    socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-    publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-    share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-    choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+    doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+    doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+    socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+    socialInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
 	groupTotalPayoff: [0],
@@ -159,13 +162,13 @@ roomStatus[firstRoomName] = {
 	gameRound: 0,
     trial: 1,
 	pointer: 1,
-    doneId: createArray(horizon * totalGameRound, 0),
-    doneNo: createArray(horizon * totalGameRound),
-    socialFreq: createArray(horizon * totalGameRound, numOptions),
-    socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-    publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-    share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-    choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+    doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+    doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+    socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+    socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
 	groupTotalPayoff: [0],
@@ -190,7 +193,7 @@ server.listen(port, function() {
  */
 io.on('connection', function (client) {
 	// client's unique identifier 
-	client.amazonID = client.request._query.amazonID;
+	client.subjectID = client.request._query.subjectID;
 	client.started = 0;
 	// while (client.started == 0) {
 	// 	io.to(client.session).emit('S_to_C_welcomeback', {sessionName: client.session, roomName: client.room});
@@ -224,7 +227,7 @@ io.on('connection', function (client) {
 		io.to(client.session).emit('S_to_C_welcomeback', {sessionName: client.session, roomName: client.room});
 		total_N_now++;
 		sessionNameSpace[client.session] == 1;
-		console.log(' - '+ client.session +' ('+client.amazonID+') in room '+client.room+' reconnected to the server');
+		console.log(' - '+ client.session +' ('+client.subjectID+') in room '+client.room+' reconnected to the server');
 		if(typeof roomStatus[client.room] == 'undefined'){
 			roomStatus[client.room] = {
 				exp_condition: exp_condition_list[weightedRand2({0:prob_conditions, 1:(1-prob_conditions)})],
@@ -245,13 +248,13 @@ io.on('connection', function (client) {
 				gameRound: 0,
 				trial: 1,
 				pointer: 1,
-				doneId: createArray(horizon * totalGameRound, 0),
-				doneNo: createArray(horizon * totalGameRound),
-				socialFreq: createArray(horizon * totalGameRound, numOptions),
-				socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-				publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-				share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-				choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+				doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+				doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+				socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+				socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
 				groupTotalPayoff: [0],
@@ -297,7 +300,7 @@ io.on('connection', function (client) {
 		if (client.started == 0) {
 			client.started = 1
 			// Time stamp
-		    let logtext_coreReady = ' - Client: ' + client.session +'('+client.amazonID+') responds with an average latency = '+ data.latency + ' ms.';
+		    let logtext_coreReady = ' - Client: ' + client.session +'('+client.subjectID+') responds with an average latency = '+ data.latency + ' ms.';
 		    client.latency = data.latency; 
 		    console.log(logtext_coreReady);
 		    if(data.latency < data.maxLatencyForGroupCondition) {
@@ -308,7 +311,7 @@ io.on('connection', function (client) {
 				    if (client.roomFindingCounter <= Object.keys(roomStatus).length - 1) {
 						if(roomStatus[Object.keys(roomStatus)[client.roomFindingCounter]]['starting'] == 0 && roomStatus[Object.keys(roomStatus)[client.roomFindingCounter]]['n'] < maxGroupSize && roomStatus[Object.keys(roomStatus)[client.roomFindingCounter]]['restTime'] > 999) {
 							client.room = Object.keys(roomStatus)[client.roomFindingCounter];
-							console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+							console.log(' - '+ client.session +'('+client.subjectID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 						} else {
 							client.roomFindingCounter++;
 						}
@@ -337,13 +340,13 @@ io.on('connection', function (client) {
 						gameRound: 0,
 						trial: 1,
 						pointer: 1,
-						doneId: createArray(horizon * totalGameRound, 0),
-						doneNo: createArray(horizon * totalGameRound),
-						socialFreq: createArray(horizon * totalGameRound, numOptions),
-						socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-						publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-						share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-						choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+						doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+						doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+						socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+						socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+						publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+						share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+						choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
 						saveDataThisRound: [],
 						restTime:maxWaitingTime,
 						groupTotalPayoff: [0],
@@ -354,7 +357,7 @@ io.on('connection', function (client) {
 				      };
 				      // Register the client to the new room
 				      client.room = client.newRoomName;
-				      console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+				      console.log(' - '+ client.session +'('+client.subjectID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 				      // Make a clock object in the new room
 				      countDownMainStage[client.room] = new Object();
 				      countDownWaiting[client.room] = new Object();
@@ -404,19 +407,19 @@ io.on('connection', function (client) {
 					gameRound: 0,
 					trial: 1,
 					pointer: 1,
-					doneId: createArray(horizon * totalGameRound, 0),
-					doneNo: createArray(horizon * totalGameRound),
-					socialFreq: createArray(horizon * totalGameRound, numOptions),
-					socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-					publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-					share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-					choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+					doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+					doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+					socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+					socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+					publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+					share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+					choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
 					saveDataThisRound: [],
 					restTime:1000
 		      	};
 				// Register the client to the new room
 				client.room = client.newRoomName;
-				console.log(' - '+ client.session +'('+client.amazonID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
+				console.log(' - '+ client.session +'('+client.subjectID+')'+' joined to '+ client.room +' (n: '+(1+roomStatus[client.room]['n'])+', total N: '+(1+total_N_now)+')');
 				// Let the client join the registered room
 				client.join(client.room);
 				//io.to(client).emit('S_to_C_clientSessionName', {sessionName: client.session, roomName: client.room});
@@ -483,13 +486,13 @@ io.on('connection', function (client) {
 				gameRound: 0,
 				trial: 1,
 				pointer: 1,
-				doneId: createArray(horizon * totalGameRound, 0),
-				doneNo: createArray(horizon * totalGameRound),
-				socialFreq: createArray(horizon * totalGameRound, numOptions),
-				socialInfo:createArray(horizon * totalGameRound, maxGroupSize),
-				publicInfo: createArray(horizon * totalGameRound, maxGroupSize),
-				share_or_not: createArray(horizon * totalGameRound, maxGroupSize),
-				choiceOrder: createArray(horizon * totalGameRound, maxGroupSize),
+				doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
+				doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
+				socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
+				socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
 				groupTotalPayoff: [0],
@@ -514,6 +517,23 @@ io.on('connection', function (client) {
 		}
 	});
 
+	// client.on('test passed', function () {
+	// 	if (roomStatus[client.room]['testPassed']==0) {
+	// 	  	roomStatus[client.room]['stage'] = 'secondWaitingRoom';
+	// 	}
+	// 	roomStatus[client.room]['testPassed']++;
+	// 	console.log(' - '+ client.session + ' passed the test.');
+	// 	if (roomStatus[client.room]['testPassed'] >= roomStatus[client.room]['n']) {
+	// 	  	console.log(' - ' + client.room + ' is ready to start the game.');
+	// 	  	io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
+	// 		let now = new Date()
+	// 		firstTrialStartingTime = now;
+	// 	  	roomStatus[client.room]['stage'] = 'mainTask';
+	// 	} else {
+	// 	  	io.to(client.session).emit('wait for others finishing test');
+	// 	}
+	// });
+
 	client.on('test passed', function () {
 		if (roomStatus[client.room]['testPassed']==0) {
 		  	roomStatus[client.room]['stage'] = 'secondWaitingRoom';
@@ -522,12 +542,41 @@ io.on('connection', function (client) {
 		console.log(' - '+ client.session + ' passed the test.');
 		if (roomStatus[client.room]['testPassed'] >= roomStatus[client.room]['n']) {
 		  	console.log(' - ' + client.room + ' is ready to start the game.');
-		  	io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	io.to(client.room).emit('all passed the test', 
+				{n:roomStatus[client.room]['n']
+					, testPassed:roomStatus[client.room]['testPassed']
+					, exp_condition:roomStatus[client.room]['exp_condition']
+					, gameRound: roomStatus[client.room]['gameRound']
+				});
 			let now = new Date()
-			firstTrialStartingTime = now;
+		  	firstTrialStartingTime = now;
 		  	roomStatus[client.room]['stage'] = 'mainTask';
 		} else {
-		  	io.to(client.session).emit('wait for others finishing test');
+		  	io.to(client.session).emit('wait for others finishing test', {n_test_passed: roomStatus[client.room]['testPassed'], n:roomStatus[client.room]['n']});
+		  	io.to(client.room).emit('n_test_passed updated', {n_test_passed: roomStatus[client.room]['testPassed'], n:roomStatus[client.room]['n']});
+		}
+	});
+
+	client.on('new gameRound ready', function () {
+		if (roomStatus[client.room]['newGameRoundReady']==0) {
+		  	roomStatus[client.room]['stage'] = 'thirdWaitingRoom';
+		}
+		roomStatus[client.room]['newGameRoundReady']++;
+		var now670 = new Date(),
+		    logdate670 = '['+now670.getUTCFullYear()+'/'+(now670.getUTCMonth()+1)+'/';
+		    logdate670 += now670.getUTCDate()+'/'+now670.getUTCHours()+':'+now670.getUTCMinutes()+':'+now670.getUTCSeconds()+'] ';
+		console.log(logdate670 +' - '+ client.session + ' is ready to move on.');
+		if (roomStatus[client.room]['newGameRoundReady'] >= roomStatus[client.room]['n']) {
+		  	var now675 = new Date(),
+		    logdate675 = '['+now675.getUTCFullYear()+'/'+(now675.getUTCMonth()+1)+'/';
+		    logdate675 += now675.getUTCDate()+'/'+now675.getUTCHours()+':'+now675.getUTCMinutes()+':'+now675.getUTCSeconds()+']';
+		  	console.log(logdate675 + ' - ' + client.room + ' is ready to start the new game round.');
+		  	io.to(client.room).emit('all are ready to move on', {gameRound:roomStatus[client.room]['gameRound'], newGameRoundReady:roomStatus[client.room]['newGameRoundReady'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	// io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	firstTrialStartingTime = now675;
+		  	roomStatus[client.room]['stage'] = 'mainTask';
+		} else {
+		  	io.to(client.session).emit('wait for others get ready to move on');
 		}
 	});
 
@@ -567,7 +616,7 @@ io.on('connection', function (client) {
 				,	room: client.room
 				,	confirmationID: client.session
 				,	subjectNumber: client.subjectNumber
-				,	amazonID: client.amazonID
+				,	subjectID: client.subjectID
 				,	trial: roomStatus[client.room]['trial']
 				,	gameRound: roomStatus[client.room]['gameRound']
 				,	gameType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
@@ -636,7 +685,7 @@ io.on('connection', function (client) {
 					,	room: client.room
 					,	confirmationID: client.session
 					,	subjectNumber: client.subjectNumber
-					,	amazonID: client.amazonID
+					,	subjectID: client.subjectID
 					,	round: roomStatus[client.room]['trial']
 					,	gameRound: roomStatus[client.room]['gameRound']
 					,	gameType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
@@ -769,7 +818,12 @@ io.on('connection', function (client) {
 			if (roomStatus[client.room]['n']>0 && roomStatus[client.room]['stage'] == 'secondWaitingRoom') {
 				if (roomStatus[client.room]['testPassed'] >= roomStatus[client.room]['n']) {
 					console.log(' - ' + client.room + ' is ready to start the game.');
-					io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
+					io.to(client.room).emit('all passed the test', 
+						{n: roomStatus[client.room]['n']
+							, testPassed: roomStatus[client.room]['testPassed']
+							, exp_condition: roomStatus[client.room]['exp_condition']
+							, gameRound: roomStatus[client.room]['gameRound']
+						});
 					let now = new Date()
 					firstTrialStartingTime = now;
 					roomStatus[client.room]['stage'] = 'mainTask';
@@ -800,7 +854,7 @@ io.on('connection', function (client) {
 				stopAndResetClock(thisRoomName);
 			}
 
-			console.log(' - client disconnected: '+ client.session+' ('+client.amazonID+')'+' (room N: '+roomStatus[thisRoomName]['n']+', total N: '+total_N_now+')');
+			console.log(' - client disconnected: '+ client.session+' ('+client.subjectID+')'+' (room N: '+roomStatus[thisRoomName]['n']+', total N: '+total_N_now+')');
 		}
 	});
 });
@@ -860,7 +914,7 @@ function proceedRound (room) {
 	roomStatus[room]['optionOrder'] = shuffle(options);
 
 	roomStatus[room]['trial']++;
-	roomStatus[room]['pointer']++; // pointer keep tracks round + horizon * gameRound
+	roomStatus[room]['pointer']++; // pointer keep tracks round + (horizon[0]+horizon[1]) * gameRound
 	if(roomStatus[room]['trial'] <= horizon) {
 		io.to(room).emit('Proceed to next round', roomStatus[room]);
 	} else {
@@ -898,11 +952,14 @@ function startSession (room) {
 	} else {
 		roomStatus[room]['indivOrGroup'] = 1; // group condition
 	}
-	io.to(room).emit('this room gets started', {room:room, n:roomStatus[room]['n']
-		, exp_condition:roomStatus[room]['exp_condition']
-		// , isLeftRisky:roomStatus[room]['isLeftRisky']
-		, indivOrGroup:roomStatus[room]['indivOrGroup']
-		, maxChoiceStageTime:maxChoiceStageTime });
+	io.to(room).emit('this room gets started', 
+		{room: room
+		, n: roomStatus[room]['n']
+		, exp_condition: roomStatus[room]['exp_condition']
+		, indivOrGroup: roomStatus[room]['indivOrGroup']
+		, optionOrder: roomStatus[room]['optionOrder']
+		, maxChoiceStageTime:maxChoiceStageTime 
+	});
 	console.log(' - session started in '+room);
 }
 
@@ -931,14 +988,15 @@ function parameterEmitting (client) {
 		, maxTimeTestScene: maxTimeTestScene
 		, exp_condition:roomStatus[client.room]['exp_condition']
 		, info_share_cost:roomStatus[client.room]['info_share_cost']
-		// , isLeftRisky:roomStatus[client.room]['isLeftRisky']
+		, horizon: horizon
 		, subjectNumber: client.subjectNumber
 		, indivOrGroup: roomStatus[client.room]['indivOrGroup']
 		, numOptions: numOptions
 		, optionOrder: roomStatus[client.room]['optionOrder']
 		, taskOrder: roomStatus[client.room]['taskOrder']
 		, gameRound: roomStatus[client.room]['gameRound']
-		, environment_change: environment_change
+		, changes: changes // env change points
+		, environments: [prob_0, prob_1, prob_2, prob_3] // payoff profiles
 		});
 	console.log(' - parameters were sent to ' + client.session + ' in room ' + client.room);
 }

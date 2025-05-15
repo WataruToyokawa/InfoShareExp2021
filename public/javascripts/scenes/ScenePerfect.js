@@ -8,6 +8,15 @@ class ScenePerfect extends Phaser.Scene {
 	preload(){
 		}
 
+	init (data) {
+		this.n = data.n;
+		this.room = data.room;
+		this.exp_condition = data.exp_condition;
+        this.optionOrder = data.optionOrder;
+        this.indivOrGroup = data.indivOrGroup;
+        this.maxChoiceStageTime = data.maxChoiceStageTime;
+	}
+
 	create(){
 		// background colour
 		this.cameras.main.setBackgroundColor('#FFFFFF'); //#FFFFFF == 'white'

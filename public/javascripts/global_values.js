@@ -11,14 +11,30 @@ const portnumQuestionnaire = 8000
 	, htmlServer = '192.168.33.10:' // vagrant server (for debug)
 	// , htmlServer = 'http://63-250-60-135.cloud-xip.io:' //ipaddress 63.250.60.135
 	, exceptions = ['INHOUSETEST3', 'debug-20211021']
-	, socket = io.connect(htmlServer+portnum, { query: 'amazonID='+amazonID }) // portnum is defined in game;ejs
+	, socket = io.connect(htmlServer+portnum, { query: 'subjectID='+subjectID }) // portnum is defined in game;ejs
 ;
 
-// === experimental parameters ===
+// experimental parameters 
+// -- these values are fixed when 
+// -- it get "this_is_your_parameters" from the server
 let numOptions = 0
+,	option1_positionX = 0 // X coordinate of the bandit 1 
+,	space_between_boxes = 0 // a space between option icons
 ,	info_share_cost = 0
 ,	info_share_cost_total = 0
 ,	environment_change = 0
+,	optionOrder
+,	confirmationID = 'browser-reloaded'
+,	myRoom
+,	maxChoiceStageTime
+,	indivOrGroup
+,	exp_condition
+,	taskOrder
+,   subjectNumber
+,   horizon = [0, 0] // total # of trials
+,	changes// env changing points for the dynamic task
+,	environments // payoff profiles for each environments 
+,	prob_means // a full list of the bandit probability
 ;
 
 const mean_list = []
@@ -80,17 +96,6 @@ let isEnvironmentReady = false
 ,	browserHiddenPermittedTime = 10 * 1000
 ,   sessionName
 ,   roomName
-,   subjectNumber
-,	indivOrGroup
-,	exp_condition
-,	riskDistributionId
-,	isLeftRisky
-,	optionOrder
-,	taskOrder
-,	gameRound = 0 // 0,1,2,3
-,   connectionCounter
-,	incorrectCount = 0
-,	maxChoiceStageTime
 ,	maxConfirmationWhenMissed = 7 * 1000
 ,   currentTrial = 1
 ,   currentStage
@@ -100,12 +105,9 @@ let isEnvironmentReady = false
 ,   currentChoiceFlag = 0
 ,   waitingBonus = 0
 ,	waitingBonus_per_6sec = 1.0
-,   confirmationID = 'browser-reloaded'
 ,   maxGroupSize
 ,	maxWaitingTime
 ,	answers = [-1,-1,-1,-1,-1]
-,   horizon = 0
-,   myRoom
 ,   startTime
 ,	doneSubject
 ,   pointCentConversionRate = 0
@@ -135,9 +137,12 @@ let configWidth = 800
 , configHeight = 600
 , optionWidth = 150
 , optionHeight = 150
+
+
+
 // ---- 2-armed bandit
-, option1_positionX = 225
-, space_between_boxes = 350 //190 //space_between_boxes
+// , option1_positionX = 225
+// , space_between_boxes = 350 //190 //space_between_boxes
 // ------------------
 
 // --- 4-armed bandit

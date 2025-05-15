@@ -136,6 +136,21 @@ export function createWindow (game, scene_name, data) {
 
 }
 
+
+// a function to create an n-dimensional array
+export function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
+}
+
+
 // randomly choosing an integer between min and max
 export function rand(max, min = 0) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -380,7 +395,7 @@ export function showPublicInfo (shared_payoff, shared_option_position, socialInf
 }
 
 // madeChoice
-export function madeChoice_katja (optionLocation, isMissed, optionOrder) {
+export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
     
     let thisChoice;
     if (optionLocation == -1) {
@@ -396,22 +411,21 @@ export function madeChoice_katja (optionLocation, isMissed, optionOrder) {
     }
 
     // calculating the payoff from this choice
-    if (isMissed) {
+    if (choiceType == 'miss') {
         payoff = 0;
         didShare = 0;
         if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
             socket.emit('choice made katja', 
-                {chosenOptionFlag:-1
-                    , choice: 'miss'
-                    , payoff: 0
-                    , socialInfo: mySocialInfo
+                {chosenOptionFlag:-1 // chosen option's id
+                    , num_choice: -1 // miss == -1
+                    , individual_payoff: 0
                     , subjectNumber: subjectNumber
-                    , riskDistributionId: riskDistributionId
                     , thisTrial: currentTrial
                 });
         } 
     } else {
-        let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, optionsKeyList[thisChoice-1], payoffList[optionsKeyList[thisChoice-1]], probabilityList[optionsKeyList[thisChoice-1]], mySocialInfo);
+        let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, prob_means[thisChoice-1][currentTrial-1]);
+        // let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, optionsKeyList[thisChoice-1], payoffList[optionsKeyList[thisChoice-1]], probabilityList[optionsKeyList[thisChoice-1]], mySocialInfo);
     }
     // score += individual_payoff;
     // scoreText.setText('Total score: ' + score);
@@ -444,9 +458,26 @@ export function madeChoice (flag, distribution, optionOrder) {
         payoff = 0;
         didShare = 0;
         if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
-            socket.emit('choice made', {chosenOptionFlag:-1, choice: 'miss', payoff: 0, socialInfo:mySocialInfo, publicInfo:myPublicInfo, totalEarning: totalEarning, subjectNumber:subjectNumber, riskDistributionId:riskDistributionId, thisTrial:currentTrial});
+            socket.emit('choice made', 
+                {chosenOptionFlag:-1
+                    , choice: 'miss'
+                    , payoff: 0
+                    , socialInfo:mySocialInfo
+                    , publicInfo:myPublicInfo
+                    , totalEarning: totalEarning
+                    , subjectNumber:subjectNumber
+                    // , riskDistributionId:riskDistributionId
+                    , thisTrial:currentTrial});
         } else {
-            saveChoiceDataLocally({choice: thisChoice, payoff: 0, socialInfo:mySocialInfo, publicInfo:myPublicInfo, totalEarning: totalEarning, subjectNumber:subjectNumber, riskDistributionId:riskDistributionId});
+            saveChoiceDataLocally({
+                choice: thisChoice
+                , payoff: 0
+                , socialInfo:mySocialInfo
+                , publicInfo:myPublicInfo
+                , totalEarning: totalEarning
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+            });
         }
         //console.log('choice was made: choice = ' + thisChoice + ' and payoff = ' + 0 + '.');
     } else if (distribution == 'binary') {
@@ -463,32 +494,26 @@ export function madeChoice (flag, distribution, optionOrder) {
     trialText.setText('Current trial: ' + currentTrial + ' / ' + horizon);
 }
 
-export function payoffGenerator(chosenOptionFlag, num_choice, choice, payoffProbList, socialInfo) {
+export function payoffGenerator(chosenOptionFlag, num_choice, payoffProb) {
     let roulette = Math.random()
-    let noise = BoxMuller(0, smallNoise)
     let this_individual_payoff
-    let this_arm_prob = payoffProbList[chosenOptionFlag-1]
-    if (this_arm_prob >= roulette) { // reward event
+    if (payoffProb >= roulette) { // reward event
         this_individual_payoff = 1;
-        // myEarnings.push(this_individual_payoff);
-        myChoices.push(choice);
+        myChoices.push(num_choice);
     } else { // no reward event
         this_individual_payoff = 0;
-        // myEarnings.push(this_individual_payoff);
-        myChoices.push(choice);
+        myChoices.push(num_choice);
     }
     myLastChoiceFlag = chosenOptionFlag;
     socket.emit('choice made katja', 
         {chosenOptionFlag:chosenOptionFlag // chosen option's id
             , num_choice: num_choice // location of the chosen option
-            , choice: choice // another chosen option's id ???
             , individual_payoff: this_individual_payoff
-            , socialInfo: socialInfo
             , subjectNumber: subjectNumber
             , thisTrial: currentTrial
         });
-    //console.log('choice was made: choice = ' + choice + ' and payoff = ' + this_individual_payoff + '.');
-    return this_individual_payoff;
+    console.log('choice was made: num_choice = ' + num_choice + ' generating individual_payoff = ' + this_individual_payoff + '.');
+    // return this_individual_payoff;
 }
 
 export function randomChoiceFromBinary(chosenOptionFlag, num_choice, choice, payoffList, p_rare, socialInfo, publicInfo) {
@@ -508,9 +533,29 @@ export function randomChoiceFromBinary(chosenOptionFlag, num_choice, choice, pay
     }
     myLastChoiceFlag = chosenOptionFlag;
     if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
-        socket.emit('choice made', {chosenOptionFlag:chosenOptionFlag, num_choice: num_choice, choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId, thisTrial:currentTrial});
+        socket.emit('choice made', 
+            {chosenOptionFlag:chosenOptionFlag
+                , num_choice: num_choice
+                , choice: choice
+                , payoff: thisPayoff
+                , socialInfo:socialInfo
+                , publicInfo:publicInfo
+                , totalEarning: (totalEarning+thisPayoff)
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+                , thisTrial:currentTrial
+            });
     } else {
-        saveChoiceDataLocally({chosenOptionFlag:chosenOptionFlag, choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId});
+        saveChoiceDataLocally(
+            {chosenOptionFlag:chosenOptionFlag
+            , choice: choice
+            , payoff: thisPayoff
+            , socialInfo:socialInfo
+            , publicInfo:publicInfo
+            , totalEarning: (totalEarning+thisPayoff)
+            , subjectNumber:subjectNumber
+            // , riskDistributionId:riskDistributionId
+        });
     }
     //console.log('choice was made: choice = ' + choice + ' and payoff = ' + thisPayoff + '.');
     return thisPayoff;
@@ -545,9 +590,28 @@ export function randomChoiceFromFour_decreasing(this_trial, chosenOptionFlag, nu
     }
     myLastChoiceFlag = chosenOptionFlag;
     if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
-        socket.emit('choice made 4ab', {chosenOptionFlag:chosenOptionFlag, num_choice: num_choice, choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId, thisTrial:currentTrial});
+        socket.emit('choice made 4ab', 
+            {chosenOptionFlag:chosenOptionFlag
+                , num_choice: num_choice
+                , choice: choice
+                , payoff: thisPayoff
+                , socialInfo:socialInfo
+                , publicInfo:publicInfo
+                , totalEarning: (totalEarning+thisPayoff)
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+                , thisTrial:currentTrial});
     } else {
-        saveChoiceDataLocally({chosenOptionFlag:chosenOptionFlag, choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId});
+        saveChoiceDataLocally(
+            {chosenOptionFlag:chosenOptionFlag
+                , choice: choice
+                , payoff: thisPayoff
+                , socialInfo:socialInfo
+                , publicInfo:publicInfo
+                , totalEarning: (totalEarning+thisPayoff)
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+            });
     }
     //console.log('choice was made: choice = ' + choice + ' and payoff = ' + thisPayoff + '.');
     return thisPayoff;
@@ -569,9 +633,26 @@ export function randomChoiceFromGaussian(choice, socialInfo, publicInfo) {
     if (thisPayoff < 0 ) thisPayoff = 0
     if (thisPayoff > 2*mean_risky*100 ) thisPayoff = 2*mean_risky*100
     if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
-        socket.emit('choice made', {choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId, thisTrial:currentTrial});
+        socket.emit('choice made', 
+            {choice: choice
+                , payoff: thisPayoff
+                , socialInfo:socialInfo
+                , publicInfo:publicInfo
+                , totalEarning: (totalEarning+thisPayoff)
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+                , thisTrial:currentTrial
+            });
     } else {
-        saveChoiceDataLocally({choice: choice, payoff: thisPayoff, socialInfo:socialInfo, publicInfo:publicInfo, totalEarning: (totalEarning+thisPayoff), subjectNumber:subjectNumber, riskDistributionId:riskDistributionId});
+        saveChoiceDataLocally(
+            {choice: choice
+                , payoff: thisPayoff
+                , socialInfo:socialInfo
+                , publicInfo:publicInfo
+                , totalEarning: (totalEarning+thisPayoff)
+                , subjectNumber:subjectNumber
+                // , riskDistributionId:riskDistributionId
+            });
     }
     console.log('choice was made: choice = ' + choice + ' and payoff = ' + thisPayoff + '.');
     return thisPayoff;
@@ -600,7 +681,7 @@ export function saveChoiceDataLocally (data) {
         ,   behaviouralType: 'choice'
         ,   latency: NaN //sum(averageLatency)/averageLatency.length
         ,   maxGroupSize: maxGroupSize
-        ,   riskDistributionId: data.riskDistributionId
+        // ,   riskDistributionId: data.riskDistributionId
         }
     );
 
@@ -614,6 +695,49 @@ export function saveChoiceDataLocally (data) {
 export function choose(arr) {
     var index = Math.floor(Math.random() * arr.length);
     return arr[index];
+}
+
+export function settingBanditPayoffs_katja (numOptions, taskID, horizon, changes, environments) {
+    let prob_means = createArray(numOptions, horizon)
+    ;
+    
+    switch (taskID) {
+        // ['static', 'dynamic'] 
+        case 'static': // 
+            for (let i = 0; i < numOptions; i++) {
+                for (let t = 0; t < horizon; t++) {
+                    prob_means[i][t] = environments[0][i];
+                }
+            }
+            break;
+        case 'dynamic': // 
+            for (let i = 0; i < numOptions; i++) {
+                for (let t = 0; t < changes[0]; t++) {
+                    prob_means[i][t] = environments[0][i];
+                }
+                for (let t = changes[0]; t < changes[1]; t++) {
+                    prob_means[i][t] = environments[1][i];
+                }
+                for (let t = changes[1]; t < changes[2]; t++) {
+                    prob_means[i][t] = environments[2][i];
+                }
+                for (let t = changes[2]; t < horizon; t++) {
+                    prob_means[i][t] = environments[3][i];
+                }
+            }
+            break;
+
+        // ==== Pilot condition =
+        default:
+            for (let i = 0; i < numOptions; i++) {
+                for (let t = 0; t < horizon; t++) {
+                    prob_means[i][t] = environments[0][i];
+                }
+            }
+            break;
+    }
+
+    return prob_means;
 }
 
 export function settingRiskDistribution (id) {

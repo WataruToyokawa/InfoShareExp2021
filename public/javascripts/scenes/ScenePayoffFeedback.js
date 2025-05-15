@@ -268,7 +268,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 								// However, for now I just redirect them to the questionnaire
 								socket.io.opts.query = 'sessionName=already_finished';
 								socket.disconnect();
-								window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
+								window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
 								confirmationTimer.destroy();
 								buttonContainer_confirm.visible = false;
 								waitOthersText.setText('Time was up! \nYou are redirected to the questionnaire...');
@@ -316,7 +316,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 							// However, for now I just redirect them to the questionnaire
 							socket.io.opts.query = 'sessionName=already_finished';
 							socket.disconnect();
-							window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
+							window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed=no_response'+'&latency='+submittedLatency;
 							confirmationTimer.destroy();
 							buttonContainer_confirm.visible = false;
 							waitOthersText.setText('Time was up! \nYou are redirected to the questionnaire...');

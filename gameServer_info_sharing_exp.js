@@ -1050,7 +1050,14 @@ function startSession (room) {
 	} else {
 		roomStatus[room]['indivOrGroup'] = 1; // group condition
 	}
-	io.to(room).emit('this room gets started', {room:room, n:roomStatus[room]['n'], exp_condition:roomStatus[room]['exp_condition'], isLeftRisky:roomStatus[room]['isLeftRisky'], indivOrGroup:roomStatus[room]['indivOrGroup'], maxChoiceStageTime:maxChoiceStageTime });
+	io.to(room).emit('this room gets started', 
+		{room:room
+			, n:roomStatus[room]['n']
+			, exp_condition:roomStatus[room]['exp_condition']
+			, isLeftRisky:roomStatus[room]['isLeftRisky']
+			, indivOrGroup:roomStatus[room]['indivOrGroup']
+			, maxChoiceStageTime:maxChoiceStageTime 
+		});
 	var now814 = new Date(),
 	  	logdate814 = '['+now814.getUTCFullYear()+'/'+(now814.getUTCMonth()+1)+'/';
 	  	logdate814 += now814.getUTCDate()+'/'+now814.getUTCHours()+':'+now814.getUTCMinutes()+':'+now814.getUTCSeconds()+']';

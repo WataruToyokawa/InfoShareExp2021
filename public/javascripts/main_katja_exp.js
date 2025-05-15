@@ -40,8 +40,7 @@ import {rand
 	, BoxMuller_positive
 	, sum
 	, settingConfirmationID
-    , settingRiskDistribution
-    , settingRiskDistribution_4ab
+    , settingBanditPayoffs_katja
     , createWindow
 } from './functions.js';
 
@@ -51,18 +50,18 @@ import {rand
 
 window.onload = function() {
 	// basic experimental values goes to POST values (in game.ejs)
-	$("#amazonID").val(amazonID);
+	$("#subjectID").val(subjectID);
     $("#completed").val(completed);
     $("#currentTrial").val(currentTrial);
     $("#gameRound").val(gameRound);
 
     //======== monitoring reload activity ==========
-    if (window.performance & amazonID != 'INHOUSETEST') {
+    if (window.performance & subjectID != 'INHOUSETEST') {
         if (performance.navigation.type === 1) {
             // Redirecting to the questionnaire
             socket.io.opts.query = 'sessionName=already_finished';
             socket.disconnect();
-            window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
+            window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+0+'&latency='+submittedLatency;
         }
     }
     //======== end: monitoring reload activity =====
@@ -88,20 +87,20 @@ window.onload = function() {
     //         hidden_elapsedTime += 1;
     //         hiddenTimer = setInterval(function(){
     //             hidden_elapsedTime += 500;
-    //             if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
+    //             if (hidden_elapsedTime > browserHiddenPermittedTime & subjectID != 'INHOUSETEST') {
     //                 socket.io.opts.query = 'sessionName=already_finished';
     //                 socket.disconnect();
     //             }
     //         }, 500);
     //     } else {
     //         clearTimeout(hiddenTimer);
-    //         if (hidden_elapsedTime > browserHiddenPermittedTime & amazonID != 'INHOUSETEST') {
+    //         if (hidden_elapsedTime > browserHiddenPermittedTime & subjectID != 'INHOUSETEST') {
     //             setTimeout(function(){
     //                 // Force client to move to the questionnaire
     //                 socket.io.opts.query = 'sessionName=already_finished';
     //                 socket.disconnect();
     //                 completed = 'browserHidden';
-    //                 window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+    //                 window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
     //             }, 200); // wait until waitingBonus is fully calculated
     //         }
     //         hidden_elapsedTime = 0;
@@ -179,8 +178,6 @@ window.onload = function() {
     });
 
     socket.on('this_is_your_parameters', function (data) {
-    	// console.log('received "this_is_your_parameters" from the server and numOptions == ' + data);
-        console.log(data);
         confirmationID = data.id;
         myRoom = data.room;
         maxChoiceStageTime = data.maxChoiceStageTime;
@@ -188,47 +185,56 @@ window.onload = function() {
         exp_condition = data.exp_condition; //binary_4ab
         environment_change = data.environment_change;
         subjectNumber = data.subjectNumber;
-        isLeftRisky = data.isLeftRisky;
         numOptions = data.numOptions;
-        // info_share_cost = data.info_share_cost;
         optionOrder = data.optionOrder;
         taskOrder = data.taskOrder;
+        changes = data.changes; // env changing points
+        environments = data.environments // payoff probability profiles
+        horizon = data.horizon;
         instructionText_indiv[1] = instructionText_indiv[1] + numOptions + ' slot machines.';
         instructionText_group[1] = instructionText_group[1] + numOptions + ' slot machines.';
-        // console.log('this is your optionOrder: ' + optionOrder);
-        //setSlotPosition(data.isLeftRisky);
-        if (data.numOptions == 2) {
-        	// settingRiskDistribution(data.riskDistributionId);
-        	settingRiskDistribution(taskOrder[data.gameRound]); // data.taskOrder might be better?
-            console.log('task id is ' + taskOrder[data.gameRound] + ' and payoff_riskyCommon = ' + payoff_riskyCommon);
-        } else {
-        	settingRiskDistribution_4ab(data.riskDistributionId);
+        
+        // calculating the box positions depending on numOptions
+        switch (numOptions) {
+            case 2:
+                option1_positionX = 225
+                space_between_boxes = 350
+                break;
+            case 3:
+                option1_positionX = 200
+                space_between_boxes = 200
+                break;
+            case 4:
+                option1_positionX = 122.5
+                space_between_boxes = 185
+                break;
+            default:
+                option1_positionX = 200
+                space_between_boxes = 200
+                break;
         }
+
+        // setting the bandit profile
+        prob_means = settingBanditPayoffs_katja(numOptions, taskOrder[data.gameRound], horizon[data.gameRound], changes, environments);
 
         // avoiding safari's reload function
         if(!window.sessionStorage.getItem('uniqueConfirmationID')) {
             window.sessionStorage.setItem('uniqueConfirmationID', confirmationID);
-        } else if (exceptions.indexOf(amazonID) == -1) {
+        } else if (exceptions.indexOf(subjectID) == -1) {
             // there is already an unique confirmation id existing in the local storage
             socket.io.opts.query = 'sessionName=already_finished';
             socket.disconnect();
             window.location.href = htmlServer + portnumQuestionnaire + '/multipleAccess';
         }
-        socket.io.opts.query = 'sessionName='+data.id+'&roomName='+data.room+'&amazonID='+amazonID+'&bonus_for_waiting='+waitingBonus+'&totalEarning='+totalEarning+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
-        //console.log('client session name is ' + socket.io.opts.query);
-        //console.log('and client subjectNumber is ' + subjectNumber);
-        //console.log('and maxChoiceStageTime = ' + maxChoiceStageTime);
-        //console.log('and confirmationID is = ' + confirmationID);
-        // $("#exp_condition").val(taskOrder[data.gameRound]);
-        // $("#info_share_cost").val(data.info_share_cost);
-        settingConfirmationID(confirmationID);
+        socket.io.opts.query = 'sessionName='+data.id+'&roomName='+data.room+'&subjectID='+subjectID+'&bonus_for_waiting='+waitingBonus+'&totalEarning='+totalEarning+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+        
+        settingConfirmationID(confirmationID); // do this: $("#confirmationID").val(id);
     });
 
     socket.on('this is the remaining waiting time', function(data){
         isEnvironmentReady = true;
         maxWaitingTime = data.max;
         maxGroupSize = data.maxGroupSize;
-        horizon = data.horizon;
         restTime = data.restTime;
         currentGroupSize = data.n;
         // console.log('socket.on: "this is the remaining waiting time" : '+restTime+' msec.');
@@ -277,7 +283,7 @@ window.onload = function() {
     socket.on('this room gets started', function(data) {
         //console.log('Group size reached ' + data.n + ' conditoin: ' + data.exp_condition + ' and indivOrGroup is ' + data.indivOrGroup);
         exp_condition = data.exp_condition;
-        isLeftRisky = data.isLeftRisky;
+        optionOrder = data.optionOrder;
         indivOrGroup = data.indivOrGroup;
         maxChoiceStageTime = data.maxChoiceStageTime;
         $("#indivOrGroup").val(indivOrGroup);
@@ -315,7 +321,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown');
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1});
     });
 
     socket.on('all are ready to move on', function(data) {
@@ -331,7 +337,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown');
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1});
     });
 
     socket.on('client disconnected', function(data) {
@@ -354,19 +360,19 @@ window.onload = function() {
 
     socket.on('Proceed to next round', function(data) {
         if(currentTrial < horizon) {
-            mySocialInfo = data.socialInfo[data.pointer-2]; //[data.round-2];
+            mySocialInfo = data.socialInfo[data.pointer-2]; //[data.trial-2];
             myPublicInfo = data.publicInfo[data.pointer-2];
             choiceOrder = data.choiceOrder[data.pointer-2];
             // share_or_not = data.share_or_not[data.pointer-2];
             groupTotalScore = data.groupTotalPayoff[data.pointer - 1] //sum( data.groupTotalPayoff );
             totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
             totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
-            // payoff_info = data.share_or_not[data.round-2]['payoff'];
-            // shared_position = data.share_or_not[data.round-2]['position'];
+            // payoff_info = data.share_or_not[data.trial-2]['payoff'];
+            // shared_position = data.share_or_not[data.trial-2]['position'];
             // console.log('mySocialInfo: ' + mySocialInfo);
             // console.log('myPublicInfo: ' + myPublicInfo);
             // console.log('choiceOrder: ' + choiceOrder);
-            console.log(data);
+            // console.log(data);
             // for (let i = 0; i < maxGroupSize; i++) {
             // 	if(typeof share_or_not[i] != 'undefined') {
             // 		console.log('subjectNumber' + i + ': share:' + JSON.stringify(share_or_not[i]));
@@ -377,9 +383,9 @@ window.onload = function() {
             // console.log('share_or_not: ' + share_or_not);
             if (indivOrGroup == 1) {
             	for (let i = 1; i < numOptions+1; i++) {
-            		mySocialInfoList['option'+i] = data.socialFreq[data.round-1][optionOrder[i-1] - 1];
+            		mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
             	}
-            	// console.log('data.socialFreq[data.round-1] = ' + data.socialFreq[data.round-1]);
+            	console.log('Proceed to next round: data.socialFreq[data.pointer-1] = ' + data.socialFreq[data.pointer-1]);
             } else {
             	for (let i = 1; i < numOptions+1; i++) {
             		if (myLastChoiceFlag == i) { // myLastChoice
@@ -429,8 +435,8 @@ window.onload = function() {
             }
         	game.scene.stop('ScenePayoffFeedback');
         	isWaiting = false
-        	game.scene.start('SceneMain_katja', {gameRound:gameRound, round:currentTrial});
-        	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.round-1]);
+        	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
+        	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
         }
         else {
             // End this session if the server wrongly sent the "proceed round message"
@@ -451,11 +457,11 @@ window.onload = function() {
     });
 
     socket.on('End this session', function(data) {
-        //mySocialInfo = data.socialInfo[data.round-2];
-        //myPublicInfo = data.publicInfo[data.round-2];
-        //choiceOrder = data.choiceOrder[data.round-2];
-        //mySocialInfoList['sure'] = data.socialFreq[data.round-1][surePosition];
-        //mySocialInfoList['risky'] = data.socialFreq[data.round-1][riskyPosition];
+        //mySocialInfo = data.socialInfo[data.trial-2];
+        //myPublicInfo = data.publicInfo[data.trial-2];
+        //choiceOrder = data.choiceOrder[data.trial-2];
+        //mySocialInfoList['sure'] = data.socialFreq[data.trial-1][surePosition];
+        //mySocialInfoList['risky'] = data.socialFreq[data.trial-1][riskyPosition];
         currentTrial++;
         totalEarning += payoff;
         // $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
@@ -515,7 +521,7 @@ window.onload = function() {
 	    	// However, for now I just redirect them to the questionnaire
 	        socket.io.opts.query = 'sessionName=already_finished';
 	        socket.disconnect();
-	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+	        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
 	        // console.log('Received: "S_to_C_welcomeback": client = '+data.sessionName +'; room = '+data.roomName);
 	    } else if (waitingRoomFinishedFlag != 1) {
 	    	// console.log('Received: "S_to_C_welcomeback" but the waiting room is not finished yet: client = '+data.sessionName +'; room = '+data.roomName);
@@ -533,7 +539,7 @@ window.onload = function() {
         // However, for now I just redirect them to the questionnaire
         socket.io.opts.query = 'sessionName=already_finished';
         socket.disconnect();
-        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?amazonID='+amazonID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
+        window.location.href = htmlServer + portnumQuestionnaire +'/questionnaireForDisconnectedSubjects?subjectID='+subjectID+'&info_share_cost='+info_share_cost+'&bonus_for_waiting='+waitingBonus+'&totalEarningInCent='+Math.round((totalPayoff_perIndiv*cent_per_point))+'&confirmationID='+confirmationID+'&exp_condition='+exp_condition+'&indivOrGroup='+indivOrGroup+'&completed='+completed+'&latency='+submittedLatency;
     });
 
 } // window.onload -- end

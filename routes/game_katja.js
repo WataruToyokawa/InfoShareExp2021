@@ -2,14 +2,14 @@
 
 const express = require('express');
 const router = express.Router();
-const amazonIdList = [];
+const subjectIDList = [];
 const exceptions = ['INHOUSETEST3','wataru'];
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 // 	res.render('reloadedPage', {
 // 		title: 'Questionnaire',
-// 		amazonID: 'reloaded',
+// 		subjectID: 'reloaded',
 // 		bonus_for_waiting: 0,
 // 		totalEarning: 0,
 // 		exp_condition: -1,
@@ -27,36 +27,36 @@ const exceptions = ['INHOUSETEST3','wataru'];
 router.get('/', function(req, res, next) {
 	res.render('game_katja', {
 		title: 'Collective Reward Experiment',
-		amazonID: 'INHOUSETEST3'
+		subjectID: 'INHOUSETEST3'
 	});
 });
 
 
 /* POST home page. */
 router.post('/', function(req, res, next) {
-	if(typeof req.body.amazonID != 'undefined') {
-		if(amazonIdList.indexOf(req.body.amazonID) == -1) {
-			// inserting amazonID to the list
-			amazonIdList.push(req.body.amazonID);
+	if(typeof req.body.subjectID != 'undefined') {
+		if(subjectIDList.indexOf(req.body.subjectID) == -1) {
+			// inserting subjectID to the list
+			subjectIDList.push(req.body.subjectID);
 			// rendering
 			res.render('game_katja', { 
 				title: 'Online experiment',
-				amazonID: req.body.amazonID//,
+				subjectID: req.body.subjectID//,
 				//bonus_for_waiting: req.body.bonus_for_waiting,
 				//totalGamePayoff: req.body.totalGamePayoff,
 				//experimentalID: req.body.experimentalID,
 				//exp_condition: req.body.exp_condition
 			}); 
-		} else if (exceptions.indexOf(req.body.amazonID) > -1) {
-			console.log('Accessed by debug ID: ' + req.body.amazonID);
+		} else if (exceptions.indexOf(req.body.subjectID) > -1) {
+			console.log('Accessed by debug ID: ' + req.body.subjectID);
 			// rendering
 			res.render('game_katja', { 
 				title: 'Online experiment',
-				amazonID: req.body.amazonID
+				subjectID: req.body.subjectID
 			}); 
 		} else {
 			res.render('multipleAccess');
-			console.log('Accessed by an already-existing ID: ' + req.body.amazonID);
+			console.log('Accessed by an already-existing ID: ' + req.body.subjectID);
 		}
 	} else {
 		res.redirect('https://www.prolific.co/');

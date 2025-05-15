@@ -8,6 +8,11 @@
 		preload(){
 			}
 
+		init (data) {
+			this.gameRound = data.gameRound;
+			this.trial = data.trial;
+		}
+
 		create(){
 			// background colour
 			this.cameras.main.setBackgroundColor('#FFFFFF'); //#FFFFFF == 'white'
@@ -56,10 +61,10 @@
             	//this.add.tween(startImg).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
             }, 5000, this);
             setTimeout(function(){
-            	// tween.stop(); // To remove 'START' image tween
+            	console.log('SceneMain_katja !!!!');
             	tween.remove();
             	startImg.visible = false;
-                this.scene.start('SceneMain', {gameRound:gameRound, round:currentTrial});
+                this.scene.start('SceneMain_katja', {gameRound: this.gameRound, trial: this.trial});
                 this.scene.stop('SceneStartCountdown');
                 this.scene.stop('ScenePerfect');
                 this.scene.stop('SceneWaitingRoom');

@@ -9,10 +9,12 @@ class SceneInstruction extends Phaser.Scene {
 	}
 
 	init (data) {
-		//this.n = data.n;
-		this.indivOrGroup = data.indivOrGroup;
+		this.n = data.n;
+		this.room = data.room;
 		this.exp_condition = data.exp_condition;
-		//console.log('indivOrGroup = ' + this.indivOrGroup);
+        this.optionOrder = data.optionOrder;
+        this.indivOrGroup = data.indivOrGroup;
+        this.maxChoiceStageTime = data.maxChoiceStageTime;
 	}
 
 	create () {

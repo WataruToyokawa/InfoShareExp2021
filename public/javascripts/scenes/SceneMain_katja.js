@@ -1,14 +1,14 @@
-// SceneMain -- main scene; experimental task
+// SceneMain_katja -- main scene; experimental task
 
 import {rand
 	, madeChoice_katja
 	, showPublicInfo
 } from '../functions.js';
 
-class SceneMain extends Phaser.Scene {
+class SceneMain_katja extends Phaser.Scene {
 
 	constructor (){
-	    super({ key: 'SceneMain', active: false });
+	    super({ key: 'SceneMain_katja', active: false });
 
 	    this.count = 0;
 	}
@@ -18,16 +18,16 @@ class SceneMain extends Phaser.Scene {
 
 	init (data) {
 		this.gameRound = data.gameRound;
-		this.round = data.round;
+		this.trial = data.trial;
 	}
 
 	create(){
 
-		// console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.round-1]);
+		console.log('restarting the main scene!: this.trial = ' + this.trial + ' in gameRound = ' + this.gameRound);
 
 		// background colour
 		this.cameras.main.setBackgroundColor('#FFFFFF');
-		//console.log('SceneMain started. currentTrial: ' + currentTrial);
+		//console.log('SceneMain_katja started. currentTrial: ' + currentTrial);
 		// options
 		// slot machines and choice button
 	    let options = {};
@@ -41,10 +41,14 @@ class SceneMain extends Phaser.Scene {
 	    ,	energyBar_Y = 16 + 50 * 2 // 16 + 50 * 4
 	    ;
 
+		console.log('numoption = ' + numOptions);
+		console.log('gameround = '+ this.gameRound);
+
 		// Creating options
 	    for (let i=1; i<numOptions+1; i++) {
-	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*gameRound)+'_normal');
-	    	options['box_active'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*gameRound)+'_active');
+			console.log('creating machine'+(i + numOptions*this.gameRound)+'_normal');
+	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_normal', this);
+	    	options['box_active'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_active', this);
 	    	options['box'+i].setDisplaySize(optionWidth, optionHeight).setInteractive({ cursor: 'pointer' });
 	    	options['box_active'+i].setDisplaySize(optionWidth, optionHeight).setInteractive({ cursor: 'pointer' });
 	    	options['box_active'+i].visible = false;
@@ -266,7 +270,7 @@ class SceneMain extends Phaser.Scene {
 	    // showStars_4ab.call(this, numberOfPreviousChoice[0], numberOfPreviousChoice[1], numberOfPreviousChoice[2], numberOfPreviousChoice[3], slotY_main-90);
 	    //
 	    // --------------------------------------------------------------------
-	    if(this.round > 1) {
+	    if(this.trial > 1) {
 	    	showPublicInfo.call(this, shared_payoff, shared_option_position, slotY_main-90);
 	    } else {
 	    	// console.log('No public info should be shown!')
@@ -282,4 +286,4 @@ class SceneMain extends Phaser.Scene {
 
 };
 
-export default SceneMain;
+export default SceneMain_katja;

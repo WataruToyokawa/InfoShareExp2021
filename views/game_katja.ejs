@@ -19,10 +19,10 @@
 	    <script src="/socket.io/socket.io.js"></script>
 	    <script type="module" src="/javascripts/CircleSpin.js"></script>
 	    <script type="text/javascript">
-			const amazonID = <%- JSON.stringify(amazonID) %>;
+			const subjectID = <%- JSON.stringify(subjectID) %>;
 			const portnum = 8181; //8181 = indiv
-			//$("#amazonID").val(amazonID);
-			//console.log('my amazonID is ' + amazonID + '!! - by game.ejs');
+			//$("#subjectID").val(subjectID);
+			//console.log('my subjectID is ' + subjectID + '!! - by game.ejs');
 		</script>
 		<script type="text/javascript" src="/javascripts/global_values.js"></script>
 		<script type="module" src="/javascripts/functions.js"></script>
@@ -66,7 +66,7 @@
 		<div id= "questionnaireStarts"></div>
 		<!-- <form style="display: hidden" action="http://63-250-60-135.cloud-xip.io:8000/questionnaire" method="POST" id="form"> -->
     	<form style="display: hidden" action="http://192.168.33.10:8000/questionnaire" method="POST" id="form">
-	        <input type="hidden" id="amazonID" name="amazonID" value="" />
+	        <input type="hidden" id="subjectID" name="subjectID" value="" />
 	        <input type="hidden" id="bonus_for_waiting" name="bonus_for_waiting" value="0" />
 	        <input type="hidden" id="totalEarning" name="totalEarning" value="0" />
 	        <input type="hidden" id="totalEarningInPence" name="totalEarningInPence" value="0" />
