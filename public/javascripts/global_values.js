@@ -35,6 +35,7 @@ let numOptions = 0
 ,	changes// env changing points for the dynamic task
 ,	environments // payoff profiles for each environments 
 ,	prob_means // a full list of the bandit probability
+,	gameRound
 ;
 
 const mean_list = []

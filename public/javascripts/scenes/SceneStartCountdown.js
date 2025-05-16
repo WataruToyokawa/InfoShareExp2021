@@ -11,6 +11,7 @@
 		init (data) {
 			this.gameRound = data.gameRound;
 			this.trial = data.trial;
+			this.horizon = data.horizon;
 		}
 
 		create(){
@@ -64,7 +65,7 @@
             	console.log('SceneMain_katja !!!!');
             	tween.remove();
             	startImg.visible = false;
-                this.scene.start('SceneMain_katja', {gameRound: this.gameRound, trial: this.trial});
+                this.scene.start('SceneMain_katja', {gameRound: this.gameRound, trial: this.trial, horizon: this.horizon});
                 this.scene.stop('SceneStartCountdown');
                 this.scene.stop('ScenePerfect');
                 this.scene.stop('SceneWaitingRoom');

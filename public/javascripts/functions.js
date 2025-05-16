@@ -396,6 +396,8 @@ export function showPublicInfo (shared_payoff, shared_option_position, socialInf
 
 // madeChoice
 export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
+
+    console.log('made choice katja with choicetype = ' + choiceType);
     
     let thisChoice;
     if (optionLocation == -1) {
@@ -424,7 +426,8 @@ export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
                 });
         } 
     } else {
-        let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, prob_means[thisChoice-1][currentTrial-1]);
+        // choiceType == 'groupPayoff'
+        payoffGenerator(optionLocation, thisChoice-1, prob_means[thisChoice-1][currentTrial-1]);
         // let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, optionsKeyList[thisChoice-1], payoffList[optionsKeyList[thisChoice-1]], probabilityList[optionsKeyList[thisChoice-1]], mySocialInfo);
     }
     // score += individual_payoff;
@@ -506,7 +509,7 @@ export function payoffGenerator(chosenOptionFlag, num_choice, payoffProb) {
     }
     myLastChoiceFlag = chosenOptionFlag;
     socket.emit('choice made katja', 
-        {chosenOptionFlag:chosenOptionFlag // chosen option's id
+        {chosenOptionFlag: chosenOptionFlag // chosen option's id
             , num_choice: num_choice // location of the chosen option
             , individual_payoff: this_individual_payoff
             , subjectNumber: subjectNumber

@@ -25,6 +25,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	init (data) {
 		this.didMiss = data.didMiss;
 		this.flag = data.flag;
+		this.horizon = data.horizon
 	}
 
 	create(){
@@ -215,16 +216,19 @@ class ScenePayoffFeedback extends Phaser.Scene {
 	    	payoffText = this.add.text(feedbackTextPosition, slotY_main-80, `${payoff} points!`, { fontSize: '30px', fill: noteColor, fontstyle: 'bold' }).setOrigin(0.5, 0.5);
 	    	// payoffText.setFontSize(10 + 1.5*Math.sqrt(1/2 * payoff)); //originally: 1*Math.sqrt(2/3 * payoff)
 		}
+		console.log('didmiss = ' + this.didMiss);
+		console.log('currentTrial = ' + currentTrial);
+		console.log('horizon = ' + this.horizon);
 
 		if (indivOrGroup == 1) {
-			if(!this.didMiss && currentTrial < horizon) {
+			if(!this.didMiss && currentTrial < this.horizon) {
 				// When this is a group condition, sharing choice will appear
 				setTimeout(function(){
 					waitOthersText = this.add.text(16, 60, 'Do you want to share this information\nwith other members?', { fontSize: '30px', fill: '#000', align: "center"});
 					buttonContainer_yes.visible = true;
 					buttonContainer_no.visible = true;
 				}.bind(this),  1 * 1000);
-			} else if (currentTrial >= horizon) {
+			} else if (currentTrial >= this.horizon) {
 				waitOthersText = this.add.text(16, 60, 'Please wait for others...', { fontSize: '30px', fill: '#000', align: "center"});
 				setTimeout(function(){
 			    	currentChoiceFlag = 0;
@@ -238,6 +242,7 @@ class ScenePayoffFeedback extends Phaser.Scene {
 		    		});
 			    }.bind(this), feedbackTime * 1000); //2.5 * 1000 ms was the original
 			} else {
+				console.log('somehow this is executed')
 				// if missed
 				setTimeout(function(){
 

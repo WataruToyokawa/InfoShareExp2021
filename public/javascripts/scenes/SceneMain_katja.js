@@ -19,6 +19,7 @@ class SceneMain_katja extends Phaser.Scene {
 	init (data) {
 		this.gameRound = data.gameRound;
 		this.trial = data.trial;
+		this.horizon = data.horizon;
 	}
 
 	create(){
@@ -119,7 +120,7 @@ class SceneMain_katja extends Phaser.Scene {
 	    //             options.box2.visible = false;
 					// options.box2_active.visible = false;
 					madeChoice_katja(currentChoiceFlag, 'miss', optionOrder);
-					this.scene.start('ScenePayoffFeedback', {didMiss: true, flag: currentChoiceFlag});
+					this.scene.start('ScenePayoffFeedback', {didMiss: true, flag: currentChoiceFlag, horizon: this.horizon});
 					isWaiting = true;
 					gameTimer.destroy();
                 }
@@ -150,7 +151,7 @@ class SceneMain_katja extends Phaser.Scene {
 		    	if(!isChoiceMade) {
 		    		madeChoice_katja(currentChoiceFlag, exp_condition, optionOrder);
 		    		gameTimer.destroy();
-		    		this.scene.start('ScenePayoffFeedback', {didMiss: false, flag: currentChoiceFlag});
+		    		this.scene.start('ScenePayoffFeedback', {didMiss: false, flag: currentChoiceFlag, horizon: this.horizon});
 		    		isWaiting = true;
 		    		isChoiceMade = true;
 		    		for (let j=1; j<numOptions+1; j++) {
@@ -172,7 +173,7 @@ class SceneMain_katja extends Phaser.Scene {
 
 	    // ------------ Texts appear above the slots
 	    trialText = this.add.text(16, trialText_Y
-	    	, 'Current trial: ' + currentTrial + ' / ' + horizon
+	    	, 'Current trial: ' + currentTrial + ' / ' + this.horizon
 	    	// , ''
 	    	, { fontSize: '30px', fill: nomalTextColor });
 

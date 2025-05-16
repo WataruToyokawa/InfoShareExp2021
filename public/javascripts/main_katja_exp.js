@@ -310,7 +310,9 @@ window.onload = function() {
     });
 
     socket.on('all passed the test', function(data) {
+        console.log(data)
     	currentGroupSize = data.n;
+        gameRound = data.gameRound; // updating the game round
         //console.log('testPassed reached ' + data.testPassed + ' conditoin: ' + data.exp_condition);
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
@@ -321,7 +323,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon[gameRound]});
     });
 
     socket.on('all are ready to move on', function(data) {
@@ -337,7 +339,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon[gameRound]});
     });
 
     socket.on('client disconnected', function(data) {
@@ -355,7 +357,7 @@ window.onload = function() {
 
     socket.on('these are done subjects', function(data) {
         doneSubject = data.doneSubject;
-        //console.log('doneSubject is ' + doneSubject);
+        console.log('doneSubject is ' + doneSubject);
     });
 
     socket.on('Proceed to next round', function(data) {

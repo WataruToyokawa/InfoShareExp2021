@@ -582,13 +582,13 @@ io.on('connection', function (client) {
 
 	client.on('choice made katja', function (data) {
 
-		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.choice + ' and generated ' + data.individual_payoff + ' at trial ' + data.thisTrial + '.');
+		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.num_choice + ' and generated ' + data.individual_payoff + ' at trial ' + data.thisTrial + '.');
 
     	// update roomStatus
     	if (typeof roomStatus[client.room] != 'undefined' & typeof client.subjectNumber != 'undefined') {
 	    	roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1].push(client.subjectNumber);
 			doneNum = roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1].length;
-			roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1][doneNum-1] = data.choice;
+			roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1][doneNum-1] = data.num_choice;
 			roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.individual_payoff;
 			roomStatus[client.room]['choiceOrder'][roomStatus[client.room]['pointer']-1][doneNum-1] = client.subjectNumber;
 			if ( roomStatus[client.room]['trial'] < horizon ) {
@@ -621,8 +621,8 @@ io.on('connection', function (client) {
 				,	gameRound: roomStatus[client.room]['gameRound']
 				,	gameType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
 				,	chosenOptionFlag: data.chosenOptionFlag
-				,	choice: data.choice
-				,	payoff: data.payoff
+				,	num_choice: data.num_choice
+				,	individual_payoff: data.individual_payoff
 				,	totalEarning: data.totalEarning
 				,	dataType: 'choice'
 				,	timeElapsed: timeElapsed
@@ -703,7 +703,7 @@ io.on('connection', function (client) {
 					,	riskDistributionId: data.riskDistributionId
 					,	optionOrder: roomStatus[client.room]['optionOrder']
 					,	didShare: data.share
-					,	payoff: data.payoff
+					,	individual_payoff: data.individual_payoff
 					,	num_choice: data.num_choice
 					,	info_share_cost: data.info_share_cost
 					}
