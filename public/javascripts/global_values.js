@@ -31,7 +31,7 @@ let numOptions = 0
 ,	exp_condition
 ,	taskOrder
 ,   subjectNumber
-,   horizon = [0, 0] // total # of trials
+,   horizon
 ,	changes// env changing points for the dynamic task
 ,	environments // payoff profiles for each environments 
 ,	prob_means // a full list of the bandit probability

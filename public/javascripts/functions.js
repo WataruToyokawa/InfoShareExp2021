@@ -417,12 +417,16 @@ export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
         payoff = 0;
         didShare = 0;
         if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
-            socket.emit('choice made katja', 
-                {chosenOptionFlag:-1 // chosen option's id
-                    , num_choice: -1 // miss == -1
-                    , individual_payoff: 0
-                    , subjectNumber: subjectNumber
-                    , thisTrial: currentTrial
+            // socket.emit('choice made katja', 
+            //     {chosenOptionFlag:-1 // chosen option's id
+            //         , num_choice: -1 // miss == -1
+            //         , individual_payoff: 0
+            //         , subjectNumber: subjectNumber
+            //         , thisTrial: currentTrial
+            //     });
+            socket.emit('miss this trial', 
+                {subjectNumber: subjectNumber
+                ,    thisTrial: currentTrial
                 });
         } 
     } else {
@@ -514,6 +518,7 @@ export function payoffGenerator(chosenOptionFlag, num_choice, payoffProb) {
             , individual_payoff: this_individual_payoff
             , subjectNumber: subjectNumber
             , thisTrial: currentTrial
+            , miss: false
         });
     console.log('choice was made: num_choice = ' + num_choice + ' generating individual_payoff = ' + this_individual_payoff + '.');
     // return this_individual_payoff;

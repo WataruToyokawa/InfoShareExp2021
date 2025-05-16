@@ -47,7 +47,7 @@ class SceneMain_katja extends Phaser.Scene {
 
 		// Creating options
 	    for (let i=1; i<numOptions+1; i++) {
-			console.log('creating machine'+(i + numOptions*this.gameRound)+'_normal');
+			// console.log('creating machine'+(i + numOptions*this.gameRound)+'_normal');
 	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_normal', this);
 	    	options['box_active'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_active', this);
 	    	options['box'+i].setDisplaySize(optionWidth, optionHeight).setInteractive({ cursor: 'pointer' });
@@ -120,7 +120,7 @@ class SceneMain_katja extends Phaser.Scene {
 	    //             options.box2.visible = false;
 					// options.box2_active.visible = false;
 					madeChoice_katja(currentChoiceFlag, 'miss', optionOrder);
-					this.scene.start('ScenePayoffFeedback', {didMiss: true, flag: currentChoiceFlag, horizon: this.horizon});
+					this.scene.start('SceneAskStillThere', {didMiss: true, flag: currentChoiceFlag, horizon: this.horizon});
 					isWaiting = true;
 					gameTimer.destroy();
                 }
@@ -151,7 +151,7 @@ class SceneMain_katja extends Phaser.Scene {
 		    	if(!isChoiceMade) {
 		    		madeChoice_katja(currentChoiceFlag, exp_condition, optionOrder);
 		    		gameTimer.destroy();
-		    		this.scene.start('ScenePayoffFeedback', {didMiss: false, flag: currentChoiceFlag, horizon: this.horizon});
+		    		this.scene.start('SceneAskStillThere', {didMiss: false, flag: currentChoiceFlag, horizon: this.horizon});
 		    		isWaiting = true;
 		    		isChoiceMade = true;
 		    		for (let j=1; j<numOptions+1; j++) {

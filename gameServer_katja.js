@@ -32,7 +32,7 @@ const express = require('express')
 const {isMainThread, Worker} = require('worker_threads');
 
 // Experimental variables
-const horizon = [30, 60]
+const horizonList = [30, 60]
 , sessionNo = 0 // 0 = debug; 100~ = 30&31 July; 200~ = August; 300~ afternoon August;
 , maxGroupSize = 5//8 // maximum size per group 
 , minGroupSize = 2 // minimal group size below which the session becomes individual tasks
@@ -113,6 +113,7 @@ roomStatus['decoyRoom'] = {
     optionOrder: shuffle(options),
 	taskOrder: shuffle(task_order),
     indivOrGroup: -1,
+	horizon: horizonList[0],
     n: 0,
     membersID: [],
     subjectNumbers: [],
@@ -125,13 +126,13 @@ roomStatus['decoyRoom'] = {
 	gameRound: 0,
     trial: 1,
 	pointer: 1,
-    doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-    doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-    socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-    socialInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+    doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+    socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+    socialInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
 	groupTotalPayoff: [0],
@@ -150,6 +151,7 @@ roomStatus[firstRoomName] = {
     optionOrder: shuffle(options),
 	taskOrder: shuffle(task_order),
     indivOrGroup: -1,
+	horizon: horizonList[0],
     n: 0,
     membersID: [],
     subjectNumbers: [],
@@ -162,13 +164,13 @@ roomStatus[firstRoomName] = {
 	gameRound: 0,
     trial: 1,
 	pointer: 1,
-    doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-    doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-    socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-    socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-    choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+    doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+    doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+    socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+    socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+    choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
 	groupTotalPayoff: [0],
@@ -236,6 +238,7 @@ io.on('connection', function (client) {
 				optionOrder: shuffle(options),
 				taskOrder: shuffle(task_order),
 				indivOrGroup: -1,
+				horizon: horizonList[0],
 				n: 0,
 				membersID: [],
 				subjectNumbers: [],
@@ -248,13 +251,13 @@ io.on('connection', function (client) {
 				gameRound: 0,
 				trial: 1,
 				pointer: 1,
-				doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-				doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-				socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-				socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+				doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+				socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+				socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
 				groupTotalPayoff: [0],
@@ -328,6 +331,7 @@ io.on('connection', function (client) {
 						optionOrder: shuffle(options),
 						taskOrder: shuffle(task_order),
 						indivOrGroup: -1,
+						horizon: horizonList[0],
 						n: 0,
 						membersID: [],
 						subjectNumbers: [],
@@ -340,13 +344,13 @@ io.on('connection', function (client) {
 						gameRound: 0,
 						trial: 1,
 						pointer: 1,
-						doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-						doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-						socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-						socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-						publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-						share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-						choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+						doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+						doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+						socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+						socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+						publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+						share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+						choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 						saveDataThisRound: [],
 						restTime:maxWaitingTime,
 						groupTotalPayoff: [0],
@@ -407,13 +411,13 @@ io.on('connection', function (client) {
 					gameRound: 0,
 					trial: 1,
 					pointer: 1,
-					doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-					doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-					socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-					socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-					publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-					share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-					choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+					doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+					doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+					socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+					socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+					publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+					share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+					choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 					saveDataThisRound: [],
 					restTime:1000
 		      	};
@@ -438,7 +442,11 @@ io.on('connection', function (client) {
 					startWaitingStageClock(client.room);
 				}
 				// inform rest time to the room
-				io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+				io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime']
+					, max:maxWaitingTime
+					, maxGroupSize:maxGroupSize
+					, horizon:roomStatus[client.room]['horizon']
+				});
 			}
 		}
 	});
@@ -451,12 +459,16 @@ io.on('connection', function (client) {
 			roomStatus[client.room]['stage'] = 'firstWaiting';
 		}
 		// inform rest time to the room
-		io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+		io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime']
+			, max:maxWaitingTime
+			, maxGroupSize:maxGroupSize
+			, horizon:roomStatus[client.room]['horizon']
+		});
 	});
 
 	// client.on('loading completed', function () {
 	// 	console.log('loading completed received');
-	// 	io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:horizon});
+	// 	io.to(client.room).emit('this is the remaining waiting time', {restTime:roomStatus[client.room]['restTime'], max:maxWaitingTime, maxGroupSize:maxGroupSize, horizon:roomStatus[client.room]['horizon']});
 	// });
 
 	client.on('ok individual condition sounds good', function () {
@@ -486,13 +498,13 @@ io.on('connection', function (client) {
 				gameRound: 0,
 				trial: 1,
 				pointer: 1,
-				doneId: createArray((horizon[0]+horizon[1]) * totalGameRound, 0),
-				doneNo: createArray((horizon[0]+horizon[1]) * totalGameRound),
-				socialFreq: createArray((horizon[0]+horizon[1]) * totalGameRound, numOptions),
-				socialInfo:createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				publicInfo: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				share_or_not: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
-				choiceOrder: createArray((horizon[0]+horizon[1]) * totalGameRound, maxGroupSize),
+				doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
+				doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+				socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
+				socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				share_or_not: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
+				choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
 				groupTotalPayoff: [0],
@@ -581,8 +593,12 @@ io.on('connection', function (client) {
 	});
 
 	client.on('choice made katja', function (data) {
-
-		console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.num_choice + ' and generated ' + data.individual_payoff + ' at trial ' + data.thisTrial + '.');
+		// log
+		if (data.num_choice > -1) {
+			console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') chose ' + data.num_choice + ' and generated ' + data.individual_payoff + ' at trial ' + data.thisTrial + '.');
+		} else {
+			console.log(' - Client ' + client.session + ' (subNo = ' + client.subjectNumber + ') missed at trial ' + data.thisTrial + '.');
+		}
 
     	// update roomStatus
     	if (typeof roomStatus[client.room] != 'undefined' & typeof client.subjectNumber != 'undefined') {
@@ -591,7 +607,7 @@ io.on('connection', function (client) {
 			roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1][doneNum-1] = data.num_choice;
 			roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.individual_payoff;
 			roomStatus[client.room]['choiceOrder'][roomStatus[client.room]['pointer']-1][doneNum-1] = client.subjectNumber;
-			if ( roomStatus[client.room]['trial'] < horizon ) {
+			if ( roomStatus[client.room]['trial'] < roomStatus[client.room]['horizon'] ) {
 				if (doneNum <= 1) {
 					// summarise social information
 					for (let i = 0; i < numOptions; i++) {
@@ -600,9 +616,8 @@ io.on('connection', function (client) {
 				}
 				// updating social frequency information for this trial
 				roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][data.num_choice]++;
+				console.log(roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']]);
 			}
-			//client.emit('your instant number is ', client.subjectNumber-1);
-			io.to(client.room).emit('these are done subjects', {doneSubject:roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1]});
 
 			// =========  save data to mongodb
 			let now = new Date()
@@ -634,6 +649,33 @@ io.on('connection', function (client) {
 				}
 			);
 			// =========  save data to mongodb
+			
+			// Depending on the number of subject who has already done this round,
+			// the response to the client changes
+			// (i.e., the next round only starts after all the subject at the moment have chosen their option)
+			if(typeof roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] != 'undefined') {
+				// roomStatus[client.room]['doneNo'][roomStatus[client.room]['trial']-1]++;
+				roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]++;
+			}else{
+				// roomStatus[client.room]['doneNo'][roomStatus[client.room]['trial']-1] = 1;
+				roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] = 1;
+			}
+			// log
+			let logdate_endFeedback = ` - doneNo: ${roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ]}, current round is ${roomStatus[client.room]['trial']} at ${client.room}`;
+			console.log(logdate_endFeedback);
+			
+			if (roomStatus[client.room]['doneNo'][ roomStatus[client.room]['pointer']-1 ] < roomStatus[client.room]['n']) {
+				io.to(client.room).emit('these are done subjects', {doneSubject:roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1]});
+			} else {
+				if(typeof roomStatus[client.room]['round']!='undefined'&roomStatus[client.room]['round'] % 20 == 0) { 
+					// save data to mongoDB
+					const worker = createWorker('./worker_threads/savingBehaviouralData_array.js', roomStatus[client.room]['saveDataThisRound']);
+					roomStatus[client.room]['saveDataThisRound'] = [];
+				}
+				proceedToResult(client.room);
+			}
+
+			
 		}
 	});
 
@@ -645,9 +687,24 @@ io.on('connection', function (client) {
 	  	}
 	});
 
+	client.on('result feedback ended', function (data) {
+
+		if (data.thisTrial <= roomStatus[client.room]['horizon']) {
+
+			// move on to the next trial
+			proceedTrial(client.room);
+		
+		} else {
+			// if this is executed,
+			// there must be something wrong because it means
+			// data.thisTrial > roomStatus[client.room]['horizon']
+			io.to(client.session).emit('reconnected after the game started');
+		}
+	});
+
 	client.on('result stage ended', function (data) {
 
-		if (data.thisTrial <= horizon) {
+		if (data.thisTrial <= roomStatus[client.room]['horizon']) {
 
 			if (data.share == 0) {
 				console.log(' - Client ' + client.subjectNumber + ' in ' + client.room + ' did NOT share the payoff info ' + data.payoff + ' at trial ' + data.thisTrial + '.');
@@ -727,7 +784,7 @@ io.on('connection', function (client) {
 					console.log(` - result stage ended at: ${client.room} at ${roomStatus[client.room]['trial']}`);
 
 				  	// =========  save data to mongodb by loop
-				  	// if(typeof roomStatus[client.room]['trial']!='undefined'&roomStatus[client.room]['trial'] <= horizon) {
+				  	// if(typeof roomStatus[client.room]['trial']!='undefined'&roomStatus[client.room]['trial'] <= roomStatus[client.room]['horizon']) {
 				  	if(typeof roomStatus[client.room]['trial']!='undefined'&roomStatus[client.room]['trial'] % 20 == 0) { //if(roomStatus[client.room]['indivOrGroup'] != 0) {
 				  		const worker = createWorker('./worker_threads/savingBehaviouralData_array.js', roomStatus[client.room]['saveDataThisRound']);
 				  		roomStatus[client.room]['saveDataThisRound'] = [];
@@ -751,8 +808,31 @@ io.on('connection', function (client) {
 				}
 			}
 		} else {
-			// there is something wrong because data.thisTrial > horizon
+			// there is something wrong because data.thisTrial > roomStatus[client.room]['horizon']
 			io.to(client.session).emit('reconnected after the game started');
+		}
+	});
+
+	client.on('new gameRound ready', function () {
+		if (roomStatus[client.room]['newGameRoundReady']==0) {
+		  	roomStatus[client.room]['stage'] = 'thirdWaitingRoom';
+		}
+		roomStatus[client.room]['newGameRoundReady']++;
+		var now670 = new Date(),
+		    logdate670 = '['+now670.getUTCFullYear()+'/'+(now670.getUTCMonth()+1)+'/';
+		    logdate670 += now670.getUTCDate()+'/'+now670.getUTCHours()+':'+now670.getUTCMinutes()+':'+now670.getUTCSeconds()+'] ';
+		console.log(logdate670 +' - '+ client.session + ' is ready to move on.');
+		if (roomStatus[client.room]['newGameRoundReady'] >= roomStatus[client.room]['n']) {
+		  	var now675 = new Date(),
+		    logdate675 = '['+now675.getUTCFullYear()+'/'+(now675.getUTCMonth()+1)+'/';
+		    logdate675 += now675.getUTCDate()+'/'+now675.getUTCHours()+':'+now675.getUTCMinutes()+':'+now675.getUTCSeconds()+']';
+		  	console.log(logdate675 + ' - ' + client.room + ' is ready to start the new game round.');
+		  	io.to(client.room).emit('all are ready to move on', {gameRound:roomStatus[client.room]['gameRound'], newGameRoundReady:roomStatus[client.room]['newGameRoundReady'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	// io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	firstTrialStartingTime = now675;
+		  	roomStatus[client.room]['stage'] = 'mainTask';
+		} else {
+		  	io.to(client.session).emit('wait for others get ready to move on');
 		}
 	});
 
@@ -902,6 +982,31 @@ function rand(max, min = 0) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function proceedToResult (room) {
+	console.log(' - Feedback collective payoff of this trial: '+ (roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1]) +' with socialFreq ' + (roomStatus[room]['socialFreq'][roomStatus[room]['pointer']]) );
+	io.to(room).emit('Proceed to the result scene', roomStatus[room]);
+}
+
+
+function proceedTrial (room) {
+
+	// every single individual payoff
+	roomStatus[room]['totalPayoff_perIndiv'][roomStatus[room]['pointer']-1] =
+		Math.round( roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1] / roomStatus[room]['n'] );
+	// total individual payoff for each game
+	roomStatus[room]['totalPayoff_perIndiv_perGame'][roomStatus[room]['gameRound']] +=
+	roomStatus[room]['totalPayoff_perIndiv'][roomStatus[room]['pointer']-1];
+
+	roomStatus[room]['trial']++; // the position in the gameRound
+	roomStatus[room]['pointer']++; // the position in enture data
+	if(roomStatus[room]['trial'] <= roomStatus[room]['horizon']) {
+		io.to(room).emit('Proceed to next trial', roomStatus[room]);
+	} else {
+		io.to(room).emit('End this session', roomStatus[room]);
+	}
+	console.log(' - New trial '+ (roomStatus[room]['trial']+1) +' starts in '+ room);
+}
+
 function proceedRound (room) {
 
 	// every single individual payoff
@@ -914,15 +1019,14 @@ function proceedRound (room) {
 	roomStatus[room]['optionOrder'] = shuffle(options);
 
 	roomStatus[room]['trial']++;
-	roomStatus[room]['pointer']++; // pointer keep tracks round + (horizon[0]+horizon[1]) * gameRound
-	if(roomStatus[room]['trial'] <= horizon) {
+	roomStatus[room]['pointer']++; // pointer keep tracks round + (horizonList[0]+horizonList[1]) * gameRound
+	if(roomStatus[room]['trial'] <= roomStatus[room]['horizon']) {
 		io.to(room).emit('Proceed to next round', roomStatus[room]);
 	} else {
 		io.to(room).emit('End this session', roomStatus[room]);
 	}
 	console.log(' - New gameRound '+ (roomStatus[room]['gameRound']+1) +' starts in '+room);
 }
-
 
 function countDown(room) {
 	//console.log('rest time of ' + room + ' is ' + roomStatus[room]['restTime']);
@@ -988,7 +1092,7 @@ function parameterEmitting (client) {
 		, maxTimeTestScene: maxTimeTestScene
 		, exp_condition:roomStatus[client.room]['exp_condition']
 		, info_share_cost:roomStatus[client.room]['info_share_cost']
-		, horizon: horizon
+		, horizon: roomStatus[client.room]['horizon']
 		, subjectNumber: client.subjectNumber
 		, indivOrGroup: roomStatus[client.room]['indivOrGroup']
 		, numOptions: numOptions

@@ -27,8 +27,9 @@ import SceneBeforeUnderstandingTest from './scenes/SceneBeforeUnderstandingTest.
 import SceneUnderstandingTest from './scenes/SceneUnderstandingTest.js';
 import ScenePerfect from './scenes/ScenePerfect.js';
 import SceneStartCountdown from './scenes/SceneStartCountdown.js';
-import ScenePayoffFeedback from './scenes/ScenePayoffFeedback.js';
+import SceneAskStillThere from './scenes/SceneAskStillThere.js';
 import SceneMain_katja from './scenes/SceneMain_katja.js';
+import SceneResultFeedback from './scenes/SceneResultFeedback.js';
 import SceneGoToNewGameRound from './scenes/SceneGoToNewGameRound.js';
 import SceneGoToQuestionnaire from './scenes/SceneGoToQuestionnaire.js';
 import SceneMessagePopUp from './scenes/SceneMessagePopUp.js';
@@ -144,7 +145,8 @@ window.onload = function() {
     	, ScenePerfect
     	, SceneStartCountdown
     	, SceneMain_katja
-    	, ScenePayoffFeedback
+        , SceneResultFeedback
+    	, SceneAskStillThere
     	, SceneGoToNewGameRound
     	, SceneGoToQuestionnaire
     	, SceneMessagePopUp
@@ -164,7 +166,8 @@ window.onload = function() {
 	game.scene.add('ScenePerfect');
 	game.scene.add('SceneStartCountdown');
 	game.scene.add('SceneMain_katja');
-	game.scene.add('ScenePayoffFeedback');
+    game.scene.add('SceneResultFeedback');
+	game.scene.add('SceneAskStillThere');
 	game.scene.add('SceneGoToQuestionnaire');
 	game.scene.add('SceneGoToNewGameRound');
 	game.scene.add('SceneMessagePopUp');
@@ -215,7 +218,7 @@ window.onload = function() {
         }
 
         // setting the bandit profile
-        prob_means = settingBanditPayoffs_katja(numOptions, taskOrder[data.gameRound], horizon[data.gameRound], changes, environments);
+        prob_means = settingBanditPayoffs_katja(numOptions, taskOrder[data.gameRound], horizon, changes, environments);
 
         // avoiding safari's reload function
         if(!window.sessionStorage.getItem('uniqueConfirmationID')) {
@@ -323,7 +326,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon[gameRound]});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon});
     });
 
     socket.on('all are ready to move on', function(data) {
@@ -339,7 +342,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon[gameRound]});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon});
     });
 
     socket.on('client disconnected', function(data) {
@@ -358,6 +361,106 @@ window.onload = function() {
     socket.on('these are done subjects', function(data) {
         doneSubject = data.doneSubject;
         console.log('doneSubject is ' + doneSubject);
+    });
+
+    socket.on('Proceed to the result scene', function(data) {
+        // update social frequency information
+        mySocialInfo = data.socialInfo[data.pointer-1];
+        groupTotalScore = data.groupTotalPayoff[data.pointer - 1] ;
+        console.log('my social info = ' + mySocialInfo);
+        console.log('pointer = ' + data.pointer);
+        console.log(data.socialFreq[data.pointer]);
+
+        if (indivOrGroup == 1) {
+            for (let i = 1; i < numOptions+1; i++) {
+                mySocialInfoList['option'+i] = data.socialFreq[data.pointer][optionOrder[i-1] - 1];
+            }
+            console.log(mySocialInfoList);
+        } else {
+            for (let i = 1; i < numOptions+1; i++) {
+                if (myLastChoiceFlag == i) { // myLastChoice
+                    mySocialInfoList['option'+i] = 1;
+                } else {
+                    mySocialInfoList['option'+i] = 0;
+                }
+            }
+        }
+
+        // changing scenes
+        game.scene.stop('SceneAskStillThere');
+        game.scene.start('SceneResultFeedback', 
+            {gameRound: gameRound
+                , trial: currentTrial
+                , mySocialInfo: mySocialInfo
+                , groupTotalScore: groupTotalScore
+                , horizon: horizon
+                , n: currentGroupSize
+            });
+    });
+
+    socket.on('Proceed to next trial', function(data) {
+        if(currentTrial < horizon) {
+            mySocialInfo = data.socialInfo[data.pointer-2]; 
+            myPublicInfo = data.publicInfo[data.pointer-2];
+            choiceOrder = data.choiceOrder[data.pointer-2];
+            groupTotalScore = data.groupTotalPayoff[data.pointer - 1] 
+            totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
+            totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
+
+            currentTrial++;
+            // totalEarning += payoff - (info_share_cost * didShare);
+
+            if (currentTrial == environment_change) {
+                switch (taskOrder[data.gameRound]) {
+                    case 1:
+                        settingRiskDistribution(2);
+                        break;
+                    case 2:
+                        settingRiskDistribution(1);
+                        break;
+                    case 3:
+                        settingRiskDistribution(4);
+                        break;
+                    case 4:
+                        settingRiskDistribution(3);
+                        break;
+                    default:
+                        settingRiskDistribution(2);
+                        break;
+                }
+            }
+
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            // $("#exp_condition").val(exp_condition);
+            //$("#confirmationID").val(confirmationID);
+            $("#bonus_for_waiting").val(Math.round(waitingBonus));
+            // payoffText.destroy();
+            // waitOthersText.destroy();
+            for (let i =1; i<numOptions+1; i++) {
+            	objects_feedbackStage['box'+i].destroy();
+            }
+        	game.scene.stop('SceneResultFeedback');
+        	isWaiting = false
+        	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
+        	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
+        }
+        else {
+            // End this session if the server wrongly sent the "proceed round message"
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            $("#completed").val(1);
+            for (let i =1; i<numOptions+1; i++) {
+                objects_feedbackStage['box'+i].destroy();
+            }
+            game.scene.stop('SceneResultFeedback');
+            isWaiting = false
+            game.scene.start('SceneGoToQuestionnaire');
+        }
     });
 
     socket.on('Proceed to next round', function(data) {
@@ -383,20 +486,20 @@ window.onload = function() {
             //     }
             // }
             // console.log('share_or_not: ' + share_or_not);
-            if (indivOrGroup == 1) {
-            	for (let i = 1; i < numOptions+1; i++) {
-            		mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
-            	}
-            	console.log('Proceed to next round: data.socialFreq[data.pointer-1] = ' + data.socialFreq[data.pointer-1]);
-            } else {
-            	for (let i = 1; i < numOptions+1; i++) {
-            		if (myLastChoiceFlag == i) { // myLastChoice
-            			mySocialInfoList['option'+i] = 1;
-            		} else {
-            			mySocialInfoList['option'+i] = 0;
-            		}
-            	}
-            }
+            // if (indivOrGroup == 1) {
+            // 	for (let i = 1; i < numOptions+1; i++) {
+            // 		mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
+            // 	}
+            // 	console.log('Proceed to next round: data.socialFreq[data.pointer-1] = ' + data.socialFreq[data.pointer-1]);
+            // } else {
+            // 	for (let i = 1; i < numOptions+1; i++) {
+            // 		if (myLastChoiceFlag == i) { // myLastChoice
+            // 			mySocialInfoList['option'+i] = 1;
+            // 		} else {
+            // 			mySocialInfoList['option'+i] = 0;
+            // 		}
+            // 	}
+            // }
 
             currentTrial++;
             totalEarning += payoff - (info_share_cost * didShare);
@@ -435,7 +538,7 @@ window.onload = function() {
             for (let i =1; i<numOptions+1; i++) {
             	objects_feedbackStage['box'+i].destroy();
             }
-        	game.scene.stop('ScenePayoffFeedback');
+        	game.scene.stop('SceneAskStillThere');
         	isWaiting = false
         	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
         	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
@@ -452,7 +555,7 @@ window.onload = function() {
             for (let i =1; i<numOptions+1; i++) {
                 objects_feedbackStage['box'+i].destroy();
             }
-            game.scene.stop('ScenePayoffFeedback');
+            game.scene.stop('SceneAskStillThere');
             isWaiting = false
             game.scene.start('SceneGoToQuestionnaire');
         }
@@ -480,9 +583,25 @@ window.onload = function() {
         for (let i =1; i<numOptions+1; i++) {
         	objects_feedbackStage['box'+i].destroy();
         }
-    	game.scene.stop('ScenePayoffFeedback');
+    	game.scene.stop('SceneAskStillThere');
     	isWaiting = false
     	game.scene.start('SceneGoToQuestionnaire');
+    });
+
+    socket.on('all are ready to move on', function(data) {
+        currentTrial = 1; // resetting the trial number
+        gameRound = data.gameRound; // updating the game round
+        // console.log('All are ready to move on to gameRound '+(gameRound+1))
+        game.scene.stop('SceneWaitingRoom0');
+        game.scene.stop('SceneWaitingRoom');
+    	game.scene.stop('SceneInstruction');
+    	game.scene.stop('SceneTutorial');
+    	game.scene.stop('SceneTutorialFeedback');
+    	game.scene.stop('SceneUnderstandingTest');
+    	game.scene.stop('ScenePerfect');
+    	game.scene.stop('SceneGoToNewGameRound');
+        game.scene.stop('SceneWaitingRoom2');
+        game.scene.start('SceneStartCountdown');
     });
 
     socket.on('New gameRound starts', function(data) {
@@ -510,7 +629,7 @@ window.onload = function() {
         	// console.log('data.numOptions != 2 why????');
         }
     	// starting the new game round
-    	game.scene.stop('ScenePayoffFeedback');
+    	game.scene.stop('SceneAskStillThere');
     	isWaiting = false
     	game.scene.start('SceneGoToNewGameRound');
     });
