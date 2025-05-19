@@ -49,7 +49,8 @@ class SceneResultFeedback extends Phaser.Scene {
 		if (this.groupTotalScore != 1) point_or_points = ' points!!'
 
 	    groupTotalScoreText = this.add.text(110, groupTotalScoreText_Y
-	    	, 'Your team got ' + this.groupTotalScore + point_or_points + '\n(your share is ' + (this.groupTotalScore / this.n) + ' points)'
+			, 'Your team got ' + this.groupTotalScore + point_or_points
+	    	// , 'Your team got ' + this.groupTotalScore + point_or_points + '\n(your share is ' + (this.groupTotalScore / this.n) + ' points)'
 	    	, { fontSize: '40px', fill: noteColor });
 		
 

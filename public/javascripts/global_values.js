@@ -93,6 +93,7 @@ let isEnvironmentReady = false
 ,	didShare = 0
 ,	payoffTransformed
 ,   totalEarning = 0
+,	groupCumulativePayoff = [0, 0]
 ,	cent_per_point = 15/500 // 1 cent per 100 points (1 penny per 100 points)
 ,	browserHiddenPermittedTime = 10 * 1000
 ,   sessionName

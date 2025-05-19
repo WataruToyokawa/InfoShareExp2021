@@ -32,7 +32,7 @@ const express = require('express')
 const {isMainThread, Worker} = require('worker_threads');
 
 // Experimental variables
-const horizonList = [30, 60]
+const horizonList = [5, 60]//[30, 60]
 , sessionNo = 0 // 0 = debug; 100~ = 30&31 July; 200~ = August; 300~ afternoon August;
 , maxGroupSize = 5//8 // maximum size per group 
 , minGroupSize = 2 // minimal group size below which the session becomes individual tasks
@@ -135,7 +135,8 @@ roomStatus['decoyRoom'] = {
     choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
-	groupTotalPayoff: [0],
+	groupTotalPayoff: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0) ,
+	groupCumulativePayoff: [0, 0],
     totalPayoff_perIndiv: [0],
     totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
     groupTotalCost: [0],
@@ -173,7 +174,8 @@ roomStatus[firstRoomName] = {
     choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     saveDataThisRound: [],
     restTime:maxWaitingTime,
-	groupTotalPayoff: [0],
+	groupTotalPayoff: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0) ,
+	groupCumulativePayoff: [0, 0],
     totalPayoff_perIndiv: [0],
     totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
     groupTotalCost: [0],
@@ -260,7 +262,8 @@ io.on('connection', function (client) {
 				choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
-				groupTotalPayoff: [0],
+				groupTotalPayoff: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0) ,
+				groupCumulativePayoff: [0, 0],
 				totalPayoff_perIndiv: [0],
 				totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 				groupTotalCost: [0],
@@ -353,7 +356,8 @@ io.on('connection', function (client) {
 						choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 						saveDataThisRound: [],
 						restTime:maxWaitingTime,
-						groupTotalPayoff: [0],
+						groupTotalPayoff: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0) ,
+						groupCumulativePayoff: [0, 0],
 						totalPayoff_perIndiv: [0],
 						totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 						groupTotalCost: [0],
@@ -507,7 +511,8 @@ io.on('connection', function (client) {
 				choiceOrder: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				saveDataThisRound: [],
 				restTime:maxWaitingTime,
-				groupTotalPayoff: [0],
+				groupTotalPayoff: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0) ,
+				groupCumulativePayoff: [0, 0],
 				totalPayoff_perIndiv: [0],
 				totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 				groupTotalCost: [0],
@@ -554,11 +559,13 @@ io.on('connection', function (client) {
 		console.log(' - '+ client.session + ' passed the test.');
 		if (roomStatus[client.room]['testPassed'] >= roomStatus[client.room]['n']) {
 		  	console.log(' - ' + client.room + ' is ready to start the game.');
+			roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] = 0 // initialising the total payoff tracker
 		  	io.to(client.room).emit('all passed the test', 
 				{n:roomStatus[client.room]['n']
 					, testPassed:roomStatus[client.room]['testPassed']
 					, exp_condition:roomStatus[client.room]['exp_condition']
 					, gameRound: roomStatus[client.room]['gameRound']
+					, groupCumulativePayoff: 0
 				});
 			let now = new Date()
 		  	firstTrialStartingTime = now;
@@ -606,6 +613,7 @@ io.on('connection', function (client) {
 			doneNum = roomStatus[client.room]['doneId'][roomStatus[client.room]['pointer']-1].length;
 			roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1][doneNum-1] = data.num_choice;
 			roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.individual_payoff;
+			roomStatus[client.room]['groupCumulativePayoff'][roomStatus[client.room]['gameRound']] += data.individual_payoff;
 			roomStatus[client.room]['choiceOrder'][roomStatus[client.room]['pointer']-1][doneNum-1] = client.subjectNumber;
 			if ( roomStatus[client.room]['trial'] < roomStatus[client.room]['horizon'] ) {
 				if (doneNum <= 1) {
@@ -614,8 +622,10 @@ io.on('connection', function (client) {
 						roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][i] = 0;
 					}
 				}
-				// updating social frequency information for this trial
-				roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][data.num_choice]++;
+				if (data.num_choice > -1) {
+					// updating social frequency information for this trial
+					roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][data.num_choice]++;
+				}
 				console.log(roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']]);
 			}
 
@@ -983,7 +993,7 @@ function rand(max, min = 0) {
 }
 
 function proceedToResult (room) {
-	console.log(' - Feedback collective payoff of this trial: '+ (roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1]) +' with socialFreq ' + (roomStatus[room]['socialFreq'][roomStatus[room]['pointer']]) );
+	console.log(' - Feedback collective payoff = ' + (roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1]) +' with socialFreq ' + (roomStatus[room]['socialFreq'][roomStatus[room]['pointer']]) + ' at trial = ' + (roomStatus[room]['trial']) );
 	io.to(room).emit('Proceed to the result scene', roomStatus[room]);
 }
 
@@ -999,12 +1009,14 @@ function proceedTrial (room) {
 
 	roomStatus[room]['trial']++; // the position in the gameRound
 	roomStatus[room]['pointer']++; // the position in enture data
+	roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1] = 0 // initialising the total payoff tracker
 	if(roomStatus[room]['trial'] <= roomStatus[room]['horizon']) {
 		io.to(room).emit('Proceed to next trial', roomStatus[room]);
 	} else {
+		roomStatus[room]['gameRound']++;
 		io.to(room).emit('End this session', roomStatus[room]);
 	}
-	console.log(' - New trial '+ (roomStatus[room]['trial']+1) +' starts in '+ room);
+	console.log(' - New trial '+ (roomStatus[room]['trial']) +' starts in '+ room);
 }
 
 function proceedRound (room) {

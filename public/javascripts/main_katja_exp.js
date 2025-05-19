@@ -33,6 +33,8 @@ import SceneResultFeedback from './scenes/SceneResultFeedback.js';
 import SceneGoToNewGameRound from './scenes/SceneGoToNewGameRound.js';
 import SceneGoToQuestionnaire from './scenes/SceneGoToQuestionnaire.js';
 import SceneMessagePopUp from './scenes/SceneMessagePopUp.js';
+import SceneNextRoundsInstruction from './scenes/SceneNextRoundsInstruction.js';
+
 
 // ===== Import Functions =============================
 import {rand
@@ -150,6 +152,7 @@ window.onload = function() {
     	, SceneGoToNewGameRound
     	, SceneGoToQuestionnaire
     	, SceneMessagePopUp
+        , SceneNextRoundsInstruction
     	]
 	};
 
@@ -171,6 +174,7 @@ window.onload = function() {
 	game.scene.add('SceneGoToQuestionnaire');
 	game.scene.add('SceneGoToNewGameRound');
 	game.scene.add('SceneMessagePopUp');
+	game.scene.add('SceneNextRoundsInstruction');
 
 
 	// I think this ping-pong monitoring is out-of-date; review needed. Discarded in the future
@@ -326,7 +330,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon, groupCumulativePayoff: 0});
     });
 
     socket.on('all are ready to move on', function(data) {
@@ -342,7 +346,7 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon});
+        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon, groupCumulativePayoff: 0});
     });
 
     socket.on('client disconnected', function(data) {
@@ -366,10 +370,9 @@ window.onload = function() {
     socket.on('Proceed to the result scene', function(data) {
         // update social frequency information
         mySocialInfo = data.socialInfo[data.pointer-1];
-        groupTotalScore = data.groupTotalPayoff[data.pointer - 1] ;
-        console.log('my social info = ' + mySocialInfo);
-        console.log('pointer = ' + data.pointer);
-        console.log(data.socialFreq[data.pointer]);
+        groupTotalScore = data.groupTotalPayoff[data.pointer - 1];
+        groupCumulativePayoff[data.gameRound] = data.groupCumulativePayoff[data.gameRound];
+       
 
         if (indivOrGroup == 1) {
             for (let i = 1; i < numOptions+1; i++) {
@@ -395,56 +398,41 @@ window.onload = function() {
                 , groupTotalScore: groupTotalScore
                 , horizon: horizon
                 , n: currentGroupSize
+                , groupCumulativePayoff: groupCumulativePayoff[data.gameRound] 
             });
     });
 
     socket.on('Proceed to next trial', function(data) {
         if(currentTrial < horizon) {
             mySocialInfo = data.socialInfo[data.pointer-2]; 
-            myPublicInfo = data.publicInfo[data.pointer-2];
             choiceOrder = data.choiceOrder[data.pointer-2];
-            groupTotalScore = data.groupTotalPayoff[data.pointer - 1] 
+            groupTotalScore = data.groupTotalPayoff[data.pointer - 1]; 
+            groupCumulativePayoff[data.gameRound]  = data.groupCumulativePayoff[data.gameRound];
             totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
             totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
 
             currentTrial++;
-            // totalEarning += payoff - (info_share_cost * didShare);
-
-            if (currentTrial == environment_change) {
-                switch (taskOrder[data.gameRound]) {
-                    case 1:
-                        settingRiskDistribution(2);
-                        break;
-                    case 2:
-                        settingRiskDistribution(1);
-                        break;
-                    case 3:
-                        settingRiskDistribution(4);
-                        break;
-                    case 4:
-                        settingRiskDistribution(3);
-                        break;
-                    default:
-                        settingRiskDistribution(2);
-                        break;
-                }
-            }
 
             $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
             $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
             $("#currentTrial").val(currentTrial);
             $("#gameRound").val(gameRound);
-            // $("#exp_condition").val(exp_condition);
-            //$("#confirmationID").val(confirmationID);
             $("#bonus_for_waiting").val(Math.round(waitingBonus));
-            // payoffText.destroy();
-            // waitOthersText.destroy();
-            for (let i =1; i<numOptions+1; i++) {
-            	objects_feedbackStage['box'+i].destroy();
-            }
+            
+            // for (let i =1; i<numOptions+1; i++) {
+            // 	objects_feedbackStage['box'+i].destroy();
+            // }
         	game.scene.stop('SceneResultFeedback');
         	isWaiting = false
-        	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
+        	game.scene.start('SceneMain_katja', 
+                {gameRound: gameRound
+                    , trial: currentTrial
+                    , mySocialInfo: mySocialInfo
+                    , groupTotalScore: groupTotalScore
+                    , horizon: horizon
+                    , n: currentGroupSize
+                    , groupCumulativePayoff: groupCumulativePayoff[data.gameRound] 
+                });
         	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
         }
         else {
@@ -454,9 +442,9 @@ window.onload = function() {
             $("#currentTrial").val(currentTrial);
             $("#gameRound").val(gameRound);
             $("#completed").val(1);
-            for (let i =1; i<numOptions+1; i++) {
-                objects_feedbackStage['box'+i].destroy();
-            }
+            // for (let i =1; i<numOptions+1; i++) {
+            //     objects_feedbackStage['box'+i].destroy();
+            // }
             game.scene.stop('SceneResultFeedback');
             isWaiting = false
             game.scene.start('SceneGoToQuestionnaire');
@@ -562,30 +550,30 @@ window.onload = function() {
     });
 
     socket.on('End this session', function(data) {
-        //mySocialInfo = data.socialInfo[data.trial-2];
-        //myPublicInfo = data.publicInfo[data.trial-2];
-        //choiceOrder = data.choiceOrder[data.trial-2];
-        //mySocialInfoList['sure'] = data.socialFreq[data.trial-1][surePosition];
-        //mySocialInfoList['risky'] = data.socialFreq[data.trial-1][riskyPosition];
-        currentTrial++;
-        totalEarning += payoff;
-        // $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-        // $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-        $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-        $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-        $("#currentTrial").val(currentTrial);
-        $("#gameRound").val(gameRound);
-        $("#completed").val(1);
-        // $("#exp_condition").val(exp_condition);
-        //$("#confirmationID").val(confirmationID);
-        // payoffText.destroy();
-        // waitOthersText.destroy();
-        for (let i =1; i<numOptions+1; i++) {
-        	objects_feedbackStage['box'+i].destroy();
+        // when more gameRounds remain
+        if (data.gameRound < 2) {
+            currentTrial = 1; // reset trial
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            game.scene.stop('SceneAskStillThere');
+            game.scene.start('SceneNextRoundsInstruction', 
+                {whatsNext: data.taskOrder[data.gameRound]
+                    , groupPayoffThisRdound: data.groupCumulativePayoff[data.gameRound-1]
+                });
+        } else {
+            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+            $("#currentTrial").val(currentTrial);
+            $("#gameRound").val(gameRound);
+            $("#completed").val(1);
+            game.scene.stop('SceneAskStillThere');
+            isWaiting = false
+            game.scene.start('SceneGoToQuestionnaire');
         }
-    	game.scene.stop('SceneAskStillThere');
-    	isWaiting = false
-    	game.scene.start('SceneGoToQuestionnaire');
+
+        
     });
 
     socket.on('all are ready to move on', function(data) {

@@ -12,6 +12,7 @@
 			this.gameRound = data.gameRound;
 			this.trial = data.trial;
 			this.horizon = data.horizon;
+			this.groupCumulativePayoff = data.groupCumulativePayoff;
 		}
 
 		create(){
@@ -65,7 +66,12 @@
             	console.log('SceneMain_katja !!!!');
             	tween.remove();
             	startImg.visible = false;
-                this.scene.start('SceneMain_katja', {gameRound: this.gameRound, trial: this.trial, horizon: this.horizon});
+                this.scene.start('SceneMain_katja', 
+					{gameRound: this.gameRound
+						, trial: this.trial
+						, horizon: this.horizon
+						, groupCumulativePayoff: this.groupCumulativePayoff
+					});
                 this.scene.stop('SceneStartCountdown');
                 this.scene.stop('ScenePerfect');
                 this.scene.stop('SceneWaitingRoom');

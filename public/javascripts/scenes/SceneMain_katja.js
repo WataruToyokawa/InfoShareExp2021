@@ -2,7 +2,7 @@
 
 import {rand
 	, madeChoice_katja
-	, showPublicInfo
+	, showStars_4ab
 } from '../functions.js';
 
 class SceneMain_katja extends Phaser.Scene {
@@ -17,14 +17,20 @@ class SceneMain_katja extends Phaser.Scene {
 		}
 
 	init (data) {
-		this.gameRound = data.gameRound;
-		this.trial = data.trial;
-		this.horizon = data.horizon;
+		this.gameRound = data.gameRound
+		this.trial = data.trial
+		this.mySocialInfo = data.mySocialInfo
+		this.groupTotalScore = data.groupTotalScore
+		this.horizon = data.horizon
+		this.n = data.n
+		this.groupCumulativePayoff = data.groupCumulativePayoff
 	}
 
 	create(){
 
-		console.log('restarting the main scene!: this.trial = ' + this.trial + ' in gameRound = ' + this.gameRound);
+		console.log('scene main: gameRound = ' + this.gameRound + ' trial = ' + this.trial)
+		console.log('scene main: social info = ' + this.mySocialInfo)
+		console.log('scene main: groupCumulativePayoff = ' + this.groupCumulativePayoff)
 
 		// background colour
 		this.cameras.main.setBackgroundColor('#FFFFFF');
@@ -37,9 +43,9 @@ class SceneMain_katja extends Phaser.Scene {
 
 	    let trialText_Y = 16
 	    ,	groupTotalScoreText_Y = 16 + 50 * 1
-	    ,	costPaidText_Y = 16 + 50 * 2
 	    ,	scoreText_Y = 16 + 50 * 3
 	    ,	energyBar_Y = 16 + 50 * 2 // 16 + 50 * 4
+		,	point_or_points = ' point'
 	    ;
 
 		console.log('numoption = ' + numOptions);
@@ -48,8 +54,8 @@ class SceneMain_katja extends Phaser.Scene {
 		// Creating options
 	    for (let i=1; i<numOptions+1; i++) {
 			// console.log('creating machine'+(i + numOptions*this.gameRound)+'_normal');
-	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_normal', this);
-	    	options['box_active'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_active', this);
+	    	options['box'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_normal');
+	    	options['box_active'+i] = this.add.sprite(option1_positionX+space_between_boxes*(i-1), slotY_main, 'machine'+(i + numOptions*this.gameRound)+'_active');
 	    	options['box'+i].setDisplaySize(optionWidth, optionHeight).setInteractive({ cursor: 'pointer' });
 	    	options['box_active'+i].setDisplaySize(optionWidth, optionHeight).setInteractive({ cursor: 'pointer' });
 	    	options['box_active'+i].visible = false;
@@ -176,20 +182,12 @@ class SceneMain_katja extends Phaser.Scene {
 	    	, 'Current trial: ' + currentTrial + ' / ' + this.horizon
 	    	// , ''
 	    	, { fontSize: '30px', fill: nomalTextColor });
+		
+		if (this.groupCumulativePayoff != 1) point_or_points = ' points'
 
 	    groupTotalScoreText = this.add.text(16, groupTotalScoreText_Y
-	    	, ''
-	    	// , 'Team\'s total score: ' + groupTotalScore + ' (your share: ' + totalPayoff_perIndiv + ')'
+	    	, 'Total team score so far: ' + this.groupCumulativePayoff + point_or_points
 	    	, { fontSize: '30px', fill: nomalTextColor });
-
-	    costPaidText = this.add.text(16, costPaidText_Y
-	    	, ''
-	    	// , 'Sharing fee you paid: '
-	    	, { fontSize: '30px', fill: nomalTextColor });
-	    costPaidText_2 = this.add.text(16 + 400, costPaidText_Y
-	    	, ''
-	    	// , '-' + info_share_cost_total
-	    	, { fontSize: '30px', fill: noteColor });
 
 	    this.groupSizeText = this.add.text(16, scoreText_Y
 	    	// , 'Total score: ' + score
@@ -224,9 +222,10 @@ class SceneMain_katja extends Phaser.Scene {
 
 	    // social information
 	    let socialFreqNumbers = {};
-	    if (indivOrGroup == 1) {
+	    if (indivOrGroup == 1) { // group condition
 	    	for (let i = 1; i < numOptions+1; i++) {
 	    		socialFreqNumbers['option'+i] = this.add.text(option1_positionX + space_between_boxes*(i-1), slotY_main-80, `${mySocialInfoList['option'+i]} people`, { fontSize: '25px', fill: noteColor }).setOrigin(0.5,0.5);
+				socialFreqNumbers['option'+i].visible = false;
 	    	}
 	    } else { // individual condition
 	    	for (let i = 1; i < numOptions+1; i++) {
@@ -242,24 +241,14 @@ class SceneMain_katja extends Phaser.Scene {
 	    }
 	    // No social info visible
 	    // (change inside of the if() when you want to show "?? people" info)
-	    if(currentTrial > 0) { //-> if(currentTrial==1) {
+	    if(currentTrial > 1) { //-> if(currentTrial==1) {
 	    	for (let i = 1; i < numOptions+1; i++) {
-	    		socialFreqNumbers['option'+i].visible = false;
+	    		socialFreqNumbers['option'+i].visible = true;
 	    	}
 	    }
 	    //  Stars that are evenly spaced 70 pixels apart along the x axis
 	    let numberOfPreviousChoice = [];
-	    let shared_payoff = [];
-	    let shared_option_position = [];
-	    for (let i = 0; i < maxGroupSize; i++) {
-	    	if (typeof subjectNumber != 'undefined' && share_or_not[i] != null) {
-	    		if (i+1 != subjectNumber && share_or_not[i].share == 1) { // <- only info shared by others will be shown
-	    			shared_payoff.push(share_or_not[i].payoff);
-	    			// shared_option_position.push( optionOrder.indexOf(optionsKeyList.indexOf(mySocialInfo[i])) )
-	    			shared_option_position.push(share_or_not[i].position);
-	    		}
-	    	}
-	    }
+	    
 	    for (let i = 1; i < numOptions+1; i++) {
 	    	numberOfPreviousChoice[i-1] = mySocialInfoList['option'+i]
 	    }
@@ -268,16 +257,7 @@ class SceneMain_katja extends Phaser.Scene {
 	    // Turn this on when you want to show the frequency-information
 	    // and turn off the 'publicInfo.call' in this case
 	    //
-	    // showStars_4ab.call(this, numberOfPreviousChoice[0], numberOfPreviousChoice[1], numberOfPreviousChoice[2], numberOfPreviousChoice[3], slotY_main-90);
-	    //
-	    // --------------------------------------------------------------------
-	    if(this.trial > 1) {
-	    	showPublicInfo.call(this, shared_payoff, shared_option_position, slotY_main-90);
-	    } else {
-	    	// console.log('No public info should be shown!')
-	    }
-
-		// createWindow('SceneMessagePopUp'); //this.createWindow(SceneMessagePopUp); // pop up window saying 'another member has been dropped out'
+	    showStars_4ab.call(this, numberOfPreviousChoice[0], numberOfPreviousChoice[1], numberOfPreviousChoice[2], numberOfPreviousChoice[3], slotY_main-90);
 
 	}
 
