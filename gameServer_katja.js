@@ -119,6 +119,7 @@ roomStatus['decoyRoom'] = {
     subjectNumbers: [],
     disconnectedList: [],
     testPassed: 0,
+	newGameRoundReady: 0,
     starting: 0,
     stage: 'firstWaiting',
     maxChoiceStageTime: maxChoiceStageTime,
@@ -128,6 +129,7 @@ roomStatus['decoyRoom'] = {
 	pointer: 1,
     doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
     doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+	readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
     socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
     socialInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -158,6 +160,7 @@ roomStatus[firstRoomName] = {
     subjectNumbers: [],
     disconnectedList: [],
     testPassed: 0,
+	newGameRoundReady: 0,
     starting: 0,
     stage: 'firstWaiting',
     maxChoiceStageTime: maxChoiceStageTime,
@@ -167,6 +170,7 @@ roomStatus[firstRoomName] = {
 	pointer: 1,
     doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
     doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+	readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
     socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
     socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
     publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -246,6 +250,7 @@ io.on('connection', function (client) {
 				subjectNumbers: [],
 				disconnectedList: [],
 				testPassed: 0,
+				newGameRoundReady: 0,
 				starting: 0,
 				stage: 'resuming',
 				maxChoiceStageTime: maxChoiceStageTime,
@@ -255,6 +260,7 @@ io.on('connection', function (client) {
 				pointer: 1,
 				doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
 				doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+				readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
 				socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
 				socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -340,6 +346,7 @@ io.on('connection', function (client) {
 						subjectNumbers: [],
 						disconnectedList: [],
 						testPassed: 0,
+						newGameRoundReady: 0,
 						starting: 0,
 						stage: 'firstWaiting',
 						maxChoiceStageTime: maxChoiceStageTime,
@@ -349,6 +356,7 @@ io.on('connection', function (client) {
 						pointer: 1,
 						doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
 						doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+						readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
 						socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
 						socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 						publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -408,6 +416,7 @@ io.on('connection', function (client) {
 					subjectNumbers: [],
 					disconnectedList: [],
 					testPassed: 0,
+					newGameRoundReady: 0,
 					starting: 0,
 					stage: 'firstWaiting',
 					maxChoiceStageTime: maxChoiceStageTime,
@@ -417,6 +426,7 @@ io.on('connection', function (client) {
 					pointer: 1,
 					doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
 					doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+					readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
 					socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
 					socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 					publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -495,6 +505,7 @@ io.on('connection', function (client) {
 				subjectNumbers: [],
 				disconnectedList: [],
 				testPassed: 0,
+				newGameRoundReady: 0,
 				starting: 0,
 				stage: 'firstWaiting',
 				maxChoiceStageTime: maxChoiceStageTime,
@@ -504,6 +515,7 @@ io.on('connection', function (client) {
 				pointer: 1,
 				doneId: createArray((horizonList[0]+horizonList[1]) * totalGameRound, 0),
 				doneNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
+				readyNo: createArray((horizonList[0]+horizonList[1]) * totalGameRound),
 				socialFreq: createArray((horizonList[0]+horizonList[1]) * totalGameRound, numOptions),
 				socialInfo:createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
 				publicInfo: createArray((horizonList[0]+horizonList[1]) * totalGameRound, maxGroupSize),
@@ -576,28 +588,7 @@ io.on('connection', function (client) {
 		}
 	});
 
-	client.on('new gameRound ready', function () {
-		if (roomStatus[client.room]['newGameRoundReady']==0) {
-		  	roomStatus[client.room]['stage'] = 'thirdWaitingRoom';
-		}
-		roomStatus[client.room]['newGameRoundReady']++;
-		var now670 = new Date(),
-		    logdate670 = '['+now670.getUTCFullYear()+'/'+(now670.getUTCMonth()+1)+'/';
-		    logdate670 += now670.getUTCDate()+'/'+now670.getUTCHours()+':'+now670.getUTCMinutes()+':'+now670.getUTCSeconds()+'] ';
-		console.log(logdate670 +' - '+ client.session + ' is ready to move on.');
-		if (roomStatus[client.room]['newGameRoundReady'] >= roomStatus[client.room]['n']) {
-		  	var now675 = new Date(),
-		    logdate675 = '['+now675.getUTCFullYear()+'/'+(now675.getUTCMonth()+1)+'/';
-		    logdate675 += now675.getUTCDate()+'/'+now675.getUTCHours()+':'+now675.getUTCMinutes()+':'+now675.getUTCSeconds()+']';
-		  	console.log(logdate675 + ' - ' + client.room + ' is ready to start the new game round.');
-		  	io.to(client.room).emit('all are ready to move on', {gameRound:roomStatus[client.room]['gameRound'], newGameRoundReady:roomStatus[client.room]['newGameRoundReady'], exp_condition:roomStatus[client.room]['exp_condition']});
-		  	// io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
-		  	firstTrialStartingTime = now675;
-		  	roomStatus[client.room]['stage'] = 'mainTask';
-		} else {
-		  	io.to(client.session).emit('wait for others get ready to move on');
-		}
-	});
+	
 
 	client.on('choice made katja', function (data) {
 		// log
@@ -615,18 +606,19 @@ io.on('connection', function (client) {
 			roomStatus[client.room]['groupTotalPayoff'][roomStatus[client.room]['pointer']-1] += data.individual_payoff;
 			roomStatus[client.room]['groupCumulativePayoff'][roomStatus[client.room]['gameRound']] += data.individual_payoff;
 			roomStatus[client.room]['choiceOrder'][roomStatus[client.room]['pointer']-1][doneNum-1] = client.subjectNumber;
-			if ( roomStatus[client.room]['trial'] < roomStatus[client.room]['horizon'] ) {
+			if ( roomStatus[client.room]['trial'] <= roomStatus[client.room]['horizon'] ) {
 				if (doneNum <= 1) {
 					// summarise social information
 					for (let i = 0; i < numOptions; i++) {
-						roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][i] = 0;
+						roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1][i] = 0;
 					}
 				}
 				if (data.num_choice > -1) {
 					// updating social frequency information for this trial
-					roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']][data.num_choice]++;
+					roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1][data.num_choice]++;
 				}
-				console.log(roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']]);
+				console.log(roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1]);
+				console.log(roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1]);
 			}
 
 			// =========  save data to mongodb
@@ -683,6 +675,7 @@ io.on('connection', function (client) {
 					roomStatus[client.room]['saveDataThisRound'] = [];
 				}
 				proceedToResult(client.room);
+				
 			}
 
 			
@@ -701,8 +694,20 @@ io.on('connection', function (client) {
 
 		if (data.thisTrial <= roomStatus[client.room]['horizon']) {
 
+			// Only when enough individuals finished this trial
+			// the next trial starts
+			if(typeof roomStatus[client.room]['readyNo'][ roomStatus[client.room]['pointer']-1 ] != 'undefined') {
+				// roomStatus[client.room]['readyNo'][roomStatus[client.room]['trial']-1]++;
+				roomStatus[client.room]['readyNo'][ roomStatus[client.room]['pointer']-1 ]++;
+			}else{
+				// roomStatus[client.room]['readyNo'][roomStatus[client.room]['trial']-1] = 1;
+				roomStatus[client.room]['readyNo'][ roomStatus[client.room]['pointer']-1 ] = 1;
+			}
+
 			// move on to the next trial
-			proceedTrial(client.room);
+			if (roomStatus[client.room]['readyNo'][ roomStatus[client.room]['pointer']-1 ] >= roomStatus[client.room]['n'] ) {
+				proceedTrial(client.room);
+			}
 		
 		} else {
 			// if this is executed,
@@ -828,21 +833,20 @@ io.on('connection', function (client) {
 		  	roomStatus[client.room]['stage'] = 'thirdWaitingRoom';
 		}
 		roomStatus[client.room]['newGameRoundReady']++;
-		var now670 = new Date(),
-		    logdate670 = '['+now670.getUTCFullYear()+'/'+(now670.getUTCMonth()+1)+'/';
-		    logdate670 += now670.getUTCDate()+'/'+now670.getUTCHours()+':'+now670.getUTCMinutes()+':'+now670.getUTCSeconds()+'] ';
-		console.log(logdate670 +' - '+ client.session + ' is ready to move on.');
+		
+		console.log(' - '+ client.session + ' is ready to move on: ' + roomStatus[client.room]['newGameRoundReady'] + '/' + roomStatus[client.room]['n']);
+		
 		if (roomStatus[client.room]['newGameRoundReady'] >= roomStatus[client.room]['n']) {
-		  	var now675 = new Date(),
-		    logdate675 = '['+now675.getUTCFullYear()+'/'+(now675.getUTCMonth()+1)+'/';
-		    logdate675 += now675.getUTCDate()+'/'+now675.getUTCHours()+':'+now675.getUTCMinutes()+':'+now675.getUTCSeconds()+']';
-		  	console.log(logdate675 + ' - ' + client.room + ' is ready to start the new game round.');
+		  	
+			console.log(' - ' + client.room + ' is ready to start the new game round ' + roomStatus[client.room]['gameRound']);
+
 		  	io.to(client.room).emit('all are ready to move on', {gameRound:roomStatus[client.room]['gameRound'], newGameRoundReady:roomStatus[client.room]['newGameRoundReady'], exp_condition:roomStatus[client.room]['exp_condition']});
-		  	// io.to(client.room).emit('all passed the test', {n:roomStatus[client.room]['n'], testPassed:roomStatus[client.room]['testPassed'], exp_condition:roomStatus[client.room]['exp_condition']});
-		  	firstTrialStartingTime = now675;
+		  	
+		  	firstTrialStartingTime = new Date();
 		  	roomStatus[client.room]['stage'] = 'mainTask';
 		} else {
-		  	io.to(client.session).emit('wait for others get ready to move on');
+		  	io.to(client.session).emit('wait for others get ready to move on', {n_test_passed: roomStatus[client.room]['newGameRoundReady'], n:roomStatus[client.room]['n']});
+			  io.to(client.room).emit('n_test_passed updated', {n_test_passed: roomStatus[client.room]['newGameRoundReady'], n:roomStatus[client.room]['n']});
 		}
 	});
 
@@ -895,7 +899,7 @@ io.on('connection', function (client) {
 				// a room for a new-comer if this room is still at the first waiting screen
 				if (roomStatus[client.room]['doneNo'][roomStatus[client.room]['trial']-1] >= roomStatus[client.room]['n']) {
 				  	console.log(`result stage ended at: ${client.room}`);
-				  	proceedRound(client.room);
+				  	proceedTrial(client.room);
 				}
 			} else { // if this is the individual condition
 				const worker = createWorker('./worker_threads/savingBehaviouralData_array.js', roomStatus[client.room]['saveDataThisRound']);
@@ -993,7 +997,7 @@ function rand(max, min = 0) {
 }
 
 function proceedToResult (room) {
-	console.log(' - Feedback collective payoff = ' + (roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1]) +' with socialFreq ' + (roomStatus[room]['socialFreq'][roomStatus[room]['pointer']]) + ' at trial = ' + (roomStatus[room]['trial']) );
+	console.log(' - Feedback collective payoff = ' + (roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1]) +' with socialFreq ' + (roomStatus[room]['socialFreq'][roomStatus[room]['pointer']-1]) + ' at trial = ' + (roomStatus[room]['trial']) );
 	io.to(room).emit('Proceed to the result scene', roomStatus[room]);
 }
 
@@ -1012,11 +1016,13 @@ function proceedTrial (room) {
 	roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1] = 0 // initialising the total payoff tracker
 	if(roomStatus[room]['trial'] <= roomStatus[room]['horizon']) {
 		io.to(room).emit('Proceed to next trial', roomStatus[room]);
+		console.log(' - New trial '+ (roomStatus[room]['trial']) +' starts in '+ room);
 	} else {
 		roomStatus[room]['gameRound']++;
 		io.to(room).emit('End this session', roomStatus[room]);
+		console.log(' - End this round '+ (roomStatus[room]['gameRound']) +' in '+ room);
 	}
-	console.log(' - New trial '+ (roomStatus[room]['trial']) +' starts in '+ room);
+	
 }
 
 function proceedRound (room) {

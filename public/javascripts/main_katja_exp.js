@@ -274,7 +274,7 @@ window.onload = function() {
         currentGroupSize = data.n;
     });
 
-    socket.on('wait for others get ready to move on', function () {
+    socket.on('wait for others get ready to move on', function (data) {
     	game.scene.stop('SceneWaitingRoom0');
     	game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
@@ -283,7 +283,7 @@ window.onload = function() {
     	game.scene.stop('SceneUnderstandingTest');
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
-        game.scene.start('SceneWaitingRoom2');
+        game.scene.start('SceneWaitingRoom2', data);
     });
 
     // The task starts
@@ -336,7 +336,7 @@ window.onload = function() {
     socket.on('all are ready to move on', function(data) {
         currentTrial = 1; // resetting the trial number
         gameRound = data.gameRound; // updating the game round
-        // console.log('All are ready to move on to gameRound '+(gameRound+1))
+        console.log('All are ready to move on to gameRound '+(gameRound+1))
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');
@@ -369,14 +369,14 @@ window.onload = function() {
 
     socket.on('Proceed to the result scene', function(data) {
         // update social frequency information
-        mySocialInfo = data.socialInfo[data.pointer-1];
+        mySocialInfo = data.socialInfo[data.pointer - 1];
         groupTotalScore = data.groupTotalPayoff[data.pointer - 1];
         groupCumulativePayoff[data.gameRound] = data.groupCumulativePayoff[data.gameRound];
        
 
         if (indivOrGroup == 1) {
             for (let i = 1; i < numOptions+1; i++) {
-                mySocialInfoList['option'+i] = data.socialFreq[data.pointer][optionOrder[i-1] - 1];
+                mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
             }
             console.log(mySocialInfoList);
         } else {
@@ -562,6 +562,7 @@ window.onload = function() {
                 {whatsNext: data.taskOrder[data.gameRound]
                     , groupPayoffThisRdound: data.groupCumulativePayoff[data.gameRound-1]
                 });
+            // game.scene.start('SceneGoToNewGameRound');
         } else {
             $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
             $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
@@ -579,7 +580,7 @@ window.onload = function() {
     socket.on('all are ready to move on', function(data) {
         currentTrial = 1; // resetting the trial number
         gameRound = data.gameRound; // updating the game round
-        // console.log('All are ready to move on to gameRound '+(gameRound+1))
+        console.log('All are ready to move on to gameRound '+(gameRound+1))
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
     	game.scene.stop('SceneInstruction');

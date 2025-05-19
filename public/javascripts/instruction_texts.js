@@ -86,8 +86,23 @@ const understandingCheckText_group =
 	, 'Can other members see how many points you got, if you do not choose to share information?' //NO
 	];
 
+const transitionText_staticToDynamic = 
+[ '<h3>HEEEYYEEEEE!!!.</h3>'
 
+	, 'Next one is Dynamic!' 
 
+	, 'Good luck man' 
+
+	];
+
+const transitionText_dynamicToStatic = 
+[ '<h3>BOOOOOOOO!!!.</h3>'
+
+	, 'Next one is Static!' 
+
+	, 'Good luck man' 
+
+	];
 
 
 

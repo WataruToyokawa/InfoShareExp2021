@@ -21,6 +21,8 @@ class SceneWaitingRoom2 extends Phaser.Scene {
 
 	create(){
 
+		console.log('waiting room 2!! with ' + n_in_waitingRoom2 + ' people here already')
+
 		// loading circle animation
 		let CircleSpinContainer = this.add.container(configWidth/2, configHeight/2 - 20);
 		createCircle(this, CircleSpinContainer, 0, 0, 48, 0x333333); // 0x000000 = black; 0xffffff = white

@@ -21,47 +21,47 @@ class SceneNextRoundsInstruction extends Phaser.Scene {
 
 
 	    // Instruction length
-	    let instructionLength;
-	    let instructionText
-	    if (this.indivOrGroup == 0) { // 0 = individual; 1 = group
-	    	instructionLength = instructionText_indiv.length;
-	    	instructionText = instructionText_indiv;
-	    } else {
-	    	instructionLength = instructionText_group.length;
-	    	instructionText = instructionText_group;
-	    }
+	    let instructionLength
+		, transitionTextPosition = 0
+		, instructionText
+		;
 	    // create a new 'div' for the instruction texts
 	    const instructionTextStyle = 'background-color: rgba(51,51,51,0.1); width: 700px; height: 400px; font: 25px Arial;';
-	    let instructionDiv = document.createElement('div');
-	    instructionDiv.style = instructionTextStyle;
-	    if (!isInstructionRevisit) {
-	    	instructionDiv.innerHTML = instructionText[instructionPosition];
+	    let transitionDiv = document.createElement('div');
+	    transitionDiv.style = instructionTextStyle;
+
+	    if (this.taskType == 'Dynamic') {
+			instructionLength = transitionText_staticToDynamic.length;
+			instructionText = transitionText_staticToDynamic[transitionTextPosition];
+	    	transitionDiv.innerHTML = instructionText;
 	    } else {
-	    	instructionDiv.innerHTML = revisitingInstructionText[0];
+			instructionLength = transitionText_dynamicToStatic.length;
+			instructionText = transitionText_dynamicToStatic[transitionTextPosition];
+	    	transitionDiv.innerHTML = instructionText;
 	    }
-	    instructionDiv.id = 'instructionDiv';
+	    transitionDiv.id = 'transitionDiv';
 	    // Add the div
-	    let instructionElement = this.add.dom(configWidth/2, 220, instructionDiv);
+	    // let instructionElement = this.add.dom(configWidth/2, 220, transitionDiv);
 
 	    // instruction Picture
-	    let currentInstructionPicture = [];
-	    if (this.indivOrGroup == 0) {
-	    	for (let i=0; i<7; i++) {
-		    	currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2, 'instructionPictures_indiv_'+i ).setDisplaySize((1024/3)*1.3, (768/3)*1.3);
-		    	currentInstructionPicture[i].visible = false;
-		    }
-	    } else {
-	    	for (let i=0; i<14; i++) {
-	    		if (i != 12 & i != 8) {
-		    		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2 - 20, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.4, (768/3)*1.4);
-		    	} else if (i == 8) {
-		    		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.31, (768/3)*1.31);
-	    		} else if (i == 12) {
-		    		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2 + 10, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.31, (768/3)*1.31);
-		    	}
-		    	currentInstructionPicture[i].visible = false;
-		    }
-	    }
+	    // let currentInstructionPicture = [];
+	    // if (this.indivOrGroup == 0) {
+	    // 	for (let i=0; i<7; i++) {
+		//     	currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2, 'instructionPictures_indiv_'+i ).setDisplaySize((1024/3)*1.3, (768/3)*1.3);
+		//     	currentInstructionPicture[i].visible = false;
+		//     }
+	    // } else {
+	    // 	for (let i=0; i<14; i++) {
+	    // 		if (i != 12 & i != 8) {
+		//     		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2 - 20, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.4, (768/3)*1.4);
+		//     	} else if (i == 8) {
+		//     		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.31, (768/3)*1.31);
+	    // 		} else if (i == 12) {
+		//     		currentInstructionPicture[i] = this.add.image(configWidth/2, configHeight/2 + 10, 'instructionPictures_group_'+i ).setDisplaySize((1024/3)*1.31, (768/3)*1.31);
+		//     	}
+		//     	currentInstructionPicture[i].visible = false;
+		//     }
+	    // }
 
 
 	    // next button
@@ -72,36 +72,27 @@ class SceneNextRoundsInstruction extends Phaser.Scene {
 		this.nextButtonContainer.add(nextButtonImage);
 		this.nextButtonContainer.add(nextButtonText);
 	    nextButtonImage.on('pointerdown', function (pointer) {
-	    	if(instructionPosition < instructionLength - 1){
-	    		instructionPosition += 1;
-	    		instructionDiv.innerHTML = instructionText[instructionPosition];
+	    	if(transitionTextPosition < instructionLength - 1){
+	    		transitionTextPosition += 1;
+	    		transitionDiv.innerHTML = instructionText[transitionTextPosition];
 	    		backButtonImage.visible = true;
 	    		backButtonText.visible = true;
-	    		if (instructionPosition == instructionLength - 1 & isInstructionRevisit) {
-	    			instructionDiv.innerHTML = revisitingInstructionText[1];
-	    		}
-	    		if (instructionPosition < instructionLength - 1) {
-	    			currentInstructionPicture[instructionPosition - 1].visible = false;
-	    			currentInstructionPicture[instructionPosition].visible = true;
-				} else {
-					currentInstructionPicture[instructionPosition - 1].visible = false;
-					if(typeof currentInstructionPicture[instructionPosition] != 'undefined') {
-	    				currentInstructionPicture[instructionPosition].visible = false;
-					}
-				}
+	    		// if (transitionTextPosition == instructionLength - 1 & isInstructionRevisit) {
+	    		// 	transitionDiv.innerHTML = revisitingInstructionText[1];
+	    		// }
+	    		// if (transitionTextPosition < instructionLength - 1) {
+	    		// 	currentInstructionPicture[transitionTextPosition - 1].visible = false;
+	    		// 	currentInstructionPicture[transitionTextPosition].visible = true;
+				// } else {
+				// 	currentInstructionPicture[transitionTextPosition - 1].visible = false;
+				// 	if(typeof currentInstructionPicture[transitionTextPosition] != 'undefined') {
+	    		// 		currentInstructionPicture[transitionTextPosition].visible = false;
+				// 	}
+				// }
 	    	} else {
-	    		if (!isInstructionRevisit) {
-	    			this.scene.start('SceneTutorial_katja', { indivOrGroup: indivOrGroup, exp_condition: exp_condition, tutorialPosition:0 });
-	    			nextButtonImage.visible = false;
-	    			backButtonImage.visible = false;
-	    			//nextButtonContainer.destroy();
-	    			//backButtonContainer.destroy();
-	    		} else {
-	    			answers = [-1,-1,-1,-1,-1];
-	    			this.scene.start('SceneUnderstandingTest');
-	    			nextButtonImage.visible = false;
-	    			backButtonImage.visible = false;
-	    		}
+	    		this.scene.start('SceneGoToNewGameRound', { taskType: this.taskType });
+				nextButtonImage.visible = false;
+				backButtonImage.visible = false;
 	    	}
 	    }, this);
 	    // back button
@@ -114,20 +105,20 @@ class SceneNextRoundsInstruction extends Phaser.Scene {
 		backButtonImage.visible = false;
 		backButtonText.visible = false;
 	    backButtonImage.on('pointerdown', function (pointer) {
-	    	if(instructionPosition>0){
-	    		instructionPosition -= 1;
-	    		instructionDiv.innerHTML = instructionText[instructionPosition];
-	    		if (instructionPosition > 0) {
-	    			if(typeof currentInstructionPicture[instructionPosition + 1] != 'undefined') {
-	    				currentInstructionPicture[instructionPosition + 1].visible = false;
-	    			}
-	    			currentInstructionPicture[instructionPosition].visible = true;
-				} else {
-					backButtonImage.visible = false;
-					backButtonText.visible = false;
-					currentInstructionPicture[instructionPosition + 1].visible = false;
-	    			currentInstructionPicture[instructionPosition].visible = false;
-				}
+	    	if(transitionTextPosition>0){
+	    		transitionTextPosition -= 1;
+	    		transitionDiv.innerHTML = instructionText[transitionTextPosition];
+	    		// if (transitionTextPosition > 0) {
+	    		// 	if(typeof currentInstructionPicture[transitionTextPosition + 1] != 'undefined') {
+	    		// 		currentInstructionPicture[transitionTextPosition + 1].visible = false;
+	    		// 	}
+	    		// 	currentInstructionPicture[transitionTextPosition].visible = true;
+				// } else {
+				// 	backButtonImage.visible = false;
+				// 	backButtonText.visible = false;
+				// 	currentInstructionPicture[transitionTextPosition + 1].visible = false;
+	    		// 	currentInstructionPicture[transitionTextPosition].visible = false;
+				// }
 	    	}
 	    });
 	    // pointerover

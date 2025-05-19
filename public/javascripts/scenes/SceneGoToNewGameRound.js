@@ -8,6 +8,10 @@ class SceneGoToNewGameRound extends Phaser.Scene {
 	preload(){
 	}
 
+	init (data) {
+		this.taskType = data.taskType;
+	}
+
 	create(){
 		payoffText.visible = false;
 		// background colour
@@ -22,7 +26,7 @@ class SceneGoToNewGameRound extends Phaser.Scene {
 		let totalEarning_USD = Math.round((totalPayoff_perIndiv*cent_per_point))/100
 		let waitingBunis_USD = Math.round(waitingBonus)/100
 	    let title = this.add.text(configWidth/2, 18, goToNewGameRoundText[0], { fontSize: '36px', fill: '#000', fontstyle: 'bold' });
-	    let note1 = this.add.text(configWidth/2, 90, goToNewGameRoundText[1] + gameRound, noteStyle);
+	    let note1 = this.add.text(configWidth/2, 90, goToNewGameRoundText[1] + (gameRound + 1), noteStyle);
 	    let note2 = this.add.text(configWidth/2, 90+50*2, goToNewGameRoundText[2], noteStyle);
 	    //let note3 = this.add.text(configWidth/2, 90+50*4, goToNewGameRoundText[3], noteStyle);
 	    title.setOrigin(0.5, 0.5);
@@ -34,7 +38,7 @@ class SceneGoToNewGameRound extends Phaser.Scene {
 		let button_style = { fontSize: '24px', fill: '#000' , align: "center" };
 		let buttonContainer_nextGameRound = this.add.container(configWidth/2, 400); //position
 		let buttonImage_nextGameRound = this.add.sprite(0, 0, 'button').setDisplaySize(300, 100).setInteractive({ cursor: 'pointer' });
-		let buttonText_nextGameRound = this.add.text(0, 0, 'Go to Game ' + (gameRound+1), button_style);
+		let buttonText_nextGameRound = this.add.text(0, 0, 'Go to '+ this.taskType +' Game ' + (gameRound+1), button_style);
 		buttonText_nextGameRound.setOrigin(0.5, 0.5);
 		buttonContainer_nextGameRound.add(buttonImage_nextGameRound);
 		buttonContainer_nextGameRound.add(buttonText_nextGameRound);
@@ -49,9 +53,9 @@ class SceneGoToNewGameRound extends Phaser.Scene {
 	    }, this);
 
 	    buttonImage_nextGameRound.on('pointerdown', function (pointer) {
-	    	this.scene.stop('SceneMain');
-	    	this.scene.stop('ScenePerfect');
-	    	this.scene.stop('SceneStartCountdown');
+	    	// this.scene.stop('SceneMain_katja');
+	    	// this.scene.stop('ScenePerfect');
+	    	// this.scene.stop('SceneStartCountdown');
 	    	// currentTrial = 1;
 	    	socket.emit('new gameRound ready');
 	    	buttonContainer_nextGameRound.visible = false;
