@@ -415,7 +415,7 @@ export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
     // calculating the payoff from this choice
     if (choiceType == 'miss') {
         payoff = 0;
-        didShare = 0;
+        // didShare = 0;
         if (indivOrGroup > -1) { // if don't want to send indiv data, indivOrGroup == 1
             // socket.emit('choice made katja', 
             //     {chosenOptionFlag:-1 // chosen option's id
