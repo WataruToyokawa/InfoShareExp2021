@@ -45,10 +45,11 @@ const horizonList = [5, 60]//[30, 60]
 , totalGameRound = 2 // number of rounds
 , exp_condition_list = ['groupPayoff'] //['binary', 'gaussian'] // noise profiles
 , prob_conditions = 1.0// probability of assigning each exp condition 
-, prob_0 = [0.3, 0.5, 0.7] // environment 0
-, prob_1 = [0.9, 0.5, 0.7] // environment 1
-, prob_2 = [0.5, 0.7, 0.3] // environment 2
-, prob_3 = [0.7, 0.3, 0.5] // environment 3
+, prob_0 = [0.7, 0.4, 0.3] // environment 0 (static)
+, prob_1 = [0.8, 0.3, 0.3] // environment 1
+, prob_2 = [0.3, 0.3, 0.8] // environment 2
+, prob_3 = [0.8, 0.3, 0.3] // environment 3
+, prob_4 = [0.3, 0.8, 0.3] // environment 4
 , options = [];
 ;
 for (let i = 1; i <= numOptions; i++) {
@@ -142,7 +143,8 @@ roomStatus['decoyRoom'] = {
     totalPayoff_perIndiv: [0],
     totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
     groupTotalCost: [0],
-    block: 0
+    currentEnv: 0,
+	envChangeTracker: 0
 };
 // The following is the first room
 // Therefore, Object.keys(roomStatus).length = 2 right now
@@ -183,7 +185,8 @@ roomStatus[firstRoomName] = {
     totalPayoff_perIndiv: [0],
     totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
     groupTotalCost: [0],
-    block: 0
+    currentEnv: 0,
+	envChangeTracker: 0
 };
 
 /**
@@ -273,7 +276,8 @@ io.on('connection', function (client) {
 				totalPayoff_perIndiv: [0],
 				totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 				groupTotalCost: [0],
-				block: 0
+				currentEnv: 0,
+				envChangeTracker: 0
 			};
 			roomStatus[client.room]['n']++;
 			roomStatus[client.room]['total_n']++;
@@ -369,7 +373,8 @@ io.on('connection', function (client) {
 						totalPayoff_perIndiv: [0],
 						totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 						groupTotalCost: [0],
-						block: 0
+						currentEnv: 0,
+						envChangeTracker: 0
 				      };
 				      // Register the client to the new room
 				      client.room = client.newRoomName;
@@ -528,7 +533,8 @@ io.on('connection', function (client) {
 				totalPayoff_perIndiv: [0],
 				totalPayoff_perIndiv_perGame: new Array(totalGameRound).fill(0),
 				groupTotalCost: [0],
-				block: 0
+				currentEnv: 0,
+				envChangeTracker: 0
 			};
 			// client leave the former room
 			client.leave(client.room);
@@ -617,8 +623,6 @@ io.on('connection', function (client) {
 					// updating social frequency information for this trial
 					roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1][data.num_choice]++;
 				}
-				console.log(roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1]);
-				console.log(roomStatus[client.room]['socialInfo'][roomStatus[client.room]['pointer']-1]);
 			}
 
 			// =========  save data to mongodb
@@ -647,6 +651,7 @@ io.on('connection', function (client) {
 				,	socialFreq: roomStatus[client.room]['socialFreq'][roomStatus[client.room]['pointer']-1]
 				,	socialInfo: data.socialInfo
 				,	maxGroupSize: maxGroupSize
+				,	currentEnv: roomStatus[client.room]['currentEnv']
 				,	optionOrder: roomStatus[client.room]['optionOrder']
 				}
 			);
@@ -772,6 +777,7 @@ io.on('connection', function (client) {
 					// ,	socialInfo: data.socialInfo
 					// ,	publicInfo: data.publicInfo
 					,	maxGroupSize: maxGroupSize
+					,	currentEnv: roomStatus[client.room]['currentEnv']
 					,	riskDistributionId: data.riskDistributionId
 					,	optionOrder: roomStatus[client.room]['optionOrder']
 					,	didShare: data.share
@@ -1020,6 +1026,18 @@ function proceedTrial (room) {
 	roomStatus[room]['trial']++; // the position in the gameRound
 	roomStatus[room]['pointer']++; // the position in enture data
 	roomStatus[room]['groupTotalPayoff'][roomStatus[room]['pointer']-1] = 0 // initialising the total payoff tracker
+
+	// take note the current env
+	if (roomStatus[room]['taskOrder'][roomStatus[room]['gameRound']] == 'dynamic') {
+		if (roomStatus[room]['trial'] >= changes[roomStatus[room]['envChangeTracker']]) {
+			roomStatus[room]['currentEnv']++;
+			roomStatus[room]['envChangeTracker']++;
+			console.log(' - Env changes to '+ (roomStatus[room]['currentEnv']) +' starts in '+ room);
+		}
+	} else {
+		roomStatus[room]['currentEnv'] = 0; // it's always 0 for static
+	}
+
 	if(roomStatus[room]['trial'] <= roomStatus[room]['horizon']) {
 		io.to(room).emit('Proceed to next trial', roomStatus[room]);
 		console.log(' - New trial '+ (roomStatus[room]['trial']) +' starts in '+ room);
@@ -1128,7 +1146,7 @@ function parameterEmitting (client) {
 		, taskOrder: roomStatus[client.room]['taskOrder']
 		, gameRound: roomStatus[client.room]['gameRound']
 		, changes: changes // env change points
-		, environments: [prob_0, prob_1, prob_2, prob_3] // payoff profiles
+		, environments: [prob_0, prob_1, prob_2, prob_3, prob_4] // payoff profiles
 		});
 	console.log(' - parameters were sent to ' + client.session + ' in room ' + client.room);
 }

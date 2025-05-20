@@ -661,16 +661,16 @@ export function settingBanditPayoffs_katja (numOptions, taskID, horizon, changes
         case 'dynamic': // 
             for (let i = 0; i < numOptions; i++) {
                 for (let t = 0; t < changes[0]; t++) {
-                    prob_means[i][t] = environments[0][i];
-                }
-                for (let t = changes[0]; t < changes[1]; t++) {
                     prob_means[i][t] = environments[1][i];
                 }
-                for (let t = changes[1]; t < changes[2]; t++) {
+                for (let t = changes[0]; t < changes[1]; t++) {
                     prob_means[i][t] = environments[2][i];
                 }
-                for (let t = changes[2]; t < horizon; t++) {
+                for (let t = changes[1]; t < changes[2]; t++) {
                     prob_means[i][t] = environments[3][i];
+                }
+                for (let t = changes[2]; t < horizon; t++) {
+                    prob_means[i][t] = environments[4][i];
                 }
             }
             break;
