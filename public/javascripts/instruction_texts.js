@@ -87,20 +87,20 @@ const understandingCheckText_group =
 	];
 
 const transitionText_staticToDynamic = 
-[ '<h3>HEEEYYEEEEE!!!.</h3>'
+[ 'Well done! You are now moving on to the next round.'
 
-	, 'Next one is Dynamic!' 
+	, '<br><br>The next part of the game is the same as before with one difference:'
 
-	, 'Good luck man' 
+	, '<br><br>So far the average payoff of each machine has been the same from trial to trial. In this next part <span class="note">the quality (average payoff) of different machines will change 3 times during the course of the game</span>. That is, the best machine at a certain time might not be the best during another period. You will not be explicitly notified of the change if it occurs. There will be 60 trials.'
 
 	];
 
 const transitionText_dynamicToStatic = 
-[ '<h3>BOOOOOOOO!!!.</h3>'
+[ 'Well done! You are now moving on to the next round.'
 
-	, 'Next one is Static!' 
+	, '<br><br>The next part of the game is the same as before with one difference:'
 
-	, 'Good luck man' 
+	, '<br><br>So far the quality (average payoff) of different machines has not been the same throughout the game. <span class="note">Now it will remain the same</span>, although it might be different from which machine was the best in the previous round. There will be 30 trials.'
 
 	];
 

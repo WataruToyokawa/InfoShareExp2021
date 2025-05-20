@@ -838,9 +838,15 @@ io.on('connection', function (client) {
 		
 		if (roomStatus[client.room]['newGameRoundReady'] >= roomStatus[client.room]['n']) {
 		  	
-			console.log(' - ' + client.room + ' is ready to start the new game round ' + roomStatus[client.room]['gameRound']);
+			console.log(' - ' + client.room + ' is ready to start the new game round ' + (roomStatus[client.room]['gameRound']+1) );
 
-		  	io.to(client.room).emit('all are ready to move on', {gameRound:roomStatus[client.room]['gameRound'], newGameRoundReady:roomStatus[client.room]['newGameRoundReady'], exp_condition:roomStatus[client.room]['exp_condition']});
+		  	io.to(client.room).emit('all are ready to move on', 
+				{gameRound: roomStatus[client.room]['gameRound']
+					, newGameRoundReady: roomStatus[client.room]['newGameRoundReady']
+					, exp_condition: roomStatus[client.room]['exp_condition']
+					, horizon: roomStatus[client.room]['horizon']
+					, taskType: roomStatus[client.room]['taskOrder'][roomStatus[client.room]['gameRound']]
+				});
 		  	
 		  	firstTrialStartingTime = new Date();
 		  	roomStatus[client.room]['stage'] = 'mainTask';
@@ -1018,7 +1024,11 @@ function proceedTrial (room) {
 		io.to(room).emit('Proceed to next trial', roomStatus[room]);
 		console.log(' - New trial '+ (roomStatus[room]['trial']) +' starts in '+ room);
 	} else {
-		roomStatus[room]['gameRound']++;
+		// update the room status
+		roomStatus[room]['gameRound']++; // move to the next round
+		roomStatus[room]['trial'] = 1; // resetting trial num
+		roomStatus[room]['horizon'] = horizonList[roomStatus[room]['gameRound']]
+		// announcing ending the round
 		io.to(room).emit('End this session', roomStatus[room]);
 		console.log(' - End this round '+ (roomStatus[room]['gameRound']) +' in '+ room);
 	}

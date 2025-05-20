@@ -11,6 +11,7 @@ class SceneNextRoundsInstruction extends Phaser.Scene {
 	init (data) {
 		this.taskType = data.whatsNext;
 		this.groupPayoffLastRound = data.groupPayoffThisRdound;
+		this.horizon = data.horiozn;
 	}
 
 	create () {
@@ -30,7 +31,7 @@ class SceneNextRoundsInstruction extends Phaser.Scene {
 	    let transitionDiv = document.createElement('div');
 	    transitionDiv.style = instructionTextStyle;
 
-	    if (this.taskType == 'Dynamic') {
+	    if (this.taskType == 'dynamic') {
 			instructionLength = transitionText_staticToDynamic.length;
 			instructionText = transitionText_staticToDynamic[transitionTextPosition];
 	    	transitionDiv.innerHTML = instructionText;

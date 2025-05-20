@@ -257,8 +257,10 @@ class SceneMain_katja extends Phaser.Scene {
 	    // Turn this on when you want to show the frequency-information
 	    // and turn off the 'publicInfo.call' in this case
 	    //
-	    showStars_4ab.call(this, numberOfPreviousChoice[0], numberOfPreviousChoice[1], numberOfPreviousChoice[2], numberOfPreviousChoice[3], slotY_main-90);
-
+		if (this.trial > 1) {
+			showStars_4ab.call(this, numberOfPreviousChoice[0], numberOfPreviousChoice[1], numberOfPreviousChoice[2], numberOfPreviousChoice[3], slotY_main-90);
+		}
+		
 	}
 
 	update(){

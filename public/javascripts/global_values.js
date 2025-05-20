@@ -36,6 +36,7 @@ let numOptions = 0
 ,	environments // payoff profiles for each environments 
 ,	prob_means // a full list of the bandit probability
 ,	gameRound
+,	taskType // static or dynamic
 ;
 
 const mean_list = []

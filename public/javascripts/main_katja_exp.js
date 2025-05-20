@@ -198,6 +198,7 @@ window.onload = function() {
         changes = data.changes; // env changing points
         environments = data.environments // payoff probability profiles
         horizon = data.horizon;
+        taskType = taskOrder[data.gameRound] // static or dynamic
         instructionText_indiv[1] = instructionText_indiv[1] + numOptions + ' slot machines.';
         instructionText_group[1] = instructionText_group[1] + numOptions + ' slot machines.';
         
@@ -330,12 +331,22 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon, groupCumulativePayoff: 0});
+        game.scene.start('SceneStartCountdown', 
+            {gameRound: data.gameRound
+                , trial: 1
+                , horizon: horizon
+                , groupCumulativePayoff: 0});
     });
 
     socket.on('all are ready to move on', function(data) {
         currentTrial = 1; // resetting the trial number
         gameRound = data.gameRound; // updating the game round
+        horizon = data.horizon // horizon for the new round
+        taskType = data.taskType // static or dynamic
+
+        // setting the bandit profile
+        prob_means = settingBanditPayoffs_katja(numOptions, taskType, horizon, changes, environments);
+
         console.log('All are ready to move on to gameRound '+(gameRound+1))
         game.scene.stop('SceneWaitingRoom0');
         game.scene.stop('SceneWaitingRoom');
@@ -346,7 +357,12 @@ window.onload = function() {
     	game.scene.stop('ScenePerfect');
     	game.scene.stop('SceneGoToNewGameRound');
         game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown', {gameRound: data.gameRound, trial: 1, horizon: horizon, groupCumulativePayoff: 0});
+        game.scene.start('SceneStartCountdown', 
+            {gameRound: data.gameRound
+            , trial: 1
+            , horizon: horizon
+            , groupCumulativePayoff: 0
+        });
     });
 
     socket.on('client disconnected', function(data) {
@@ -451,103 +467,103 @@ window.onload = function() {
         }
     });
 
-    socket.on('Proceed to next round', function(data) {
-        if(currentTrial < horizon) {
-            mySocialInfo = data.socialInfo[data.pointer-2]; //[data.trial-2];
-            myPublicInfo = data.publicInfo[data.pointer-2];
-            choiceOrder = data.choiceOrder[data.pointer-2];
-            // share_or_not = data.share_or_not[data.pointer-2];
-            groupTotalScore = data.groupTotalPayoff[data.pointer - 1] //sum( data.groupTotalPayoff );
-            totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
-            totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
-            // payoff_info = data.share_or_not[data.trial-2]['payoff'];
-            // shared_position = data.share_or_not[data.trial-2]['position'];
-            // console.log('mySocialInfo: ' + mySocialInfo);
-            // console.log('myPublicInfo: ' + myPublicInfo);
-            // console.log('choiceOrder: ' + choiceOrder);
-            // console.log(data);
-            // for (let i = 0; i < maxGroupSize; i++) {
-            // 	if(typeof share_or_not[i] != 'undefined') {
-            // 		console.log('subjectNumber' + i + ': share:' + JSON.stringify(share_or_not[i]));
-            // 	} else {
-            //         console.log('subjectNumber' + i + ': share_or_not[i] is undefined!!!!!!');
-            //     }
-            // }
-            // console.log('share_or_not: ' + share_or_not);
-            // if (indivOrGroup == 1) {
-            // 	for (let i = 1; i < numOptions+1; i++) {
-            // 		mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
-            // 	}
-            // 	console.log('Proceed to next round: data.socialFreq[data.pointer-1] = ' + data.socialFreq[data.pointer-1]);
-            // } else {
-            // 	for (let i = 1; i < numOptions+1; i++) {
-            // 		if (myLastChoiceFlag == i) { // myLastChoice
-            // 			mySocialInfoList['option'+i] = 1;
-            // 		} else {
-            // 			mySocialInfoList['option'+i] = 0;
-            // 		}
-            // 	}
-            // }
+    // socket.on('Proceed to next round', function(data) {
+    //     if(currentTrial < horizon) {
+    //         mySocialInfo = data.socialInfo[data.pointer-2]; //[data.trial-2];
+    //         myPublicInfo = data.publicInfo[data.pointer-2];
+    //         choiceOrder = data.choiceOrder[data.pointer-2];
+    //         // share_or_not = data.share_or_not[data.pointer-2];
+    //         groupTotalScore = data.groupTotalPayoff[data.pointer - 1] //sum( data.groupTotalPayoff );
+    //         totalPayoff_perIndiv = sum( data.totalPayoff_perIndiv );
+    //         totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
+    //         // payoff_info = data.share_or_not[data.trial-2]['payoff'];
+    //         // shared_position = data.share_or_not[data.trial-2]['position'];
+    //         // console.log('mySocialInfo: ' + mySocialInfo);
+    //         // console.log('myPublicInfo: ' + myPublicInfo);
+    //         // console.log('choiceOrder: ' + choiceOrder);
+    //         // console.log(data);
+    //         // for (let i = 0; i < maxGroupSize; i++) {
+    //         // 	if(typeof share_or_not[i] != 'undefined') {
+    //         // 		console.log('subjectNumber' + i + ': share:' + JSON.stringify(share_or_not[i]));
+    //         // 	} else {
+    //         //         console.log('subjectNumber' + i + ': share_or_not[i] is undefined!!!!!!');
+    //         //     }
+    //         // }
+    //         // console.log('share_or_not: ' + share_or_not);
+    //         // if (indivOrGroup == 1) {
+    //         // 	for (let i = 1; i < numOptions+1; i++) {
+    //         // 		mySocialInfoList['option'+i] = data.socialFreq[data.pointer-1][optionOrder[i-1] - 1];
+    //         // 	}
+    //         // 	console.log('Proceed to next round: data.socialFreq[data.pointer-1] = ' + data.socialFreq[data.pointer-1]);
+    //         // } else {
+    //         // 	for (let i = 1; i < numOptions+1; i++) {
+    //         // 		if (myLastChoiceFlag == i) { // myLastChoice
+    //         // 			mySocialInfoList['option'+i] = 1;
+    //         // 		} else {
+    //         // 			mySocialInfoList['option'+i] = 0;
+    //         // 		}
+    //         // 	}
+    //         // }
 
-            currentTrial++;
-            totalEarning += payoff - (info_share_cost * didShare);
+    //         currentTrial++;
+    //         totalEarning += payoff - (info_share_cost * didShare);
 
-            if (currentTrial == environment_change) {
-                switch (taskOrder[data.gameRound]) {
-                    case 1:
-                        settingRiskDistribution(2);
-                        break;
-                    case 2:
-                        settingRiskDistribution(1);
-                        break;
-                    case 3:
-                        settingRiskDistribution(4);
-                        break;
-                    case 4:
-                        settingRiskDistribution(3);
-                        break;
-                    default:
-                        settingRiskDistribution(2);
-                        break;
-                }
-            }
+    //         if (currentTrial == environment_change) {
+    //             switch (taskOrder[data.gameRound]) {
+    //                 case 1:
+    //                     settingRiskDistribution(2);
+    //                     break;
+    //                 case 2:
+    //                     settingRiskDistribution(1);
+    //                     break;
+    //                 case 3:
+    //                     settingRiskDistribution(4);
+    //                     break;
+    //                 case 4:
+    //                     settingRiskDistribution(3);
+    //                     break;
+    //                 default:
+    //                     settingRiskDistribution(2);
+    //                     break;
+    //             }
+    //         }
 
-            //$("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-            //$("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-            $("#currentTrial").val(currentTrial);
-            $("#gameRound").val(gameRound);
-            // $("#exp_condition").val(exp_condition);
-            //$("#confirmationID").val(confirmationID);
-            $("#bonus_for_waiting").val(Math.round(waitingBonus));
-            // payoffText.destroy();
-            // waitOthersText.destroy();
-            for (let i =1; i<numOptions+1; i++) {
-            	objects_feedbackStage['box'+i].destroy();
-            }
-        	game.scene.stop('SceneAskStillThere');
-        	isWaiting = false
-        	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
-        	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
-        }
-        else {
-            // End this session if the server wrongly sent the "proceed round message"
-            // currentTrial++;
-            totalEarning += payoff;
-            $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
-            $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
-            $("#currentTrial").val(currentTrial);
-            $("#gameRound").val(gameRound);
-            $("#completed").val(1);
-            for (let i =1; i<numOptions+1; i++) {
-                objects_feedbackStage['box'+i].destroy();
-            }
-            game.scene.stop('SceneAskStillThere');
-            isWaiting = false
-            game.scene.start('SceneGoToQuestionnaire');
-        }
-    });
+    //         //$("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+    //         //$("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+    //         $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+    //         $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+    //         $("#currentTrial").val(currentTrial);
+    //         $("#gameRound").val(gameRound);
+    //         // $("#exp_condition").val(exp_condition);
+    //         //$("#confirmationID").val(confirmationID);
+    //         $("#bonus_for_waiting").val(Math.round(waitingBonus));
+    //         // payoffText.destroy();
+    //         // waitOthersText.destroy();
+    //         for (let i =1; i<numOptions+1; i++) {
+    //         	objects_feedbackStage['box'+i].destroy();
+    //         }
+    //     	game.scene.stop('SceneAskStillThere');
+    //     	isWaiting = false
+    //     	game.scene.start('SceneMain_katja', {gameRound:gameRound, trial:currentTrial});
+    //     	//console.log('restarting the main scene!: mySocialInfo = '+data.socialFreq[data.trial-1]);
+    //     }
+    //     else {
+    //         // End this session if the server wrongly sent the "proceed round message"
+    //         // currentTrial++;
+    //         totalEarning += payoff;
+    //         $("#totalEarningInCent").val(Math.round((totalPayoff_perIndiv*cent_per_point)));
+    //         $("#totalEarningInUSD").val(Math.round((totalPayoff_perIndiv*cent_per_point))/100);
+    //         $("#currentTrial").val(currentTrial);
+    //         $("#gameRound").val(gameRound);
+    //         $("#completed").val(1);
+    //         for (let i =1; i<numOptions+1; i++) {
+    //             objects_feedbackStage['box'+i].destroy();
+    //         }
+    //         game.scene.stop('SceneAskStillThere');
+    //         isWaiting = false
+    //         game.scene.start('SceneGoToQuestionnaire');
+    //     }
+    // });
 
     socket.on('End this session', function(data) {
         // when more gameRounds remain
@@ -558,9 +574,11 @@ window.onload = function() {
             $("#currentTrial").val(currentTrial);
             $("#gameRound").val(gameRound);
             game.scene.stop('SceneAskStillThere');
+            game.scene.stop('SceneResultFeedback');
             game.scene.start('SceneNextRoundsInstruction', 
                 {whatsNext: data.taskOrder[data.gameRound]
                     , groupPayoffThisRdound: data.groupCumulativePayoff[data.gameRound-1]
+                    , horizon: data.horizon
                 });
             // game.scene.start('SceneGoToNewGameRound');
         } else {
@@ -570,6 +588,7 @@ window.onload = function() {
             $("#gameRound").val(gameRound);
             $("#completed").val(1);
             game.scene.stop('SceneAskStillThere');
+            game.scene.stop('SceneResultFeedback');
             isWaiting = false
             game.scene.start('SceneGoToQuestionnaire');
         }
@@ -577,51 +596,35 @@ window.onload = function() {
         
     });
 
-    socket.on('all are ready to move on', function(data) {
-        currentTrial = 1; // resetting the trial number
-        gameRound = data.gameRound; // updating the game round
-        console.log('All are ready to move on to gameRound '+(gameRound+1))
-        game.scene.stop('SceneWaitingRoom0');
-        game.scene.stop('SceneWaitingRoom');
-    	game.scene.stop('SceneInstruction');
-    	game.scene.stop('SceneTutorial');
-    	game.scene.stop('SceneTutorialFeedback');
-    	game.scene.stop('SceneUnderstandingTest');
-    	game.scene.stop('ScenePerfect');
-    	game.scene.stop('SceneGoToNewGameRound');
-        game.scene.stop('SceneWaitingRoom2');
-        game.scene.start('SceneStartCountdown');
-    });
-
-    socket.on('New gameRound starts', function(data) {
-    	// console.log('New gameRound ' + (data.gameRound+1) + ' with gameType = ' + taskOrder[data.gameRound] + ' starts!');
-    	// Destroying the objects in the feedback scene
-    	// payoffText.destroy();
-     //    waitOthersText.destroy();
-        for (let i =1; i<numOptions+1; i++) {
-        	objects_feedbackStage['box'+i].destroy();
-        }
-    	// reset the previous data
-    	// currentTrial = 1;
-    	mySocialInfo = [];
-        myPublicInfo = [];
-        choiceOrder = [];
-        share_or_not = [];
-    	totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
-    	totalPayoff_perIndiv = 0;
-    	groupTotalScore = 0;
-    	gameRound = data.gameRound;
-    	optionOrder = data.optionOrder; // new option order
-    	if (numOptions == 2) {
-        	settingRiskDistribution(taskOrder[data.gameRound]);
-        } else {
-        	// console.log('data.numOptions != 2 why????');
-        }
-    	// starting the new game round
-    	game.scene.stop('SceneAskStillThere');
-    	isWaiting = false
-    	game.scene.start('SceneGoToNewGameRound');
-    });
+    // socket.on('New gameRound starts', function(data) {
+    // 	// console.log('New gameRound ' + (data.gameRound+1) + ' with gameType = ' + taskOrder[data.gameRound] + ' starts!');
+    // 	// Destroying the objects in the feedback scene
+    // 	// payoffText.destroy();
+    //  //    waitOthersText.destroy();
+    //     for (let i =1; i<numOptions+1; i++) {
+    //     	objects_feedbackStage['box'+i].destroy();
+    //     }
+    // 	// reset the previous data
+    // 	// currentTrial = 1;
+    // 	mySocialInfo = [];
+    //     myPublicInfo = [];
+    //     choiceOrder = [];
+    //     share_or_not = [];
+    // 	totalPayoff_perIndiv_perGame[gameRound] = data.totalPayoff_perIndiv_perGame[gameRound];
+    // 	totalPayoff_perIndiv = 0;
+    // 	groupTotalScore = 0;
+    // 	gameRound = data.gameRound;
+    // 	optionOrder = data.optionOrder; // new option order
+    // 	if (numOptions == 2) {
+    //     	settingRiskDistribution(taskOrder[data.gameRound]);
+    //     } else {
+    //     	// console.log('data.numOptions != 2 why????');
+    //     }
+    // 	// starting the new game round
+    // 	game.scene.stop('SceneAskStillThere');
+    // 	isWaiting = false
+    // 	game.scene.start('SceneGoToNewGameRound');
+    // });
 
     socket.on('S_to_C_welcomeback', function(data) {
     	// if (waitingRoomFinishedFlag == 1) {
