@@ -17,6 +17,7 @@ class SceneAskStillThere extends Phaser.Scene {
 		this.didMiss = data.didMiss;
 		this.flag = data.flag;
 		this.horizon = data.horizon;
+		this.prob_means = data.prob_means;
 		// this.individual_payoff = data.individual_payoff;
 	}
 
@@ -110,6 +111,8 @@ class SceneAskStillThere extends Phaser.Scene {
 					, subjectNumber: subjectNumber
 					, thisTrial: currentTrial
 					, miss: true
+					, prob_means: this.prob_means
+					, reactionTime: 0
 				});
 	    	buttonContainer_confirm.visible = false;
 	    	if (indivOrGroup == 1) CircleSpinContainer.visible = true;

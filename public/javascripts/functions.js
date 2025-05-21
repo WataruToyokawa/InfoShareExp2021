@@ -395,7 +395,7 @@ export function showPublicInfo (shared_payoff, shared_option_position, socialInf
 }
 
 // madeChoice
-export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
+export function madeChoice_katja (optionLocation, choiceType, optionOrder, reactionTime) {
 
     console.log('made choice katja with choicetype = ' + choiceType);
     
@@ -431,7 +431,7 @@ export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
         } 
     } else {
         // choiceType == 'groupPayoff'
-        payoffGenerator(optionLocation, thisChoice-1, prob_means[thisChoice-1][currentTrial-1]);
+        payoffGenerator(optionLocation, thisChoice-1, prob_means[thisChoice-1][currentTrial-1], [prob_means[0][currentTrial-1], prob_means[1][currentTrial-1], prob_means[2][currentTrial-1]], reactionTime);
         // let individual_payoff = payoffGenerator(optionLocation, thisChoice-1, optionsKeyList[thisChoice-1], payoffList[optionsKeyList[thisChoice-1]], probabilityList[optionsKeyList[thisChoice-1]], mySocialInfo);
     }
     // score += individual_payoff;
@@ -441,7 +441,7 @@ export function madeChoice_katja (optionLocation, choiceType, optionOrder) {
     trialText.setText(' - Current trial: ' + currentTrial + ' / ' + horizon);
 }
 
-export function payoffGenerator(chosenOptionFlag, num_choice, payoffProb) {
+export function payoffGenerator(chosenOptionLocation, num_choice, payoffProb, prob_means, reactionTime) {
     let roulette = Math.random()
     let this_individual_payoff
     if (payoffProb >= roulette) { // reward event
@@ -451,14 +451,17 @@ export function payoffGenerator(chosenOptionFlag, num_choice, payoffProb) {
         this_individual_payoff = 0;
         myChoices.push(num_choice);
     }
-    myLastChoiceFlag = chosenOptionFlag;
+    
+    myLastChoiceFlag = chosenOptionLocation;
     socket.emit('choice made katja', 
-        {chosenOptionFlag: chosenOptionFlag // chosen option's id
-            , num_choice: num_choice // location of the chosen option
+        {chosenOptionLocation: chosenOptionLocation // location of the chosen option
+            , num_choice: num_choice // chosen option's id
             , individual_payoff: this_individual_payoff
             , subjectNumber: subjectNumber
             , thisTrial: currentTrial
             , miss: false
+            , prob_means: prob_means
+            , reactionTime: reactionTime
         });
     console.log('choice was made: num_choice = ' + num_choice + ' generating individual_payoff = ' + this_individual_payoff + '.');
     // return this_individual_payoff;

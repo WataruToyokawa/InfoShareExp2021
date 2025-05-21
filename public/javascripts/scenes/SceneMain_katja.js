@@ -61,6 +61,9 @@ class SceneMain_katja extends Phaser.Scene {
 	    	options['box_active'+i].visible = false;
 	    }
 
+		// Time stamp
+		let time_created = new Date();
+
 		// confirmation text
 		let confirmationContainer = this.add.container(175, slotY_main+20);
 		let confirmationImage = this.add.sprite(0, 0, 'button').setDisplaySize(160,100).setAlpha(0.7);
@@ -125,8 +128,9 @@ class SceneMain_katja extends Phaser.Scene {
 					// options.box1_active.visible = false;
 	    //             options.box2.visible = false;
 					// options.box2_active.visible = false;
-					madeChoice_katja(currentChoiceFlag, 'miss', optionOrder);
-					this.scene.start('SceneAskStillThere', {didMiss: true, flag: currentChoiceFlag, horizon: this.horizon});
+					let time_madeChoice = new Date();
+					madeChoice_katja(currentChoiceFlag, 'miss', optionOrder, time_madeChoice - time_created);
+					this.scene.start('SceneAskStillThere', {didMiss: true, flag: currentChoiceFlag, horizon: this.horizon, prob_means: [prob_means[0][currentTrial-1], prob_means[1][currentTrial-1], prob_means[2][currentTrial-1]]});
 					isWaiting = true;
 					gameTimer.destroy();
                 }
@@ -155,9 +159,10 @@ class SceneMain_katja extends Phaser.Scene {
         	options['box_active'+i].on('pointerdown', function (pointer) {
 		    	//clearTimeout(countDownChoiceStage);
 		    	if(!isChoiceMade) {
-		    		madeChoice_katja(currentChoiceFlag, exp_condition, optionOrder);
+					let time_madeChoice = new Date();
+		    		madeChoice_katja(currentChoiceFlag, exp_condition, optionOrder, time_madeChoice - time_created);
 		    		gameTimer.destroy();
-		    		this.scene.start('SceneAskStillThere', {didMiss: false, flag: currentChoiceFlag, horizon: this.horizon});
+		    		this.scene.start('SceneAskStillThere', {didMiss: false, flag: currentChoiceFlag, horizon: this.horizon, prob_means: [prob_means[0][currentTrial-1], prob_means[1][currentTrial-1], prob_means[2][currentTrial-1]]});
 		    		isWaiting = true;
 		    		isChoiceMade = true;
 		    		for (let j=1; j<numOptions+1; j++) {
